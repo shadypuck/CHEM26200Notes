@@ -1,7 +1,18 @@
 \usepackage[margin=1in]{geometry}
+\usepackage{csquotes}
 \usepackage{fancyhdr}
 \usepackage{marginnote}
+\usepackage{enumitem}
+\usepackage[style=apa]{biblatex}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
+\usepackage{siunitx}
+\usepackage{amsmath,amssymb}
+\usepackage{bm,physics}
+\usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
+
+\MakeOuterQuote{"}
 
 \fancypagestyle{main}{
     \fancyhf{}
@@ -15,5 +26,19 @@
 }
 
 \reversemarginpar
+
+\setitemize[3]{label={\scriptsize$\blacksquare$}}
+
+\addbibresource{../main.bib}
+\DefineBibliographyStrings{english}{bibliography={References}}
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
+
+\sisetup{range-phrase=-,range-units=single}
+\DeclareSIUnit{\angstrom}{\textup{\AA}}
+
+\newcommand{\prb}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\e}[1][]{\text{e}^{#1}}
 
 \usepackage{subfiles}

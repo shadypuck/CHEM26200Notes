@@ -9,8 +9,155 @@
 
 
 \chapter{The Boltzmann Factor and Partition Functions}
+\section{Overview of Major Results}
 \begin{itemize}
-    \item \marginnote{1/10:}
+    \item \marginnote{1/10:}In this course, we will review thermochemistry from intro chem, but go deeper with statistical mechanics.
+    \item TA: Haozhi.
+    \begin{itemize}
+        \item Did his undergrad at Oxford.
+        \item Has already taught this class in the PME.
+    \end{itemize}
+    \item \textbf{Boltzmann constant}: The following constant. \emph{Denoted by} $\bm{k_B}$. \emph{Given by}
+    \begin{equation*}
+        k_B = \SI[per-mode=symbol]{1.381e-23}{\joule\per\kelvin}
+    \end{equation*}
+    \begin{itemize}
+        \item Equal to the quotient of the ideal gas constant and Avogadro's constant.
+    \end{itemize}
+    \item \textbf{Ideal gas law}: The following relationship between the pressure $P$, volume $V$, number of moles $n$, and temperature $T$ of an ideal gas, and the ideal gas constant $R$.
+    \begin{equation*}
+        PV = nRT
+    \end{equation*}
+    \begin{itemize}
+        \item Multiplying by the quotient of Avogadro's constant with itself yields
+        \begin{align*}
+            PV &= nN_A\frac{R}{N_A}T\\
+            PV &= Nk_BT
+        \end{align*}
+        where $N$ is the number of molecules in the system.
+        \item The unit for $PV$ is Joules.
+        \item Thus, the above form states that $PV$ is equal to the number of particles times a tiny unit of energy.
+    \end{itemize}
+    \item Relating $PV$ to the kinetic energy of gas molecules/atoms\footnote{This derivation differs from that on \textcite[3-4]{bib:APChemNotes} and \textcite[18-19]{bib:PHYS13300Notes}, in that its approach is from a flux perspective.}.
+    \begin{itemize}
+        \item Pressure originates microscopically from the collisions of particles with the walls of their container.
+        \item As such, we first seek to derive an expression for the number of collisions per second per area.
+        \begin{itemize}
+            \item Consider the number $N(v_x)$ particles with speed $v_x$ in the $x$-direction.
+            \item The quotient $N(v_x)/V$ is the density in the container of particles with speed $v_x$.
+            \item Thus, the flux "through"/to/at the wall is this density, times the area of the wall, times the $x$-velocity of the particles.
+        \end{itemize}
+        \item Assume an elastic collision of each particle with the wall. Thus, when each particle of mass $m$ collides with the wall, it transfers $2mv_x$ of momentum.
+        \item Therefore, since $F=\dv*{p}{t}$, the overall force exerted on the wall by the gas particles moving with speed $v_x$ is $2mv_x$, $N(v_x)/V\cdot v_x\cdot\text{Area}$ times per second.
+        \item But, of course, we must sum over all possible $v_x$, so the total force
+        \begin{equation*}
+            F = \int_{v_x>0} 2mv_x\cdot\frac{N(v_x)}{V}\cdot v_x\cdot\text{Area}\dd{v_x}
+        \end{equation*}
+        \item It follows that
+        \begin{align*}
+            P &= \frac{F}{\text{Area}}\\
+            &= \int_{v_x>0} 2mv_x^2\cdot\frac{N(v_x)}{V}\dd{v_x}
+            \intertext{The factor of $1/2$ in the following line comes from the fact that we are only integrating over half of the possible $v_x^2$s (i.e., the positive ones).}
+            &= 2m\cdot\frac{N}{V}\cdot\frac{1}{2}\prb{v_x^2}\\
+            &= \frac{N}{V}m\prb{v_x^2}\\
+            PV &= Nm\cdot\prb{v_x^2}
+            \intertext{Assuming that the gas is not moving in any one direction means that $\prb{v_x^2}=\prb{v_y^2}=\prb{v_z^2}=\frac{1}{3}\prb{v^2}$. Therefore,}
+            &= Nm\cdot\frac{1}{3}\prb{v^2}\\
+            &= \frac{2}{3}N\cdot\frac{1}{2}m\prb{v^2}\\
+            &= \frac{2}{3}N\cdot\prb{E_{KE}}\\
+            \prb{E_{KE}} &= \frac{3}{2}\frac{PV}{N}\\
+            \prb{E_{KE}} &= \frac{3}{2}k_BT
+        \end{align*}
+        \item Note that this applies to all sorts of regimes --- we used no properties of the particles (e.g., atom vs. molecule) to derive this relationship.
+    \end{itemize}
+    \item Getting the distribution of the gas energies or speed is the next logical step.
+    \item First, though, we consider alternate occurrences of $k_BT$.
+    \begin{itemize}
+        \item The activation energy of \textcite{bib:ArrheniusEqn}: "To collide is to react" is inaccurate; it must collide with sufficient energy. The molecule must be "activated."
+        \begin{equation*}
+            k = A\e[-E_a/RT] = A\e[-E_a/k_BT]
+        \end{equation*}
+        \begin{itemize}
+            \item The first $E_a$ is the molar energy of activation; the second is the molecular energy of activation.
+            \item Yields the probability distribution of a molecule reacting.
+        \end{itemize}
+        \item Nernst equation:
+        \begin{equation*}
+            E_\text{cell} = E_\text{cell}^0-\frac{RT}{nF}\ln Q
+        \end{equation*}
+        \begin{itemize}
+            \item $\ln Q$ is the ratio inside vs. outside the membrane.
+            \item $F=N_Ae$ where $e$ is the charge of an electron.
+            \item Thus,
+            \begin{equation*}
+                \Delta E = \frac{RT}{nF} = \frac{k_BT}{ne}
+            \end{equation*}
+            \item If the potential across the membrane is approximately $k_BT$, then $\ln Q\approx 1$, so $Q\approx\e$.
+            \item Thus, at body temperature ($T=\SI{310}{\kelvin}$), $k_BT/\e=\SI{26}{\milli\volt}$.
+        \end{itemize}
+        \item The speed of sound: Certainly sound cannot travel faster than the molecules. Therefore, we can derive the following approximation for the speed of sound.
+        \begin{align*}
+            \frac{1}{2}m\prb{v^2} &= \frac{3}{2}k_BT\\
+            \sqrt{\prb{v^2}} &= \sqrt{\frac{3k_BT}{m}}\\
+            v_\text{rms} &= \sqrt{\frac{3k_BT}{m}}
+        \end{align*}
+        \begin{itemize}
+            \item This estimate is within $\SIrange{20}{30}{\percent}$ --- take $m$ to be the average mass of air.
+        \end{itemize}
+        \item de Broglie wavelength: A molecule has a kinetic energy approximately equal to $k_BT$. Additionally, the quantum mechanical kinetic energy of a molecule aligns with this, as $\hbar^2k^2/2m\approx k_BT$. Furthermore, the particle-wave duality relates the momentum to wavelength by $p=\hbar k=h/\lambda$. Therefore,
+        \begin{equation*}
+            \lambda \approx \sqrt{\frac{h^2}{2mk_BT}}
+        \end{equation*}
+        \begin{itemize}
+            \item Thus, a gas at STP has a very small de Broglie wavelength and behaves classically.
+            \item Only at very low temperatures with very light gasses do quantum considerations come into play.
+            \item A \ce{H2} molecule at $\SI{300}{\kelvin}$ has de Broglie wavelength $\lambda=\SI{1.78}{\angstrom}$.
+            \item Note that the quantum mechanical kinetic energy of a free particle is derived as follows.
+            \begin{align*}
+                \hat{H}\psi &= E\psi\\
+                -\frac{\hbar^2}{2m}\pdv[2]{x}(\e[ikx]) &= E\e[ikx]\\
+                \frac{\hbar^2k^2}{2m}\e[ikx] &= E\e[ikx]\\
+                E &= \frac{\hbar^2k^2}{2m}
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Boltzmann factor}: Gives the relative probability $p_2/p_1$ of two states $E_1,E_2$, provided their respective energies $E_1,E_2$. \emph{Given by}
+    \begin{equation*}
+        \frac{p_2}{p_1} = \e[-(E_2-E_1)/k_BT]
+    \end{equation*}
+    \begin{itemize}
+        \item Consider states $E_1,E_2,E_3,\dots$, denoted by their energies.
+        \item Consistency check: Given
+        \begin{align*}
+            \frac{p_2}{p_1} &= \e[\frac{-(E_2-E_1)}{k_BT}]&
+            \frac{p_3}{p_2} &= \e[\frac{-(E_3-E_2)}{k_BT}]
+        \end{align*}
+        we do indeed have
+        \begin{equation*}
+            \frac{p_3}{p_1} = \frac{p_3}{p_2}\cdot\frac{p_2}{p_1}
+            = \e[\frac{-(E_3-E_2)}{k_BT}+\frac{-(E_2-E_1)}{k_BT}]
+            = \e[\frac{-(E_3-E_1)}{k_BT}]
+        \end{equation*}
+        \item We'll take this as God-given for now. Boltzmann derived it with a very good knowledge of the thermodynamics of freshman chemistry.
+    \end{itemize}
+    \item We're starting with the above exciting result, and then going back and building up to it over the next three weeks.
+    \item We write the Boltzmann factor for degenerate states as follows.
+    \begin{itemize}
+        \item Consider four states at $E_2$ and one state at $E_1$.
+        \item The Boltzmann factor still tells us that $p_2/p_1=\e[-(E_2-E_1)/k_BT]$, but we have to make the following adjustment. Indeed, the total probability of being in one of the four states at energy $E_2$ is $p(E_2)=4p_2$, while the total probability of being in the one state at energy $E_1$ is still just $p(E_1)=1p_1$.
+        \item In each state $E_2$,
+        \begin{equation*}
+            p(E_2) = \frac{N_2}{N_1}\e[-(E_2-E_1)/k_BT]
+        \end{equation*}
+        \begin{itemize}
+            \item Where did $p_1$ go in the above equation?
+        \end{itemize}
+    \end{itemize}
+    \item The weekly quiz.
+    \begin{itemize}
+        \item The first quiz will be next week.
+        \item A Canvas quiz -- we'll have 24 hours to take it, but only 1 hour to take it.
+    \end{itemize}
 \end{itemize}
 
 
