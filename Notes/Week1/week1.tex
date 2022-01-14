@@ -147,16 +147,179 @@
         \item The Boltzmann factor still tells us that $p_2/p_1=\e[-(E_2-E_1)/k_BT]$, but we have to make the following adjustment. Indeed, the total probability of being in one of the four states at energy $E_2$ is $p(E_2)=4p_2$, while the total probability of being in the one state at energy $E_1$ is still just $p(E_1)=1p_1$.
         \item In each state $E_2$,
         \begin{equation*}
-            p(E_2) = \frac{N_2}{N_1}\e[-(E_2-E_1)/k_BT]
+            \frac{p(E_2)}{p(E_1)} = \frac{N_2}{N_1}\e[-(E_2-E_1)/k_BT]
         \end{equation*}
-        \begin{itemize}
-            \item Where did $p_1$ go in the above equation?
-        \end{itemize}
     \end{itemize}
     \item The weekly quiz.
     \begin{itemize}
         \item The first quiz will be next week.
         \item A Canvas quiz -- we'll have 24 hours to take it, but only 1 hour to take it.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Boltzmann Factor Examples / Partition Function}
+\begin{itemize}
+    \item \marginnote{1/12:}We will apply the Boltzmann factor to electronic, magnetic, translational, rotational, and vibrational molecular states.
+    \item Example: Sodium lamp -- two lines at $\SI{589.6}{\nano\meter}$ and $\SI{589.0}{\nano\meter}$ with intensity ratio 1:2.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \footnotesize
+            \draw [yex,thick,-stealth,decorate,decoration={snake,amplitude=1pt,segment length=6pt,post length=1mm}] (2.85,2.5) -- ++(0,-2.5);
+            \draw [yex,thick,-stealth,decorate,decoration={snake,amplitude=1pt,segment length=6pt,post length=1mm}] (3.45,3.5) -- ++(0,-3.5);
+    
+            \draw [grx,ultra thick] (0,3) node[left]{$3p$} -- ++(1,0);
+            \draw [grx,ultra thick] (0,0) node[left]{$3s$} -- ++(1,0);
+    
+            \draw [grx,ultra thick]
+                (2,3.5)   -- node[below]{$-\frac{3}{2}$} ++(0.5,0)
+                ++(0.1,0) -- node[below]{$-\frac{1}{2}$} ++(0.5,0)
+                ++(0.1,0) -- node[below]{$+\frac{1}{2}$}  ++(0.5,0)
+                ++(0.1,0) -- node[below]{$+\frac{3}{2}$}  ++(0.5,0) node[right]{$p_{3/2}$}
+            ;
+            \draw [grx,ultra thick]
+                (2.6,2.5) -- node[below]{$-\frac{1}{2}$} ++(0.5,0)
+                ++(0.1,0) -- node[below]{$+\frac{1}{2}$} ++(0.5,0) node[right=6mm]{$p_{1/2}$}
+            ;
+            \draw [grx,ultra thick]
+                (2.6,0) -- node[below]{$-\frac{1}{2}$} ++(0.5,0)
+                ++(0.1,0) -- node[below]{$+\frac{1}{2}$} ++(0.5,0) node[right=6mm]{$s_{1/2}$}
+            ;
+    
+            \draw [gry,very thick,densely dashed]
+                (1,3) -- (2,3.5)
+                (1,3) -- (2.6,2.5)
+                (1,0) -- (2.6,0)
+            ;
+    
+            \draw [|-|] (6,2.5) -- node[right]{$\Delta E$} ++(0,1);
+        \end{tikzpicture}
+        \caption{Sodium lamp energy levels.}
+        \label{fig:sodiumLamp}
+    \end{figure}
+    \begin{itemize}
+        \item Street lamps use this (very efficient).
+        \item Also used in astronomy.
+        \item In the sodium atom, there are two energy levels ($3s$ and $3p$).
+        \item The states have a spin-orbit coupling effect.
+        \begin{itemize}
+            \item $3s$ (with $S=1/2$) splits into two degenerate states $s_{\pm 1/2}$ based on spin.
+            \item $3p$ (with $L=1$ and $S=1/2$) splits into two nondegenerate states ($l=\pm 1$ [called $p_{3/2}$] and $l=0$ [called $p_{1/2}$]), which further subdivide into four (resp. two) degenerate states ($-3/2,-1/2,1/2,3/2$ and $-1/2,1/2$).
+        \end{itemize}
+        \item Let $\Delta E$ be the difference in energy between the $p_{3/2}$ and $p_{1/2}$. Then
+        \begin{equation*}
+            \frac{\Delta E}{k_B} = \frac{1}{k_B}\left( \frac{hc}{\lambda_1}-\frac{hc}{\lambda_2} \right)
+            = \SI{25}{\kelvin}
+        \end{equation*}
+        where $\lambda_1=\SI{589.6}{\nano\meter}$ and $\lambda_2=\SI{589.0}{\nano\meter}$.
+        \item Thus, $\e[-\Delta E/k_BT]\approx 1$ for $T=\SI{300}{\kelvin}$ (the temperature in the sodium vapor lamp).
+        \item Therefore,
+        \begin{align*}
+            \frac{p(E_2)}{p(E_1)} &= \frac{4}{2}\cdot 1\\
+            p(E_2) &= 2p(E_1)
+        \end{align*}
+    \end{itemize}
+    \item Example: MRI.
+    \begin{itemize}
+        \item The magnetic field polarizes the spins of the hydrogen protons in our body with $\Delta E=\mu_BB$.
+        \item If we also take $B=\SI{6}{\tesla}$ and $T=\SI{310}{\kelvin}$ (body temperature), then
+        \begin{equation*}
+            \frac{\mu_BB}{k_BT} = \num{2e-5}
+        \end{equation*}
+        \item Thus, very few protons actually flip, but with modern technology we can still measure this.
+    \end{itemize}
+    \item \textbf{Proton magnetic moment}: The magnetic moment of a proton. \emph{Denoted by} $\bm{\mu_B}$. \emph{Given by}
+    \begin{equation*}
+        \mu_B = \SI[per-mode=symbol]{1.4e-26}{\joule\per\tesla}
+    \end{equation*}
+    \item Example: Rotational.
+    \begin{itemize}
+        \item The rotational energy $E_J$ of a molecule depends on the angular momentum quantum number $J$ and the moment of inertia of the molecule $I=\mu R^2$ via the following relation.
+        \begin{equation*}
+            E_J = \frac{\hbar^2}{2I}J(J+1)
+        \end{equation*}
+        \item Microwave spectroscopy can be used to find molecules out in the universe.
+        \item At $\SI{300}{\kelvin}$,
+        \begin{equation*}
+            \frac{p(J=1)}{p(J=0)} = \frac{3}{1}\e[\frac{-(E_1-E_0)}{k_BT}] = 2.95
+        \end{equation*}
+        \begin{itemize}
+            \item As before $J=1$ corresponds to states $j=-1,0,1$.
+        \end{itemize}
+        \item See Figure 18.5 in the textbook.
+        \item There is a range of angular momenta due to the temperature that for $T=\SI{300}{\kelvin}$ peaks around $J=5$.
+    \end{itemize}
+    \item Example: Vibrational.
+    \begin{itemize}
+        \item Here, $\Delta E=E_n-E_{n-1}=h\nu$ for every energy level since $E_n=h\nu(n+1/2)$.
+        \item It follows that
+        \begin{equation*}
+            \frac{h\nu}{k_B} = \SI{2800}{\kelvin}
+        \end{equation*}
+        for \ce{CO}, meaning that at $\SI{300}{\kelvin}$, \ce{CO} will be largely in its ground state.
+    \end{itemize}
+    \item The partition function tells us everything we wanna know about a system.
+    \begin{equation*}
+        Q = \sum_i\e[-E_i/k_BT]
+    \end{equation*}
+    \begin{itemize}
+        \item All we need to know is the energy of every state in the system.
+        \item This is impossible for an infinite system, but the Schr\"{o}dinger equation gives us the energy of a system, so its a great place to start.
+    \end{itemize}
+    \item Calculating the total energy from the partition function.
+    \begin{itemize}
+        \item To construct it, start with
+        \begin{equation*}
+            Q = \frac{p_1}{p_1}+\frac{p_2}{p_1}+\frac{p_3}{p_1}+\cdots
+            = 1+\e[\frac{-(E_2-E_1)}{k_BT}]+\e[\frac{-(E_3-E_1)}{k_BT}]+\cdots
+        \end{equation*}
+        \item The total energy is equal to
+        \begin{equation*}
+            \prb{E} = E_1p_1+E_2p_2+E_3p_3+\cdots
+        \end{equation*}
+        \item Taking $E_1=0$ gives
+        \begin{equation*}
+            \prb{E} = p_1\left[ E_2\frac{p_2}{p_1}+E_3\frac{p_3}{p_1}+\cdots \right]
+        \end{equation*}
+        \item Note that
+        \begin{equation*}
+            \pdv{T}(\e[-E_2/k_BT]) = \frac{E_2}{k_BT^2}\e[-E_2/k_BT]
+            = \frac{1}{k_BT^2}(E_2p_2)
+        \end{equation*}
+        \item Additionally,
+        \begin{align*}
+            p_1 &= 1-(p_2+p_3+\cdots)\\
+            &= 1-p_1\left( \frac{p_2}{p_1}+\frac{p_3}{p_1}+\cdots \right)\\
+            &= 1-p_1(Q-1)\\
+            p_1 &= \frac{1}{Q}
+        \end{align*}
+        \item Therefore,
+        \begin{align*}
+            \prb{E} &= p_1k_BT^2\pdv{T}(E_1\frac{p_1}{p_1}+E_2\frac{p_2}{p_1}+\cdots)\\
+            &= p_1k_BT^2\pdv{Q}{T}\\
+            &= \frac{1}{Q}k_BT^2\pdv{Q}{T}\\
+            &= k_BT^2\pdv{T}(\ln Q)
+        \end{align*}
+    \end{itemize}
+    \item Changing the origin of energy.
+    \begin{itemize}
+        \item We know that
+        \begin{align*}
+            Q(E_0) &= Q(E_0')\e[-(E_0'-E_0)/k_BT]\\
+            \ln Q(E_0) &= \ln Q(E_0')-\frac{E_0'-E_0}{k_BT}
+        \end{align*}
+        \item Thus,
+        \begin{align*}
+            \prb{E}_{E_0} &= k_BT^2\pdv{T}(\ln Q(E_0))\\
+            &= k_BT^2\left( \pdv{T}(\ln Q(E_0'))-\pdv{T}(\frac{E_0'-E_0}{k_BT}) \right)\\
+            &= \prb{E}_{E_0'}+(E_0'-E_0)\\
+            \prb{E}_{E_0}+E_0 &= \prb{E}_{E_0'}+E_0'
+        \end{align*}
+        \item So the change of the energy origin does indeed change the total energy by the same amount.
     \end{itemize}
 \end{itemize}
 
