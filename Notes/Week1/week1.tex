@@ -288,7 +288,7 @@
         \item Note that
         \begin{equation*}
             \pdv{T}(\e[-E_2/k_BT]) = \frac{E_2}{k_BT^2}\e[-E_2/k_BT]
-            = \frac{1}{k_BT^2}(E_2p_2)
+            = \frac{1}{k_BT^2}\left( E_2\frac{p_2}{p_1} \right)
         \end{equation*}
         \item Additionally,
         \begin{align*}
@@ -299,11 +299,12 @@
         \end{align*}
         \item Therefore,
         \begin{align*}
-            \prb{E} &= p_1k_BT^2\pdv{T}(E_1\frac{p_1}{p_1}+E_2\frac{p_2}{p_1}+\cdots)\\
+            \prb{E} &= p_1k_BT^2\pdv{T}(\frac{p_1}{p_1}+\frac{p_2}{p_1}+\cdots)\\
             &= p_1k_BT^2\pdv{Q}{T}\\
             &= \frac{1}{Q}k_BT^2\pdv{Q}{T}\\
-            &= k_BT^2\pdv{T}(\ln Q)
+            \prb{E} &= k_BT^2\pdv{T}(\ln Q)
         \end{align*}
+        \item The above is an important result.
     \end{itemize}
     \item Changing the origin of energy.
     \begin{itemize}
@@ -321,6 +322,142 @@
         \end{align*}
         \item So the change of the energy origin does indeed change the total energy by the same amount.
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Calculating Average Energies}
+\begin{itemize}
+    \item \marginnote{1/14:}We derived that for an ideal gas, $\prb{E}=3k_BT/2$. But this may change at higher pressures.
+    \item Calculating the average kinetic energy at higher temperatures.
+    \begin{itemize}
+        \item Use the main result from last time, which gives us the energy in terms of the partition function.
+        \item We have different degrees of freedom since KE and PE are on different coordinates (KE is on speed and PE is on position).
+        \item When we write the Boltzmann factor, we'll have an exponential with the sum of the kinetic and potential energy.
+        \begin{equation*}
+            Q = \sum_{ij}\e[-(E_{KE_i}-E_{PE_j})/k_BT]
+            = \sum_{ij}\e[-E_{KE_i}/k_BT]\e[-E_{PE_j})/k_BT]
+            = Q_{KE}Q_{PE}
+        \end{equation*}
+        \begin{itemize}
+            \item The second equality holds because KE depends on the velocity coordinates and PE depends on position coordinates; thus, they are independent.
+        \end{itemize}
+        \item Kinetic energy partition function.
+        \begin{equation*}
+            E_{KE} = \frac{1}{2}mv_x^2
+        \end{equation*}
+        \begin{itemize}
+            \item Thus,
+            \begin{equation*}
+                Q_{KE_{v_x}} = \int_{-\infty}^\infty\e[-\frac{1}{2}mv_x^2/k_BT]\dd{v_x} = \sqrt{\frac{2\pi k_BT}{m}}
+            \end{equation*}
+            \item This function doesn't depend on anything of significant import.
+        \end{itemize}
+        \item It follows that
+        \begin{equation*}
+            \prb{KE_x} = k_BT^2\pdv{T}(\ln Q_{KE_{v_x}})
+            = k_BT^2\pdv{T}(\ln\sqrt{\frac{2\pi k_B}{m}}+\frac{1}{2}\ln T)
+            = \frac{k_BT}{2}
+        \end{equation*}
+        and
+        \begin{equation*}
+            \prb{KE} = \prb{KE_x}+\prb{KE_y}+\prb{KE_z}
+            = \frac{3}{2}k_BT
+        \end{equation*}
+        \item Therefore, this result holds beyond the specific case of an ideal gas!
+    \end{itemize}
+    \item Now for the potential energy of a harmonic oscillator.
+    \begin{itemize}
+        \item $PE=\frac{1}{2}kx^2$; calculate the partition function for the coordinate $x$.
+        \begin{equation*}
+            Q_x = \int_{-\infty}^\infty\e[-\frac{1}{2}kx^2/k_BT]\dd{x}
+            = \sqrt{\frac{2\pi k_BT}{k}}
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            \prb{PE_x} = \frac{k_BT}{2}
+        \end{equation*}
+        \item For a 3D harmonic oscillator,
+        \begin{equation*}
+            \prb{PE} = \frac{3}{2}k_BT
+        \end{equation*}
+    \end{itemize}
+    \item Average potential energy of a gravitational potential.
+    \begin{itemize}
+        \item Apply the virial theorem (relates the average kinetic energy of a system in a conservative potential to the potential energy).
+        \item Since we've shown that for any system, the average kinetic energy in one dimension is $k_BT/2$, the potential in any system will be related (i.e., have a factor of $k_BT$).
+    \end{itemize}
+    \item What it means to cool something down, if KE always follows the same formula.
+    \begin{itemize}
+        \item Although the formula does not change, $\prb{KE}\propto T$, so decreasing the temperature decreases the kinetic energy.
+        \item Similarly, as things change phase, more and more potentials take hold (e.g., in the gas phase, there is no potential energy, but there is significant potential energy in the solid and liquid phases).
+    \end{itemize}
+    \item Rotational kinetic energy.
+    \begin{itemize}
+        \item Consider \ce{N2}, with its two rotational degrees of freedom.
+        \item Classically,
+        \begin{equation*}
+            E_\text{rot} = \frac{1}{2}I\omega^2
+        \end{equation*}
+        \item Thus, once again,
+        \begin{equation*}
+            Q_\omega = \int_{-\infty}^\infty\e[-\frac{1}{2}I\omega^2/k_BT]\dd{\omega}
+            = \sqrt{\frac{2\pi k_BT}{I}}
+        \end{equation*}
+        making
+        \begin{equation*}
+            \prb{E_\text{rot}} = \frac{k_BT}{2}
+        \end{equation*}
+        for one degree of freedom.
+    \end{itemize}
+    \item \textbf{Law of Dulong and Petit}: The heat capacity of elemental solids is about $3nR$.
+    \begin{itemize}
+        \item Observed in 1819.
+        \item A major result in an era where atomic structure was just emerging.
+        \item Imagine an atom bound in a three-dimensional (octahedral) potential. It's energy is thus
+        \begin{equation*}
+            \frac{1}{2}mv^2+\frac{1}{2}kr^2
+        \end{equation*}
+        \item Thus,
+        \begin{align*}
+            \prb{E_\text{atom}} &= \frac{3}{2}k_BT+\frac{3}{2}k_BT = 3k_BT\\
+            \prb{E_\text{solid}} &= 3Nk_BT = 3nN_Ak_BT = 3nRT
+        \end{align*}
+        \item Some heat capacities are lower than $3nR$ (solids of rare gases that are heavier and need more heat to behave ideally), and some are higher (the potential is not a harmonic potential).
+    \end{itemize}
+    \item As experiments got better, people realized that heat capacity, as a function of temperature, decreases as $T\to\SI{0}{\kelvin}$, and was only asymptotic at $3nR$ at temperatures sufficiently close to room temperature.
+    \begin{itemize}
+        \item Quantum mechanics, especially the work of Einstein, solved this mystery.
+        \item Atomic motion is quantized in units of energy.
+        \begin{itemize}
+            \item If the temperature is much higher than the quantized energies, the system behaves classically.
+            \item If the temperature drops below the quantization energies of the vibration, we will not have equal population of energy levels (most will be in the ground state, making the energy 0; thus, there is no derivative of it and no heat capacity).
+        \end{itemize}
+    \end{itemize}
+    \item Partition function of a quantum harmonic oscillator and the energy of the oscillator.
+    \begin{itemize}
+        \item Recall that the energies are given by $(n+1/2)h\nu$.
+        \item The partition function of the vibration of the quantum harmonic oscillator is
+        \begin{align*}
+            Q &= 1+\e[-h\nu/k_BT]+\e[-2h\nu/k_BT]+\cdots\\
+            Q &= (\e[-h\nu/k_BT])^0+(\e[-h\nu/k_BT])^1+(\e[-h\nu/k_BT])^2+\cdots\\
+            Q-Q\e[-h\nu/k_BT] &= 1\\
+            Q &= \frac{1}{1-\e[-h\nu/k_BT]}
+        \end{align*}
+        when we take the zero point energy as our zero of energy.
+        \item It follows that
+        \begin{align*}
+            \prb{E} &= k_BT^2\pdv{T}\left[ \ln\left( \frac{1}{1-\e[-h\nu/k_BT]} \right) \right]\\
+            &= \frac{h\nu}{\e[h\nu/k_BT]-1}
+        \end{align*}
+        \item As $T\to\infty$, $h\nu/k_BT$ gets very small. But since $\e[x]\approx 1+x$ at small $x$, as $T\to\infty$, we have that
+        \begin{equation*}
+            \prb{E} \approx \frac{h\nu}{(1+h\nu/k_BT)-1} = k_BT
+        \end{equation*}
+        \item Therefore, as $T\to\infty$, we recover the energy of a classical harmonic oscillator.
+        \item On the other hand, as $T\to 0$, $E\to 0$.
+    \end{itemize}
+    \item Note that heat capacity $C=\pdv*{E}{T}$.
 \end{itemize}
 
 
