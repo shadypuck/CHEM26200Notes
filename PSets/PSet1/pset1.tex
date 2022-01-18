@@ -8,7 +8,85 @@
 
 
 
-\section{???}
+\section{The Boltzmann Factor and Partition Functions}
+\begin{enumerate}
+    \item \marginnote{1/25:}Derive the value of $PV$ for a gas of photons in terms of the total internal energy. Use $E=h\nu$ and $p=h\nu/c$ for the photon energy and momentum, respectively, and follow a similar method to that used for an ideal gas in class.
+    \item Apply the Boltzmann factor.
+    \begin{enumerate}
+        \item For \ce{N2} at $\SI{300}{\kelvin}$, give the ratio of molecules in $J=5$ over $J=4$. Indicate also if the transition from $J=4$ to $J=5$ is observable by microwave absorption spectroscopy. Data on \ce{N2} are in Table 18.2 on \textcite[739]{bib:McQuarrieSimon}.
+        \item Also, for \ce{N2} at $\SI{300}{\kelvin}$, give the ratio of molecules in $n=1$ over $n=0$ for the vibrational states.
+        \item Problem 18-28 (calculating a moment of inertia based on masses and distances).\par
+        The \ce{N-N} and \ce{N-O} bond lengths in the (linear) molecule \ce{N2O} are $\SI{109.8}{\pico\meter}$ and $\SI{121.8}{\pico\meter}$, respectively. Calculate the center of mass and the moment of inertia of \ce{{}^14N^14N^16O}. Compare your answer with the value obtained from $\Theta_\text{rot}$ in Table 18.4.
+        \item Calculate the fraction of protons in the two spin orientations for a magnetic field of $\SI{10}{\tesla}$ at $\SI{300}{\kelvin}$. Follow Example 17-1 and Problem 17-8.
+        \item Problem 17-41.\par
+        The lowest electronic states of \ce{Na_{(g)}} are tabulated below.
+        \begin{center}
+            \small
+            \renewcommand{\arraystretch}{1.2}
+            \begin{tabular}{cS[table-format=5.3]c}
+                Term symbol & {Energy/$\si{\per\centi\meter}$} & Degeneracy\\
+                \midrule
+                \ce{{}^2S_{1/2}} &     0.000 & 2\\
+                \ce{{}^2P_{1/2}} & 16956.183 & 2\\
+                \ce{{}^2P_{3/2}} & 16973.379 & 4\\
+                \ce{{}^2S_{1/2}} & 25739.86  & 2\\
+            \end{tabular}
+        \end{center}
+        Calculate the fraction of the atoms in each of these electronic states in a sample of \ce{Na_{(g)}} at $\SI{1000}{\kelvin}$. Repeat this calculation for a temperature of $\SI{2500}{\kelvin}$.
+    \end{enumerate}
+    \item Problem 17-38. In the second question, in addition to the ideal monoatomic gas, apply the formula also to the case of solid obeying the law of Dulong and Petit for the average internal energy.\par
+    The following equation gives the ensemble average of $E$, which we assert is the same as the experimentally observed value. In this problem, we will explore the standard deviation about $\prb{E}$ (see MathChapter B). We will start with either the right or second from the right term below.
+    \begin{equation*}
+        \prb{E} = U
+        = -\left( \pdv{\ln Q}{\beta} \right)_{N,V}
+        = k_BT^2\left( \pdv{\ln Q}{T} \right)_{N,V}
+    \end{equation*}
+    Differentiate again with respect to $\beta$ or $T$ to show that (MathChapter B)
+    \begin{equation*}
+        \sigma_E^2 = \prb{E^2}-\prb{E}^2 = k_BT^2C_V
+    \end{equation*}
+    where $C_V$ is the heat capacity. To explore the relative magnitude of the spread about $\prb{E}$, consider
+    \begin{equation*}
+        \frac{\sigma_E}{\prb{E}} = \frac{\sqrt{k_BTC_V}}{\prb{E}}
+    \end{equation*}
+    To get an idea of the sie of this ratio, use the values of $\prb{E}$ and $C_V$ for a (monoatomic) ideal gas, namely $\frac{3}{2}Nk_BT$ and $\frac{3}{2}Nk_B$, respectively, and show that $\sigma_E/\prb{E}$ goes as $1/\sqrt{N}$. What does this trend say about the likely observed deviations from the average macroscopic energy?
+    \item 
+    \begin{enumerate}
+        \item Problem 17-11 and also verify that the pressure derived from this partition function gives the van der Waals equation (16.5).\par
+        Although we will not do so in this book, it is possible to derive the partition function for a monoatomic van der Waals gas.
+        \begin{equation*}
+            Q(N,V,T) = \frac{1}{N!}\left( \frac{2\pi mk_BT}{h^2} \right)^{3N/2}(V-Nb)^N\e[aN^2/Vk_BT]
+        \end{equation*}
+        where $a$ and $b$ are the van der Waals constants. Derive an expression for the energy of a monoatomic van der Waals gas.
+        \item Then do Problem 17-12.\par
+        An approximate partition function for a gas of hard spheres can be obtained from the partition function of a monoatomic gas by replacing $V$ in
+        \begin{align*}
+            Q(N,V,\beta) &= \frac{[q(V,\beta)]^N}{N!}&
+            q(V,\beta) &= \left( \frac{2\pi m}{h^2\beta} \right)^{3/2}V
+        \end{align*}
+        with $V-b$, where $b$ is related to the volume of the $N$ hard spheres. Derive expressions for the energy and the pressure of this system.
+    \end{enumerate}
+    \item Problem 18-14.\par
+    There is a mathematical procedure to calculate the error in replacing a summation by an integral as we do for the translational and rotational partition functions. The formula is called the Euler-Maclaurin summation formula and goes as follows.
+    \begin{equation*}
+        \sum_{n=a}^bf(n) = \int_a^bf(n)\dd{n}+\frac{1}{2}\left( f(b)+f(a) \right)-\frac{1}{12}\left( \eval{\dv{f}{n}}_{n=a}-\eval{\dv{f}{n}}_{n=b} \right)+\frac{1}{720}\left( \eval{\dv[3]{f}{n}}_{n=a}-\eval{\dv[3]{f}{n}}_{n=b} \right)+\cdots
+    \end{equation*}
+    Apply this formula to
+    \begin{equation*}
+        q_\text{rot}(T) = \sum_{J=0}^\infty(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]
+    \end{equation*}
+    to obtain
+    \begin{equation*}
+        q_\text{rot}(T) = \frac{T}{\Theta_\text{rot}}\left\{ 1+\frac{1}{3}\left( \frac{\Theta_\text{rot}}{T} \right)+\frac{1}{15}\left( \frac{\Theta_\text{rot}}{T} \right)^2+O\left[ \left( \frac{\Theta_\text{rot}}{T} \right)^3 \right] \right\}
+    \end{equation*}
+    Calculate the correction to replacing the second equation herein by an integral for \ce{N2_{(g)}} at $\SI{300}{\kelvin}$ and \ce{H2_{(g)}} at $\SI{300}{\kelvin}$ (being so light, \ce{H2} is an extreme example).
+    \item Problem 17-33. Discuss at which temperatures the heat capacity deviates from the result given.\par
+    We will learn in Chapter 18 that the rotational partition function of an asymmetric top molecule is given by
+    \begin{equation*}
+        q_\text{rot}(T) = \frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{8\pi^2I_Ak_BT}{h^2}}\sqrt{\frac{8\pi^2I_Bk_BT}{h^2}}\sqrt{\frac{8\pi^2I_Ck_BT}{h^2}}
+    \end{equation*}
+    where $\sigma$ is a constant and $I_A,I_B,I_C$ are the three (distinct) moments of inertia. Show that the rotational contribution to the molar heat capacity is $\overline{C}_{V,\text{rot}}=3R/2$.
+\end{enumerate}
 
 
 
