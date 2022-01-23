@@ -262,7 +262,7 @@
         \end{equation*}
         for \ce{CO}, meaning that at $\SI{300}{\kelvin}$, \ce{CO} will be largely in its ground state.
     \end{itemize}
-    \item The partition function tells us everything we wanna know about a system.
+    \item The partition function tells us everything we would want to know about a system.
     \begin{equation*}
         Q = \sum_i\e[-E_i/k_BT]
     \end{equation*}
@@ -458,6 +458,370 @@
         \item On the other hand, as $T\to 0$, $E\to 0$.
     \end{itemize}
     \item Note that heat capacity $C=\pdv*{E}{T}$.
+\end{itemize}
+
+
+
+\section{Chapter 17: The Boltzmann Factor and Partition Functions}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{1/23:}Up to this point, we have established that all physical systems' energy states are quantized. Now, we address questions such as "what fraction of the molecules are to be found in the ground vibrational state, the first excited vibrational state, and so on" \parencite[693]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item We will see how notions such as `higher temperature systems should have more populated excited states' translate into precise mathematics.
+        \item Our two most important tools to address such questions are the \textbf{Boltzmann factor} and the \textbf{partition function}.
+    \end{itemize}
+    \item \textbf{Boltzmann factor}: The relation between the probability that a system will be in a given state to the energy of that state. \emph{Given by}
+    \begin{equation*}
+        p_j \propto \e[-E_j/k_BT]
+    \end{equation*}
+    \item \textbf{Partition function}: A function in terms of which we can express all of the macroscopic properties of a given system, such as energy, heat capacity, and pressure. \emph{Denoted by} $\bm{Q}$, $\bm{Q(N,V,\beta)}$, $\bm{Q(N,V,T)}$. \emph{Given by}
+    \begin{equation*}
+        Q = \sum_j\e[-E_j/k_BT]
+    \end{equation*}
+    \item Determining on what quantities the energies of a macroscopic system (such as some volume of fluid, gas, or solid) depend.
+    \begin{itemize}
+        \item Consider an ideal gas confined to a cubic box of side length $a$ (we will not generalize this result explicitly even though it can be).
+        \item In such a system, the constituent particles do not interact, so the energy of the system will be a simple sum
+        \begin{equation*}
+            E_j(N,V) = \epsilon_1+\cdots+\epsilon_N
+        \end{equation*}
+        of the energies $\epsilon_1,\dots,\epsilon_N$ of the $N$ particles with no higher-degree interaction terms necessary.
+        \item Additionally, the confinement means that quantum mechanically, every particle exists in a potential of zero within the cubic box and is subject to infinite potential outside the box.
+        \item Thus, if we consider only the translational energies of each particle, we may apply the particle in a 3D cubic box model from Chapter 3 of \textcite{bib:McQuarrieSimon} to learn that each
+        \begin{equation*}
+            \epsilon_i = \frac{h^2}{8ma^2}(n_x^2+n_y^2+n_z^2)
+        \end{equation*}
+        \item Notice that $E_j$ depends on $N$ and $V$ in this system via the $N$ terms in the summation and the dependence of each $\epsilon_i$ on $a=\sqrt[3]{V}$.
+        \item These are the most important (and general) factors on which $E_j$ depends, and hence we often denote the energy of the $j^\text{th}$ state of the system by $E_j(N,V)$
+    \end{itemize}
+    \item \textbf{Heat reservoir}: An essentially infinite heat bath.
+    \item \textbf{Ensemble}: A huge collection of systems with identical values of $N$, $V$, and $T$ in thermal contact with a heat reservoir at a temperature $T$.
+    \begin{itemize}
+        \item For a given ensemble, we denote the number of systems in state $j$ by $a_j$ and the total number of systems by $\mathcal{A}$.
+    \end{itemize}
+    \item Finding the relative number $a_m/a_n$ of systems in the ensemble in states $a_n$ and $a_m$.
+    \begin{itemize}
+        \item $a_m/a_n$ will depend on the energies $E_n$ and $E_m$ via some function $f$, i.e.,
+        \begin{equation*}
+            \frac{a_m}{a_n} = f(E_n,E_m)
+        \end{equation*}
+        \item Energies are given relative to some zero, but $a_m/a_n$ will not depend on the arbitrary choice of this zero. Thus, the math must make said zero cancel, so we take
+        \begin{equation*}
+            \frac{a_m}{a_n} = f(E_n-E_m)
+        \end{equation*}
+        \item The above equation must hold for any two energy states, so we can also write $a_l/a_m=f(E_m-E_l)$ and $a_l/a_n=f(E_n-E_l)$ for instance. But this implies that
+        \begin{align*}
+            \frac{a_l}{a_n} &= \frac{a_m}{a_n}\cdot\frac{a_l}{a_m}\\
+            f(E_n-E_l) &= f(E_n-E_m)f(E_m-E_l)
+        \end{align*}
+        \item The above equation uniquely describes an exponential function, so we take $f(E)=\e[\beta E]$\footnote{Note that the base need not be $\e$, but we can take it to be $\e$ WLOG since $\e[\beta E]=(\e[\beta])^E$ and we may take $\beta$ such that $\e[\beta]$ equals any positive real number.}.
+        \begin{itemize}
+            \item To check that our definition of $f$ satisfies the above equation, note that
+            \begin{equation*}
+                \e[\beta(E_n-E_l)] = \e[\beta(E_n-E_m)]\e[\beta(E_m-E_l)]
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item Deriving an expression for $a_m$.
+    \begin{itemize}
+        \item From the above result, we have that
+        \begin{align*}
+            \frac{a_m}{a_n} &= \e[\beta(E_n-E_m)]\\
+            a_m\e[\beta E_m] &= a_n\e[\beta E_n]
+        \end{align*}
+        i.e., that the value of $a_n\e[\beta E_n]$ is the same (hence constant) for any $n$ since $m$ is arbitrary. Thus, let $C=a_n\e[\beta E_n]$.
+        \item It follows that
+        \begin{align*}
+            \frac{a_m}{a_n} &= \e[\beta(E_n-E_m)]\\
+            a_m &= a_n\e[\beta E_n]\e[-\beta E_m]\\
+            a_m &= C\e[-\beta E_m]
+        \end{align*}
+    \end{itemize}
+    \item Determining $C$.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            C\sum_j\e[-\beta E_j] &= \sum_ja_j = \mathcal{A}\\
+            C &= \frac{\mathcal{A}}{\sum_j\e[-\beta E_j]}
+        \end{align*}
+        \item Thus,
+        \begin{equation*}
+            \frac{a_j}{\mathcal{A}} = \frac{1}{\sum_j\e[-\beta E_j]}\e[-\beta E_j(N,V)]
+        \end{equation*}
+        \item Taking the limit as the number of systems in the ensemble goes to infinity makes $a_j/\mathcal{A}\to p_j$, where $p_j$ is the \emph{probability} that a system will be in state $j$ (see MathChapter B).
+        \item Recognizing that the denominator above is the partition function (and a function of $N$, $V$, and $\beta$), we have that
+        \begin{equation*}
+            p_j(N,V,\beta) = \frac{1}{Q(N,V,\beta)}\e[\beta E_j(N,V)]
+        \end{equation*}
+    \end{itemize}
+    \item We will later show that $\beta=1/k_BT$.
+    \begin{itemize}
+        \item Note, however, that from a theoretical point of view, $\beta$ can be just as useful as $T$.
+    \end{itemize}
+    \item Expressions for the average energy $\prb{E}$ of a system.
+    \begin{itemize}
+        \item From the definition of $\prb{E}$ in MathChapter B, we have that
+        \begin{equation*}
+            \prb{E} = \sum_j p_jE_j = \sum_j\frac{E_j\e[-\beta E_j]}{Q}
+        \end{equation*}
+        \item We can also express $\prb{E}$ entirely in terms of $Q$ since
+        \begin{align*}
+            \pdv{\ln Q}{\beta} &= -\sum_j\frac{E_j\e[-\beta E_j]}{Q} = -\prb{E}\\
+            \prb{E} &= -\pdv{\ln Q}{\beta}
+        \end{align*}
+        \item Substituting $\beta=1/k_BT$ and applying the chain rule to $\pdv*{\ln Q}{T}$ yields
+        \begin{align*}
+            \pdv{f}{T} &= \pdv{f}{\beta}\cdot\pdv{\beta}{T}
+            = \pdv{f}{\beta}\cdot\frac{1}{k_B}\pdv{T}(\frac{1}{T})
+            = \pdv{f}{\beta}\cdot-\frac{1}{k_BT^2}\\
+            \pdv{f}{\beta} &= -k_BT^2\pdv{f}{T}
+        \end{align*}
+        so
+        \begin{equation*}
+            \prb{E} = k_BT^2\pdv{\ln Q}{T}
+        \end{equation*}
+    \end{itemize}
+    \item Using results from Chapter 14, \textcite{bib:McQuarrieSimon} calculates the average energy of a bare proton in a magnetic field, concluding that at $T=0$ (i.e., zero thermal energy), the proton orients itself in the direction of the magnetic field with certainty while as $T\to\infty$, the thermal energy is such that the proton becomes equally likely to be in either state.
+    \item Calculating the average energy of a monatomic ideal gas.
+    \begin{itemize}
+        \item From Chapter 18,
+        \begin{align*}
+            Q(N,V,\beta) &= \frac{[q(V,\beta)]^N}{N!}&
+            q(V,\beta) &= \left( \frac{2\pi m}{h^2\beta} \right)^{3/2}V
+        \end{align*}
+        \item We have that
+        \begin{align*}
+            \ln Q &= N\ln q-\ln N!\\
+            &= -\frac{3N}{2}\ln\beta+\frac{3N}{2}\ln\left( \frac{2\pi m}{h^2} \right)+N\ln V-\ln N!\\
+            &= -\frac{3N}{2}\ln\beta+\text{terms not involving }\beta
+        \end{align*}
+        \item Therefore,
+        \begin{equation*}
+            \prb{E} = -\pdv{\ln Q}{\beta} = \frac{3N}{2}\dv{\ln\beta}{\beta} = \frac{3N}{2\beta} = \frac{3}{2}Nk_BT = \frac{3}{2}nRT
+        \end{equation*}
+    \end{itemize}
+    \item The above result leads us to a fundamental postulate of physical chemistry: "The ensemble average of any quantity, as calculated using the probability distribution [$p_j=\frac{1}{Q}\e[-\beta E_j]$], is the same as the experimentally observed value of that quantity" \parencite[700]{bib:McQuarrieSimon}.
+    \item The experimentally observed energy of a system is denoted by $U$.
+    \item A molar quantity is denoted by an overbar (e.g., $\overline{U}$ is the experimentally observed energy of one mole of a system).
+    \item Calculating the average energy of a diatomic ideal gas.
+    \begin{itemize}
+        \item From Chapter 18,
+        \begin{align*}
+            Q(N,V,\beta) &= \frac{[q(V,\beta)]^N}{N!}&
+            q(V,\beta) &= \left( \frac{2\pi m}{h^2\beta} \right)^{3/2}V\cdot\frac{8\pi^2I}{h^2\beta}\cdot\frac{\e[-\beta h\nu/2]}{1-\e[-\beta h\nu]}
+        \end{align*}
+        for the rigid rotator-harmonic oscillator model of an ideal diatomic gas.
+        \begin{itemize}
+            \item The first term in the expression for $q(V,\beta)$ is translational (and identical to that of a monatomic ideal gas), the second term is rotational, and the third term is vibrational.
+        \end{itemize}
+        \item Using the same procedure as before, we can calculate that for one mole of a diatomic ideal gas,
+        \begin{equation*}
+            \overline{U} = \frac{3}{2}RT+RT+\frac{N_Ah\nu}{2}+\frac{N_Ah\nu\e[-\beta h\nu]}{1-\e[-\beta h\nu]}
+        \end{equation*}
+        \begin{itemize}
+            \item "The first term represents the average translational energy, the second term represents the average rotational energy, the third term represents the zero-point vibrational energy, and the fourth term represents the average vibrational energy" \parencite[701]{bib:McQuarrieSimon}.
+            \item Note that the fourth term becomes significant only at higher temperatures. 
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Constant-volume heat capacity}: A measure of how the energy of a system changes with temperature at constant amount and volume. \emph{Denoted by} $\bm{C_V}$. \emph{Given by}
+    \begin{equation*}
+        C_V = \pdv{\prb{E}}{T} = \pdv{U}{T}
+    \end{equation*}
+    \begin{itemize}
+        \item We can express $C_V$ in terms of $Q$ via our above expression for $\prb{E}$ as a function of $Q$.
+    \end{itemize}
+    \item For an ideal monatomic gas,
+    \begin{equation*}
+        \overline{C}_V = \frac{3}{2}R
+    \end{equation*}
+    \item For an ideal diatomic gas,
+    \begin{equation*}
+        \overline{C}_V = \frac{5}{2}R+R\left( \frac{h\nu}{k_BT} \right)^2\frac{\e[-h\nu/k_BT]}{(1-\e[-h\nu/k_BT])^2}
+    \end{equation*}
+    \item Molar heat capacity of a crystal, as per the \textbf{Einstein model of atomic crystals}.
+    \begin{itemize}
+        \item Because each lattice site is identical, assume further that all atoms vibrate with the same frequency.
+        \item The associated partition function is thus
+        \begin{equation*}
+            Q = \e[-\beta U_0]\left( \frac{\e[-\beta h\nu/2]}{1-\e[\beta h\nu]} \right)^{3N}
+        \end{equation*}
+        where $\nu$ is characteristic of the particular crystal and $U_0$ is the \textbf{sublimation energy} (at $\SI{0}{\kelvin}$).
+        \item It follows as before that
+        \begin{equation*}
+            \overline{C}_V = 3R\left( \frac{h\nu}{k_BT} \right)^2\frac{\e[-h\nu/k_BT]}{(1-\e[-h\nu/k_BT])^2}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Einstein model of atomic crystals}: A model of a crystal as $N$ atoms situated at lattice sites, with each atom vibrating as a three-dimensional harmonic oscillator.
+    \item \textbf{Sublimation energy} (at $T$): The energy needed to separate all the atoms from one another at $T$.
+    \item One important consequence of this result is that by experimentally measuring the heat capacity of a crystal at different temperatures, we can determine its fundamental frequency $\nu$.
+    \item Another is the \textbf{law of Dulong and Petit}.
+    \item \textbf{Law of Dulong and Petit}: The molar heat capacities of atomic crystals should level off at a value of $3R=\SI{24.9}{\joule\per\mole\per\kelvin}$ at high temperatures.
+    \item Expressions for the average pressure $\prb{P}$ of a system.
+    \begin{itemize}
+        \item From Chapter 19, the pressure of a macroscopic system in state $J$ is
+        \begin{equation*}
+            P_j(N,V) = -\pdv{E_j}{V}
+        \end{equation*}
+        \item From the definition of $\prb{P}$ in MathChapter B, we have that
+        \begin{equation*}
+            \prb{P} = \sum_j-\pdv{E_j}{V}\frac{\e[-\beta E_j]}{Q}
+        \end{equation*}
+        \item We can make the above more compact since
+        \begin{equation*}
+            \pdv{Q}{V} = -\beta\sum_j\pdv{E_j}{V}\e[-\beta E_j] = Q\beta\prb{P}
+        \end{equation*}
+        so
+        \begin{align*}
+            \prb{P} &= \frac{1}{\beta}\pdv{\ln Q}{V}&
+            \prb{P} &= k_BT\pdv{\ln Q}{V}
+        \end{align*}
+    \end{itemize}
+    \item Just like we did with energy, we equate the ensemble average pressure with the observed pressure via $P=\prb{P}$.
+    \item Deriving the ideal-gas equation of state.
+    \begin{itemize}
+        \item We restrict ourselves at first to the special case of a monatomic ideal gas.
+        \item As before, we have that
+        \begin{align*}
+            \ln Q &= \frac{3N}{2}\ln\left( \frac{2\pi m}{h^2\beta} \right)+N\ln V-\ln N!\\
+            &= N\ln V+\text{terms not involving }V
+        \end{align*}
+        \item Therefore,
+        \begin{align*}
+            \prb{P} &= k_BT\pdv{\ln Q}{V} = \frac{Nk_BT}{V}\\
+            PV &= Nk_BT
+        \end{align*}
+        \item Since only the terms not involving $V$ change for diatomic and polyatomic gases, the above equation of state holds for all ideal gases.
+    \end{itemize}
+    \item The partition function associated with the van der Waals equation is
+    \begin{equation*}
+        Q(N,V,\beta) = \frac{1}{N!}\left( \frac{2\pi m}{h^2\beta} \right)^{3N/2}(V-Nb)^N\e[\beta aN^2/V]
+    \end{equation*}
+    \begin{itemize}
+        \item Indeed, going through the same process as above with this equation yields
+        \begin{equation*}
+            \left( P+\frac{aN^2}{V^2} \right)(V-Nb) = Nk_BT
+        \end{equation*}
+    \end{itemize}
+    \item Since we lack the computational power to calculate the set $\{E_j\}$ of eigenvalues of the $N$-body Schr\"{o}dinger equation, we often approximate each $E_j$ as the sum of the energies of the constituent particles of a system.
+    \item Consider a system of independent, \emph{distinguishable} particles.
+    \begin{itemize}
+        \item A good example of one is the Einstein model of atomic crystals, since each atom is assumed to vibrate independently of the others and each atom is distinguishable by its position in the crystal lattice.
+        \item Applying the summation approximation, we get
+        \begin{equation*}
+            E_l(N,V) = \underbrace{\varepsilon_i^a(V)+\varepsilon_j^b(V)+\varepsilon_k^c(V)+\cdots}_{N\text{ times}}
+        \end{equation*}
+        where each $\varepsilon_i^a$ denotes the energy of an individual particle ($i$ being the energy state, and $a$ being the index of the particle [they are distinguishable]).
+        \item Under this approximation, the partition function of the system becomes
+        \begin{equation*}
+            Q(N,V,T) = \sum_l\e[-\beta E_l] = \sum_{i,j,k,\dots}\e[-\beta(\varepsilon_i^a(V)+\varepsilon_j^b(V)+\varepsilon_k^c(V)+\cdots)]
+        \end{equation*}
+        \item Since we can sum over the indices separately (i.e., one after another), the above summation can mathematically be rewritten
+        \begin{align*}
+            Q(N,V,T) &= \sum_i\e[-\beta\varepsilon_i^a]\sum_j\e[-\beta\varepsilon_j^b]\sum_k\e[-\beta\varepsilon_k^c]\cdots\\
+            &= q_a(V,T)q_b(V,T)q_c(V,T)\cdots
+        \end{align*}
+        where each $q(V,T)$ is a \textbf{molecular partition function}.
+    \end{itemize}
+    \item \textbf{Molecular partition function}: A partition function pertaining to a particular molecule within a system. \emph{Denoted by} $q(V,T)$. \emph{Given by}
+    \begin{equation*}
+        q(V,T) = \sum_j\e[-\varepsilon_j/k_BT]
+    \end{equation*}
+    \begin{itemize}
+        \item Often able to be evaluated since they only depend on the allowed energies of individual atoms or molecules.
+    \end{itemize}
+    \item \textbf{Boson}: A particle whose wave function must be symmetric under the interchange of two identical particles.
+    \begin{itemize}
+        \item Particles of integer spin (such as photons [spin 1] and deuterons [spin 0]) are bosons.
+        \item Two identical fermions \emph{can} occupy the same single-particle energy state.
+    \end{itemize}
+    \item \textbf{Fermions}: A particle whose wave function must be antisymmetric under the interchange of two identical particles.
+    \begin{itemize}
+        \item Particles of half-integer spin (such as electrons, protons, and neutrons [all with spin $1/2$]) are fermions.
+        \item Two identical fermions \emph{cannot} the same single-particle energy state.
+    \end{itemize}
+    \item Consider a system of independent, \emph{indistinguishable} particles.
+    \begin{itemize}
+        \item As before, we have that $E_{ijk\dots}=\varepsilon_i+\varepsilon_j+\varepsilon_k+\cdots$ for $N$ terms, but we since we cannot distinguish between particles, we cannot sum over the indices separately.
+        \item Thus, our partition function is set at
+        \begin{equation*}
+            Q(N,V,T) = \sum_{i,j,k,\dots}\e[-\beta(\varepsilon_i+\varepsilon_j+\varepsilon_k+\cdots)]
+        \end{equation*}
+        \item If the particles in question are fermions, the indices are not independent of each other.
+        \begin{itemize}
+            \item In particular, we cannot have a $\varepsilon_1+\varepsilon_1+\varepsilon_2+\varepsilon_3+\cdots$ term in the summation because no two fermions can occupy the same single-particle energy state.
+            \item This restriction omits all terms with more than one particle in the same energy state from the summation.
+        \end{itemize}
+        \item If the particles in question are bosons, then we must avoid summing identical terms.
+        \begin{itemize}
+            \item In particular, terms such as $\varepsilon_1+\varepsilon_2+\varepsilon_2+\varepsilon_2+\cdots$ and $\varepsilon_2+\varepsilon_1+\varepsilon_2+\varepsilon_2+\cdots$ represent the same state, and thus should be included only once in the summation. However, an unrestricted summation would include $N$ such terms.
+            \item On the other end of the spectrum, there are $N!$ terms that include $\epsilon_1+\epsilon_2+\epsilon_3+\cdots+\epsilon_N$ in some order.
+        \end{itemize}
+        \item In either case, the terms causing the problems are those with two or more identical indices.
+        \item If it were not for such terms, we could carry out the summation in an unrestricted manner, obtaining $[q(V,T)]^N$ as with distinguishable particles (forcing each particle to have a different state is mathematically equivalent to making them distinguishable), and then divide by $N!$, obtaining $[q(V,T)]^N/N!$, to account for the over-counting.
+        \item But such terms do exist in the summation. However, there are times when their presence is negligible.
+        \begin{itemize}
+            \item If, for example, the number of quantum states available to any particle is significantly greater than the number of particles, it is very unlikely that two particles will ever be in the same state.
+            \item Indeed, most quantum-mechanical systems have an infinite number of energy states. However, at any given temperature, many of these states will be energetically inaccessible.
+            \item Thus, we can only invoke the $[q(V,T)]^N/N!$ approximation if the number of quantum states with energies less than $k_BT$ (which is roughly the average energy of a molecule) is much larger than the number of particles.
+        \end{itemize}
+        \item In particular, if
+        \begin{equation*}
+            \frac{N}{V}\left( \frac{h^2}{8mk_BT} \right)^{3/2} \ll  1
+        \end{equation*}
+        then we may approximate
+        \begin{equation*}
+            Q(N,V,T) = \frac{[q(V,T)]^N}{N!}
+        \end{equation*}
+        \begin{itemize}
+            \item This criterion favors large particle mass, high temperature, and low density.
+            \item It is easily satisfied in most conventional cases.
+            \item Quantum systems that do not satisfy this criterion must be treated by special methods beyond the scope of \textcite{bib:McQuarrieSimon}.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Boltzmann statistics}: Statistics in which the number of available molecular states is much greater than the number of particles.
+    \begin{itemize}
+        \item Favored by high temperatures.
+    \end{itemize}
+    \item Relating the average energy $\prb{E}$ of a system to the average energy $\prb{\varepsilon}$ of a constituent molecule.
+    \begin{align*}
+        \prb{E} &= k_BT^2\pdv{\ln Q}{T}\\
+        &= k_BT^2\pdv{T}(\ln\left( \frac{q^N}{N!} \right))\\
+        &= Nk_BT^2\pdv{\ln q}{T}\\
+        \prb{E} &= N\prb{\varepsilon}
+    \end{align*}
+    \item The probability that a molecule is in its $j^\text{th}$ molecular energy state is denoted by $\pi_j$.
+    \item Assuming $\varepsilon=\varepsilon_i^\text{trans}+\varepsilon_i^\text{rot}+\varepsilon_i^\text{vib}+\varepsilon_i^\text{elec}$ allows us to write $q=q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}$ since the various energy terms are distinguishable here (hence we can sum over the indices separately).
+    \item The probability that a molecule is in its $i^\text{th}$ translational, $j^\text{th}$ rotational, $k^\text{th}$ vibrational, and $l^\text{th}$ electronic state is given by
+    \begin{equation*}
+        \pi_{ijkl} = \frac{\e[-\varepsilon_i^\text{trans}/k_BT]\e[-\varepsilon_j^\text{rot}/k_BT]\e[-\varepsilon_k^\text{vib}/k_BT]\e[-\varepsilon_l^\text{elec}/k_BT]}{q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}}
+    \end{equation*}
+    \item Since the total probability $\pi_k^\text{vib}$ that a molecule is in its $k^\text{th}$ vibrational state (for example) encompasses all probabilities of it being in any translational, rotational, or vibrational state, we have by summation that
+    \begin{equation*}
+        \pi_k^\text{vib} = \sum_{i,j,l}\pi_{ijkl}
+        = \frac{\sum_i\left( \e[-\varepsilon_i^\text{trans}/k_BT] \right)\sum_j\left( \e[-\varepsilon_j^\text{rot}/k_BT] \right)\sum_l\left( \e[-\varepsilon_l^\text{elec}/k_BT] \right)\e[-\varepsilon_k^\text{vib}/k_BT]}{q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}}
+        = \frac{\e[-\varepsilon_k^\text{vib}/k_BT]}{q_\text{vib}}
+    \end{equation*}
+    \item It follows that
+    \begin{equation*}
+        \prb{\varepsilon^\text{vib}} = \sum_k\varepsilon_k^\text{vib}\frac{\e[-\varepsilon_k^\text{vib}/k_BT]}{q_\text{vib}}
+        = -\pdv{\ln q_\text{vib}}{\beta}
+        = k_BT^2\pdv{\ln q_\text{vib}}{T}
+    \end{equation*}
+    \begin{itemize}
+        \item Analogous results hold for $\prb{\varepsilon^\text{trans}}$, $\prb{\varepsilon^\text{rot}}$, and $\prb{\varepsilon^\text{elec}}$.
+    \end{itemize}
+    \item Although we have written partition functions as sums over energy \emph{states} up to this point, we can also sum over energy \emph{levels} by including the degeneracy $g_J$ of the level.
+    \begin{itemize}
+        \item For example, since the energy and degeneracy of a rigid rotator are, respectively,
+        \begin{align*}
+            \varepsilon_j &= \frac{\hbar^2}{2I}J(J+1)&
+            g_J &= 2J+1
+        \end{align*}
+        we can write
+        \begin{equation*}
+            q_\text{rot}(T) = \sum_{J=0}^\infty(2J+1)\e[-\hbar^2J(J+1)/2Ik_BT]
+        \end{equation*}
+    \end{itemize}
 \end{itemize}
 
 
