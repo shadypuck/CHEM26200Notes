@@ -159,5 +159,36 @@
 
 
 
+\section{Chapter 18: Partition Functions and Ideal Gases}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item Herein, we will calculate the partition functions and heat capacities of ideal gases.
+    \begin{itemize}
+        \item We heavily rely on the expression of the partition function for a system of independent, indistinguishable particles, which ideal gases are likely to satisfy because of their low density.
+    \end{itemize}
+    \item Deriving the translational molecular partition function of an atom in a monatomic ideal gas.
+    \begin{itemize}
+        \item As mentioned in Chapter 17, if we let the container be cubic, then
+        \begin{equation*}
+            \varepsilon(n_x,n_y,n_z) = \frac{h^2}{8ma^2}(n_x^2+n_y^2+n_z^2)
+        \end{equation*}
+        \item It follows that
+        \begin{align*}
+            q_\text{trans} &= \sum_{n_x,n_y,n_z=1}^\infty\e[-\beta\varepsilon(n_x,n_y,n_z)]\\
+            &= \sum_{n_x=1}^\infty\exp(-\frac{\beta h^2n_x^2}{8ma^2})\sum_{n_y=1}^\infty\exp(-\frac{\beta h^2n_y^2}{8ma^2})\sum_{n_z=1}^\infty\exp(-\frac{\beta h^2n_z^2}{8ma^2})\\
+            &= \left[ \sum_{n=1}^\infty\exp(-\frac{\beta h^2n^2}{8ma^2}) \right]^3
+        \end{align*}
+        \item The above sum cannot be evaluated in closed form. However, since later terms in the summation get very small, it is an excellent approximation to replace the summation with an integral, i.e.,
+        \begin{align*}
+            q_\text{trans} &= \left( \int_0^\infty\e[-\beta h^2n^2/8ma^2]\dd{n} \right)^3\\
+            &= \left( \sqrt{\frac{\pi}{4\beta h^2/8ma^2}} \right)^3\\
+            &= \left( \sqrt{\frac{2\pi m}{\beta h^2}} \right)^3a^3\\
+            &= \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}V
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
