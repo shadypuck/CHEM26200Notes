@@ -59,5 +59,105 @@
 
 
 
+\section{Molecular Partition Functions}
+\begin{itemize}
+    \item \marginnote{1/21:}We approximate the total molecular energy as
+    \begin{equation*}
+        q = q_\text{elec}q_\text{trans}q_\text{vib}q_\text{rot}
+    \end{equation*}
+    \item The heat capacity in the very high temperature limit where translations, rotations, and vibrations are classical.
+    \begin{itemize}
+        \item Translational: $\frac{3}{2}k_B$.
+        \item Vibrational: Each degree of freedom ($3N-5$ for a linear molecule and $3N-6$ for a nonlinear molecule) contributes $k_B$.
+        \item Rotational: Each degree of freedom ($2$ for a linear molecule and $3$ for a nonlinear molecule) contributes $\frac{1}{2}k_B$.
+    \end{itemize}
+    \item We can use the above to calculate the heat capacity of various molecules at very high temperatures (note, however, that at such temperatures, molecules would likely dissociate; we're simply theoretically considering the classical limit here).
+    \begin{itemize}
+        \item \ce{Ne}: $\frac{3}{2}k_B$.
+        \item \ce{H2O}: $\frac{3}{2}k_B+3\cdot k_B+3\cdot\frac{1}{2}k_B=6k_B$.
+        \item \ce{O2}: $\frac{3}{2}+1\cdot k_B+2\cdot\frac{1}{2}k_B=\frac{7}{2}k_B$.
+        \item \ce{CO2}: $\frac{3}{2}k_B+4\cdot k_B+2\cdot\frac{1}{2}k_B=\frac{13}{2}k_B$.
+        \item \ce{CHCl3}: $\frac{3}{2}k_B+9\cdot k_B+3\cdot\frac{1}{2}k_B=12 k_B$.
+    \end{itemize}
+    \item Electronic partition function.
+    \begin{itemize}
+        \item Consider the bottom $D_e$ of the potential well of a diatomic.
+        \item $D_0$ is the ionization energy from the bottom state ($D_e\neq D_0$, but relations can be obtained via spectroscopy).
+        \item It follows that
+        \begin{equation*}
+            q_\text{elec} = g_1\e[-(-D_e/k_BT)]+g_2\e[-E_2/k_BT]
+        \end{equation*}
+        \item If $\dd{T}\ll(E_2+D_e)$, then $q_\text{elec}=g_1\e[D_e/k_BT]$.
+    \end{itemize}
+    \item Vibrational partition function.
+    \begin{itemize}
+        \item As before with the law of Dulong and Petit.
+        \item It's a special point where $T=h\nu/k_B$.
+    \end{itemize}
+    \item Rotational partition function.
+    \begin{itemize}
+        \item Almost always classical.
+        \item The rotational energy of a polyatomic molecule will almost always be $\frac{3}{2}k_B$.
+        \item Let's look at a heteronuclear diatomic, such as \ce{CO}. Derives
+        \begin{equation*}
+            q_\text{rot} = \sum_{J=0}^\infty(2J+1)\e[-\hbar^2J(J+1)/2Ik_BT]
+        \end{equation*}
+        \item The \textbf{rotational temperature} leads to
+        \begin{equation*}
+            q_\text{rot} = \sum_{J=0}^\infty(2J+1)\e[\Theta_\text{rot}/T] = \frac{T}{\Theta_\text{rot}}
+        \end{equation*}
+        \item Thus, at the temperature at which we exist, rotation is equivalent classically to quantum mechanically.
+    \end{itemize}
+    \item \textbf{Rotational temperature}: The following quantity. \emph{Denoted by} $\bm{\Theta_\textbf{rot}}$. \emph{Given by}
+    \begin{equation*}
+        \Theta_\text{rot} = \hbar^2/2Ik_B
+    \end{equation*}
+    \item PGS will not specify whether we need a quantum vs. classical model.
+    \item Homonuclear diatomic (e.g., \ce{H2}).
+    \begin{itemize}
+        \item The vibrational differences in energy become visible with spectroscopy.
+    \end{itemize}
+    \item $q_\text{rot}=T/2\Theta_\text{rot}$.
+    \item Partition functions:
+    \begin{itemize}
+        \item If the molecule is linear, it's of the form $T/\Theta_\text{rot}$.
+        \item If the molecule is nonlinear, it's of the form $T/2\Theta_\text{rot}$.
+        \item Spherical top (e.g., \ce{CH4}):
+        \begin{equation*}
+            \frac{\sqrt{\pi}}{\sigma}\left( \frac{T}{\Theta_\text{rot}} \right)^{3/2}
+        \end{equation*}
+        \item Symmetric top (e.g., \ce{NH3}):
+        \begin{equation*}
+            \frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{T^3}{\Theta_{\text{rot},a}^2\Theta_{\text{rot},b}}}
+        \end{equation*}
+        \begin{itemize}
+            \item $a$ and $b$ are the two different symmetry axes.
+        \end{itemize}
+        \item Asymmetric top (e.g., \ce{H2O}):
+        \begin{equation*}
+            \frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{T^3}{\Theta_{\text{rot},a}\Theta_{\text{rot},b}\Theta_{\text{rot},c}}}
+        \end{equation*}
+    \end{itemize}
+    \item Application to total energy and heat capacity of a molecule.
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            q = \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}\cdot V\cdot\sqrt{\frac{T^2}{\sigma\Theta_{\text{rot},a}\Theta_{\text{rot},b}\Theta_{\text{rot},c}}}\cdot\sum_1^{3N-6}\frac{\e[-\Theta_\text{vib}/2T]}{1-\e[\Theta_\text{vib}/T]}\cdot g_1\e[D_e/k_BT]
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            \prb{E} = k_BT^2\pdv{\ln q}{T}
+            = k_BT^2\pdv{T}(\frac{3}{2}\ln T+\text{constant}+\frac{3}{2}\ln T+\text{vibration}-D_e)
+        \end{equation*}
+        \item The energy of the vibration is $E=k_B\Theta_\text{vib}/(\e[\Theta_\text{vib}/k_BT]-1)+k_B\Theta_\text{vib}/2$. It follows that
+        \begin{equation*}
+            C = \pdv{E}{T}
+            = k_B\frac{\Theta_\text{vib}^2}{T^2}\frac{\e[-\Theta_\text{vib}/T]}{(1-\e[-\Theta_\text{vib}/T])}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
