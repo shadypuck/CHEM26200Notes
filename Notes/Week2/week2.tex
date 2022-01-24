@@ -1,0 +1,63 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\stepcounter{chapter}
+
+\begin{document}
+
+
+
+
+\chapter{Partition Functions and Ideal Gases}
+\section{System Partition Functions}
+\begin{itemize}
+    \item \marginnote{1/19:}Decomposing the partition function of a molecule into the product of separate sums as partitioned by degrees of freedom (e.g., translation, rotation, vibration, and electronic).
+    \item The partition functions of \textbf{independent}, distinguishable/indistinguishable molecules.
+    \begin{itemize}
+        \item We should not double count the same states.
+        \item The $N!$ in $Q=q^N/N!$ is not important when calculating energy (because of the properties of the $\ln$ function), but it is very important when calculating quantities such as entropy.
+    \end{itemize}
+    \item \textbf{Independent} (particles): A set of particles that do not interact with one another.
+    \item Discusses bosons and fermions.
+    \begin{itemize}
+        \item We can have a two fermions in the state $|1,1\rangle$ because it is a symmetric state.
+    \end{itemize}
+    \item Recall the Fermi level, the boundary between the filled and unfilled electronic states in a solid.
+    \begin{itemize}
+        \item If $T$ is small, this level is a hard boundary.
+        \item If $T$ is large, electrons can easily be excited and the Fermi level is a soft boundary.
+    \end{itemize}
+    \item Does the 3D particle in a box derivation for the translation molecular partition function.
+    \begin{itemize}
+        \item Note that since the de Broglie wavelength $\lambda_\text{DB}=\sqrt{h^2/2mk_BT}$, we may write
+        \begin{equation*}
+            q_x = \sum_{n_x}\e[-h^2/8mk_BTL_x^2]
+            = \sum_{n_x}\e[-\lambda_\text{DB}^2n_x^2/4L_x^2]
+        \end{equation*}
+    \end{itemize}
+    \item The number of states are occupied/have energy within $k_BT$ of the ground state.
+    \begin{itemize}
+        \item $-\lambda_\text{DB}^2n_x^2/4L_x^2$ is on the order of 1, implying that $n_x$ is on the order of $2L/\lambda_\text{DB}$.
+        \item It follows if $L$ is on a macroscopic scale (e.g., $L\approx\SI{1}{\meter}$) and $\lambda_\text{DB}$ is on a sub-angstrom scale that $n_x$ is on the order of $10^{10}$. When $n_x$ is at such a scale, $\e[-\lambda_\text{DB}^2n_x^2/4L_x^2]\approx 1/\e$.
+        \item It follows that in a $\SI{1}{\cubic\meter}$ box, we will have about $10^{30}$ states, so we really are in a regime where the number of states is larger than the number of molecules.
+    \end{itemize}
+    \item More precisely, we want
+    \begin{equation*}
+        N \ll n_xn_yn_z = \left( \frac{8mk_BT}{h^2} \right)^{3/2}L_xL_yL_z
+    \end{equation*}
+    where the middle term approximates the number of states so that
+    \begin{equation*}
+        \frac{N}{V} \ll \left( \frac{8mk_BT}{h^2} \right)^{3/2}
+    \end{equation*}
+    \item Approximating the translational energy with an integral.
+    \begin{itemize}
+        \item Concludes with the translational partition function.
+        \item Since we can approach this problem from a classical perspective (as we did last Friday) or quantum mechanically (as we did today) to achieve the same result, this system again demonstrates the relation between quantum and classical mechanics.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
