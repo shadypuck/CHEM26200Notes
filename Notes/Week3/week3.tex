@@ -1,0 +1,65 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{2}
+
+\begin{document}
+
+
+
+
+\chapter{Kinetic Theory of Gases}
+\section{Maxwell-Boltzmann Distribution}
+\begin{itemize}
+    \item \marginnote{1/24:}Applying the molecular partition function to the heat capacity of a water molecule.
+    \begin{itemize}
+        \item A water molecule has three vibrational modes, which we will denote by $\nu_1,\nu_2,\nu_3$ (corresponding to symmetric stretch, antisymmetric stretch, and bend).
+        \item Main takeaway: Heat capacity can change with temperature.
+        \item After a while (at several thousand kelvin), it will level off (see Figure 18.7).
+    \end{itemize}
+    \item Considers \ce{CO2}'s vibrational modes, too.
+    \begin{itemize}
+        \item The infrared absorption of the bending mode is what's associated with the Greenhouse Effect.
+        \item The symmetric stretch is IR inactive due to its lack of change of dipole moment.
+        \item Raman active: Change in the polarizability of the molecule.
+    \end{itemize}
+    \item The Maxwell-Boltzmann distribution.
+    \begin{itemize}
+        \item Maxwell derived it long before Boltzmann, but Boltzmann's thermodynamic derivation is much easier.
+        \item We know from the boltzmann factor that $p(E)\propto\e[-E/k_BT]$.
+        \item Thus, to get the probability $p(v)$ of some speed $v$, we should have $p(v)\propto\e[-mv^2/2k_BT]$ times a constant giving the number of molecules of each speed? This yields
+        \begin{equation*}
+            p(v) = A4\pi v^2\e[-mv^2/2k_BT]
+        \end{equation*}
+        where $A$ is a normalization constant.
+        \item The Maxwell-Boltzmann distribution is such that
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            1 &= \int_0^\infty p(v)\dd{v}\\
+            &= A\int_0^\infty 4\pi v^2\e[-mv^2/2k_BT]\dd{v}\\
+            &= A\int_0^\infty 4\pi\left( \frac{2k_BT}{m} \right)^{3/2}u^2\e[-u^2]\dd{u}\\
+            &= A4\pi\left( \frac{2k_BT}{m} \right)^{3/2}\int_0^\infty u^2\e[-u^2]\dd{u}\\
+            &= A4\pi\left( \frac{2k_BT}{m} \right)^{3/2}\frac{\sqrt{\pi}}{4}\\
+            A &= \left( \frac{m}{2\pi k_BT} \right)^{3/2}
+        \end{align*}
+        \endgroup
+        \item Therefore,
+        \begin{equation*}
+            p(v) = 4\pi\left( \frac{m}{2\pi k_BT} \right)^{3/2}v^2\e[-mv^2/2k_BT]
+        \end{equation*}
+        \item Any distribution that doesn't look like this isn't in thermal equilibrium.
+    \end{itemize}
+    \item A system with all particles having $v=0$ is at thermal equilibrium with $T=\SI{0}{\kelvin}$.
+    \item A system with all particles having constant velocity in the same direction is at thermal equilibrium with $T=\SI{0}{\kelvin}$.
+    \begin{itemize}
+        \item Think relativity; if you're moving with them, it looks like they're not moving and thus this case is the same as the last one because you're movement doesn't affect the thermodynamics of that system.
+    \end{itemize}
+    \item A system with all particles having constant velocity in different directions is not at thermal equilibrium since it does not fit the bell curve but is rather a spike.
+\end{itemize}
+
+
+
+
+\end{document}
