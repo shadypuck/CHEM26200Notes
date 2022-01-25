@@ -247,7 +247,7 @@
     \begin{itemize}
         \item $B$ is the rotational constant (see Chapter 5) in the above equation.
     \end{itemize}
-    \item Deriving the rotational molecular partition function of a molecule in a diatomic ideal gas.
+    \item Deriving the rotational molecular partition function of a \emph{heteronuclear} molecule in a diatomic ideal gas.
     \begin{itemize}
         \item We have
         \begin{equation*}
@@ -294,6 +294,116 @@
         \end{equation*}
         \item We can estimate the most probable value of $J$ by solving $\pdv*{f_J}{J}=0$, which gives $J=7$ in agreement with Figure \ref{fig:rotationalPopulations}.
     \end{itemize}
+    \item \marginnote{1/25:}We now address the rotational molecular partition function for a \emph{homonuclear} diatomic ideal gas molecule.
+    \begin{itemize}
+        \item Because of the additional perpendicular $C_2$ axes of symmetry in a homonuclear diatomic compared to a heteronuclear diatomic, the diatomic's constituent atoms are `more' indistinguishable, i.e., only nuclear spin can distinguish them.
+        \item "In particular, if the two nuclei have integral spins (bosons), the molecular wave function must be symmetric with respect to an interchange of the two nuclei; if the nuclei have half odd integer spin (fermions), the molecular wave function must be antisymmetric" \parencite[747]{bib:McQuarrieSimon}.
+        \item This symmetry affects the population of the rotational energy levels in a way that \emph{can} be derived, but we will just state the important result, which is that for a homonuclear diatomic molecule,
+        \begin{equation*}
+            q_\text{rot}(T) = \frac{T}{2\Theta_\text{rot}}
+        \end{equation*}
+    \end{itemize}
+    \item To unify the two rotational molecular partition functions, we let
+    \begin{equation*}
+        q_\text{rot}(T) = \frac{T}{\sigma\Theta_\text{rot}}
+    \end{equation*}
+    in general, where $\sigma$ is the \textbf{symmetry number}.
+    \item \textbf{Symmetry number}: The number of different ways a given molecule can be rotated into a configuration indistinguishable from the original. \emph{Denoted by} $\bm{\sigma}$. \emph{Given by}
+    \begin{equation*}
+        \sigma =
+        \begin{cases}
+            1 & \text{heteronuclear}\\
+            2 & \text{homonuclear}
+        \end{cases}
+    \end{equation*}
+    \item Taking the energy of an ideal diatomic gas molecule to be a simple sum of its translational, rotational, vibrational, and electronic energies yields the molecular partition function
+    \begin{equation*}
+        q(V,T) = \left( \frac{2\pi Mk_BT}{h^2} \right)^{3/2}V\cdot\frac{T}{\sigma\Theta_\text{rot}}\cdot\frac{\e[-\Theta_\text{vib}/2T]}{1-\e[-\Theta_\text{vib}/T]}\cdot g_{e1}\e[D_e/k_BT]
+    \end{equation*}
+    where we require $\Theta_\text{rot}\ll T$, that the only populated electronic state is the ground state, that the zero of electronic energy is the separated atoms at rest in their ground electronic states, and that the zero of vibrational energy is the bottom of the internuclear potential well of the lowest electronic state.
+    \item \textcite{bib:McQuarrieSimon} derives the molar energy and heat capacity of a diatomic ideal gas one more time using the above equation.
+    \begin{itemize}
+        \item The only difference is that the newly added electronic factor in the partition function adds a term of $-N_AD_e$ to the Chapter 17 formula for $\overline{U}$.
+        \item Also note that we can greatly improve the agreement of the harmonic oscillator-rigid rotator model with even small first-order corrections, such as including centrifugal distortion and anharmonicity.
+    \end{itemize}
+    \item The translational and electronic molecular partition functions of an ideal polyatomic molecule are the same as those of an ideal monatomic or diatomic molecule.
+    \item On the vibrational molecular partition function of an ideal polyatomic molecule.
+    \begin{itemize}
+        \item Recall from Chapter 13 that the vibrational motion of a polyatomic molecule can be expressed in terms of normal coordinates.
+        \item Thus, the vibrational energy of a polyatomic molecule in state $v_j=0,1,2,\dots$ is
+        \begin{equation*}
+            \varepsilon_\text{vib} = \sum_{j=1}^{N_\text{vib}}\left( v_j+\tfrac{1}{2} \right)h\nu_j
+        \end{equation*}
+        where $\nu_j$ is the frequency of the $j^\text{th}$ normal mode.
+        \item It follows that for a polyatomic molecule,
+        \begin{gather*}
+            q_\text{vib} = \prod_{j=1}^{N_\text{vib}}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\\
+            E_\text{vib} = Nk_B\sum_{j=1}^{N_\text{vib}}\left( \frac{\Theta_{\text{vib},j}}{2}+\frac{\Theta_{\text{vib},j}\e[-\Theta_{\text{vib},j}/T]}{1-\e[-\Theta_{\text{vib},j}/T]} \right)\\
+            C_{V,\text{vib}} = Nk_B\sum_{j=1}^{N_\text{vib}}\left[ \left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2} \right]
+        \end{gather*}
+    \end{itemize}
+    \item Rotational molecular partition functions for linear molecules.
+    \begin{itemize}
+        \item We can still apply the rigid-rotator approximation, but with
+        \begin{equation*}
+            I = \sum_{j=1}^nm_jd_j^2
+        \end{equation*}
+        where $d_j$ is the distance of the $j^\text{th}$ nucleus from the center of mass of the molecule.
+        \item Doing so yields
+        \begin{equation*}
+            q_\text{rot}(T) = \frac{T}{\sigma\Theta_\text{rot}}
+        \end{equation*}
+        where $\sigma=1$ for unsymmetrical molecules such as \ce{N2O} and \ce{COS} and $\sigma=2$ for symmetrical molecules such as \ce{CO2} and \ce{C2H2}.
+    \end{itemize}
+    \item Note that the symmetry number of \ce{NH3} is three.
+    \item Rotational molecular partition functions for nonlinear molecules.
+    \begin{itemize}
+        \item Recall the discussion surrounding the principal moments of inertia in Chapter 13.
+        \item We define three characteristic rotational temperatures, namely $\Theta_{\text{rot},j}=\hbar^2/2I_jk_B$ for $j=A,B,C$.
+        \item Spherical top.
+        \begin{itemize}
+            \item In this case, $\Theta_{\text{rot},A}=\Theta_{\text{rot},B}=\Theta_{\text{rot},C}=\Theta_\text{rot}$.
+            \item The quantum-mechanical spherical top can be solved exactly to give
+            \begin{align*}
+                \varepsilon_J &= \frac{\hbar^2}{2I}J(J+1)&
+                g_J &= (2J+1)^2
+            \end{align*}
+            \item Now $\Theta_\text{rot}\ll T$ for almost all spherical top molecules at ordinary temperatures, and this has two important consequence. First, we can approximate the partition function with an integral. Second, we can neglect 1 in comparison with $J$ since the important values of $J$ are large. Thus, we have that
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                q_\text{rot}(T) &= \frac{1}{\sigma}\sum_{J=0}^\infty(2J+1)^2\e[-\hbar^2J(J+1)/2Ik_BT]\\
+                &= \frac{1}{\sigma}\int_0^\infty(2J+1)^2\e[-\Theta_\text{rot}J(J+1)/T]\dd{J}\\
+                &= \frac{1}{\sigma}\int_0^\infty 4J^2\e[-\Theta_\text{rot}J^2/T]\dd{J}\\
+                &= \frac{4}{\sigma}\int_0^\infty J^2\e[-aJ^2]\dd{J}\\
+                &= \frac{4}{\sigma}\cdot\frac{1}{4a}\sqrt{\frac{\pi}{a}}\\
+                q_\text{rot}(T) &= \frac{\sqrt{\pi}}{\sigma}\left( \frac{T}{\Theta_\text{rot}} \right)^{3/2}
+            \end{align*}
+            \endgroup
+        \end{itemize}
+        \item Similarly, we have respectively for a symmetric top and an asymmetric top that
+        \begin{align*}
+            q_\text{rot}(T) &= \frac{\sqrt{\pi}}{\sigma}\left( \frac{T}{\Theta_{\text{rot},A}} \right)\sqrt{\frac{T}{\Theta_{\text{rot},C}}}&
+            q_\text{rot}(T) &= \frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{T}{\Theta_{\text{rot},A}\Theta_{\text{rot},B}\Theta_{\text{rot},C}}}
+        \end{align*}
+    \end{itemize}
+    \item It follows that
+    \begin{align*}
+        \overline{U}_\text{rot} &= \frac{3RT}{2}&
+        \overline{C}_{V,\text{rot}} &= \frac{3R}{2}
+    \end{align*}
+    \item Linear molecule equations.
+    \begin{gather*}
+        q(V,T) = \left( \frac{2\pi Mk_BT}{h^2} \right)^{3/2}V\cdot\frac{T}{\sigma\Theta_\text{rot}}\cdot\prod_{j=1}^{3n-5}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\cdot g_{e1}\e[D_e/k_BT]\\
+        \frac{U}{Nk_BT} = \frac{3}{2}+\frac{2}{2}+\sum_{j=1}^{3n-5}\left( \frac{\Theta_{\text{vib},j}}{2T}+\frac{\Theta_{\text{vib},j}/T}{\e[\Theta_{\text{vib},j}/T]-1} \right)-\frac{D_e}{k_BT}\\
+        \frac{C_V}{Nk_B} = \frac{3}{2}+\frac{2}{2}+\sum_{j=1}^{3n-5}\left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2}
+    \end{gather*}
+    \item Nonlinear molecule equations.
+    \begin{gather*}
+        q(V,T) = \left( \frac{2\pi Mk_BT}{h^2} \right)^{3/2}V\cdot\frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{T^3}{\Theta_{\text{rot},A}\Theta_{\text{rot},B}\Theta_{\text{rot},C}}}\cdot\prod_{j=1}^{3n-6}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\cdot g_{e1}\e[D_e/k_BT]\\
+        \frac{U}{Nk_BT} = \frac{3}{2}+\frac{3}{2}+\sum_{j=1}^{3n-6}\left( \frac{\Theta_{\text{vib},j}}{2T}+\frac{\Theta_{\text{vib},j}/T}{\e[\Theta_{\text{vib},j}/T]-1} \right)-\frac{D_e}{k_BT}\\
+        \frac{C_V}{Nk_B} = \frac{3}{2}+\frac{3}{2}+\sum_{j=1}^{3n-6}\left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2}
+    \end{gather*}
 \end{itemize}
 
 
