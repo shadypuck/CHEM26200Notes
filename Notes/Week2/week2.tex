@@ -162,7 +162,7 @@
 \section{Chapter 18: Partition Functions and Ideal Gases}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
-    \item Herein, we will calculate the partition functions and heat capacities of ideal gases.
+    \item \marginnote{1/23:}Herein, we will calculate the partition functions and heat capacities of ideal gases.
     \begin{itemize}
         \item We heavily rely on the expression of the partition function for a system of independent, indistinguishable particles, which ideal gases are likely to satisfy because of their low density.
     \end{itemize}
@@ -185,6 +185,114 @@
             &= \left( \sqrt{\frac{2\pi m}{\beta h^2}} \right)^3a^3\\
             &= \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}V
         \end{align*}
+    \end{itemize}
+    \item \marginnote{1/24:}Deriving the electronic molecular partition function of an atom in a monatomic ideal gas.
+    \begin{itemize}
+        \item We express the partition function here in terms of levels, i.e., by
+        \begin{equation*}
+            q_\text{elec} = \sum_ig_{ei}\e[-\beta\varepsilon_{ei}]
+        \end{equation*}
+        where $g_{ei}$ is the degeneracy and $\varepsilon_{ei}$ is the energy of the $i^\text{th}$ electronic level.
+        \item Taking $\varepsilon_{e1}=0$ to be the zero of energy yields
+        \begin{equation*}
+            q_\text{elec} = g_{e1}+g_{e2}\e[-\beta\varepsilon_{e2}]+\cdots
+        \end{equation*}
+        \begin{itemize}
+            \item Note that since $\varepsilon$'s are usually on the order of tens of thousands of wavenumbers, $\e[-\beta\varepsilon_{e2}]$ is around $10^{-5}$ for most atoms at ordinary temperatures, so only the first term in the summation is significantly different from zero.
+            \item For some gases such as halogens, other terms may be important, but even there the sum converges very rapidly.
+        \end{itemize}
+        \item Using spectroscopic data, we can show that the fraction of atoms of most gases in the first excited state is very small.
+        \begin{itemize}
+            \item For example, the fraction of helium atoms at $\SI{300}{\kelvin}$ in the first excited state is $10^{-334}$.
+            \item For fluorine, however, the fraction is on the order of $10^{-2}$, which is significant. In this case, we need to approximate $q_\text{elec}$ with more than one or two terms.
+        \end{itemize}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} recalculates the average energy, heat capacity, and pressure of a monatomic ideal gas using the above results.
+    \item Diatomics.
+    \begin{itemize}
+        \item The translational partition function is
+        \begin{equation*}
+            q_\text{trans}(V,T) = \left[ \frac{2\pi(m_1+m_2)k_BT}{h^2} \right]^{3/2}V
+        \end{equation*}
+        \item We take the zero of rotational energy to be the $J=0$ state.
+        \item We take the zero of vibrational energy to be the bottom of the internuclear potential well of the lowest electronic state (so that the energy of the ground vibrational state is $h\nu/2$).
+        \item We take the zero of electronic energy to be the energy of the separated atoms at rest in their ground electronic state (so that the energy of the ground electronic state is $-D_e$\footnote{See Figure 9.7 of \textcite{bib:CHEM26100Notes}.}).
+    \end{itemize}
+    \item \textbf{Vibrational temperature}: The following quantity. \emph{Denoted by} $\bm{\Theta_\text{vib}}$. \emph{Given by}
+    \begin{equation*}
+        \Theta_\text{vib} = \frac{h\nu}{k_B}
+    \end{equation*}
+    \item Deriving the vibrational molecular partition function of a molecule in a diatomic ideal gas.
+    \begin{align*}
+        q_\text{vib}(T) &= \sum_{v=0}^\infty\e[-\beta(v+1/2)h\nu]\\
+        &= \e[-\beta h\nu/2]\sum_{v=0}^\infty\e[-\beta h\nu v]\\
+        &= \e[-\beta h\nu/2]\frac{1}{1-\e[-\beta h\nu]}\\
+        &= \frac{\e[-\beta h\nu/2]}{1-\e[-\beta h\nu]}
+    \end{align*}
+    \item In terms of $\Theta_\text{vib}$,
+    \begin{gather*}
+        q_\text{vib}(T) = \frac{\e[-\Theta_\text{vib}/2T]}{1-\e[-\Theta_\text{vib}/T]}\\
+        \prb{E_\text{vib}} = Nk_B\left( \frac{\Theta_\text{vib}}{2}+\frac{\Theta_\text{vib}}{\e[\Theta_\text{vib}/T]-1} \right)\\
+        \overline{C}_\text{V,\text{vib}} = R\left( \frac{\Theta_\text{vib}}{T} \right)^2\frac{\e[-\Theta_\text{vib}/T]}{(1-\e[-\Theta_\text{vib}/T])^2}
+    \end{gather*}
+    \item Note that the high temperature limit of $\overline{C}_\text{V,\text{vib}}$ is $R$, and $\overline{C}_\text{V,\text{vib}}$ attains $R/2$ at $T=0.34\,\Theta_\text{vib}$.
+    \item Calculating the fraction of molecules in the ground vibrational state reveals that generally, most molecules are in the ground vibrational state.
+    \begin{itemize}
+        \item Exceptions include \ce{Br2}, the smaller force constant and larger mass of which lead to a smaller value of $\Theta_\text{vib}$.
+    \end{itemize}
+    \item \textbf{Rotational temperature}: The following quantity. \emph{Denoted by} $\bm{\Theta_\text{rot}}$. \emph{Given by}
+    \begin{equation*}
+        \Theta_\text{rot} = \frac{\hbar^2}{2Ik_B} = \frac{hB}{k_B}
+    \end{equation*}
+    \begin{itemize}
+        \item $B$ is the rotational constant (see Chapter 5) in the above equation.
+    \end{itemize}
+    \item Deriving the rotational molecular partition function of a molecule in a diatomic ideal gas.
+    \begin{itemize}
+        \item We have
+        \begin{equation*}
+            q_\text{rot}(T) = \sum_{J=0}^\infty(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]
+        \end{equation*}
+        \item As with the translational partition function, for $\Theta_\text{rot}\ll T$ (which is true for normal temperatures), we may approximate the above sum via an integral. This approximation is known as the high-temperature limit, and under it,
+        \begin{align*}
+            q_\text{rot}(T) &= \int_0^\infty(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]\dd{J}\\
+            &= \int_0^\infty\e[-\Theta_\text{rot}x/T]\dd{x}\\
+            &= \frac{T}{\Theta_\text{rot}} = \frac{8\pi^2Ik_BT}{h^2}
+        \end{align*}
+        \item For low temperatures or molecules with large values of $\Theta_\text{rot}$ we evaluate some number of terms of the sum directly, but we will not consider these cases further.
+    \end{itemize}
+    \item It follows from the above that
+    \begin{align*}
+        \prb{E_\text{rot}} &= Nk_BT&
+        \overline{C}_{V,\text{rot}} &= R
+    \end{align*}
+    \begin{itemize}
+        \item Each of the two rotational degrees of freedom of a diatomic contributes $R/2$ to $\overline{C}_{V,\text{rot}}$.
+    \end{itemize}
+    \item Contrary to the other component parts of energy, higher energy rotational states are significantly occupied.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw (0,4) -- (0,0) -- (5,0);
+            \foreach \x [evaluate=\x as \n using int(\x*4)] in {0,1,...,5} {
+                \node [below] at (\x,0) {$\n$};
+            }
+            \draw (0,4) node[left]{$0.10$}       -- ++(0.2,0);
+            \draw (0,2)  node[left]{$0.05$}       -- ++(0.2,0);
+            \node [above left] {$0.00$};
+    
+            \draw [semithick,blx] plot[ycomb,mark=x,domain=0:5,samples=21] (\x,{40*(2*(4*\x)+1)*0.00923*e^(-0.00923*(4*\x)*((4*\x)+1))});
+        \end{tikzpicture}
+        \caption{The fraction of molecules in the $J^\text{th}$ rotational level for \ce{CO} at $\SI{300}{\kelvin}$.}
+        \label{fig:rotationalPopulations}
+    \end{figure}
+    \begin{itemize}
+        \item We have that the fraction $f_J$ of molecules in the $J^\text{th}$ vibrational state is
+        \begin{equation*}
+            f_J = \frac{(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]}{q_\text{rot}} = (2J+1)(\tfrac{\Theta_\text{rot}}{T})\e[-\Theta_\text{rot}J(J+1)/T]
+        \end{equation*}
+        \item We can estimate the most probable value of $J$ by solving $\pdv*{f_J}{J}=0$, which gives $J=7$ in agreement with Figure \ref{fig:rotationalPopulations}.
     \end{itemize}
 \end{itemize}
 
