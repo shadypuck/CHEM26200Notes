@@ -11,13 +11,67 @@
 \section{The Boltzmann Factor and Partition Functions}
 \begin{enumerate}
     \item \marginnote{1/25:}Derive the value of $PV$ for a gas of photons in terms of the total internal energy. Use $E=h\nu$ and $p=h\nu/c$ for the photon energy and momentum, respectively, and follow a similar method to that used for an ideal gas in class.
+    \begin{proof}
+        We first seek to derive an expression for the number of collisions per second per area (of the wall of the container). Consider the number $N(v_x)$ of photons with speed $v_x$ in the $x$ direction. Assuming that such photons are equally distributed throughout the container, their density in any region is $N(v_x)/V$. Thus, their "flux" at the wall of the container is this density $N(v_x)/V$, times the area $A$ of the wall, times the $x$-velocity $v_x$ of the photons. Additionally, assuming elastic collisions, a single photon colliding with the wall transfers $2p_x=2h\nu/v_x$ of momentum. It follows that the change in momentum per second of an area $A$ of the wall (i.e., the force $F$ at the wall) is $\frac{N(v_x)}{V}Av_x\cdot 2p_x$. But, of course, we must sum over all possible $v_x$; note that since all photons travel at the speed of light $c=v_x^2+v_y^2+v_z^2$, we must integrate from 0 to $c$ (photons with $v_x\leq 0$ don't collide with the wall in question and no photon has $v_x>c$). It follows that
+        \begin{align*}
+            F &= \int_0^c2p_x\cdot\frac{N(v_x)}{V}Av_x\dd{v_x}\\
+            &= \int_0^c2\frac{h\nu}{v_x}\cdot\frac{N(v_x)}{V}Av_x\dd{v_x}\\
+            &= \int_0^c2h\nu\cdot\frac{N(v_x)}{V}A\dd{v_x}\\
+            &= \frac{2h\nu A}{V}\int_0^cN(v_x)\dd{v_x}\\
+            \frac{F}{A} &= \frac{2h\nu}{V}\frac{N}{2}\\
+            PV &= Nh\nu\\
+            &= NE\\
+            \Aboxed{PV &= U}
+        \end{align*}
+    \end{proof}
     \item Apply the Boltzmann factor.
     \begin{enumerate}
         \item For \ce{N2} at $\SI{300}{\kelvin}$, give the ratio of molecules in $J=5$ over $J=4$. Indicate also if the transition from $J=4$ to $J=5$ is observable by microwave absorption spectroscopy. Data on \ce{N2} are in Table 18.2 on \textcite[739]{bib:McQuarrieSimon}.
+        \begin{proof}
+            From Table 18.2, we have that $\Theta_\text{rot}=\SI{2.88}{\kelvin}$ for \ce{N2}. Therefore, we have that
+            \begin{align*}
+                \frac{p_5}{p_4} &= \frac{(2(5)+1)\e[-(2.88)(5)((5)+1)/300]}{(2(4)+1)\e[-(2.88)(4)((4)+1)/300]}\\
+                \Aboxed{\frac{p_5}{p_4} &= 1.11}
+            \end{align*}
+            Also, the transition from $J=4$ to $J=5$ is \fbox{not observable} by microwave absorption spectroscopy since \ce{N2} does not have a permanent dipole moment.
+        \end{proof}
         \item Also, for \ce{N2} at $\SI{300}{\kelvin}$, give the ratio of molecules in $n=1$ over $n=0$ for the vibrational states.
+        \begin{proof}
+            From Table 18.2, we have that $\Theta_\text{vib}=\SI{3374}{\kelvin}$ for \ce{N2}. Therefore, we have that
+            \begin{align*}
+                \frac{p_1}{p_0} &= \frac{\e[-(3374)(1)/300]}{\e[-(3374)(0)/300]}\\
+                \Aboxed{\frac{p_5}{p_4} &= \num{1.305e-5}}
+            \end{align*}
+        \end{proof}
         \item Problem 18-28 (calculating a moment of inertia based on masses and distances).\par
         The \ce{N-N} and \ce{N-O} bond lengths in the (linear) molecule \ce{N2O} are $\SI{109.8}{\pico\meter}$ and $\SI{121.8}{\pico\meter}$, respectively. Calculate the center of mass and the moment of inertia of \ce{{}^14N^14N^16O}. Compare your answer with the value obtained from $\Theta_\text{rot}$ in Table 18.4.
+        \begin{proof}
+            Take the middle nitrogen atom to be the center of the coordinate system and the molecular axis to be the $x$-axis. Let $x_1=\SI{109.8}{\pico\meter}$ and $x_3=\SI{121.8}{\pico\meter}$. Then the center of mass is at
+            \begin{align*}
+                x_\text{CM} &= \frac{\sum_{i=1}^3m_ix_i}{\sum_{i=1}^3m_i}\\
+                \Aboxed{x_\text{CM} &= \SI{9.355}{\pico\meter}}
+            \end{align*}
+            It follows that the moment of inertia about an axis perpendicular to the bond axis is
+            \begin{align*}
+                I_B &= \sum_{i=1}^3m_ix_i^2\\
+                &= m_1(x_1+x_\text{CM})^2+m_2x_\text{CM}^2+m_3(x_3-x_\text{CM})^2\\
+                \Aboxed{I_B &= \SI{6.727e-46}{\kilo\gram\meter\squared}}
+            \end{align*}
+            Thus, our calculated rotational temperature is
+            \begin{equation*}
+                \Theta_\text{rot} = \frac{\hbar^2}{2I_Bk_B}
+                = \SI{0.5985}{\kelvin}
+            \end{equation*}
+            which has percent error of $0.829\%$ from $\SI{0.603}{\kelvin}$, the value from Table 18.4.
+        \end{proof}
         \item Calculate the fraction of protons in the two spin orientations for a magnetic field of $\SI{10}{\tesla}$ at $\SI{300}{\kelvin}$. Follow Example 17-1 and Problem 17-8.
+        \begin{proof}
+            Let $B_z=\SI{10}{\tesla}$, $T=\SI{300}{\kelvin}$, and $\gamma=\SI{26.7522e7}{\radian\per\tesla\per\second}$ be the magnetogyric ratio for a proton. If $N_w$ is the number of protons aligned with a magnetic field and $N_o$ is the number of protons opposed to the field, then
+            \begin{align*}
+                \frac{N_o}{N_w} &= \e[-\hbar\gamma B_z/k_BT]\\
+                \Aboxed{\frac{N_o}{N_w} &= 1.0}
+            \end{align*}
+        \end{proof}
         \item Problem 17-41.\par
         The lowest electronic states of \ce{Na_{(g)}} are tabulated below.
         \begin{center}
@@ -33,6 +87,23 @@
             \end{tabular}
         \end{center}
         Calculate the fraction of the atoms in each of these electronic states in a sample of \ce{Na_{(g)}} at $\SI{1000}{\kelvin}$. Repeat this calculation for a temperature of $\SI{2500}{\kelvin}$.
+        \begin{proof}
+            At $\SI{1000}{\kelvin}$, we have
+            \begin{gather*}
+                % = \frac{2.000}{2.000+\num{5.092e-11}+\num{9.936e-12}+\num{1.655e-16}}
+                f_{{}^2S_{1/2}} = \frac{2\e[-0.000/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{1.000}\\
+                f_{{}^2P_{1/2}} = \frac{2\e[-16956.183/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{\num{2.546e-11}}\\
+                f_{{}^2P_{3/2}} = \frac{4\e[-16973.379/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{\num{4.968e-11}}\\
+                f_{{}^2S_{1/2}} = \frac{2\e[-25739.86/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{\num{8.275e-17}}
+            \end{gather*}
+            At $\SI{1000}{\kelvin}$, we have
+            \begin{gather*}
+                f_{{}^2S_{1/2}} = \frac{2\e[-0.000/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{0.9998}\\
+                f_{{}^2P_{1/2}} = \frac{2\e[-16956.183/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{\num{5.784e-5}}\\
+                f_{{}^2P_{3/2}} = \frac{4\e[-16973.379/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{\num{1.145e-4}}\\
+                f_{{}^2S_{1/2}} = \frac{2\e[-25739.86/k_BT]}{2\e[-0.000/k_BT]+2\e[-16956.183/k_BT]+4\e[-16973.379/k_BT]+2\e[-25739.86/k_BT]} = \boxed{\num{3.690e-7}}
+            \end{gather*}
+        \end{proof}
     \end{enumerate}
     \item Problem 17-38. In the second question, in addition to the ideal monoatomic gas, apply the formula also to the case of solid obeying the law of Dulong and Petit for the average internal energy.\par
     The following equation gives the ensemble average of $E$, which we assert is the same as the experimentally observed value. In this problem, we will explore the standard deviation about $\prb{E}$ (see MathChapter B). We will start with either the right or second from the right term below.
@@ -50,14 +121,86 @@
         \frac{\sigma_E}{\prb{E}} = \frac{\sqrt{k_BTC_V}}{\prb{E}}
     \end{equation*}
     To get an idea of the sie of this ratio, use the values of $\prb{E}$ and $C_V$ for a (monoatomic) ideal gas, namely $\frac{3}{2}Nk_BT$ and $\frac{3}{2}Nk_B$, respectively, and show that $\sigma_E/\prb{E}$ goes as $1/\sqrt{N}$. What does this trend say about the likely observed deviations from the average macroscopic energy?
+    \begin{proof}
+        We are given that
+        \begin{equation*}
+            -\pdv{\ln Q}{\beta} = \prb{E}
+        \end{equation*}
+        We can show that
+        \begin{equation*}
+            \frac{1}{Q}\pdv[2]{Q}{\beta} = \frac{1}{Q}\pdv[2]{\beta}(\sum_j\e[-E_j\beta])
+            = \sum_jE_j^2\frac{\e[-E_j\beta]}{Q}
+            = \sum_jE_j^2p_j
+            = \prb{E^2}
+        \end{equation*}
+        Therefore,
+        \begin{align*}
+            k_BT^2C_V &= k_BT^2\pdv{\prb{E}}{T}\\
+            &= k_BT^2\pdv{\prb{E}}{\beta}\cdot\pdv{\beta}{T}\\
+            &= k_BT^2\pdv{\prb{E}}{\beta}\cdot-\frac{1}{k_BT^2}\\
+            &= -\pdv{\prb{E}}{\beta}\\
+            &= -\pdv{\beta}(-\pdv{\ln Q}{\beta})\\
+            &= \pdv{\beta}(\frac{1}{Q}\pdv{Q}{\beta})\\
+            &= \frac{1}{Q}\cdot\pdv[2]{Q}{\beta}+\pdv{\beta}(\frac{1}{Q})\cdot\pdv{Q}{\beta}\\
+            &= \frac{1}{Q}\cdot\pdv[2]{Q}{\beta}+\pdv{Q}(\frac{1}{Q})\pdv{Q}{\beta}\cdot\pdv{Q}{\beta}\\
+            &= \frac{1}{Q}\cdot\pdv[2]{Q}{\beta}-\frac{1}{Q^2}\left( \pdv{Q}{\beta} \right)^2\\
+            &= \frac{1}{Q}\cdot\pdv[2]{Q}{\beta}-\left( \frac{1}{Q}\pdv{Q}{\beta} \right)^2\\
+            &= \frac{1}{Q}\cdot\pdv[2]{Q}{\beta}-\left( \pdv{\ln Q}{\beta} \right)^2\\
+            &= \frac{1}{Q}\cdot\pdv[2]{Q}{\beta}-\left( -\pdv{\ln Q}{\beta} \right)^2\\
+            &= \prb{E^2}-\prb{E}^2 = \sigma_E^2
+        \end{align*}
+        as desired.\par
+        As to the second part of the question, plugging in the given values yields
+        \begin{align*}
+            \frac{\sigma_E}{\prb{E}} &= \frac{\sqrt{k_BTC_V}}{\prb{E}}\\
+            &= \frac{\sqrt{k_BT\cdot 3Nk_B/2}}{3Nk_BT/2}\\
+            &= \frac{1}{\sqrt{N}}\cdot\frac{1}{\sqrt{3T/2}}
+        \end{align*}
+        which will indeed behave like $1/\sqrt{N}$ as $N\to\infty$. This means that as the number of particles increase, the deviations from the average energy will grow smaller and smaller.\par
+        Performing the same analysis on a solid obeying the law of Dulong and Petit yields
+        \begin{align*}
+            \frac{\sigma_E}{\prb{E}} &= \frac{\sqrt{k_BTC_V}}{\prb{E}}\\
+            &= \frac{\sqrt{k_BT\cdot 3NR}}{3NRT}\\
+            &= \frac{1}{\sqrt{N}}\cdot\frac{\sqrt{k_B}}{\sqrt{3RT}}
+        \end{align*}
+        so $\sigma_E/\prb{E}$ will also behave like $1/\sqrt{N}$ as $N\to\infty$ for this type of solid.
+    \end{proof}
     \item 
     \begin{enumerate}
         \item Problem 17-11 and also verify that the pressure derived from this partition function gives the van der Waals equation (16.5).\par
-        Although we will not do so in this book, it is possible to derive the partition function for a monoatomic van der Waals gas.
+        Although we will not do so in this book, it is possible to derive the partition function for a monoatomic van der Waals gas as
         \begin{equation*}
             Q(N,V,T) = \frac{1}{N!}\left( \frac{2\pi mk_BT}{h^2} \right)^{3N/2}(V-Nb)^N\e[aN^2/Vk_BT]
         \end{equation*}
         where $a$ and $b$ are the van der Waals constants. Derive an expression for the energy of a monoatomic van der Waals gas.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \ln Q &= -\ln N!+\frac{3N}{2}\ln\left( \frac{2\pi mk_B}{h^2} \right)+\frac{3N}{2}\ln T+N\ln(V-Nb)+\frac{aN^2}{Vk_BT}\\
+                &= \frac{3N}{2}\ln T+\frac{aN^2}{Vk_BT}+\text{terms not involving }T
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                \prb{E} &= k_BT^2\pdv{\ln Q}{T}\\
+                &= k_BT^2\pdv{T}(\frac{3N}{2}\ln T+\frac{aN^2}{Vk_BT})\\
+                &= k_BT^2\left( \frac{3N}{2T}-\frac{aN^2}{Vk_BT^2} \right)\\
+                \Aboxed{\prb{E} &= \frac{3}{2}Nk_BT-\frac{aN^2}{V}}
+            \end{align*}
+            As to the second part of the question, we have that
+            \begin{align*}
+                \ln Q &= \ln\left( \frac{1}{N!}\left( \frac{2\pi mk_BT}{h^2} \right)^{3N/2} \right)+N\ln(V-Nb)+\frac{aN^2}{Vk_BT}\\
+                &= N\ln(V-Nb)+\frac{aN^2}{Vk_BT}+\text{terms not involving }V
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                \prb{P} &= k_BT\pdv{\ln Q}{V}\\
+                &= k_BT\pdv{V}(N\ln(V-Nb)+\frac{aN^2}{Vk_BT})\\
+                &= k_BT\left[ \frac{N}{V-Nb}-\frac{a}{k_BT}\left( \frac{N}{V} \right)^2 \right]\\
+                &= \frac{Nk_BT}{V-Nb}-a\left( \frac{N}{V} \right)^2\\
+                \left( P+\frac{aN^2}{V^2} \right)(V-Nb) &= Nk_BT
+            \end{align*}
+            as desired.
+        \end{proof}
         \item Then do Problem 17-12.\par
         An approximate partition function for a gas of hard spheres can be obtained from the partition function of a monoatomic gas by replacing $V$ in
         \begin{align*}
@@ -65,6 +208,33 @@
             q(V,\beta) &= \left( \frac{2\pi m}{h^2\beta} \right)^{3/2}V
         \end{align*}
         with $V-b$, where $b$ is related to the volume of the $N$ hard spheres. Derive expressions for the energy and the pressure of this system.
+        \begin{proof}
+            We have that
+            \begin{align*}
+                \ln Q &= N\ln q-\ln N!\\
+                &= N\left( \ln\left( \frac{2\pi m}{h^2} \right)^{3/2}(V-b)-\frac{3}{2}\ln\beta \right)-\ln N!\\
+                &= -\frac{3N}{2}\ln\beta+\text{terms not involving }\beta
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                \prb{E} &= -\pdv{\ln Q}{\beta}\\
+                &= -\pdv{\beta}(-\frac{3N}{2}\ln\beta)\\
+                &= \frac{3N}{2\beta}\\
+                \Aboxed{\prb{E} &= \frac{3}{2}Nk_BT}
+            \end{align*}
+            We also have that
+            \begin{align*}
+                \ln Q &= N\ln q-\ln N!\\
+                &= N\left( \ln\left( \frac{2\pi m}{h^2\beta} \right)^{3/2}+\ln(V-b) \right)-\ln N!\\
+                &= N\ln(V-b)+\text{terms not involving }V
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                \prb{P} &= k_BT\pdv{\ln Q}{V}\\
+                &= k_BT\pdv{V}(N\ln(V-b))\\
+                \Aboxed{\prb{P} &= \frac{Nk_BT}{V-b}}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Problem 18-14.\par
     There is a mathematical procedure to calculate the error in replacing a summation by an integral as we do for the translational and rotational partition functions. The formula is called the Euler-Maclaurin summation formula and goes as follows.
@@ -86,6 +256,28 @@
         q_\text{rot}(T) = \frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{8\pi^2I_Ak_BT}{h^2}}\sqrt{\frac{8\pi^2I_Bk_BT}{h^2}}\sqrt{\frac{8\pi^2I_Ck_BT}{h^2}}
     \end{equation*}
     where $\sigma$ is a constant and $I_A,I_B,I_C$ are the three (distinct) moments of inertia. Show that the rotational contribution to the molar heat capacity is $\overline{C}_{V,\text{rot}}=3R/2$.
+    \begin{proof}
+        We have that
+        \begin{align*}
+            \ln q_\text{rot} &= \frac{3}{2}\ln T+\ln\frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{8\pi^2I_Ak_B}{h^2}}\sqrt{\frac{8\pi^2I_Bk_B}{h^2}}\sqrt{\frac{8\pi^2I_Ck_B}{h^2}}\\
+            &= \frac{3}{2}\ln T+\text{terms not involving }T
+        \end{align*}
+        It follows that
+        \begin{align*}
+            \prb{E} &= k_BT^2\pdv{\ln q_\text{rot}}{T}\\
+            &= k_BT^2\pdv{T}(\frac{3}{2}\ln T)\\
+            &= k_BT^2\cdot\frac{3}{2T}\\
+            &= \frac{3}{2}k_BT
+        \end{align*}
+        so that
+        \begin{align*}
+            C_{V,\text{rot}} &= \pdv{\prb{E}}{T}\\
+            &= \pdv{T}(\frac{3}{2}k_BT)\\
+            &= \frac{3}{2}k_B\\
+            \Aboxed{\overline{C}_{V,\text{rot}} &= \frac{3}{2}R}
+        \end{align*}
+        Note that at temperatures for which \fbox{$\Theta_\text{rot}\ll T$ is not satisfied} the above result will not hold since our derivation of the partition function relies on using this result to approximate an infinite sum as an indefinite integral.
+    \end{proof}
 \end{enumerate}
 
 
