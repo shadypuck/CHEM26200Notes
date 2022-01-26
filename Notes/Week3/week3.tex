@@ -61,5 +61,73 @@
 
 
 
+\section{The First Law of Thermodynamics}
+\begin{itemize}
+    \item \marginnote{1/26:}See \textcite{bib:PHYS13300Notes} for background on/content of today's lecture.
+    \item Joule best quantified how we think about work and energy.
+    \item \textbf{System}: Part of the world being investigated. It can contain energy, a number of particles, etc.
+    \item The Newtonian way to change the energy into a system is to do work (mechanical, electrical, etc.) on the system. In chemistry, $\var{w}$ is positive if work is done on the system.
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            \var{w} = -P\dd{V}
+        \end{equation*}
+    \end{itemize}
+    \item A system at thermal equilibrium has a given temperature characteristic of the system. Some property of the system indicates how hot or cold it is (e.g., volume of mercury, etc.)
+    \item Measure heat transfer using a calorimeter and a thermomenter.
+    \begin{itemize}
+        \item Convention: Heat put into a system $\var{q}$ is positive and this heat is transferred if the temperature is lower than another system or surroundings.
+        \item The heat capacity of a system times the change in temperature is equal to the heat put into the system. It is always positive as heat put into the system raises the temperature.
+    \end{itemize}
+    \item Example molar heat capacities.
+    \begin{itemize}
+        \item For water vapor at low pressure and $\SI{20}{\celsius}$, $\overline{C}_V=3R=\SI{25}{\joule\per\mole\per\kelvin}$.
+        \item For liquid water, it's higher (hydrogen bonding).
+        \item For ice, it's lower.
+    \end{itemize}
+    \item \textbf{First law of thermodynamics}: The internal energy of a system changes with heat put into the system and work done on the system.
+    \begin{equation*}
+        \dd{U} = \var{q}+\var{w}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that in engineering, $\dd{U}=\var{q}-\var{w}$.
+    \end{itemize}
+    \item \textbf{State variable}: A property that describes the system.
+    \begin{itemize}
+        \item For example, a system of gas molecules has a state defined by the state variables $T$, $P$, $V$, and $n$.
+    \end{itemize}
+    \item \textbf{State function}: A property that depends only upon the state of the system.
+    \begin{itemize}
+        \item For example, some equations of state for an ideal gas are $PV=nRT$ or $PV=2U/3$.
+        \item The internal energy is a state function.
+        \item Heat and work are not state functions because they do not depend uniquely on the values at equilibrium.
+        \begin{itemize}
+            \item They also depend on the way you do something.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Reversible process}: A process that can be represented as a path along state variables, e.g., a line on a $PV$ diagram. This implies that it is also a path where all state variables are known, and is therefore a path where the system is always in quasi-equilibrium.
+    \begin{itemize}
+        \item Isothermal, isochoric, isobaric, and adiabatic changes are reversible.
+        \item All of these processes are analyzed exactly as in \textcite{bib:PHYS13300Notes}.
+    \end{itemize}
+    \item \textbf{Irreversible process}: A process that cannot be drawn on a PV diagram.
+    \item Experiment to measure $\gamma$ (the ratio of specific heats):
+    \begin{enumerate}
+        \item Let sit at $P_0T_0$.
+        \item Pump in a little gas (add $\Delta n$) and let sit, measure $P_0+\Delta P_1,T_0$.
+        \item Open the valve to air quickly to $P_0$. Adiabatic expansion (cools down).
+        \item Let sit to measure the new pressure $P+\Delta P_2$ when $T$ is back at $T_0$.
+        \item $\gamma$ is determined from $\Delta P_1,\Delta P_2$ (this will be a homework problem).
+    \end{enumerate}
+    \begin{itemize}
+        \item In the second step, we add some molecules into the container. We can show that $\Delta P_1/P_0=\Delta N_1/n_0$.
+        \item In the third step, we let out the air, and we can show that $\Delta n_2/n_0=\gamma\Delta P_1/P_0$.
+        \item In step 4, we have in the container $(n_0+\Delta n_1-\Delta n_2)RT_0=(P_0+\Delta P_2)V_0$.
+        \item This implies that $\Delta P_2/\Delta P_1=1-1/\gamma$.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
