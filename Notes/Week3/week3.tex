@@ -129,5 +129,103 @@
 
 
 
+\section{Enthalpy}
+\begin{itemize}
+    \item \marginnote{1/28:}Thermonamic derivation of the formula for $\prb{P}$ in terms of $Q$.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            U &= \sum p_jE_j\\
+            \dd{U} &= \sum(\dd{p_j}E_j+p_j\dd{E_j})\\
+            &= \underbrace{\sum\dd{p_j}E_j}_{\var{q}}+\underbrace{\sum p_j\pdv{E_j}{V}}_{-P}\dd{V}
+        \end{align*}
+        where the last part follows by analogy with $\dd{U}=\var{q}-P\dd{V}$.
+        \item It follows that
+        \begin{equation*}
+            P = -\sum p_j\pdv{E_j}{V} = -\prb{\pdv{E}{V}}
+        \end{equation*}
+        \item Thus, we have that
+        \begin{align*}
+            P &= -\sum\frac{\e[-E_j/k_BT]}{Q}\pdv{E_j}{V}\\
+            &= \frac{1}{Q}\sum k_BT\cdot-\frac{1}{k_BT}\e[-E_j/k_BT]\pdv{E_j}{V}\\
+            &= k_BT\frac{1}{Q}\sum\pdv{E_j}(\e[-E_j/k_BT])\pdv{E_j}{V}\\
+            &= k_BT\frac{1}{Q}\sum\pdv{V}(\e[-E_j/k_BT])\\
+            &= k_BT\frac{1}{Q}\pdv{Q}{V}\\
+            P &= k_BT\pdv{\ln Q}{V}
+        \end{align*}
+    \end{itemize}
+    \item Applies the formula to an ideal gas of independent, indistinguishable particles to derive the ideal gas law.
+    \item \textbf{Enthalpy}: A state function representign the heat put into the system at constant pressure. \emph{Denoted by} $\bm{H}$. \emph{Given by}
+    \begin{equation*}
+        H = U+PV
+    \end{equation*}
+    \item We have that
+    \begin{align*}
+        \dd{H} &= \dd{U}+P\dd{V}+V\dd{P}\\
+        &= \var{q}-P\dd{V}+P\dd{V}+V\dd{P}\\
+        &= \var{q}+V\dd{P}
+    \end{align*}
+    \begin{itemize}
+        \item At constant pressure ($\dd{P}=0$), we have that $\dd{H}=\var{q}$.
+        \item At constant volume, we have that $\dd{H}=\var{q}$ as well?
+    \end{itemize}
+    \item \textbf{Constant-volume heat capacity}. The following expression. \emph{Denoted by} $\bm{C_V}$. \emph{Given by}
+    \begin{equation*}
+        C_V = \left( \pdv{U}{T} \right)_{V,N}
+    \end{equation*}
+    \item \textbf{Constant-pressure heat capacity}. The following expression. \emph{Denoted by} $\bm{C_P}$. \emph{Given by}
+    \begin{equation*}
+        C_P = \left( \pdv{H}{T} \right)_{P,N}
+    \end{equation*}
+    \item For an ideal gas,
+    \begin{align*}
+        \dd{H} &= \dd{U}+\dd{(PV)}\\
+        &= nC_V\dd{T}+nR\dd{T}\\
+        &= n(C_V+R)\dd{T}
+    \end{align*}
+    \begin{itemize}
+        \item Recall this result from \textcite{bib:PHYS13300Notes}.
+    \end{itemize}
+    \item Considers heat diagrams.
+    \begin{itemize}
+        \item Recall the enthalpy of phase changes $\Delta H_\text{fus}$, $\Delta H_\text{vap}$, and $\Delta H_\text{sub}$.
+        \item It follows that
+        \begin{equation*}
+            H(T)-H(T_0) = \int_{T^0}^TC_p\dd{T}+\sum\Delta H_\text{phase changes}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Hess's Law}: $\Delta H=0$ around a closed loop.
+    \begin{itemize}
+        \item This is because $H$ is a state function.
+    \end{itemize}
+    \item \textbf{Standard enthalpy of formation}. \emph{Denoted by} $\bm{\Delta H_f^\circ}$. \emph{Units} $\textbf{kJ}\bm{/}\textbf{mol}$.
+    \begin{itemize}
+        \item Calculated from the constituent elements in their standard state, \SI{1}{\bar}, \SI{298.15}{\kelvin}.
+    \end{itemize}
+    \item We have, for example, that the $\Delta H_\text{vap}^\circ$ of a substance is the difference of its $\Delta H_f^\circ$ in its gaseous state and its $\Delta H_f^\circ$ in its liquid state.
+    \item With the standard enthalpy of formation and the heat capacity $C_P(T)$, one gets the enthalpy of formation at nonstandard temperatures.
+    \item To get the enthalpy of formation at non-standard pressures of chemical interest, most of the effect is from the gas components because solids and liquid enthalpy vary little with pressure.
+    \item The direction of change is sometimes in the direction of \emph{positive} enthalpy change.
+    \begin{itemize}
+        \item This change is driven by the fact that in these cases, the direction of change is toward the most probable state.
+    \end{itemize}
+    \item In a reversible process, $\dd{U}=\var{q}_\text{rev}-P\dd{V}$. In this case
+    \begin{equation*}
+        \var{q}_\text{rev} = \dd{U}+P\dd{V} = nC_V\dd{T}+P\dd{V} \neq \dd{nC_VT+PV}
+    \end{equation*}
+    so $\var{q}_\text{rev}$ is not a state function.
+    \begin{itemize}
+        \item However,
+        \begin{align*}
+            \frac{\var{q}_\text{rev}}{T} &= nC_V\frac{\dd{T}}{T}+\frac{P\dd{V}}{T}\\
+            &= nC_V\frac{\dd{T}}{T}+nR\frac{\dd{V}}{V}\\
+            &= \dd{(nC_V\ln T+nR\ln V)}
+        \end{align*}
+        is a state function.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
