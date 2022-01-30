@@ -250,6 +250,72 @@
         q_\text{rot}(T) = \frac{T}{\Theta_\text{rot}}\left\{ 1+\frac{1}{3}\left( \frac{\Theta_\text{rot}}{T} \right)+\frac{1}{15}\left( \frac{\Theta_\text{rot}}{T} \right)^2+O\left[ \left( \frac{\Theta_\text{rot}}{T} \right)^3 \right] \right\}
     \end{equation*}
     Calculate the correction to replacing the second equation herein by an integral for \ce{N2_{(g)}} at $\SI{300}{\kelvin}$ and \ce{H2_{(g)}} at $\SI{300}{\kelvin}$ (being so light, \ce{H2} is an extreme example).
+    \begin{proof}
+        We will calculate the constituent results in the Euler-Maclaurin summation formula separately before assembling them into the final sum. Thus, we have
+        \begin{equation*}
+            f(J) = (2J+1)\e[-\Theta_\text{rot}J(J+1)/T]
+        \end{equation*}
+        \begin{align*}
+            \dv{f}{J} &= 2\e[-\Theta_\text{rot}J(J+1)/T]+(2J+1)\dv{J}(\e[-\Theta_\text{rot}J(J+1)/T])\\
+            &= 2\e[-\Theta_\text{rot}J(J+1)/T]+(2J+1)\dv{u}(\e[-\Theta_\text{rot}u/T])\dv{u}{J}\\
+            &= 2\e[-\Theta_\text{rot}J(J+1)/T]+(2J+1)\cdot-\frac{\Theta_\text{rot}}{T}\e[-\Theta_\text{rot}J(J+1)/T]\cdot(2J+1)\\
+            &= \left( 2-\frac{\Theta_\text{rot}}{T}(2J+1)^2 \right)\e[-\Theta_\text{rot}J(J+1)/T]
+        \end{align*}
+        \begin{align*}
+            \dv[2]{f}{J} &= \dv{J}(2-\frac{\Theta_\text{rot}}{T}(2J+1)^2)\e[-\Theta_\text{rot}J(J+1)/T]+\left( 2-\frac{\Theta_\text{rot}}{T}(2J+1)^2 \right)\dv{J}(\e[-\Theta_\text{rot}J(J+1)/T])\\
+            &= -\frac{\Theta_\text{rot}}{T}\cdot 2(2J+1)\cdot 2\cdot\e[-\Theta_\text{rot}J(J+1)/T]+\left( 2-\frac{\Theta_\text{rot}}{T}(2J+1)^2 \right)\cdot-\frac{\Theta_\text{rot}}{T}\e[-\Theta_\text{rot}J(J+1)/T]\cdot(2J+1)\\
+            % &= -\frac{4\Theta_\text{rot}}{T}(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]+\left( -\frac{2\Theta_\text{rot}}{T}(2J+1)+\frac{\Theta_\text{rot}^2}{T^2}(2J+1)^3 \right)\cdot\e[-\Theta_\text{rot}J(J+1)/T]\\
+            % &= \left( \frac{\Theta_\text{rot}^2}{T^2}(2J+1)^3-\frac{6\Theta_\text{rot}}{T}(2J+1) \right)\e[-\Theta_\text{rot}J(J+1)/T]\\
+            &= \left( \frac{\Theta_\text{rot}}{T}(2J+1)^2-6 \right)\frac{\Theta_\text{rot}}{T}(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]
+        \end{align*}
+        \begin{align*}
+            \pdv[3]{f}{J} &= \dv{J}(\frac{\Theta_\text{rot}^2}{T^2}(2J+1)^2-6\frac{\Theta_\text{rot}}{T})(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]+\left( \frac{\Theta_\text{rot}}{T}(2J+1)^2-6 \right)\frac{\Theta_\text{rot}}{T}\dv{J}((2J+1)\e[-\Theta_\text{rot}J(J+1)/T])\\
+            &= \frac{4\Theta_\text{rot}^2}{T^2}(2J+1)^2\e[-\Theta_\text{rot}J(J+1)/T]+\left( \frac{\Theta_\text{rot}}{T}(2J+1)^2-6 \right)\frac{\Theta_\text{rot}}{T}\left( 2-\frac{\Theta_\text{rot}}{T}(2J+1)^2 \right)\e[-\Theta_\text{rot}J(J+1)/T]\\
+            &= \frac{4\Theta_\text{rot}^2}{T^2}(2J+1)^2\e[-\Theta_\text{rot}J(J+1)/T]+\left( -\frac{\Theta_\text{rot}^2}{T^2}(2J+1)^4+8\frac{\Theta_\text{rot}}{T}(2J+1)^2-12 \right)\frac{\Theta_\text{rot}}{T}\e[-\Theta_\text{rot}J(J+1)/T]\\
+            &= \left( -\frac{\Theta_\text{rot}^2}{T^2}(2J+1)^4+12\frac{\Theta_\text{rot}}{T}(2J+1)^2-12 \right)\frac{\Theta_\text{rot}}{T}\e[-\Theta_\text{rot}J(J+1)/T]
+        \end{align*}
+        These terms evaluate under the conditions $a=0$ and $b=\infty$ to
+        \begin{equation*}
+            \int_0^\infty f(J)\dd{J} = \frac{T}{\Theta_\text{rot}}
+        \end{equation*}
+        \begin{align*}
+            f(0) &= 1&
+            f(\infty) &= 0
+        \end{align*}
+        \begin{align*}
+            \eval{\dv{f}{J}}_{J=0} &= 2-\frac{\Theta_\text{rot}}{T}&
+            \eval{\dv{f}{J}}_{J=\infty} &= 0
+        \end{align*}
+        % \begin{align*}
+        %     \eval{\dv[2]{f}{J}}_{J=0} &= \frac{\Theta_\text{rot}}{T}\left( \frac{\Theta_\text{rot}}{T}-6 \right)&
+        %     \eval{\dv[2]{f}{J}}_{J=\infty} &= 0
+        % \end{align*}
+        \begin{align*}
+            \eval{\dv[3]{f}{J}}_{J=0} &= \frac{\Theta_\text{rot}}{T}\left( -\frac{\Theta_\text{rot}^2}{T^2}+12\frac{\Theta_\text{rot}}{T}-12 \right)&
+            \eval{\dv[3]{f}{J}}_{J=\infty} &= 0
+        \end{align*}
+        It follows by applying the full Euler-Maclaurin formula that
+        \begin{align*}
+            q_\text{rot}(T) &= \sum_{J=0}^\infty(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]\\
+            &= \int_0^\infty f(J)\dd{J}+\frac{1}{2}(f(\infty)+f(0))-\frac{1}{12}\left( \eval{\dv{f}{J}}_{J=0}-\dv{f}{J}_{J=\infty} \right)+\frac{1}{720}\left( \eval{\dv[3]{f}{J}}_{J=0}-\dv[3]{f}{J}_{J=\infty} \right)+\cdots\\
+            &= \frac{T}{\Theta_\text{rot}}+\frac{1}{2}(0+1)-\frac{1}{12}\left[ \left( 2-\frac{\Theta_\text{rot}}{T} \right)-0 \right]+\frac{1}{720}\left[ \frac{\Theta_\text{rot}}{T}\left( -\frac{\Theta_\text{rot}^2}{T^2}+12\frac{\Theta_\text{rot}}{T}-12 \right)-0 \right]+\cdots\\
+            &= \frac{T}{\Theta_\text{rot}}+\frac{1}{2}-\frac{1}{6}+\frac{1}{12}\frac{\Theta_\text{rot}}{T}-\frac{1}{720}\frac{\Theta_\text{rot}^3}{T^3}+\frac{1}{60}\frac{\Theta_\text{rot}^2}{T^2}-\frac{1}{60}\frac{\Theta_\text{rot}}{T}+\cdots\\
+            &= \frac{T}{\Theta_\text{rot}}+\frac{1}{3}+\frac{1}{15}\frac{\Theta_\text{rot}}{T}+\frac{1}{60}\frac{\Theta_\text{rot}^2}{T^2}-\frac{1}{720}\frac{\Theta_\text{rot}^3}{T^3}+\cdots\\
+            &= \frac{T}{\Theta_\text{rot}}\left\{ 1+\frac{1}{3}\left( \frac{\Theta_\text{rot}}{T} \right)+\frac{1}{15}\left( \frac{\Theta_\text{rot}}{T} \right)^2+O\left[ \left( \frac{\Theta_\text{rot}}{T} \right)^3 \right] \right\}
+        \end{align*}
+        Now since our approximation for $q_\text{rot}(T)$ by an integral yields $T/\Theta_\text{rot}$ as a result, we know that the correction factor to second order is
+        \begin{equation*}
+            \text{correction factor} = \frac{1}{3}\left( \frac{\Theta_\text{rot}}{T} \right)+\frac{1}{15}\left( \frac{\Theta_\text{rot}}{T} \right)^2
+        \end{equation*}
+        Therefore, for \ce{N2} ($\Theta_\text{rot}=\SI{2.88}{\kelvin}$) at $T=\SI{300}{\kelvin}$, we have that
+        \begin{equation*}
+            \boxed{\text{correction factor} = \SI{0.321}{\percent}}
+        \end{equation*}
+        while for \ce{H2} ($\Theta_\text{rot}=\SI{85.3}{\kelvin}$) at $T=\SI{300}{\kelvin}$, we have that
+        \begin{equation*}
+            \boxed{\text{correction factor} = \SI{10.0}{\percent}}
+        \end{equation*}
+    \end{proof}
     \item Problem 17-33. Discuss at which temperatures the heat capacity deviates from the result given.\par
     We will learn in Chapter 18 that the rotational partition function of an asymmetric top molecule is given by
     \begin{equation*}
