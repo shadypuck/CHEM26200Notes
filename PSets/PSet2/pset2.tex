@@ -1,0 +1,106 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\stepcounter{section}
+
+\begin{document}
+
+
+
+
+\section{The First and Second Laws of Thermodynamics}
+\begin{enumerate}
+    \item \marginnote{2/8:}Consider the following experiment with an ideal gas, and derive the relation between $\gamma$, $h$, and $h'$.\par
+    Let the system sit at $P_0,T_0$ where $h=0$. Pump a little gas in (add $\Delta n$) and wait so that $T$ is back to $T_0$; measure $h$. Open the valve to air quickly to $P_0$ and close again. Justify why this can be considered a reversible adiabatic expansion. Wait so that $T$ is back to $T_0$; measure $h'$.
+    \begin{center}
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [thick]
+                (0,-1) circle (5.2mm)
+                (-1.3,0) circle (3.2mm)
+            ;
+            \draw [thick,double=white,double distance=1mm]
+                (2,1) -- (2,-1) to[out=-90,in=-90,looseness=2] (1.7,-1) -- (1.7,-0.3) to[out=90,in=0] (1.4,0) -- (0.06,0)
+                (0,0.06) -- (0,0.5)
+                (0,-0.06) -- (0,-0.5)
+                (-0.06,0) -- (-0.5,0)
+            ;
+            \draw [thick,double=white,double distance=0.5mm] (-0.5,0) -- (-1,0);
+            \draw [semithick]
+                (-0.5,-0.2) -- (-0.5,0.2) (-0.6,0.2) -- (-0.4,0.2)
+                (-0.2,0.5) -- (0.2,0.5) (0.2,0.4) -- (0.2,0.6)
+            ;
+            \draw [line width=1mm,gax] (2,-0.1) -- (2,-1) to[out=-90,in=-90,looseness=2] (1.7,-1) -- (1.7,-0.5);
+    
+            \draw [<->] (2.3,-0.5) -- node[right]{$h$} (2.3,-0.1);
+        \end{tikzpicture}
+    \end{center}
+    \item 
+    \begin{enumerate}
+        \item $n$ moles of an ideal gas with a given $\gamma$ undergo an adiabatic expansion from $V_a$ to $V_b$. Calculate the work done and the total energy change.
+        \item $n$ moles of an ideal gas with a given $\gamma$ undergo an isobaric expansion from $V_a$ to $V_b$. Calculate the work done and the total energy change.
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Consider a Carnot cycle for an ideal gas. Derive the relation $Q_1/T_1+Q_2/T_2=0$ where $Q_1,Q_2$ are the heat transferred to the system along the isotherms at $T_1,T_2$.
+        \item Consider an ideal gas going from $V_1,T_1$ to $V_2,T_2$. Calculate the entropy change in terms of $V_1,V_2,T_2,T_2$.
+    \end{enumerate}
+    \item Practicing with partial derivatives.\par
+    By expressing the internal energy state function $U$ in terms of $V$ and $T$ variables and alternatively with $P$ and $T$ variables, show that
+    \begin{align*}
+        \left( \pdv{U}{P} \right)_T &= \left( \pdv{U}{V} \right)_T\left( \pdv{V}{P} \right)_T&
+        \left( \pdv{U}{T} \right)_P &= \left( \pdv{U}{T} \right)_V+\left( \pdv{V}{T} \right)_P\left( \pdv{U}{V} \right)_T
+    \end{align*}
+    Then derive that
+    \begin{equation*}
+        C_P-C_P = \left[ P+\left( \pdv{U}{V} \right)_T \right]\left( \pdv{V}{T} \right)_P
+    \end{equation*}
+    Show that
+    \begin{equation*}
+        \left( \pdv{U}{V} \right)_T = 0
+    \end{equation*}
+    for an ideal gas. And then show that
+    \begin{equation*}
+        C_P-C_P = nR
+    \end{equation*}
+    \item Write that $\dd{U}=T\dd{S}-P\dd{V}$ and derive the following two relations.
+    \begin{align*}
+        \left( \pdv{S}{T} \right)_V &= \frac{C_V}{T}&
+        \left( \pdv{S}{V} \right)_T &= \frac{1}{T}\left[ P+\left( \pdv{U}{V} \right)_T \right]
+    \end{align*}
+    \item Problem 21-10. Show your work.\par
+    It has been found experimentally that $\Delta_\text{vap}\overline{S}\approx\SI{88}{\joule\per\kelvin\per\mole}$ for many nonassociated liquids. This rough rule of thumb is called \textbf{Trouton's rule}. Use the following data to test the validity of Trouton's rule.
+    \begin{center}
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{
+            l
+            c
+            S[table-format=3.2]
+            S[table-format=2.2]
+            S[table-format=2.2]
+        }
+            \toprule
+            Substance & {$t_\text{fus}/\si{\celsius}$} & {$t_\text{vap}/\si{\celsius}$} & {$\Delta_\text{fus}\overline{H}/\si{\kilo\joule\per\mole}$} & {$\Delta_\text{vap}\overline{H}/\si{\kilo\joule\per\mole}$}\\
+            \midrule
+            Pentane            & -129.7 & 36.06 & 8.42  & 25.79\\
+            Hexane             & -95.3  & 68.73 & 13.08 & 28.85\\
+            Heptane            & -90.6  & 98.5  & 14.16 & 31.77\\
+            Ethylene oxide     & -111.7 & 10.6  & 5.17  & 25.52\\
+            Benzene            & 5.53   & 80.09 & 9.95  & 30.72\\
+            Diethyl ether      & -116.3 & 34.5  & 7.27  & 26.52\\
+            Tetrachloromethane & -23    & 76.8  & 3.28  & 29.82\\
+            Mercury            & -38.83 & 356.7 & 2.29  & 59.11\\
+            Bromine            & -7.2   & 58.8  & 10.57 & 29.96\\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \item Problem 21-37. Show your reasoning.\par
+    Given that $\tilde{\nu}_1=\SI{1321.3}{\per\centi\meter}$, $\tilde{\nu}_2=\SI{750.8}{\per\centi\meter}$, $\tilde{\nu}_3=\SI{1620.3}{\per\centi\meter}$, $\tilde{A}_0=\SI{7.9971}{\per\centi\meter}$, $\tilde{B}_0=\SI{0.4339}{\per\centi\meter}$, and $\tilde{C}_0=\SI{0.4103}{\per\centi\meter}$, calculate the standard molar entropy of \ce{NO2_{(g)}} at \SI{298.15}{\kelvin}. (Note that \ce{NO2_{(g)}} is a bent triatomic molecule.) How does your value compare with that in Table 21.2?
+\end{enumerate}
+
+
+
+
+\end{document}
