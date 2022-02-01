@@ -344,7 +344,7 @@
     \begin{equation*}
         \prb{u_x} = \int_{-\infty}^\infty u_xf(u_x)\dd{u_x} = 0
     \end{equation*}
-    \item We can also calculate that $\prb{u_x^2}=RT/M$ and $m\prb{u_x}^2/2=k_BT/2$ from the above result.
+    \item We can also calculate that $\prb{u_x^2}=RT/M$ and $m\prb{u_x}^2/2=k_BT/2$ from the above result\footnote{See the equipartition of energy theorem from \textcite{bib:PHYS13300Notes}.}.
     \begin{itemize}
         \item An important consequence is that the total kinetic energy is divided equally into the $x$-, $y$-, and $z$-components.
     \end{itemize}
@@ -392,6 +392,288 @@
     \item We can also confirm our previously calculated values for $\prb{u^2}$ and $\prb{\varepsilon}$.
     \item \textcite{bib:McQuarrieSimon} does a higher-level derivation of the ideal gas law that is rather analogous to the one done in class (i.e., via its flux perspective).
     \item \textcite{bib:McQuarrieSimon} discusses a simple and Nobel-prize winning experiment that verified the Maxwell-Boltzmann distribution.
+\end{itemize}
+
+
+
+\section{Chapter 19: The First Law of Thermodynamics}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{1/31:}\textbf{Thermodynamics}: The study of various properties and, particularly, the relations between the various properties of systems in equilibrium.
+    \begin{itemize}
+        \item Primarily an experimental science that is still of great practical value to the fields of today.
+        \item "All the results of thermodynamics are based on three fundamental laws. These laws summarize an enormous body of experimental data, and there are absolutely no known exceptions" \parencite[765]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Classical thermodynamics}: The development of thermodynamics before the atomic theory of matter.
+    \begin{itemize}
+        \item Since thermodynamics was not developed in concert with the atomic theory, we can rest assured that its results will not need to be modified. However, it provides limited insight into what is going on at the molecular level.
+    \end{itemize}
+    \item \textbf{Statistical thermodynamics}: The molecular interpretation of thermodynamics developed since the atomic theory of matter became generally accepted.
+    \begin{itemize}
+        \item Chapters 17-18 are an elementary treatment of statistical thermodynamics.
+        \item Since atomic structure is still being determined, these results are not on as solid of a footing as classical thermodynamics.
+    \end{itemize}
+    \item \textbf{First Law of Thermodynamics}: The law of conservation of energy applied to a macroscopic system.
+    \item \textbf{System}: The part of the world we are investigating.
+    \item \textbf{Surroundings}: Everything else.
+    \item \textbf{Heat}: The manner of energy transfer that results from a temperature difference between the system and its surroundings. \emph{Denoted by} $\bm{q}$.
+    \begin{itemize}
+        \item Sign convention: Heat input into a system is positive; heat evolved by a system is negative.
+    \end{itemize}
+    \item \textbf{Work}: The transfer of energy between the system of interest and its surroundings as a result of the existence of unbalanced forces between the two. \emph{Denoted by} $\bm{w}$.
+    \begin{itemize}
+        \item Sign convention: Work done \emph{on} the system (i.e., that increases the energy of the system) is positive; work done \emph{by} the system (i.e., that increases the energy of the surroundings) is negative.
+    \end{itemize}
+    \item Work can be related to raising a mass.
+    \begin{itemize}
+        \item If a pressurized gas is capped by a piston with a mass $m$ on top and then it pushes the piston upwards a distance $h$, it does $w=-mgh$ of work.
+        \item Knowing that the external pressure $P_\text{ext}=F/A=mg/A$ and $Ah=\Delta V$, we recover
+        \begin{equation*}
+            w = -P_\text{ext}\Delta V
+        \end{equation*}
+        \item If $P_\text{ext}$ is not constant,
+        \begin{equation*}
+            w = -\int_{V_i}^{V_f}P_\text{ext}\dd{V}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Definite state}: A state of a system in which all of the variables needed to describe the system completely are defined.
+    \begin{itemize}
+        \item For example, the state of one mole of an ideal gas can be described completely via $P$, $V$, and $T$. In fact, we need only specify two of these since $PV=RT$ for one mole of gas (in particular, specifying any two specifies the third).
+    \end{itemize}
+    \item \textbf{State function}: A property that depends only upon the state of the system, not upon how the system was brought to that state.
+    \begin{itemize}
+        \item State functions can be integrated in a normal way, i.e., $\Delta U=U_2-U_1=\int_1^2\dd{U}$. In particular, we need not worry about the \emph{path} from state 1 to state 2, only that we got from $U_1$ to $U_2$.
+        \item Energy is a state function, but work and heat are not state functions.
+    \end{itemize}
+    \item \textbf{Reversible process}: An expansion or compression in which $P_\text{ext}$ and $P$ differ only infinitesimally.
+    \begin{itemize}
+        \item Technically, a reversible process would take infinite time, but it serves as a useful idealized limit regardless.
+    \end{itemize}
+    \item To calculate $w_\text{rev}$ (reversible work) for the compression of an ideal gas isothermally, we may replace $P_\text{ext}$ by the pressure of the gas $P$ to obtain
+    \begin{equation*}
+        w_\text{rev} = -\int_{V_1}^{V_2}P\dd{V}
+        = -\int_{V_1}^{V_2}\frac{nRT}{V}\dd{V}
+        = -nRT\ln\frac{V_2}{V_1}
+    \end{equation*}
+    \item Isothermal compression/expansion of a gas.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [stealth-stealth] (0,2) node[above]{$P$} -- (0,0) -- (3,0) node[right]{$V$};
+                \draw
+                    (1,0.1) -- ++(0,-0.2) node[below]{$V_1$}
+                    (2,0.1) -- ++(0,-0.2) node[below]{$V_2$}
+                    (0.1,1) -- ++(-0.2,0) node[left]{$P_\text{ext}$}
+                    (0.1,0.5) -- ++(-0.2,0) node[left]{$P_i$}
+                ;
+    
+                \fill [rex,opacity=0.3] (1,0) rectangle (2,1);
+                \draw [orx,thick] plot[domain=0.6:2.5,smooth] (\x,{1/\x}) node[right,black]{$T$};
+            \end{tikzpicture}
+            \caption{Isothermal compression.}
+            \label{fig:isothermalManipulationa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [stealth-stealth] (0,2) node[above]{$P$} -- (0,0) -- (3,0) node[right]{$V$};
+                \draw
+                    (1,0.1)   -- ++(0,-0.2) node[below]{$V_1$}
+                    (2,0.1)   -- ++(0,-0.2) node[below]{$V_2$}
+                    (0.1,0.5) -- ++(-0.2,0) node[left]{$P_\text{ext}$}
+                    (0.1,1) -- ++(-0.2,0) node[left]{$P_i$}
+                ;
+    
+                \fill [rex,opacity=0.3] (1,0) rectangle (2,0.5);
+                \draw [orx,thick] plot[domain=0.6:2.5,smooth] (\x,{1/\x}) node[right,black]{$T$};
+            \end{tikzpicture}
+            \caption{Isothermal expansion.}
+            \label{fig:isothermalManipulationb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [stealth-stealth] (0,2) node[above]{$P$} -- (0,0) -- (3,0) node[right]{$V$};
+                \draw
+                    (1,0.1)   -- ++(0,-0.2) node[below]{$V_1$}
+                    (2,0.1)   -- ++(0,-0.2) node[below]{$V_2$}
+                ;
+    
+                \fill [rex,opacity=0.3] (1,0) -- plot[domain=1:2,smooth] (\x,1/\x) -- (2,0);
+                \draw [orx,thick] plot[domain=0.6:2.5,smooth] (\x,{1/\x}) node[right,black]{$T$};
+            \end{tikzpicture}
+            \caption{Reversible process.}
+            \label{fig:isothermalManipulationc}
+        \end{subfigure}
+        \caption{Isothermal manipulation of an ideal gas.}
+        \label{fig:isothermalManipulation}
+    \end{figure}
+    \begin{itemize}
+        \item Imagine a gas at pressure $P$, volume $V$, and temperature $T$ in a container with a moveable piston at the top.
+        \item Isothermal compression (Figure \ref{fig:isothermalManipulationa}).
+        \begin{itemize}
+            \item Let the external pressure be held constant at $P_\text{ext}$. If the volume of the gas is initially at $V_2$ and temperature $T$, its pressure will be $P_i$. Thus, to equilibriate with the external pressure, it will compress to volume $V_1$ and final pressure $P_f=P_\text{ext}$ along the isotherm. As the force doing this work is the constant external pressure, the work done will be encapsulated by the red box in Figure \ref{fig:isothermalManipulationa}. Note that the gas necessarily releases an amount of heat equivalent to the work in the red box during the course of the compression to maintain isothermal conditions.
+        \end{itemize}
+        \item Isothermal expansion (Figure \ref{fig:isothermalManipulationa}).
+        \begin{itemize}
+            \item Let the external pressure be held constant at $P_\text{ext}$. If the volume of the gas is initially at $V_1$ and temperature $T$, its pressure will be $P_i$. Thus, to equilibriate with the external pressure, it will expand to volume $V_1$ and final pressure $P_f=P_\text{ext}$ along the isotherm. As the force doing this work is the constant external pressure, the work done will be encapsulated by the red box in Figure \ref{fig:isothermalManipulationa}. Note that the gas necessarily absorbs an amount of heat equivalent to the work in the red box during the course of the compression to maintain isothermal conditions.
+        \end{itemize}
+        \item Reversible compression/expansion (Figure \ref{fig:isothermalManipulationc}).
+        \begin{itemize}
+            \item In a very slow manner, incrementally increase (resp. decrease) $P_\text{ext}$ so as to allow the gas to reversibly compress (resp. expand).
+            \item Compressing a gas reversibly and isothermally does the minimum amount of work on the gas. Expanding a gas reversibly and isothermally requires the gas to do the maximum amount of work.
+        \end{itemize}
+        \item This work done on the gas raises the internal energy of the system, right? So shouldn't that raise the temperature, making the process not isothermal?
+        \item Where does the extra energy above and below the isotherm in the irreversible processes go? Is it converted to heat?
+        \item Does this mean that if you used a \SI{1000}{\kilo\gram} weight to compress a gas to half its original volume vs. using a \SI{10}{\kilo\gram} weight to compress a gas to half its original volume, the gas would get 100 times hotter in the former case?
+    \end{itemize}
+    \item \textbf{Path function}: A function whose value depends on the path from state 1 to state 2, not just the initial and final states.
+    \begin{itemize}
+        \item State functions cannot be integrated in the normal way. Mathematically, they have \textbf{inexact differentials}, i.e., we write $\int_1^2\var{w}=w$. This is because it makes no sense to write $w_1$, $w_2$, $w_2-w_1$, or $\Delta w$, for example.
+        \item Work and heat are path functions.
+    \end{itemize}
+    \item The First Law of Thermodynamics says that $\dd{U}=\var{q}+\var{w}$ (in differential form) and $\Delta U=q+w$ (in integrated form).
+    \begin{itemize}
+        \item An important consequence is that even though $\var{q}$ and $\var{w}$ are separately path functions/inexact differentials, their sum is a state function/exact differential.
+    \end{itemize}
+    \item \textbf{Adiabatic process}: A process in which no heat is transferred between the system and its surroundings.
+    \item Work during an adiabatic process.
+    \begin{itemize}
+        \item For an adiabatic process, $\var{q}=0$.
+        \item Thus, $w=\Delta U$.
+        \item But since $\Delta U$ is entirely dependent on temperature, we have that
+        \begin{equation*}
+            w = \Delta U
+            = \int_{T_1}^{T_2}\left( \pdv{U}{T} \right)_V\dd{T}
+            = \int_{T_1}^{T_2}C_V(T)\dd{T}
+        \end{equation*}
+        \item Why isn't this an integral of $P$ with respect to $V$?
+    \end{itemize}
+    \item Temperature during an adiabatic process.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            \dd{U} &= \dd{w}\\
+            C_V(T)\dd{T} &= -P\dd{V}\\
+            n\overline{C}_V(T)\dd{T} &= -\frac{nRT}{V}\dd{V}\\
+            \int_{T_1}^{T_2}\frac{\overline{C}_V(T)}{T}\dd{T} &= -R\int_{V_1}^{V_2}\frac{\dd{V}}{V}
+        \end{align*}
+        \item In the specific case of a monatomic ideal gas, $C_V(T)=3/2$. Thus, continuing, we have
+        \begin{align*}
+            \frac{3}{2}\ln\frac{T_2}{T_1} &= \ln\frac{V_1}{V_2}\\
+            \left( \frac{T_2}{T_1} \right)^{3/2} &= \frac{V_1}{V_2}
+        \end{align*}
+        \item We can also express the above in terms of pressure
+        \begin{align*}
+            \left( \frac{P_2V_2/nR}{P_1V_2/nR} \right)^{3/2} &= \frac{V_1}{V_2}\\
+            P_1V_1^{5/3} &= P_2V_2^{5/3}
+        \end{align*}
+        \item For a diatomic gas, we end up with
+        \begin{equation*}
+            P_1V_1^{7/5} = P_2V_2^{7/5}
+        \end{equation*}
+        \item Note that for an isothermal expansion, Boyle's law applies: $P_1V_1=P_2V_2$.
+    \end{itemize}
+    \item Relating work and heat to molecular properties.
+    \begin{itemize}
+        \item By comparing recently derived equations with previously derived equations, we have that
+        \begin{align*}
+            U &= \sum_jp_jE_j\\
+            \dd{U} &= \sum_jp_j\dd{E_j}+\sum_jE_j\dd{p_j}\\
+            &= \sum_jp_j\left( \pdv{E_j}{V} \right)_N\dd{V}+\sum_jE_j\dd{p_j}
+        \end{align*}
+        \item The above equation suggests that we can interpret the first term as the average change in energy of a system caused by a small change in its volume, i.e., the average work.
+        \item It follows by the First Law of Thermodynamics that we can interpret the second term as the average heat.
+        \item This expresses the important but subtle notion that work results from "an infinitesimal change in the allowed energies of a system, without changing the probability distribution of its states" while heat results from "a change in the probability distribution of the states of a system, without changing the allowed energies" \parencite[780]{bib:McQuarrieSimon}.
+        \item In particular, if we take the process under study to be reversible, we have
+        \begin{equation*}
+            \dd{U} = \underbrace{\sum_jp_j\left( \pdv{E_j}{V} \right)_N\dd{V}}_{\var{w_\text{rev}}}+\underbrace{\sum_jE_j\dd{p_j}}_{\var{q_\text{rev}}}
+            = \underbrace{\sum_jp_j\left( \pdv{E_j}{V} \right)_N}_{-P}\dd{V}+\sum_jE_j\dd{p_j}
+        \end{equation*}
+        \item The second equality above expresses the fact that
+        \begin{equation*}
+            P = -\prb{\pdv{E}{V}}
+        \end{equation*}
+        which we previously used in Chapter 17.
+    \end{itemize}
+    \item For a constant-volume process, $w=0$, so we know that the heat evolved in the process $q_V=\Delta U$.
+    \item Defining a state function analogous to $U$ for constant-pressure processes.
+    \begin{itemize}
+        \item We have from the First Law that
+        \begin{equation*}
+            \Delta U = q+w = q-\int_{V_1}^{V_2}P\dd{V}
+        \end{equation*}
+        \item Thus, at constant pressure,
+        \begin{equation*}
+            q_P = \Delta U+P_\text{ext}\int_{V_1}^{V_2}\dd{V}
+            = \Delta U+P\Delta V
+        \end{equation*}
+        \item The above equation suggests how to define our new state function.
+    \end{itemize}
+    \item \textbf{Enthalpy}: The state function describing the heat put into a system at constant pressure. \emph{Denoted by} $\bm{H}$. \emph{Given by}
+    \begin{equation*}
+        H = U+PV
+    \end{equation*}
+    \begin{itemize}
+        \item $\Delta H$ can be determined experimentally as the heat associated with a constant-pressure process.
+    \end{itemize}
+    \item Examples.
+    \begin{itemize}
+        \item For the melting of ice, $\Delta V$ is small, so $\Delta U\approx\Delta H$.
+        \item For the vaporization of water, $\Delta V$ is large, so $\Delta U<\Delta H$.
+        \begin{itemize}
+            \item We interpret the excess by the fact that most of the energy goes into raising the internal energy of the water (i.e., breaking the hydrogen bonding), but some of it must go into increasing the volume of the system against the atmospheric pressure.
+        \end{itemize}
+    \end{itemize}
+    \item For reactions or processes that involve ideal gases,
+    \begin{equation*}
+        \Delta H = \Delta U+RT\Delta n_\text{gas}
+    \end{equation*}
+    where $\Delta n_\text{gas}$ is the difference in the number of moles of gaseous products vs. reactants.
+    \item \textbf{Extensive quantity}: A quantity that depends on the amount of substance.
+    \begin{itemize}
+        \item Heat capacity is an extensive quantity.
+    \end{itemize}
+    \item Heat capacity is a path function, as it depends on whether we heat the substance at constant volume or constant pressure.
+    \item We have
+    \begin{align*}
+        C_V &= \left( \pdv{U}{T} \right)_V&
+        C_P &= \left( \pdv{H}{T} \right)_P
+    \end{align*}
+    \begin{itemize}
+        \item We expect $C_P>C_V$ since we also have to work against atmospheric pressure.
+        \item In fact, for a monatomic ideal gas,
+        \begin{align*}
+            H &= U+PV\\
+            &= U+nRT\\
+            \dv{H}{T} &= \dv{U}{T}+nR\\
+            C_P-C_V &= nR\\
+            C_P &= \frac{3}{2}R+nR\\
+            &= \frac{5}{2}R
+        \end{align*}
+        \item It follows that the difference between $C_P$ and $C_V$ is significant for gases, but not for solids and liquids.
+        \item Note that we can also prove a general expression for $C_P-C_V$ (see Chapter 22).
+    \end{itemize}
+    \item Relative enthalpies can be determined from heat capacity data and heats of transition.
+    \begin{itemize}
+        \item Integrate $C_P(T)$ from $T_1$ to $T_2$, adding in $\Delta_\text{fus}H$ and $\Delta_\text{vap}H$ as necessary.
+    \end{itemize}
+    \item \textbf{Thermochemistry}: The branch of thermodynamics which concerns the measurement of the evolution or absorption of energy as heat associated with chemical reactions.
+    \item \textcite{bib:McQuarrieSimon} reviews exothermic/endothermic reactions, and $\Delta H=H_\text{prod}-H_\text{react}$.
+    \item \textbf{Hess's Law}: The additivity property of $\Delta_rH$ values.
+    \item \textbf{Standard reaction enthalpy}: The enthalpy change associated with one mole of a specified reagent when all reactants and products are in their standard states. \emph{Denoted by} $\bm{\Delta_rH^\circ}$.
+    \begin{itemize}
+        \item An intensive quantity.
+    \end{itemize}
+    \item \textbf{Standard molar enthalpy of formation}: The standard reaction enthalpy for the formation of one mole of a molecule from its constituent elements. \emph{Denoted by} $\bm{\Delta_fH^\circ}$.
+    \begin{itemize}
+        \item We can obtain such values even if a compound cannot be formed directly from its elements via several related reactions and Hess's Law.
+    \end{itemize}
 \end{itemize}
 
 
