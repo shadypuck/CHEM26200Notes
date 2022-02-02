@@ -151,10 +151,72 @@
 
 
 
+\section{Statistical Entropy in Various Systems}
+\begin{itemize}
+    \item \marginnote{2/2:}For an isolated system, energy is conserved but the entropy keeps on increasing until the system reaches thermal equilibrium.
+    \item Thermal equilibrium is reached when entropy is maximum for a constant energy.
+    \item The sign of the entropy change in a spontaneous process for an isolated system is positive.
+    \item Entropy is the only macroscopic physical quantity that requires a particular direction for time, sometimes called an \textbf{arrow of time}.
+    \item \textbf{Second law of thermodynamics}: The entropy of an isolated system can only increase.
+    \item \textbf{Clasuius inequality}: The following inequality, where equality holds iff the process is reversible.
+    \begin{equation*}
+        \Delta S \geq \int\frac{\var{q}}{T}
+    \end{equation*}
+    \begin{itemize}
+        \item Considers the isolated system to justify.
+    \end{itemize}
+    \item Statistical entropy: $S=k_B\ln W$ where $W$ is the number of microstates of the system (i.e., the number of possible ways the system can be arranged).
+    \begin{itemize}
+        \item Shows additivity of the log.
+        \item When doubling the volume available to a gas, $\Delta S = Nk_B\ln 2$. $W_\text{after}=2^NW_\text{before}$.
+        \item The statistical definition of entropy avoids the Gibbs paradox since at a molecular level, we can differentiate between particles.
+    \end{itemize}
+    \item Goes over calculating $W(n_1,n_2)$.
+    \item The ways we can distinguish the number of molecules in the container becomes smaller and smaller as we increase the number of particles.
+    \item Consider two identical containers at fixed temperature with $N$ non-interacting indistinguishable molecules $n_1+n_2=N$.
+    \begin{itemize}
+        \item $W(n_1)=W(n_1,n_2)$ is the number of ways to arrange the molecules between containers 1 and 2.
+        \item We have
+        \begin{align*}
+            \ln W(n_1,n_2) &= \ln N!-\ln n_1!-\ln(N-n_1)!\\
+            &= N\ln N-N-[n_1\ln n_1-n_1+(N-n_1)\ln(N-n_1)-(N-n_1)]\\
+            &= N\ln N-n_1\ln n_1-(N-n_1)\ln(N-n_1)\\
+            &= (n_1+n_2)\ln N-n_1\ln n_1-n_2\ln n_2\\
+            &= -n_1\ln\frac{n_1}{N}-n_2\ln\frac{n_2}{N}\\
+            &= N\left( -\frac{n_1}{N}\ln\frac{n_1}{N}-\frac{n_2}{N}\ln\frac{n_2}{N} \right)
+        \end{align*}
+        \item Therefore,
+        \begin{equation*}
+            S = Nk_B(-p_1\ln p_1-p_2\ln p_2)
+        \end{equation*}
+    \end{itemize}
+    \item Entropy for a set of systems expressed in terms of the probability for these systems to be in a certain state.
+    \begin{itemize}
+        \item Covers $W(n_1,\dots,n_r)$.
+        \item We have
+        \begin{align*}
+            \ln W &= \ln A!-\sum_i\ln a_i!\\
+            &= A\ln A-A-\sum_i(a_i\ln a_i-a_I)\\
+            &= A\ln A-\sum_i a_i\ln a_i\\
+            &= \left( \sum_ia_i \right)\ln A-\sum_ia_i\ln a_i\\
+            &= \sum_i\left( -a_i\ln\frac{a_i}{A} \right)\\
+            &= A\sum_i\left( -\frac{a_i}{A}\ln\frac{a_i}{A} \right)\\
+            &= A\sum_i(-p_i\ln p_i)
+        \end{align*}
+        \item Therefore,
+        \begin{equation*}
+            S = Ak_B\sum_i(-p_i\ln p_i)
+        \end{equation*}
+        \item We will use this result to derive the Boltzmann Factor.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{MathChapter J: The Binomial Distribution and Stirling's Approximation}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
-    \item \marginnote{2/2:}Counting the number of ways to arrange $N$ distinguishable objects into two groups of size $N_1,N_2$ where $N_1+N_2=N$.
+    \item Counting the number of ways to arrange $N$ distinguishable objects into two groups of size $N_1,N_2$ where $N_1+N_2=N$.
     \begin{itemize}
         \item There are $N!$ ways to arrange $N$ distinguishable objects, $N!/(N-N_1)!$ ways to arrange the objects in group 1, and $N_2!$ ways to arrange the objects in group 2. Thus, there are
         \begin{equation*}
