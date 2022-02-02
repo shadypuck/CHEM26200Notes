@@ -151,5 +151,115 @@
 
 
 
+\section{Chapter 20: Entropy and the Second Law of Thermodynamics}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{2/1:}The change of energy alone is not sufficient to determine the direction of a spontaneous process.
+    \begin{itemize}
+        \item Although mechanical and chemical systems tend to evolve in such a way as to minimize their energy, we can find examples of spontaneous chemical processes that are not exothermic.
+        \item Examples include the mixing of two gases and the highly endothermic (and spontaneous) reaction of \ce{Ba(OH)2} and \ce{NH4NO3}.
+        \item Such processes obey the First Law of Thermodynamics, but their spontaneous direction cannot be explained by it.
+    \end{itemize}
+    \item Each of these "special cases" involves an increase in the disorder of the system.
+    \begin{itemize}
+        \item For example, in the mixing of gases, we can show quantum mechanically that increasing the volume of teh container increases the number of accessible translational states.
+    \end{itemize}
+    \item Competition between the drive to lower energy and the drive to increase disorder.
+    \begin{itemize}
+        \item Simple mechanical systems can't become that much more disordered; thus, energy considerations dominate.
+        \item The mixing of gases doesn't change the energy that much; thus, disorder considerations dominate.
+    \end{itemize}
+    \item Defining a quantitative state function describing disorder.
+    \begin{itemize}
+        \item Note that
+        \begin{align*}
+            \var{q_\text{rev}} &= \dd{U}-\var{w_\text{rev}}\\
+            &= C_V(T)\dd{T}+P\dd{V}\\
+            &= C_V(T)\dd{T}+\frac{nRT}{V}\dd{V}
+        \end{align*}
+        is an inexact differential since the second term cannot be written as a derivative of some function of $T$ and $V$ (because $T$ depends on $V$). In particular, the integral depends on what path through $T$ and $V$ we take.
+        \item However, if we divide both sides of the above by $T$, we get an exact differential, i.e., a state function.
+        \item Note that we can show that this result holds for all systems, not just an ideal gas.
+    \end{itemize}
+    \item \textbf{Entropy}: The state function describing the disorder of a system. \emph{Denoted by} $\bm{S}$. \emph{Given by}
+    \begin{equation*}
+        \dd{S} = \frac{\var{q_\text{rev}}}{T}
+    \end{equation*}
+    \item \textbf{Integrating factor}: A term that converts an inexact differential to an exact (integrable) differential.
+    \begin{itemize}
+        \item $1/T$ is an integrating factor of $\var{q_\text{rev}}$.
+    \end{itemize}
+    \item Since entropy is a state function, $\Delta S=0$ for a cyclic process, i.e.,
+    \begin{equation*}
+        \oint\dd{S} = 0
+    \end{equation*}
+    \item \textcite{bib:McQuarrieSimon} calculates $\Delta S$ for a process that proceeds from state 1 to state 2 isothermally, and adiabatically/isochorically, to show that the quantity is the same in both cases.
+    \item Justifying $\dd{S}=\var{q_\text{rev}}/T$ qualitatively:
+    \begin{itemize}
+        \item Increase in heat means increase in disorder (check).
+        \item Same increase in heat at a lower temperature increases disorder more since there is more order at lower temperatures (check).
+    \end{itemize}
+    \item \textbf{Isolated} (system): A system that is separated from its surroundings by rigid walls that do not allow matter or energy to pass through them.
+    \item Unlike energy, entropy is not necessarily conserved; it can increase within an isolated system if a spontaneous process takes place therein.
+    \item The entropy of a system is at its maximum when the system is equilibrium; at this point, $\dd{S}=0$.
+    \item Consider an isolated system consisting of two compartments. One compartment holds large, one-component system $A$, and other holds $B$. They are separated by a heat-conducting wall.
+    \begin{itemize}
+        \item Because of isolation,
+        \begin{align*}
+            U_A+U_B &= \text{constant}&
+                V_A &= \text{constant}&
+                    S &= S_A+S_B\\
+            &&
+                V_B &= \text{constant}
+        \end{align*}
+        \item Since $V_A,V_B$ are fixed, $\dd{V}=0$, meaning that $\dd{U}=\var{q_\text{rev}}+0$. It follows that
+        \begin{align*}
+            \dd{S} &= \dd{S_A}+\dd{S_B}\\
+            &= \frac{\dd{U_A}}{T_A}+\frac{\dd{U_B}}{T_B}\\
+            &= \dd{U_B}\left( \frac{1}{T_B}-\frac{1}{T_A} \right)
+        \end{align*}
+        \item Since the gases $A$ and $B$ can still mix without absorbing energy, we define $\dd{S_\text{prod}}$ as the entropy produced by the system and redefine $\var{q}/T$ as $\dd{S_\text{exch}}$ (the entropy exchanged with the surroundings via a transfer of heat).
+        \item It follows that for an reversible process ($\dd{S_\text{prod}}=0$), we have
+        \begin{equation*}
+            \dd{S} = \frac{\var{q_\text{rev}}}{T}
+        \end{equation*}
+        while for an irreversible process ($\dd{S_\text{prod}}>0$), we have
+        \begin{equation*}
+            \dd{S} = \dd{S_\text{prod}}+\frac{\var{q_\text{irr}}}{T} > \frac{\var{q_\text{irr}}}{T}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Inequality of Clausius}: The following inequality. \emph{Given by}
+    \begin{equation*}
+        \Delta S \geq \int\frac{\var{q}}{T}
+    \end{equation*}
+    \item \textbf{Second Law of Thermodynamics}: There is a thermodynamic state function of a system called the entropy $S$ such that for any change in the thermodynamic state of the system, $\dd{S}\geq\var{q}/T$, where equality holds iff the change is carried out reversibly.
+    \item "Because the universe itself may be considered to be an isolated system and all naturally occurring processes are irreversible, one statement of the Second Law of Thermodynamics says that the entropy of the universe is constantly increasing. In fact, Clausius summarized the first two laws of thermodynamics by, `The energy of the Universe is constant; the entropy is tending to a maximum'" \parencite[829]{bib:McQuarrieSimon}.
+    \item Relating entropy, a thermodynamic quantity, to a statistical quantity.
+    \begin{itemize}
+        \item Consider an ensemble of $\mathcal{A}$ isolated systems, each with number of particles $N$, volume $V$, and energy $E(N,V)$.
+        \item Let $\Omega(E)$ be the degeneracy of $E$, i.e., the number of quantum states with energy $E$\footnote{Note that for systems relatively far from the ground state, $\Omega(E)\approx\e[N]$.}. Label the $\Omega(E)$ quantum states by $j=1,2,\dots,\Omega(E)$.
+        \item Let $a_j$ be the number of systems in state $j$.
+        \item It follows that the number of ways of having $a_1$ systems in state 1, $a_2$ systems in state 2, etc. is given by
+        \begin{equation*}
+            W(a_1,\dots,a_{\Omega(E)}) = \frac{\mathcal{A}!}{a_1!\cdots a_{\Omega(E)}!} = \frac{\mathcal{A}!}{\prod_j(a_j!)}
+        \end{equation*}
+        with $\sum_ja_j=\mathcal{A}$.
+        \item If every system is in one totally ordered state (i.e., $a_j=\mathcal{A}$ for some $j$), $W=1$. On the other end of the spectrum, $W$ can be massive for disorder.
+        \item As $W$ is a measure of entropy, we are now free to relate $S$ and $W$, in particular via
+        \begin{equation*}
+            S = k_B\ln W
+        \end{equation*}
+        \begin{itemize}
+            \item We choose a log because we want to be able to split $S$ into $S_A+S_B$ and have the math reflect that. In particular, for two systems $A,B$, $W_{AB}=W_AW_B$, which nicely works out such that
+            \begin{equation*}
+                S_{AB} = k_B\ln W_{AB} = k_B\ln W_A+k_B\ln W_B = S_A+S_B
+            \end{equation*}
+        \end{itemize}
+        \item \textcite{bib:McQuarrieSimon} goes over an alternate "derivation" of the above in terms of the degeneracy to get $S=k_B\ln\Omega$.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
