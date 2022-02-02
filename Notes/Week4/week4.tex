@@ -151,6 +151,58 @@
 
 
 
+\section{MathChapter J: The Binomial Distribution and Stirling's Approximation}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{2/2:}Counting the number of ways to arrange $N$ distinguishable objects into two groups of size $N_1,N_2$ where $N_1+N_2=N$.
+    \begin{itemize}
+        \item There are $N!$ ways to arrange $N$ distinguishable objects, $N!/(N-N_1)!$ ways to arrange the objects in group 1, and $N_2!$ ways to arrange the objects in group 2. Thus, there are
+        \begin{equation*}
+            \frac{N!}{(N-N_1)!}\cdot N_2!
+        \end{equation*}
+        \emph{permutations} of the $N$ objects in two groups.
+        \begin{itemize}
+            \item For example, $N=4$, $N_1=3$, and $N_2=1$, we are currently counting both $abc:d$ and $bac:d$ as different ways of arranging the four objects into two groups, when clearly such ordering does not matter.
+        \end{itemize}
+        \item Dividing the above by the number of ways to arrange $N_1$ objects in the first group ($N_1!$) and the number of ways to arrange $N_2$ objects in the second group ($N_2!$) gives the desired result.
+        \begin{equation*}
+            W(N_1,N_2) = \frac{N!}{N_1!N_2!}
+        \end{equation*}
+        \begin{itemize}
+            \item Now we have a result that, as per the previous example, allows us to count only $abc:d$, $bcd:a$, $cda:b$, and $dab:c$.
+        \end{itemize}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} reviews the binomial expansion in light of the above result's status as a binomial coefficient.
+    \item Counting the number of ways to arrange $N$ distinguishable objects into $r$ groups of size $N_1,\dots,N_r$ where $N_1+\cdots+N_r=N$.
+    \begin{equation*}
+        W(N_1,\dots,N_r) = \frac{N!}{N_1!\cdots N_r!}
+    \end{equation*}
+    \item Note that this quantity is called a \textbf{multinomial coefficient} because it occurs in the multinomial expansion $(x_1+\cdots+x_r)^N$.
+    \item \textbf{Asymptotic approximation}: An approximation to a function that gets better as the argument of the function increases.
+    \item \textbf{Stirling's approximation}: An asymptotic approximation to $\ln N!$. \emph{Given by}
+    \begin{equation*}
+        \ln N! = N\ln N-N
+    \end{equation*}
+    \begin{itemize}
+        \item Proof: We have that
+        \begin{equation*}
+            \ln N! = \sum_{n=1}^N\ln n
+        \end{equation*}
+        \item For $N$ large, this sum behaves more and more like the integral $\int_1^n\ln x\dd{x}$. Thus, we take
+        \begin{equation*}
+            \ln N! = \sum_{n=1}^N\ln n
+            \approx \int_1^n\ln x\dd{x}
+            = N\ln N-N
+        \end{equation*}
+        \item A refinement of the approximation is the following.
+        \begin{equation*}
+            \ln N! = N\ln N-N+\frac{1}{2}\ln(2\pi N)
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 20: Entropy and the Second Law of Thermodynamics}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
