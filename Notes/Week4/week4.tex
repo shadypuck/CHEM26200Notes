@@ -371,6 +371,181 @@
         \end{itemize}
         \item \textcite{bib:McQuarrieSimon} goes over an alternate "derivation" of the above in terms of the degeneracy to get $S=k_B\ln\Omega$.
     \end{itemize}
+    \item \marginnote{2/3:}Since entropy is a state function, we calculate entropy changes via a reversible process.
+    \begin{itemize}
+        \item Imagine a gas expanding from $V_1$ to $V_2$ in a non-isolated system.
+        \item Although this is an adiabatic process, since entropy is a state function, we may perform the easier isothermal calculation for the "equivalent" reversible process.
+        \begin{equation*}
+            \Delta S_\text{sys} = \int_1^2\frac{\var{q_\text{rev}}}{T}
+            = -\int_1^2\frac{\var{w_\text{rev}}}{T}
+            = \int_{V_1}^{V_2}\frac{P}{T}\dd{V}
+            = nR\int_{V_1}^{V_2}\frac{\dd{V}}{V}
+            = nR\ln\frac{V_2}{V_1}
+        \end{equation*}
+        \begin{itemize}
+            \item Note that it is the change to an isothermal integral that allows us to assume $\dd{U}=0$ (internal energy is a function of only temperature).
+        \end{itemize}
+        \item However, there is still a difference between reversible and irreversible processes.
+        \begin{itemize}
+            \item In the reversible, isothermal process, $q_\text{rev}=-w_\text{rev}=-nRT\ln(V_2/V_1)$. Thus,
+            \begin{equation*}
+                \Delta S_\text{univ} = \Delta S_\text{sys}+\Delta S_\text{surr}
+                = nR\ln\frac{V_2}{V_1}-nR\ln\frac{V_2}{V_1}
+                = 0
+            \end{equation*}
+            as we would expect for an reversible process.
+            \item In the irreversible, adiabatic process, however, $\Delta S_\text{surr}=0$\footnote{The book justifies $\Delta S_\text{surr}=0$ for an irreversible \emph{isothermal} process by $\Delta U=0$ and $P_\text{ext}=0$ imply $w_\text{irr}=0$ and therefore $q_\text{irr}=0$.}. Thus,
+            \begin{equation*}
+                \Delta S_\text{univ} = nR\ln\frac{V_2}{V_1}
+                > 0
+            \end{equation*}
+            as we would expect for an irreversible process.
+        \end{itemize}
+    \end{itemize}
+    \item The isothermal mixing of two ideal gases (say \ce{N2} and \ce{Br2}).
+    \begin{itemize}
+        \item Because the two gases are ideal, they act independently of each other. Thus,
+        \begin{align*}
+            \Delta S_{\ce{N2}} &= n_{\ce{N2}}R\ln\frac{V_{\ce{N2}}+V_{\ce{Br2}}}{V_{\ce{N2}}}&
+            \Delta S_{\ce{Br2}} &= n_{\ce{Br2}}R\ln\frac{V_{\ce{N2}}+V_{\ce{Br2}}}{V_{\ce{Br2}}}
+        \end{align*}
+        \item It follows that
+        \begin{align*}
+            \Delta S &= \Delta S_{\ce{N2}}+\Delta S_{\ce{Br2}}\\
+            &= -n_{\ce{N2}}R\ln\frac{V_{\ce{N2}}}{V_{\ce{N2}}+V_{\ce{Br2}}}-n_{\ce{Br2}}R\ln\frac{V_{\ce{Br2}}}{V_{\ce{N2}}+V_{\ce{Br2}}}\\
+            &= -n_{\ce{N2}}R\ln\frac{n_{\ce{N2}}}{n_{\ce{N2}}+n_{\ce{Br2}}}-n_{\ce{Br2}}R\ln\frac{n_{\ce{Br2}}}{n_{\ce{N2}}+n_{\ce{Br2}}}\\
+            \Delta\overline{S} &= -\frac{n_{\ce{N2}}}{n_{\ce{N2}}+n_{\ce{Br2}}}R\ln\frac{n_{\ce{N2}}}{n_{\ce{N2}}+n_{\ce{Br2}}}-\frac{n_{\ce{Br2}}}{n_{\ce{N2}}+n_{\ce{Br2}}}R\ln\frac{n_{\ce{Br2}}}{n_{\ce{N2}}+n_{\ce{Br2}}}\\
+            \frac{\Delta_\text{mix}\overline{S}}{R} &= -y_{\ce{N2}}\ln y_{\ce{N2}}-y_{\ce{Br2}}\ln y_{\ce{Br2}}
+        \end{align*}
+        where $V\propto n$ by the ideal gas law, $\Delta\overline{S}$ is the \emph{molar} change in entropy, and $y_{\ce{N2}}$ is the mole fraction of \ce{N2} (same for bromine), and $\Delta_\text{mix}\overline{S}$ indicates that this is the molar change in entropy for the \emph{mixing} of two gases.
+        \item For the isothermal mixing of $N$ ideal gases, we have
+        \begin{equation*}
+            \Delta_\text{mix}\overline{S} = -R\sum_{j=1}^Ny_j\ln y_j
+        \end{equation*}
+    \end{itemize}
+    \item $\Delta S$ when two equal sized pieces of the same metal at different temperatures ($T_h,T_c$) are brought into thermal contact and then isolated from the surroundings.
+    \begin{itemize}
+        \item Both pieces of metal will approach the same final temperature $T$ as per
+        \begin{align*}
+            C_V(T_h-T) &= C_V(T-T_c)\\
+            T &= \frac{T_h+T_c}{2}
+        \end{align*}
+        \item There is essentially no work done, so $\dd{U}=\var{q_\text{rev}}$.
+        \item Thus, taking $C_V$ to be constant from $T_c$ to $T_h$ yields
+        \begin{equation*}
+            \Delta S = \int_{T_1}^{T_2}\frac{\var{q_\text{rev}}}{T}
+            = \int_{T_1}^{T_2}\frac{C_V\dd{T}}{T}
+            = C_V\ln\frac{T_2}{T_1}
+        \end{equation*}
+        \item Therefore, we have
+        \begin{align*}
+            \Delta S_h &= C_V\ln\frac{T_h+T_c}{2T_h}&
+            \Delta S_c &= C_V\ln\frac{T_h+T_c}{2T_c}
+        \end{align*}
+        \item It follows that
+        \begin{equation*}
+            \Delta S = \Delta S_h+\Delta s_c
+            = C_V\ln\frac{(T_h+T_c)^2}{4T_hT_c}
+        \end{equation*}
+        where
+        \begin{align*}
+            (T_h-T_c)^2 = T_h^2-2T_hT_c+T_c^2 &> 0\\
+            T_h^2+2T_hT_c+T_c^2 = (T_h+T_c)^2 &> 4T_hT_c
+        \end{align*}
+        implies that $\Delta S>0$, as desired for an irreversible process.
+    \end{itemize}
+    \item The Carnot cycle (for a steam engine).
+    \begin{itemize}
+        \item Each cycle, the engine (system) "withdraws energy [$q_h$] as heat from some high-temperature thermal reservoir, uses some of the energy to do work [$w$], and then discharges the rest of the energy $[q_c$] as heat to a lower-temperature thermal reservoir" \parencite[838]{bib:McQuarrieSimon}.
+        \item Treating the process as reversible (since both internal energy and entropy as state functions) gives us the following analysis.
+        \item Since this is a cycle, we have that
+        \begin{align*}
+            \Delta U_\text{engine} &= w+q_\text{rev,h}+q_\text{rev,c} = 0&
+            \Delta S_\text{engine} &= \frac{\var{q_\text{rev,h}}}{T_h}+\frac{\var{q_\text{rev,c}}}{T_c}
+        \end{align*}
+        \item It follows if we define the maximum efficiency of the engine to be the quotient of work done by the engine ($-w$) and heat input ($q_\text{rev,h}$) that
+        \begin{align*}
+            \text{maximum efficiency} &= \frac{-w}{q_\text{rev,h}}\\
+            &= \frac{q_\text{rev,h}+q_\text{rev,c}}{q_\text{rev,h}}\\
+            &= 1+\frac{-T_cq_\text{rev,h}/T_h}{q_\text{rev,h}}\\
+            &= \frac{T_h-T_c}{T_h}
+        \end{align*}
+        \item It follows for typical values of $T_h=\SI{573}{\kelvin}$ and $T_c=\SI{373}{\kelvin}$ that $\text{maximum efficiency}\approx 35\%$.
+        \item Moreover, it implies that engines run with higher-temperature heat reservoirs and lower-temperature cold reservoirs are more efficient, regardless of design.
+        \item Note that $T_h=T_c$ implies that $\text{maximum efficiency}=0\%$, i.e., no net work can be obtained from an isothermal cyclic process.
+    \end{itemize}
+    \item The above result leads to \textbf{Kelvin's statement of the Second Law}.
+    \item \textbf{Kelvin's statement of the Second Law}: A closed system operating in an isothermal cyclic manner cannot convert heat into work without some accompanying change in the surroundings.
+    \item Expressing entropy in terms of a partition function.
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        S_\text{ensemble} &= k_B\ln W\\
+        &= k_B\ln\frac{\mathcal{A}!}{\prod_ja_j!}\\
+        &= k_B\ln\mathcal{A}!-k_B\sum_j\ln a_j!\\
+        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\mathcal{A}-k_B\sum_ja_j\ln a_j+k_B\sum_ja_j\tag{Stirling's approximation}\\
+        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\sum_ja_j\ln a_j\tag{$\sum_ja_j=\mathcal{A}$}\\
+        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\sum_jp_j\mathcal{A}\ln p_j\mathcal{A}\tag{$p_j=a_j/\mathcal{A}$}\\
+        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\mathcal{A}\sum_jp_j\ln p_j-k_B\mathcal{A}\ln\mathcal{A}\sum_jp_j\\
+        \frac{S_\text{ensemble}}{\mathcal{A}} &= -k_B\sum_jp_j\ln p_j\tag{$\sum_jp_j=1$}\\
+        S_\text{system} &= -k_B\sum_jp_j\ln p_j\\
+        &= -k_B\sum_j\frac{\e[-\beta E_j]}{Q}(-\beta E_j-\ln Q)\\
+        &= \beta k_B\sum_j\frac{E_j\e[-\beta E_j]}{Q}+k_B\ln Q\sum_j\frac{\e[-\beta E_j]}{Q}\\
+        &= \frac{1}{T}\cdot\prb{E}+k_B\ln Q\\
+        S_\text{system} &= k_BT\pdv{\ln Q}{T}+k_B\ln Q
+    \end{align*}
+    \endgroup
+    \item For a monatomic ideal gas where all atoms are in their ground electronic state, we have
+    \begin{equation*}
+        \overline{S} = \frac{5}{2}R+R\ln\left[ \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}\frac{\overline{V}g_{e1}}{N_A} \right]
+    \end{equation*}
+    \item The mixing of two ideal gases (say \ce{N2} and \ce{Br2}) from a molecular perspective.
+    \begin{itemize}
+        \item Since the natural log in $\overline{S}$ for a monatomic ideal gas contains the same number of terms involving $V$ as for a diatomic ideal gas, we have that
+        \begin{align*}
+            S &= Nk_B\ln V+\text{terms not involving }V\\
+            &= nR\ln V+\text{terms not involving }V
+        \end{align*}
+        for both \ce{N2} and \ce{Br2}.
+        \item Thus, the initial state is given by
+        \begin{align*}
+            S_1 &= S_{1,\ce{N2}}+S_{1,\ce{Br2}}\\
+            &= n_{\ce{N2}}R\ln V_{\ce{N2}}+n_{\ce{Br2}}R\ln V_{\ce{Br2}}+\text{terms not involving }V
+        \end{align*}
+        and the final state is given by
+        \begin{align*}
+            S_2 &= S_{2,\ce{N2}}+S_{2,\ce{Br2}}\\
+            &= n_{\ce{N2}}R\ln(V_{\ce{N2}}+V_{\ce{Br2}})+n_{\ce{Br2}}R\ln(V_{\ce{N2}}+V_{\ce{Br2}})+\text{terms not involving }V
+        \end{align*}
+        \item Therefore,
+        \begin{align*}
+            \Delta_\text{mix}S &= S_2-S_1\\
+            &= n_{\ce{N2}}R\ln\frac{V_{\ce{N2}}+V_{\ce{Br2}}}{V_{\ce{N2}}}+n_{\ce{Br2}}R\ln\frac{V_{\ce{N2}}+V_{\ce{Br2}}}{V_{\ce{Br2}}}\\
+            \frac{\Delta_\text{mix}\overline{S}}{R} &= -y_{\ce{N2}}\ln y_{\ce{N2}}-y_{\ce{Br2}}\ln y_{\ce{Br2}}
+        \end{align*}
+        as expected.
+    \end{itemize}
+    \item Relating $S=k_B\ln W$ to $\dd{S}=\var{q_\text{rev}}/T$ (and proving that $\beta=1/k_BT$!).
+    \begin{itemize}
+        \item We have that
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            S &= -k_B\sum_jp_j\ln p_j\\
+            \dv{S}{p_j} &= -k_B\sum_j\left( p_j\cdot\frac{1}{p_j}+1\cdot\ln p_j \right)\\
+            \dd{S} &= -k_B\sum_j(\dd{p_j}+\ln p_j\dd{p_j})\\
+            &= -k_B\sum_j\left( -\beta E_j-\ln Q \right)\dd{p_j}\\
+            &= \beta k_B\sum_jE_j\dd{p_j}+\ln Q\sum_j\dd{p_j}\\
+            &= \beta k_B\var{q_\text{rev}}\tag{$\sum_jp_j=1\Rightarrow\sum\dd{p_j}=0$}
+        \end{align*}
+        \endgroup
+        as desired.
+        \item Additionally, the above result implies that $\beta k_B$ is an integrating factor of $\var{q_\text{rev}}$, i.e.,
+        \begin{align*}
+            \beta k_B &= \frac{1}{T}\\
+            \beta &= \frac{1}{k_BT}
+        \end{align*}
+    \end{itemize}
 \end{itemize}
 
 
