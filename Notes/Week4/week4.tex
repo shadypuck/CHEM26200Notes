@@ -550,5 +550,137 @@
 
 
 
+\section{Chapter 21: Entropy and the Third Law of Thermodynamics}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item In this chapter, we will learn how to calculate absolute (as opposed to relative) values of entropy.
+    \item Relating thermodynamic quantities to entropy.
+    \begin{itemize}
+        \item It follows from the First Law of Thermodynamics that
+        \begin{equation*}
+            \dd{U} = \underbrace{T\dd{S}}_{\var{q_\text{rev}}}\underbrace{-P\dd{V}}_{\var{w_\text{rev}}}
+        \end{equation*}
+        \item We have that the total differential of $U(V,T)$ is
+        \begin{equation*}
+            \dd{U} = \pdv{U}{T}\dd{T}+\pdv{U}{V}\dd{V}
+        \end{equation*}
+        \item Combining the two above equations, we have that
+        \begin{align*}
+            T\dd{S}-P\dd{V} &= \pdv{U}{T}\dd{T}+\pdv{U}{V}\dd{V}\\
+            \dd{S} &= \frac{1}{T}\pdv{U}{T}\dd{T}+\frac{1}{T}\left( P+\pdv{U}{V} \right)\dd{V}\\
+            &= \frac{C_V\dd{T}}{T}+\frac{1}{T}\left( P+\pdv{U}{V} \right)\dd{V}
+        \end{align*}
+        \item It follows by comparing the above with the total differential of $S(V,T)$ that
+        \begin{align*}
+            \left( \pdv{S}{T} \right)_V &= \frac{C_V}{T}&
+            \left( \pdv{S}{V} \right)_T &= \frac{1}{T}\left[ P+\left( \pdv{U}{V} \right)_T \right]
+        \end{align*}
+    \end{itemize}
+    \item Since
+    \begin{equation*}
+        \dd{H} = \dd{U}+P\dd{V}+V\dd{P}
+        = T\dd{S}+V\dd{P}
+    \end{equation*}
+    we can proceed in a similar manner to the above to obtain
+    \begin{align*}
+        \left( \pdv{S}{T} \right)_P &= \frac{C_P}{T}&
+        \left( \pdv{S}{P} \right)_T &= \frac{1}{T}\left[ \left( \pdv{H}{P} \right)-V \right]
+    \end{align*}
+    \item \textbf{Third Law of Thermodynamics}: Every substance has a finite positive entropy, but at zero kelvin, the entropy may become zero, and does so in the case of a perfectly crystalline substance.
+    \begin{itemize}
+        \item While the first and second laws provide state functions (internal energy and entropy, respectively), the third law provides a numerical scale for entropy.
+    \end{itemize}
+    \item The third law, although formulated before quantum mechanics, follows nicely from it: At absolute zero, every system in an ensemble will be in the same energy state, so $W=1$; it follows that $S=k_B\ln 1=0$.
+    \begin{itemize}
+        \item If, however, the ground state has a degeneracy of $n$, then
+        \begin{align*}
+            S(\SI{0}{\kelvin}) &= -k_B\sum_jp_j\ln p_j\\
+            &= -k_B\sum_{j=1}^n\frac{1}{n}\ln\frac{1}{n}\\
+            &= k_B\ln n
+        \end{align*}
+        \item Nevertheless, even for a degeneracy of $N_A$, we will only have $S(\SI{0}{\kelvin})\approx\SI{7.56e-22}{\joule\per\mole\per\kelvin}$, which is far less than any measurable value.
+    \end{itemize}
+    \item Because of the third law, we can define entropy absolutely (assuming no phase change between 0 and $T$).
+    \begin{align*}
+        S(T) &= S(0)+S(T)-S(0)\\
+        &= S(0)+\Delta S\\
+        &= S(0)+\int_0^T\frac{C_P(t)}{t}\dd{t}\\
+        &= \int_0^T\frac{C_P(t)}{t}\dd{t}
+    \end{align*}
+    \item Accounting for phase changes.
+    \begin{itemize}
+        \item A phase change is a great example of a reversible process since we only need the temperature to be slightly above or slightly below the transition temperature $T_\text{trs}$ to accomplish it.
+        \item Thus,
+        \begin{equation*}
+            \Delta_\text{trs}S = \frac{q_\text{rev}}{T_\text{trs}}
+            = \frac{\Delta_\text{trs}H}{T_\text{trs}}
+        \end{equation*}
+        \item It follows that, as applicable,
+        \begin{equation*}
+            S(T) = \int_0^{T_\text{fus}}\frac{C_P^s(t)}{t}\dd{t}+\frac{\Delta_\text{fus}H}{T_\text{fus}}+\int_{T_\text{fus}}^{T_\text{vap}}\frac{C_P^l(t)}{t}\dd{t}+\frac{\Delta_\text{vap}H}{T_\text{vap}}+\int_{T_\text{vap}}^T\frac{C_P^g(t)}{t}\dd{t}
+        \end{equation*}
+        \item Note that with typical values plugged in, $\Delta_\text{fus}S\ll\Delta_\text{vap}S$.
+    \end{itemize}
+    \item \textbf{Debye $\bm{T^3}$ law}: As $T\to 0$ (i.e., for about $T=\SIrange{0}{15}{\kelvin}$), $C_P^s(T)\to T^3$ for most nonmetallic crystals and $C_P^s(T)\to aT+bT^3$ ($a,b\in\R_{\geq 0}$) for most metallic crystals.
+    \begin{itemize}
+        \item It follows by the absolute definition of $S$ that
+        \begin{equation*}
+            S(T) = \frac{C_P(T)}{3}
+        \end{equation*}
+        at low temperatures for nonmetallic solids.
+    \end{itemize}
+    \item \textbf{Debye temperature}: A constant characteristic of the solid. \emph{Denoted by} $\bm{\Theta_\textbf{D}}$.
+    \item \textbf{Third-law entropy}: An absolute entropy value calculated according to the convention that $S(\SI{0}{\kelvin})=0$. \emph{Also known as} \textbf{practical absolute entropy}.
+    \item \textcite{bib:McQuarrieSimon} calculates the third-law entropy of \ce{N2} based on various thermodynamic data.
+    \item \textbf{Standard entropy}: An entropy value of a gas as presented in the literature. \emph{Denoted by} $\bm{S^\circ}$.
+    \begin{itemize}
+        \item Standard entropies are, by convention, corrected for the nonideality of the gas at one bar (for how to calculate this correction, see Chapter 22).
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} rederives $S(\SI{0}{\kelvin})=k_B\ln n$ from a partition function approach, and then gives a specific example for \ce{N2}, noting how well this value correlates with the one from the previous example.
+    \begin{itemize}
+        \item "This type of agreement is quite common, and in many cases the statistical thermodynamic value is more accurate than the calorimetric value\dots The accepted literature values are often a combination of statistical thermodynamic and calorimetric values" \parencite[863]{bib:McQuarrieSimon}.
+        \item Also gives a linear symmetric example (\ce{CO2}).
+    \end{itemize}
+    \item Entropy trends.
+    \begin{enumerate}
+        \item "The standard molar entropies of the gaseous substances are the largest, and the standard molar entropies of the solid substances are the smallest" \parencite[865]{bib:McQuarrieSimon}.
+        \item "The increase in standard molar entropy of the noble gases is a consequence of their increasing mass as we move down the periodic table" \parencite[865]{bib:McQuarrieSimon}.
+        \begin{itemize}
+            \item More mass implies more translational energy levels are available implies more disorder.
+            \item This is a consequence of quantum mechanics --- considering the formula for the energy of a particle in a 3D box, note that $m$ is in the denominator. Thus, increasing $m$ means that the levels are more closely spaced, and hence more are readily accessible.
+        \end{itemize}
+        \item "Generally speaking, the more atoms of a given type in a molecule, the greater is the capacity of the molecule to take up energy and thus the greater is its entropy" \parencite[866]{bib:McQuarrieSimon}.
+        \begin{itemize}
+            \item More atoms implies more vibrational modes implies more disorder.
+        \end{itemize}
+        \item "For molecules with approximately the same molecular masses, the more compact the molecule is, the smaller is its entropy" \parencite[867]{bib:McQuarrieSimon}.
+        \begin{itemize}
+            \item Between isomers, the one with more unrestricted motion will have greater entropy.
+        \end{itemize}
+    \end{enumerate}
+    \item We can calculate the entropy for substances that "don't exist" via alternate paths.
+    \begin{itemize}
+        \item For example, \ce{Br2} is a liquid at \SI{298}{\kelvin}, but we can still calculate $S^\circ[\ce{Br2_{(g)}}]$ by imagining the following path: Raise \ce{Br2_{(l)}} to its boiling point; vaporize it; cool it back down to \SI{298}{\kelvin}.
+        \item This calculated value is in agreement with the spectroscopic value.
+    \end{itemize}
+    \item \textbf{Residual entropy}: The difference between the calculated molar entropy of a substance and its experimental molar entropy. \emph{Given by}
+    \begin{equation*}
+        \overline{S}_\text{calc}-\overline{S}_\text{exp}
+    \end{equation*}
+    \begin{itemize}
+        \item We define residual entropy this way because wherever there are discrepancies, it so happens that $S_\text{calc}>S_\text{exp}$.
+    \end{itemize}
+    \item Large residual entropies are encountered for the linear molecules \ce{CO} and \ce{N2O}.
+    \begin{itemize}
+        \item This is because these molecules have small dipole moments, so upon crystallization, there is not a strong tendency for the molecule to align in the most energetically favorable way.
+        \item Thus, with molecules already locked in higher energy states at $T_\text{fus}$, as we cool to \SI{0}{\kelvin}, we do not have a "perfect" crystal.
+        \item Since the ground state is two-fold degenerate in both of these cases (we have \ce{CO} and \ce{OC}, and \ce{NNO} and \ce{ONN}), $\overline{S}(\SI{0}{\kelvin})=R\ln 2$ here.
+    \end{itemize}
+    \item We can similarly account for the larger still residual entropy in \ce{H3CD} by noting that the ground state is four-fold degenerate, and thus $\overline{S}(\SI{0}{\kelvin})=R\ln 4$ here.
+    \item We can use standard molar entropies to calculate the entropy changes of chemical reactions.
+\end{itemize}
+
+
+
 
 \end{document}
