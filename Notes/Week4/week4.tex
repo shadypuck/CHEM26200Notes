@@ -213,6 +213,88 @@
 
 
 
+\section{Further Entropy Relations and Phenomena}
+\begin{itemize}
+    \item \marginnote{2/4:}Verifying that the entropy is at a maximum when all the states have equal probability.
+    \begin{itemize}
+        \item In the case of just two states,
+        \begin{align*}
+            S &= Nk_B(-p_1\ln p_1-p_2\ln p_2)\\
+            \dd{S} &= Nk_B[-\dd{(p_1\ln p_1)}-\dd{(p_2\ln p_2)}]\\
+            &= Nk_B[-\dd{p_1}\cdot\ln p_1-p_1\cdot\frac{\dd{p_1}}{p_1}-\dd{p_2}\cdot\ln p_2-p_2\cdot\frac{\dd{p_2}}{p_2}]\\
+            &= Nk_B(-\dd{p_1})(\ln p_1-\ln p_2)\\
+            &= 0
+        \end{align*}
+        if $p_1=p_2$.
+        \begin{itemize}
+            \item Thus, since $\dv*{S}{p_1}|_{p_1=1/2}=0$, we know that a graph of entropy vs. $p_1$ has a maximum at $p_1=1/2$.
+        \end{itemize}
+        \item In the case of many buckets,
+        \begin{equation*}
+            \dd{S} = -Nk_B\sum_i\ln p_i\dd{p_i} = 0
+        \end{equation*}
+        iff all $p_i$ are the same, because then we could pull out the $\ln p_i$ and take $\sum\dd{p_i}=0$.
+    \end{itemize}
+    \item Fluctuations from the equilibrium state are very unlikely in a macroscopic system. Entropy measures the likelihood.
+    \begin{itemize}
+        \item At equilibrium, we have a number of configurations $W_\text{eq}$. Outside of equilibrium, we have a number of configurations $W$.
+        \item Thus,
+        \begin{align*}
+            \Delta S &= S-S_\text{eq} = k_B\ln\frac{W}{W_\text{eq}}\\
+            \frac{W}{W_\text{eq}} &= \e[\Delta S/k_B]
+        \end{align*}
+        \item For $\Delta S=R=\SI{8.31}{\joule\per\mole\per\kelvin}$, we have that $W=W_\text{eq}\e[N_A]$, which will never happen?
+    \end{itemize}
+    \item Deriving the Boltzmann factor by identifying the thermodynamic and statistical entropies.
+    \begin{itemize}
+        \item Consider two states $E_1,E_2$. Then $\var{q_\text{rev}}=(E_1-E_2)$.
+        \item We have
+        \begin{align*}
+            \dd{S} &= \frac{\var{q_\text{rev}}}{T}&
+                \dd{S} &= -k_BN\dd{(p_1\ln p_1+p_2\ln p_2)}\\
+            &&
+                &= -k_BN(\ln p_1-\ln p_2)\dd{p_1}
+        \end{align*}
+        \item Setting them equal to each other, we get
+        \begin{align*}
+            \frac{\dd{p_1}(E_1-E_2)}{T} &= -k_B\ln\frac{p_1}{p_2}\dd{p_1}\\
+            \frac{E_1-E_2}{k_BT} &= -\ln\frac{p_1}{p_2}\\
+            \frac{p_1}{p_2} &= \e[-(E_1-E_2)/k_BT]
+        \end{align*}
+        which is the Boltzmann factor, as desired.
+    \end{itemize}
+    \item Expressing the entropy in terms of the partition function.
+    \begin{itemize}
+        \item Derives
+        \begin{equation*}
+            S = k_BT\pdv{\ln Q}{T}+k_B\ln Q
+        \end{equation*}
+        from $S=-Nk_B\sum_ip_i\ln p_i$ as in \textcite{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item Entropy of an ideal monatomic gas.
+    \begin{itemize}
+        \item Derives
+        \begin{equation*}
+            S = \frac{5}{2}Nk_B+Nk_B\ln\left[ \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}\frac{V}{N}g_{e1} \right]
+        \end{equation*}
+        as in \textcite{bib:McQuarrieSimon}.
+        \item Note that
+        \begin{equation*}
+            \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2} \approx \left( \frac{1}{\lambda_{dB}} \right)^3
+        \end{equation*}
+        where $\lambda_{dB}$ is the de Broglie wavelength.
+    \end{itemize}
+    \item The Carnot engine. The most efficient thermal engine between two temperature reservoirs.
+    \begin{itemize}
+        \item Recall that the area inside the cycle on a $P$/$V$ diagram is the work produced by the cycle.
+        \item It is adiabatic expansion, isothermal expansion, adiabatic compression, isothermal compression.
+        \item Does the same efficiency analysis as in \textcite{bib:McQuarrieSimon}.
+        \item PGS says it's ok to treat the processes as reversible because they're isothermal by definition.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{MathChapter J: The Binomial Distribution and Stirling's Approximation}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -394,7 +476,7 @@
                 = 0
             \end{equation*}
             as we would expect for an reversible process.
-            \item In the irreversible, adiabatic process, however, $\Delta S_\text{surr}=0$\footnote{The book justifies $\Delta S_\text{surr}=0$ for an irreversible \emph{isothermal} process by $\Delta U=0$ and $P_\text{ext}=0$ imply $w_\text{irr}=0$ and therefore $q_\text{irr}=0$.}. Thus,
+            \item In the irreversible, adiabatic process, however, $\Delta S_\text{surr}=0$\footnote{\textcite{bib:McQuarrieSimon} justify $\Delta S_\text{surr}=0$ for an irreversible \emph{isothermal} process by $\Delta U=0$ and $P_\text{ext}=0$ imply $w_\text{irr}=0$ and therefore $q_\text{irr}=0$.}. Thus,
             \begin{equation*}
                 \Delta S_\text{univ} = nR\ln\frac{V_2}{V_1}
                 > 0
