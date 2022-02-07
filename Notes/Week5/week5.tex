@@ -10,6 +10,67 @@
 
 
 \chapter{Entropy and the Third Law of Thermodynamics}
+\section{Entropy and the Third Law}
+\begin{itemize}
+    \item \marginnote{2/7:}An experimental determination of entropy.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            \dd{U} &= \var{q_\text{rev}}+\var{w_\text{rev}}\\
+            &= T\dd{S}-P\dd{V}
+        \end{align*}
+        \item At constant $V$, $\dd{V}=0$, so $\dd{S}=\dd{U}/T=C_V\dd{T}/T$.
+        \item More rigorously, we can do the rest of the derivation as in \textcite{bib:McQuarrieSimon} to get
+        \begin{align*}
+            \left( \pdv{S}{T} \right)_V &= \frac{C_V}{T}&
+            \left( \pdv{S}{V} \right)_T &= \frac{1}{T}\left[ P+\left( \pdv{U}{V} \right)_T \right]
+        \end{align*}
+        \item It follows that $\Delta S=\int_{T_1}^{T_2}C_V/T\dd{T}$.
+        \begin{itemize}
+            \item This is one way to measure the change in entropy.
+            \item However, it's not very practical since it's very hard to do constant volume chemistry.
+        \end{itemize}
+    \end{itemize}
+    \item Derives
+    \begin{align*}
+        \left( \pdv{S}{T} \right)_P &= \frac{C_P}{T}&
+        \left( \pdv{S}{P} \right)_T &= \frac{1}{T}\left[ \left( \pdv{H}{P} \right)-V \right]
+    \end{align*}
+    as in \textcite{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item It follows that $\Delta S=\int_{T_1}^{T_2}C_P/T\dd{T}$, too.
+        \item However, since this is $\Delta S$ at constant pressure, we expect it to be bigger than $\Delta S$ at constant volume because work is done.
+    \end{itemize}
+    \item \textbf{Third Law}: The entropy of pure ordered crystals is zero at \SI{0}{\kelvin}.
+    \begin{itemize}
+        \item Solid \ce{CO} is \emph{not} ordered, as discussed in \textcite{bib:McQuarrieSimon}.
+        \item Derive with $S=k_B\ln W$.
+    \end{itemize}
+    \item Since we can't actually achieve \SI{0}{\kelvin} and measure properties such as entropy there, we appeal to the Debye model to determine entropy there and in the viscinity.
+    \item \textbf{Debye model}: The statement that $C_P(T)\propto T^3=AT^3$ for insulating crystals.
+    \begin{itemize}
+        \item It follows that for $T_0$ sufficiently close to \SI{0}{\kelvin},
+        \begin{equation*}
+            \Delta S = \int_0^{T_0}\frac{AT^3}{T}\dd{T}
+            = \frac{1}{3}AT_0^3
+            = \frac{C_P(T_0)}{3}
+        \end{equation*}
+        \item Justifying the Debye model.
+        \begin{itemize}
+            \item According to the Einstein model, each atom is a harmonic oscillator of frequency $h\nu$. This implies, however, that $C_P(T)\approx 1/(\e[h\nu/k_BT]-1)$ drops too fast at low $T$.
+            \item Debye says that sound waves are harmonic oscillators with very low frequencies. If you take $h\nu\ll k_BT$, or $hc/\lambda\ll k_BT$, you are concerned with all $\lambda$ sufficiently large (or wavevectors $k=2\pi/\lambda$ sufficiently small). The wavevectors are within a sphere in a wavevector space with basis $k_x,k_y,k_z$. The radius of this sphere is proportional to $T$. Thus, it's volume, which contains what we're interested in, is $4/3\pi r^3$ and thus the sum of all the wavevectors is proportional to $T^3$. Thus, the number of states of energy less than $k_BT$ is proportional to $T^3$ and each has $k_BT$ of energy (thus, if you were trying to find a scaling for the energy, it would be $U(T)\approx T^4$). Note also $h\nu=hc/\lambda=2\pi\hbar c/\lambda=c\hbar k$.
+        \end{itemize}
+    \end{itemize}
+    \item Comparing experimental and theoretical values of entropy of gases to the theory value from the partition function.
+    \begin{itemize}
+        \item Ideal gas phase $S$ is accurately calculated with $Q=q^N/N!$.
+        \item Table 21.4 compares the agreement for seven substances and finds it accurate to within $0.1\%$.
+        \item The discrepancies come from disorder at \SI{0}{\kelvin}, as described in \textcite{bib:McQuarrieSimon}.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 21: Entropy and the Third Law of Thermodynamics}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
