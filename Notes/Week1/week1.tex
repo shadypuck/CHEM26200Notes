@@ -250,8 +250,8 @@
         \begin{itemize}
             \item As before $J=1$ corresponds to states $j=-1,0,1$.
         \end{itemize}
-        \item See Figure 18.5 in the textbook.
         \item There is a range of angular momenta due to the temperature that for $T=\SI{300}{\kelvin}$ peaks around $J=5$.
+        \item See Figure \ref{fig:rotationalPopulations}.
     \end{itemize}
     \item Example: Vibrational.
     \begin{itemize}
@@ -270,27 +270,29 @@
         \item All we need to know is the energy of every state in the system.
         \item This is impossible for an infinite system, but the Schr\"{o}dinger equation gives us the energy of a system, so its a great place to start.
     \end{itemize}
-    \item Calculating the total energy from the partition function.
+    \item Calculating the average energy of a system from the partition function.
     \begin{itemize}
-        \item To construct it, start with
+        \item Take the energy $E_1$ of the ground state to be our zero of energy.
+        \item Under this assumption, we may rewrite the partition function as follows.
         \begin{equation*}
-            Q = \frac{p_1}{p_1}+\frac{p_2}{p_1}+\frac{p_3}{p_1}+\cdots
+            Q = \sum_i\e[-(E_i-E_1)/k_BT]
+            = \frac{p_1}{p_1}+\frac{p_2}{p_1}+\frac{p_3}{p_1}+\cdots
             = 1+\e[\frac{-(E_2-E_1)}{k_BT}]+\e[\frac{-(E_3-E_1)}{k_BT}]+\cdots
         \end{equation*}
-        \item The total energy is equal to
+        \item From MathChapter B, the expected energy is equal to
         \begin{equation*}
             \prb{E} = E_1p_1+E_2p_2+E_3p_3+\cdots
         \end{equation*}
-        \item Taking $E_1=0$ gives
+        \item Since $E_1=0$, the above can be rewritten as
         \begin{equation*}
             \prb{E} = p_1\left[ E_2\frac{p_2}{p_1}+E_3\frac{p_3}{p_1}+\cdots \right]
         \end{equation*}
-        \item Note that
+        \item With this result established, we now take a moment to note that
         \begin{equation*}
-            \pdv{T}(\e[-E_2/k_BT]) = \frac{E_2}{k_BT^2}\e[-E_2/k_BT]
-            = \frac{1}{k_BT^2}\left( E_2\frac{p_2}{p_1} \right)
+            \pdv{T}(\e[-E_i/k_BT]) = \frac{E_i}{k_BT^2}\e[-E_i/k_BT]
+            = \frac{1}{k_BT^2}\left( E_i\frac{p_i}{p_1} \right)
         \end{equation*}
-        \item Additionally,
+        and
         \begin{align*}
             p_1 &= 1-(p_2+p_3+\cdots)\\
             &= 1-p_1\left( \frac{p_2}{p_1}+\frac{p_3}{p_1}+\cdots \right)\\
@@ -300,9 +302,8 @@
         \item Therefore,
         \begin{align*}
             \prb{E} &= p_1k_BT^2\pdv{T}(\frac{p_1}{p_1}+\frac{p_2}{p_1}+\cdots)\\
-            &= p_1k_BT^2\pdv{Q}{T}\\
             &= \frac{1}{Q}k_BT^2\pdv{Q}{T}\\
-            \prb{E} &= k_BT^2\pdv{T}(\ln Q)
+            \prb{E} &= k_BT^2\pdv{\ln Q}{T}
         \end{align*}
         \item The above is an important result.
     \end{itemize}
@@ -336,7 +337,7 @@
         \item When we write the Boltzmann factor, we'll have an exponential with the sum of the kinetic and potential energy.
         \begin{equation*}
             Q = \sum_{ij}\e[-(E_{KE_i}-E_{PE_j})/k_BT]
-            = \sum_{ij}\e[-E_{KE_i}/k_BT]\e[-E_{PE_j})/k_BT]
+            = \sum_{ij}\e[-E_{KE_i}/k_BT]\e[-E_{PE_j}/k_BT]
             = Q_{KE}Q_{PE}
         \end{equation*}
         \begin{itemize}
@@ -364,7 +365,7 @@
             \prb{KE} = \prb{KE_x}+\prb{KE_y}+\prb{KE_z}
             = \frac{3}{2}k_BT
         \end{equation*}
-        \item Therefore, this result holds beyond the specific case of an ideal gas!
+        \item Therefore, this result holds beyond the specific case of an ideal gas!\footnote{This is why this derivation is preferable over the one presented in the book. Note that the "gas" here is assumed to be made of hard spheres.}
     \end{itemize}
     \item Now for the potential energy of a harmonic oscillator.
     \begin{itemize}
@@ -437,7 +438,7 @@
     \item Partition function of a quantum harmonic oscillator and the energy of the oscillator.
     \begin{itemize}
         \item Recall that the energies are given by $(n+1/2)h\nu$.
-        \item The partition function of the vibration of the quantum harmonic oscillator is
+        \item Taking our zero of energy to be $\SI{0.5}{\hartree}$, the partition function of the vibration of the quantum harmonic oscillator is
         \begin{align*}
             Q &= 1+\e[-h\nu/k_BT]+\e[-2h\nu/k_BT]+\cdots\\
             Q &= (\e[-h\nu/k_BT])^0+(\e[-h\nu/k_BT])^1+(\e[-h\nu/k_BT])^2+\cdots\\

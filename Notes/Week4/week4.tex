@@ -295,6 +295,123 @@
 
 
 
+\section{Office Hours (PGS)}
+\begin{itemize}
+    \item Week 1, Lecture 3: When we calculate the average kinetic energy to be $3k_BT/2$, what constraints do we have on the system. Is it truly any system that can be described by a partition function? And if so, why does this result differ from the one presented in \textcite{bib:McQuarrieSimon} for a diatomic ideal gas?
+    \begin{itemize}
+        \item There aren't constraints on the system under study.
+        \item $PV=\frac{2}{3}\prb{KE}$ is true without ideality.
+        \item $\prb{E}=3k_BT/2$ is only true with a monatomic ideal gas.
+        \item DOFs contribute to $\prb{E}$ (at very high temperatures).
+        \begin{itemize}
+            \item But in the equation from Chapter 17 for a diatomic, some terms disappear as $T\to\infty$.
+        \end{itemize}
+    \end{itemize}
+    \item Week 1, Lecture 3: What does calculating the expected energy of a harmonic oscillator have to do with anything? Are you just doing it to show that we can for the quantized system? Also, are we integrating because this is a "continuous" partition function, and if it is a continuous partition function, is it so because the harmonic oscillator can, in theory, assume any bond distance even though its \emph{energies} are quantized?
+    \item Week 1, Lecture 3: How is $k_BT$ the average energy of a classical harmonic oscillator? Is it the sum of the kinetic energy and potential energy, both equal to $k_BT/2$? Is this the virial theorem again?
+    \begin{itemize}
+        \item Also a high-temperature limit thing.
+    \end{itemize}
+    \item What was Week 1 about? It mostly seemed like a lot of examples to sort of motivate the course.
+    \begin{itemize}
+        \item Yes, this was basically just to motivate the course.
+        \item Take away: $k_BT$ determines the range of energies you'll be in for everything.
+        \begin{itemize}
+            \item Things much higher in energy won't be \textbf{thermally populated}.
+            \item Things much lower are equally populated.
+        \end{itemize}
+    \end{itemize}
+    \item Quiz 1, Questions 5-6. Plus will things like surface tension be on the midterm?
+    \begin{itemize}
+        \item Surface tension is the same thing as pressure in two dimensions.
+        \item We can do $\gamma A=nRT$.
+        \item $A\gamma$ becomes $2$ of the kinetic energy $1/2k_BT$.
+        \begin{itemize}
+            \item Work this out for myself!
+        \end{itemize}
+    \end{itemize}
+    \item Week 2, Lecture 2: The vibrational partition function at $T=h\nu/k_B$ equals zero. What is the significance of this? Is it just that, that the average vibrational energy is equal to zero here?
+    \item Do the rotational and vibrational temperatures have a nice physical interpretation?
+    \begin{itemize}
+        \item They are the energies of vibrations/rotations on a scale of temperature instead of energy (the two are directly proportional).
+        \item The theoretical rotational/vibrational temperature/energy.
+        \begin{itemize}
+            \item It's the same temperature as the speeds. When molecules collide, they exchange energy.
+            \item After enough collisions (as a system tends toward thermal equilibrium), the rotational temperature becomes the same as vibrational.
+        \end{itemize}
+    \end{itemize}
+    \item Week 3, Lecture 1: In your derivation of the Maxwell-Boltzmann distribution, where does the $4\pi v^2$ come from? Is the sphere you referred to in class the same one as in the textbook, this "velocity space?" If so, could you explain a bit more what a velocity space is?
+    \item The internal energy of a system is only a function of temperature because in the expression for $\prb{E}$ in terms of $Q$, $T$ is the only variable that is algebraically in the equation and the partial derivative is held constant with respect to all variables except $T$.
+    \item I'm very confused on the distinction between a reversible and irreversible process.
+    \begin{itemize}
+        \item Reversible means that at every point, you are in thermal equilibrium, so you can specify the state of the system.
+        \begin{itemize}
+            \item Remember that $T$ is not always specified for a system (only for systems in thermal equilibrium, i.e., that obey the Maxwell-Boltzmann distribution)! The same goes for $P$ and $V$.
+        \end{itemize}
+        \item If the process happens very suddenly or you don't know what the temperature/pressure are during the process, that's irreversible. Something burning in a closed container is irreversible, but at the beginning and end you are in thermal equilibrium, so you can imagine a reversible path between the two.
+        \item Energy is the same regardless of path, entropy is the same regardless of path.
+        \item Temperature is not uniform throughout the system during an expansion of a gas from a filled container into a vacuumed container (the system is not in thermal equilibrium). The particles in the filled container will still be at the initial temperature, but those that have left are expending their KE to do so and cooling drastically.
+        \item \emph{Any} line on a $PV$ diagram describes a reversible process. The processes may differ in terms of non-state functions such as heat exchange or work, but the net $\Delta U$, $\Delta H$, and $\Delta S$ will be the same.
+        \begin{itemize}
+            \item The internal energy will be different \emph{along} different paths, but it will make the same net change.
+        \end{itemize}
+        \item A reversible process need not be isothermal. We can merely consider a piecewise path that contains isothermal components because they are easy to work with mathematically, if the quantity we're interested in calculating is a state function.
+        \item If we want to calculate the work for a reversible process, we need $w=-\int_1^2P\dd{V}$. If we want to calculate $\Delta U$, we need the state variables $T_1$ and $T_2$ but that's it (since $U$ is a state function of $T$).
+    \end{itemize}
+    \item Could you also speak to exact vs. inexact differentials and how to tell if something is a state function by its differential?
+    \begin{itemize}
+        \item If you have a state function, this means that you can express it in terms of the state variables, but you need to know them.
+        \item Examples of state variables are energy, temperature, volume, and number of moles.
+        \item Once you have a relation between those variables, the state function is uniquely defined between those variables. Entropy is absolute (with physical meaning); enthalpy and energy have defined values once we choose a zero. These latter values, however, have no physical meaning; they only allow us to calculate $\Delta U$ and $\Delta H$, which do have physical meaning.
+        \item We find that $\var{q_\text{rev}}=C_V\dd{T}$ and $\var{w}=-P\dd{V}$. When we take $\var{q_\text{rev}}=\dd{U}+P\dd{V}$, this differential does not describe a state function because it is not the derivative of any function ($P$ is a state variable, but it's also a function of $V$ and $T$ [the latter being the problem since it appears in a term with only $\dd{V}$]). However, if we divide by $T$ for an ideal gas, then we can get the form $M(T)\dd{T}+N(V)\dd{V}$, where $M(T)=C_V(T)/T$ and $N(V)=nR/V$.
+        \begin{itemize}
+            \item Note that this differential satisfies $\dv*{N}{T}=\dv*{M}{V}=0$ as per \textcite{bib:CAAGThomasNotes}. In fact, this directly expresses the fact that $M$ is constant with respect to $y$ and $N$ is constant with respect to $x$.
+            \item Note that according to this definition, we don't theoretically need $M,N$ to only be functions of one variable.
+        \end{itemize}
+        \item Maxwell's relation: A function $f(x,y)$ such that $\dv*{f}{x}\dd{y}=\dv*{f}{y}\dd{x}$.
+        \begin{itemize}
+            \item Allows us to relate variables that we might not generally be able to.
+        \end{itemize}
+    \end{itemize}
+    \item Week 3, Lecture 3: I know you said when you were working with the differential of entropy that $\dd{H}=\var{q}$ at constant pressure ($\dd{P}=0$). This makes sense. Did you say that at constant volume, we have that $\dd{H}=\var{q}$ as well?
+    \item Week 3, Lecture 3: How do we obtain the enthalpies of formation at nonstandard temperatures?
+    \item Do we need to know anything about Doppler broadening? I believe you alluded to it once.
+    \item How are $P_\text{ext}$ and $P$ related, especially in the context of a $PV$ graph? What exactly is the "$P$" in $w=-\int_1^2P\dd{V}$?
+    \begin{itemize}
+        \item In a reversible process, the pressures are the same. This extends to \emph{any} path along a $PV$ diagram, not just an isothermal one, as per our previous discussion.
+    \end{itemize}
+    \item What is with the isothermal approximation thing? Do we just approximate everything as isothermal? When can and can't we do this?
+    \item Page 39 of my notes questions.
+    \item What gives us the right to express work during an adiabatic process as an integral with respect to temperature? Is there an equivalent formulation in terms of an integral with respect to $V$?
+    \item Quiz 2, Question 4.
+    \item Week 4, Lecture 1: You calculated that $\Delta S=nR\ln 2$ for $n$ moles of a gas expanding to twice it's initial volume. I assume this doesn't relate to the Gibbs Paradox?
+    \begin{itemize}
+        \item The Gibbs paradox says that the final and initial states of two gases mixing are the same, and thus there is no change in entropy.
+        \item However, we are implicitly assuming that the gases are expanding by virtue of the fact that they're initially separated and thus distinguishable.
+        \item A paradox doesn't mean that something isn't true, it just means that our understanding is incomplete.
+        \item The $nR\ln 2$ isn't characteristic of the Gibbs paradox; it's characteristic of a doubling in volume, in whatever context.
+    \end{itemize}
+    \item Week 4, Lecture 3: How do you get to $W=W_\text{eq}\e[-\Delta S/T]$?
+    \begin{itemize}
+        \item It is $+\Delta S$; it's just that $\Delta S$ is a negative quantity when you're moving away from equilibrium.
+    \end{itemize}
+    \item In an irreversible process vs. a reversible process, is there a difference in entropy?
+    \begin{itemize}
+        \item See the Clausius inequality. If you want more heat, do reversible. If you want more work, do irreversible.
+    \end{itemize}
+    \item The experiment in Homework 2, Question 1.
+    \begin{itemize}
+        \item The Cl\'{e}ment-Desormes experiment.
+    \end{itemize}
+    \item Do we need another variable for HW2, Q2?
+    \begin{itemize}
+        \item You do need an initial temperature $T_h$.
+        \item PGS will send a note.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{MathChapter J: The Binomial Distribution and Stirling's Approximation}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -628,138 +745,6 @@
             \beta &= \frac{1}{k_BT}
         \end{align*}
     \end{itemize}
-\end{itemize}
-
-
-
-\section{Chapter 21: Entropy and the Third Law of Thermodynamics}
-\emph{From \textcite{bib:McQuarrieSimon}.}
-\begin{itemize}
-    \item In this chapter, we will learn how to calculate absolute (as opposed to relative) values of entropy.
-    \item Relating thermodynamic quantities to entropy.
-    \begin{itemize}
-        \item It follows from the First Law of Thermodynamics that
-        \begin{equation*}
-            \dd{U} = \underbrace{T\dd{S}}_{\var{q_\text{rev}}}\underbrace{-P\dd{V}}_{\var{w_\text{rev}}}
-        \end{equation*}
-        \item We have that the total differential of $U(V,T)$ is
-        \begin{equation*}
-            \dd{U} = \pdv{U}{T}\dd{T}+\pdv{U}{V}\dd{V}
-        \end{equation*}
-        \item Combining the two above equations, we have that
-        \begin{align*}
-            T\dd{S}-P\dd{V} &= \pdv{U}{T}\dd{T}+\pdv{U}{V}\dd{V}\\
-            \dd{S} &= \frac{1}{T}\pdv{U}{T}\dd{T}+\frac{1}{T}\left( P+\pdv{U}{V} \right)\dd{V}\\
-            &= \frac{C_V\dd{T}}{T}+\frac{1}{T}\left( P+\pdv{U}{V} \right)\dd{V}
-        \end{align*}
-        \item It follows by comparing the above with the total differential of $S(V,T)$ that
-        \begin{align*}
-            \left( \pdv{S}{T} \right)_V &= \frac{C_V}{T}&
-            \left( \pdv{S}{V} \right)_T &= \frac{1}{T}\left[ P+\left( \pdv{U}{V} \right)_T \right]
-        \end{align*}
-    \end{itemize}
-    \item Since
-    \begin{equation*}
-        \dd{H} = \dd{U}+P\dd{V}+V\dd{P}
-        = T\dd{S}+V\dd{P}
-    \end{equation*}
-    we can proceed in a similar manner to the above to obtain
-    \begin{align*}
-        \left( \pdv{S}{T} \right)_P &= \frac{C_P}{T}&
-        \left( \pdv{S}{P} \right)_T &= \frac{1}{T}\left[ \left( \pdv{H}{P} \right)-V \right]
-    \end{align*}
-    \item \textbf{Third Law of Thermodynamics}: Every substance has a finite positive entropy, but at zero kelvin, the entropy may become zero, and does so in the case of a perfectly crystalline substance.
-    \begin{itemize}
-        \item While the first and second laws provide state functions (internal energy and entropy, respectively), the third law provides a numerical scale for entropy.
-    \end{itemize}
-    \item The third law, although formulated before quantum mechanics, follows nicely from it: At absolute zero, every system in an ensemble will be in the same energy state, so $W=1$; it follows that $S=k_B\ln 1=0$.
-    \begin{itemize}
-        \item If, however, the ground state has a degeneracy of $n$, then
-        \begin{align*}
-            S(\SI{0}{\kelvin}) &= -k_B\sum_jp_j\ln p_j\\
-            &= -k_B\sum_{j=1}^n\frac{1}{n}\ln\frac{1}{n}\\
-            &= k_B\ln n
-        \end{align*}
-        \item Nevertheless, even for a degeneracy of $N_A$, we will only have $S(\SI{0}{\kelvin})\approx\SI{7.56e-22}{\joule\per\mole\per\kelvin}$, which is far less than any measurable value.
-    \end{itemize}
-    \item Because of the third law, we can define entropy absolutely (assuming no phase change between 0 and $T$).
-    \begin{align*}
-        S(T) &= S(0)+S(T)-S(0)\\
-        &= S(0)+\Delta S\\
-        &= S(0)+\int_0^T\frac{C_P(t)}{t}\dd{t}\\
-        &= \int_0^T\frac{C_P(t)}{t}\dd{t}
-    \end{align*}
-    \item Accounting for phase changes.
-    \begin{itemize}
-        \item A phase change is a great example of a reversible process since we only need the temperature to be slightly above or slightly below the transition temperature $T_\text{trs}$ to accomplish it.
-        \item Thus,
-        \begin{equation*}
-            \Delta_\text{trs}S = \frac{q_\text{rev}}{T_\text{trs}}
-            = \frac{\Delta_\text{trs}H}{T_\text{trs}}
-        \end{equation*}
-        \item It follows that, as applicable,
-        \begin{equation*}
-            S(T) = \int_0^{T_\text{fus}}\frac{C_P^s(t)}{t}\dd{t}+\frac{\Delta_\text{fus}H}{T_\text{fus}}+\int_{T_\text{fus}}^{T_\text{vap}}\frac{C_P^l(t)}{t}\dd{t}+\frac{\Delta_\text{vap}H}{T_\text{vap}}+\int_{T_\text{vap}}^T\frac{C_P^g(t)}{t}\dd{t}
-        \end{equation*}
-        \item Note that with typical values plugged in, $\Delta_\text{fus}S\ll\Delta_\text{vap}S$.
-    \end{itemize}
-    \item \textbf{Debye $\bm{T^3}$ law}: As $T\to 0$ (i.e., for about $T=\SIrange{0}{15}{\kelvin}$), $C_P^s(T)\to T^3$ for most nonmetallic crystals and $C_P^s(T)\to aT+bT^3$ ($a,b\in\R_{\geq 0}$) for most metallic crystals.
-    \begin{itemize}
-        \item It follows by the absolute definition of $S$ that
-        \begin{equation*}
-            S(T) = \frac{C_P(T)}{3}
-        \end{equation*}
-        at low temperatures for nonmetallic solids.
-    \end{itemize}
-    \item \textbf{Debye temperature}: A constant characteristic of the solid. \emph{Denoted by} $\bm{\Theta_\textbf{D}}$.
-    \item \textbf{Third-law entropy}: An absolute entropy value calculated according to the convention that $S(\SI{0}{\kelvin})=0$. \emph{Also known as} \textbf{practical absolute entropy}.
-    \item \textcite{bib:McQuarrieSimon} calculates the third-law entropy of \ce{N2} based on various thermodynamic data.
-    \item \textbf{Standard entropy}: An entropy value of a gas as presented in the literature. \emph{Denoted by} $\bm{S^\circ}$.
-    \begin{itemize}
-        \item Standard entropies are, by convention, corrected for the nonideality of the gas at one bar (for how to calculate this correction, see Chapter 22).
-    \end{itemize}
-    \item \textcite{bib:McQuarrieSimon} rederives $S(\SI{0}{\kelvin})=k_B\ln n$ from a partition function approach, and then gives a specific example for \ce{N2}, noting how well this value correlates with the one from the previous example.
-    \begin{itemize}
-        \item "This type of agreement is quite common, and in many cases the statistical thermodynamic value is more accurate than the calorimetric value\dots The accepted literature values are often a combination of statistical thermodynamic and calorimetric values" \parencite[863]{bib:McQuarrieSimon}.
-        \item Also gives a linear symmetric example (\ce{CO2}).
-    \end{itemize}
-    \item Entropy trends.
-    \begin{enumerate}
-        \item "The standard molar entropies of the gaseous substances are the largest, and the standard molar entropies of the solid substances are the smallest" \parencite[865]{bib:McQuarrieSimon}.
-        \item "The increase in standard molar entropy of the noble gases is a consequence of their increasing mass as we move down the periodic table" \parencite[865]{bib:McQuarrieSimon}.
-        \begin{itemize}
-            \item More mass implies more translational energy levels are available implies more disorder.
-            \item This is a consequence of quantum mechanics --- considering the formula for the energy of a particle in a 3D box, note that $m$ is in the denominator. Thus, increasing $m$ means that the levels are more closely spaced, and hence more are readily accessible.
-        \end{itemize}
-        \item "Generally speaking, the more atoms of a given type in a molecule, the greater is the capacity of the molecule to take up energy and thus the greater is its entropy" \parencite[866]{bib:McQuarrieSimon}.
-        \begin{itemize}
-            \item More atoms implies more vibrational modes implies more disorder.
-        \end{itemize}
-        \item "For molecules with approximately the same molecular masses, the more compact the molecule is, the smaller is its entropy" \parencite[867]{bib:McQuarrieSimon}.
-        \begin{itemize}
-            \item Between isomers, the one with more unrestricted motion will have greater entropy.
-        \end{itemize}
-    \end{enumerate}
-    \item We can calculate the entropy for substances that "don't exist" via alternate paths.
-    \begin{itemize}
-        \item For example, \ce{Br2} is a liquid at \SI{298}{\kelvin}, but we can still calculate $S^\circ[\ce{Br2_{(g)}}]$ by imagining the following path: Raise \ce{Br2_{(l)}} to its boiling point; vaporize it; cool it back down to \SI{298}{\kelvin}.
-        \item This calculated value is in agreement with the spectroscopic value.
-    \end{itemize}
-    \item \textbf{Residual entropy}: The difference between the calculated molar entropy of a substance and its experimental molar entropy. \emph{Given by}
-    \begin{equation*}
-        \overline{S}_\text{calc}-\overline{S}_\text{exp}
-    \end{equation*}
-    \begin{itemize}
-        \item We define residual entropy this way because wherever there are discrepancies, it so happens that $S_\text{calc}>S_\text{exp}$.
-    \end{itemize}
-    \item Large residual entropies are encountered for the linear molecules \ce{CO} and \ce{N2O}.
-    \begin{itemize}
-        \item This is because these molecules have small dipole moments, so upon crystallization, there is not a strong tendency for the molecule to align in the most energetically favorable way.
-        \item Thus, with molecules already locked in higher energy states at $T_\text{fus}$, as we cool to \SI{0}{\kelvin}, we do not have a "perfect" crystal.
-        \item Since the ground state is two-fold degenerate in both of these cases (we have \ce{CO} and \ce{OC}, and \ce{NNO} and \ce{ONN}), $\overline{S}(\SI{0}{\kelvin})=R\ln 2$ here.
-    \end{itemize}
-    \item We can similarly account for the larger still residual entropy in \ce{H3CD} by noting that the ground state is four-fold degenerate, and thus $\overline{S}(\SI{0}{\kelvin})=R\ln 4$ here.
-    \item We can use standard molar entropies to calculate the entropy changes of chemical reactions.
 \end{itemize}
 
 
