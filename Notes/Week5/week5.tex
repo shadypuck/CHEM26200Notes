@@ -71,6 +71,122 @@
 
 
 
+\section{Introduction to Free Energies}
+\begin{itemize}
+    \item \marginnote{2/9:}Discusses the entropy trends from Chapter 21.
+    \begin{itemize}
+        \item More atoms ($\ce{CO}<\ce{CO2}$) increases entropy.
+        \item Heavier atoms increases entropy.
+        \item Floppier molecules ($\text{pentane}>\text{cyclopentane}$) have greater entropy.
+        \item Gases have greater entropy (this rule is king).
+    \end{itemize}
+    \item Example (21-42):
+    \begin{itemize}
+        \item When determining which chemical reaction has the greatest increase in entropy, look at the change in number of moles of gas as the first tie-breaker.
+    \end{itemize}
+    \item Consider two systems: Water and ice in a container in thermal contact with a surrounding at zero celsius, and water at room temperature and ice at zero celsius in a thermally isolated container.
+    \begin{itemize}
+        \item The first process is reversible since we can melt by raising the temperature slightly (allowing heat flow into the system) and vice versa for freezing.
+        \item The second process is irreversible because it tends toward thermal equilibrium and there is no way to undo the final equilibrium.
+        \item We can consider reversible paths for both processes though to calculate state functions.
+        \item Goes over how to calculate the final temperature $T$ in the second process, which is necessary to get the entropy componentwise.
+    \end{itemize}
+    \item Free energies decrease in a spontaneous process.
+    \begin{itemize}
+        \item We know that $\dd{S}\geq 0$ for an isolated system, and that $\dd{S}\geq\var{q}/T$ for any system (equality holds for reversible processes).
+        \item Rearranging, we have that
+        \begin{equation*}
+            0 \geq \var{q}-T\dd{S}
+        \end{equation*}
+        \item It follows since $\dd{U}=\var{q}+\var{w}$ that
+        \begin{align*}
+            \dd{U}-T\dd{S} &= (\var{q}-T\dd{S})+\var{w}\\
+            &\leq \var{w}
+        \end{align*}
+        \item But since $A=U-TS$ is clearly a state function (as a combination of state functions and state variables),
+        \begin{equation*}
+            \dd{A} = \dd{U}-T\dd{S}-S\dd{T}
+        \end{equation*}
+        is an exact differential for a state function. In particular, at constant temperature,
+        \begin{equation*}
+            \dd{A} = \dd{U}-T\dd{S}
+        \end{equation*}
+        \item Therefore, $\dd{A}\leq\var{w}$ at constant temperature.
+        \item Thus, at constant $T,V,w$, $\dd{A}\leq 0$. In other words, $A$ is monotonically decreasing.
+    \end{itemize}
+    \item \textbf{Helmholtz free energy}: The state function $A$ defined above.
+    \begin{itemize}
+        \item We use this because it's more "natural" to think about finding the lowest free \emph{energy} state than the largest \emph{entropy} state.
+        \item The Helmholtz free energy is most often used in physics where there isn't often a "pressure bath." Chemists prefer the \textbf{Gibbs free energy}, which is constructed exactly the same way.
+    \end{itemize}
+    \item \textbf{Gibbs free energy}: The state function describing the free energy of a system at constant pressure. \emph{Denoted by} $\bm{G}$. \emph{Given by}
+    \begin{equation*}
+        G = H-TS
+    \end{equation*}
+    \begin{itemize}
+        \item It follows from our prior results that at constant temperature,
+        \begin{align*}
+            \dd{G} &= \dd{H}-T\dd{S}\\
+            &= \dd{U}+\dd{(PV)}-T\dd{S}\\
+            &= \var{q}+\var{w}+P\dd{V}+V\dd{P}-T\dd{S}\\
+            &= \var{q}-P\dd{V}+\var{w_{\text{non-rev }PV}}+P\dd{V}+V\dd{P}-T\dd{S}\\
+            &= \var{q}-T\dd{S}+\var{w_{\text{non-rev }PV}}+V\dd{P}\\
+            &\leq 0+\var{w_{\text{non-rev }PV}}+V\dd{P}
+        \end{align*}
+        \item Thus, at constant $T,P$ and with no other $w$ done on the system, $\dd{G}\leq 0$.
+        \item In a reversible process (constant $T,P$), $\dd{G}=\var{w_{\text{non-rev }PV}}$.
+    \end{itemize}
+    \item Note that $\var{w}$ is the work put into the system, so $\var{w}\geq\var{w_\text{rev}}=\dd{A}$.
+    \item The system produces more work when operated reversibly.
+    \item Gibbs free energy and electrochemical work: The case of hydrogen fuel cells vs. thermal engines.
+    \begin{itemize}
+        \item The hydrogen fuel cell is based off of the reaction
+        \begin{equation*}
+            \ce{H2 + 1/2O2 -> H2O}
+        \end{equation*}
+        with $\Delta H=\SI[per-mode=symbol]{285.76}{\kilo\joule\per\mole}$ and $\Delta G=\SI[per-mode=symbol]{237.1}{\kilo\joule\per\mole}$.
+        \item $\Delta H$ can be used to produce heat $q=\Delta H$.
+        \item If we want to produce work, we have to run a thermal engine that will have efficiency bounded above by the Carnot cycle's $(T_h-T_c)/T_h$.
+        \begin{itemize}
+            \item With new materials, people have been able to use hotter thermal reservoirs and achieve efficiencies up to 50\%!
+        \end{itemize}
+        \item $\Delta G$ can be converged to work directly (as current and voltage in the fuel cell). Thus, in theory, runnning a reversible fuel cell produces more work than burning \ce{H2} in a reversible engine.
+        \begin{itemize}
+            \item The limitation is overpotential, though, and we would need a better hydrogen burning catalyst.
+        \end{itemize}
+    \end{itemize}
+    \item Maxwell relations:
+    \begin{equation*}
+        \pdv{f}{x}{y} = \pdv{f}{y}{x}
+    \end{equation*}
+    \item If we want to show that $(\pdv*{P}{T})_V=(\pdv*{S}{V})_T$, we take
+    \begin{align*}
+        \dd{A} &= \var{q_\text{rev}}-T\dd{S}-S\dd{T}-P\dd{V}\\
+        &= -S\dd{T}-P\dd{V}\\
+        &= \left( \pdv{A}{T} \right)_V+\left( \pdv{A}{V} \right)_T
+    \end{align*}
+    so that
+    \begin{equation*}
+        \pdv{P}{T} = \pdv{T}(-\pdv{A}{V})
+        = -\pdv{A}{T}{V}
+        = -\pdv{A}{V}{T}
+        = \pdv{V}(-\pdv{A}{T})
+        = \pdv{S}{V}
+    \end{equation*}
+    \begin{itemize}
+        \item Facts like these help us show things such as
+        \begin{equation*}
+            \Delta S = \int_{V_1}^{V_2}\pdv{S}{V}\dd{V}
+            = \int_{V_1}^{V_2}\pdv{P}{T}\dd{V}
+            = \int_{V_1}^{V_2}\frac{nR}{V}\dd{V}
+            = nR\ln\frac{V_2}{V_1}
+        \end{equation*}
+        so we don't need to measure the heat flow to measure entropy when we have a more complex equation of state than $PV=nRT$.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 21: Entropy and the Third Law of Thermodynamics}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -153,7 +269,7 @@
     \item \textbf{Debye temperature}: A constant characteristic of the solid. \emph{Denoted by} $\bm{\Theta_\textbf{D}}$.
     \item \textbf{Third-law entropy}: An absolute entropy value calculated according to the convention that $S(\SI{0}{\kelvin})=0$. \emph{Also known as} \textbf{practical absolute entropy}.
     \item \textcite{bib:McQuarrieSimon} calculates the third-law entropy of \ce{N2} based on various thermodynamic data.
-    \item \textbf{Standard entropy}: An entropy value of a gas as presented in the literature. \emph{Denoted by} $\bm{S^\circ}$.
+    \item \textbf{Standard entropy}: An entropy value of a gas as presented in the literature. \emph{Denoted by} $\bm{S^\circ}$. \emph{Units} $\bm{\textbf{J}\,\textbf{mol}^{-1}\,\textbf{K}^{-1}}$.
     \begin{itemize}
         \item Standard entropies are, by convention, corrected for the nonideality of the gas at one bar (for how to calculate this correction, see Chapter 22).
     \end{itemize}
