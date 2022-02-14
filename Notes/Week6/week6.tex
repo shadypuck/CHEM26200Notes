@@ -1,0 +1,119 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{5}
+
+\begin{document}
+
+
+
+
+\chapter{Chemical Equilibrium}
+\section{Thermodynamics of the Rubber Band}
+\begin{itemize}
+    \item \marginnote{2/14:}Midterm:
+    \begin{itemize}
+        \item Take for two hours, any two hours tomorrow.
+        \item Upload a single PDF file for your answer.
+        \item Do not discuss the questions with anybody.
+    \end{itemize}
+    \item \textbf{Standard Gibbs free energy} (at $T$): The following energy, where $H^\circ(T)$ is the standard enthalpy at $T$ and $S^\circ(T)$ is the standard entropy at $T$. \emph{Denoted by} $\bm{G^\circ(T)}$. \emph{Given by}
+    \begin{equation*}
+        G^\circ(T) = H^\circ(T)-TS^\circ(T)
+    \end{equation*}
+    \begin{itemize}
+        \item It follows that since the enthalpy is taken at constant pressure and the entropy $S(T,P)$ at nonstandard pressure is given by $S(T,P)=S^\circ(T)+R\ln P/P_0$ that the Gibbs free energy $S(T,P)$ at nonstandard pressure is
+        \begin{align*}
+            G(T,P) &= H^\circ(T)-TS(T,P)\\
+            &= H^\circ(T)-T\left( S^\circ(T)+R\ln\frac{P}{P_0} \right)\\
+            &= G^\circ(T)-RT\ln\frac{P}{P_0}
+        \end{align*}
+    \end{itemize}
+    \item Gibbs free energy and equilibrium at constant $T,P$.
+    \begin{itemize}
+        \item If
+        \begin{equation*}
+            \ce{$a$A + $b$B -> $c$C + $d$D}
+        \end{equation*}
+        is in equilibrium where $A,B,C,D$ are ideal gases, then $\Delta G=0$.
+        \item This implies that
+        \begin{equation*}
+            a\Delta G_a+b\Delta G_b = c\Delta G_c+d\Delta G_d
+        \end{equation*}
+        which is the \textbf{law of mass action}.
+    \end{itemize}
+    \item Example of phase equilibrium ($G(T)$ for solid/liquid/gas phases).
+    \begin{itemize}
+        \item We have from the total differential of $G$ that
+        \begin{equation*}
+            \left( \pdv{G}{T} \right)_P = -S
+        \end{equation*}
+        \item Since $S\geq 0$ always, $G$ is monotonically decreasing.
+        \item During the liquid phase, there is a relatively constant slight negative slope in the $G(T)$ graph.
+        \item During the gas phase, $S$ is much bigger, so there is a larger negative slope in the $G(T)$ graph.
+        \item Additionally, at the heats of vaporization and fusion, the system is in equilibrium (hence the energies are the same), so the graph is continuous.
+    \end{itemize}
+    \item Rubber band temperature analysis.
+    \begin{itemize}
+        \item A rubber band heats up when stretched:
+        \begin{itemize}
+            \item We have that $\dd{U}=T\dd{S}+f\dd{L}$.
+            \item We want to show that $(\pdv*{U}{L})_T=T(\pdv*{S}{L})_T+f$.
+            \begin{align*}
+                \dd{U} &= T\left( \pdv{S}{T} \right)_L\dd{T}+\left( \pdv{S}{L} \right)_T\dd{L}+f\dd{L}\\
+                &= T\left( \pdv{S}{T} \right)_L\dd{T}+\left[ \left( \pdv{S}{L} \right)_T+f \right]\dd{S}
+            \end{align*}
+            \item All that's left is to show that $-(\pdv*{S}{L})_T=(\pdv*{f}{T})_L$, which we can do using Maxwell relations.
+            \begin{equation*}
+                \dd{A} = -S\dd{T}+f\dd{L}
+            \end{equation*}
+            \begin{equation*}
+                \left( \pdv{U}{L} \right)_T = -T\left( \pdv{f}{T} \right)_L+f
+            \end{equation*}
+        \end{itemize}
+        \item Stating the equation of state for the "ideal" rubber band.
+        \begin{equation*}
+            f = T\phi(L)
+        \end{equation*}
+        \begin{itemize}
+            \item It follows that $(\pdv*{f}{T})_L=f/T$, and $(\pdv*{U}{L})_T=-T\cdot f/T+f=0$.
+        \end{itemize}
+        \item We are now ready to answer the question of does it cool down or heat up when stretched adiabatically.
+        \begin{align*}
+            \dd{U} = \left( \pdv{U}{L} \right)_T\dd{L}+\left( \pdv{U}{T} \right)_L\dd{T} &= \var{q}+f\dd{L}\\
+            \left( \pdv{U}{T} \right)_L\dd{T} &= f\dd{L}\\
+            C_L\dd{T} &= f\dd{L}\\
+            \dd{T} &= \frac{f}{C_L}\dd{L} > 0
+        \end{align*}
+        so since $\dd{T}>0$, the rubber band heats up as it stretches.
+        \item For intuitive motivation, PGS discusses Figure 17.1 of \textcite{bib:APChemNotes}.
+    \end{itemize}
+    \item Building a statistical model of the rubber band.
+    \begin{itemize}
+        \item Consider the rubber band to be made up of segments (you can think of each segment as part of a polymer). These segments can be oriented up or down. In a stretched rubber band, the polymers will be straight, i.e., all the segments will point the same way.
+        \item The difference in energy $\Delta E$ between a segment (of length $\ell_0$) pointing up or down is $2f$.
+        \item Thus, the partition function for each segment is
+        \begin{equation*}
+            q = \e[-f\ell_0/k_BT]+\e[f\ell_0/k_BT]
+        \end{equation*}
+        \begin{itemize}
+            \item Note that this is the same as the partition function for a paramagnet (which can also either be up or down) except that $f\ell_0$ becomes $\mu_BB_z$.
+        \end{itemize}
+        \item When we sum the energies, we multiply the component partition functions. Thus,
+        \begin{equation*}
+            Q = q^N
+        \end{equation*}
+        \item We know that
+        \begin{equation*}
+            L = N(p+p_0+p-(-p_0))
+            = Np_0(p+(-p))
+            = N\ell_0\tanh\left( \frac{f\ell_0}{k_BT} \right)
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
