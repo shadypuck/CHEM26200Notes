@@ -187,6 +187,100 @@
 
 
 
+\section{Differential Relations}
+\begin{itemize}
+    \item \marginnote{2/11:}A useful equation for the change in energy per unit volume at constant temperature, and equation of state.
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            \dd{U} = \left( \pdv{U}{V} \right)_T\dd{V}+\left( \pdv{U}{T} \right)_V\dd{T}
+        \end{equation*}
+        \item It follows that
+        \begin{align*}
+            \dd{U} &= T\dd{S}-P\dd{V}\\
+            &= T\left( \pdv{S}{T} \right)_V\dd{T}+\left( \pdv{S}{V} \right)_T\dd{V}-P\dd{V}\\
+            &= \underbrace{T\left( \pdv{S}{T} \right)_V}_{(\pdv*{U}{T})_V}\dd{T}+\underbrace{\left[ \left( \pdv{S}{V} \right)_T-P \right]}_{(\pdv*{U}{V})_T}\dd{V}
+        \end{align*}
+        \item Thus, by Maxwell relations,
+        \begin{align*}
+            \left( \pdv{U}{V} \right)_T &= T\left( \pdv{S}{V} \right)_T-P\\
+            &= T\left( \pdv{P}{T} \right)_V-P
+        \end{align*}
+        \item This equation can be evaluated given the equation of state.
+        \item For an ideal gas, we get
+        \begin{equation*}
+            \left( \pdv{U}{V} \right)_T = T\frac{nR}{V}-P = 0
+        \end{equation*}
+        \item For a van der Waals gas (just the excluded volume $b$ part, not the $a$ term), we get
+        \begin{equation*}
+            \left( \pdv{U}{V} \right)_T = T\pdv{T}(\frac{nRT}{V-nb})-P
+            = \frac{nRT}{V-nb}-P
+            = 0
+        \end{equation*}
+        \item Now for small enough volume, we know that a gas will compress into a liquid. In other words, $T(\pdv{P}{T})_V\geq P$ always, where equality is only a good approximation at sufficiently large volumes.
+    \end{itemize}
+    \item A similar method can be applied to enthalpy changes with pressure.
+    \begin{itemize}
+        \item We can derive in an analogous method that
+        \begin{equation*}
+            \left( \pdv{H}{P} \right)_T = V+T\left( \pdv{S}{P} \right)_T
+        \end{equation*}
+    \end{itemize}
+    \item You can only apply the chain rule to partial derivatives held constant with respect to the same variable(s).
+    \item \textbf{Natural variables} (of a state function): A set of state variables for which the partial derivatives of the state function with respect to said variables are (simple expressions of) state variables or state functions.
+    \begin{itemize}
+        \item For example, $S,P$ are the natural variables of $U$ since $\pdv*{U}{S}=T$ and $\pdv*{U}{V}=-P$ as shown by
+        \begin{equation*}
+            \dd{U} = T\dd{S}-P\dd{V}
+        \end{equation*}
+        \item $V,T$ are not natural variables of $U$, as we showed earlier, since the partial derivatives of $U$ with respect to them are complicated expressions.
+        \item For the other state functions, we have
+        \begin{align*}
+            \dd{H} &= T\dd{S}+V\dd{P}&
+                \dd{A} &= -S\dd{T}-P\dd{V}\\
+            \dd{S} &= \frac{1}{T}\dd{U}+\frac{P}{T}\dd{V}&
+                \dd{G} &= -S\dd{T}+V\dd{P}
+        \end{align*}
+        \item Note that natural variables are not unique, as we also have
+        \begin{equation*}
+            \dd{S} = \frac{1}{T}\dd{H}-\frac{V}{T}\dd{P}
+        \end{equation*}
+    \end{itemize}
+    \item An example of using Maxwell relations to getting $C_V$ to $C_P$ (19-27 and 22-11).
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            C_P-C_V = T\left( \pdv{P}{T} \right)_V\left( \pdv{V}{T} \right)_P
+        \end{equation*}
+        \item We also have that
+        \begin{equation*}
+            \dd{V} = \left( \pdv{V}{T} \right)_P\dd{T}+\left( \pdv{V}{P} \right)_T\dd{P}
+        \end{equation*}
+        \item It follows if we let $\dd{V}=0$ in the above expression that
+        \begin{equation*}
+            \left( \pdv{P}{T} \right)_V = -\frac{(\pdv*{V}{T})_P}{(\pdv*{V}{P})_T}
+        \end{equation*}
+        \item Therefore,
+        \begin{align*}
+            C_P-C_V &= T\left[ -\frac{(\pdv*{V}{T})_P}{(\pdv*{V}{P})_T} \right]\left( \pdv{V}{T} \right)_P\\
+            &= -T\frac{(\pdv*{V}{T})_P^2}{(\pdv*{V}{P})_T}\\
+            &= -T\frac{V^2\alpha^2}{-V\kappa}\\
+            &= \frac{TV\alpha^2}{\kappa}
+        \end{align*}
+        where $\alpha$ is the \textbf{thermal expansion coefficient} and $\kappa$ is the \textbf{isothermal compressibility}.
+    \end{itemize}
+    \item \textbf{Thermal expansion coefficient}: The following constant. \emph{Denoted by} $\bm{\alpha}$. \emph{Given by}
+    \begin{equation*}
+        \alpha = \frac{1}{V}\left( \pdv{V}{T} \right)_P
+    \end{equation*}
+    \item \textbf{Isothermal compressibility}: The following constant. \emph{Denoted by} $\bm{\kappa}$. \emph{Given by}
+    \begin{equation*}
+        \kappa = -\frac{1}{V}\left( \pdv{V}{P} \right)_T
+    \end{equation*}
+\end{itemize}
+
+
+
 \section{Chapter 21: Entropy and the Third Law of Thermodynamics}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
