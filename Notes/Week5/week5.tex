@@ -423,5 +423,161 @@
 
 
 
+\section{Chapter 22: Helmholtz and Gibbs Energies}
+\begin{itemize}
+    \item \marginnote{2/14:}Since the $\dd{S}\geq 0$ criterion for isolated systems is quite restrictive (only applies to isolated systems), we introduce two new state functions that will help determine the direction of a spontaneous process in a non-isolated system.
+    \item \textbf{Helmholtz energy}: A state function describing the energy of a system at constant volume and temperature. \emph{Denoted by} $\bm{A}$. \emph{Given by}
+    \begin{equation*}
+        A = U-TS
+    \end{equation*}
+    \begin{itemize}
+        \item Since $\dd{V}=\dd{T}=0$, we know that
+        \begin{align*}
+            \dd{U} &= \var{q}+\var{w}\\
+            &\leq T\dd{S}-P\dd{V}\\
+            \dd{U}-T\dd{S}-S\dd{T} &\leq 0\\
+            \dd{(U-TS)} &\leq 0
+        \end{align*}
+        where equality holds for a reversible process and inequality holds for an irreversible process (by the properties of the Clausius inequality).
+        \item Thus, the Helmholtz energy will decrease until all spontaneous processes have occurred. At this point, $\dd{A}=0$ and $A$ will be at a minimum.
+        \item $\dd{A}\leq 0$ is the analog of $\dd{S}\geq 0$ for a spontaneous process to occur.
+        \item "A process for which $\Delta A>0$ cannot take place spontaneously in a system at constant $T$ and $V$. Consequently, something, such as work, must be done on the system to effect the change" \parencite[883]{bib:McQuarrieSimon}.
+        \item "The Helmholtz energy represents this compromise between the tendency of a system to decrease its energy and to increase its entropy" \parencite[883]{bib:McQuarrieSimon}.
+        \item Note that the sign of $U$ is more important at low $T$ and vice versa for high $T$ by $U-TS$.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} applies the definition of $A$ to the mixing of two ideal gases, showing that $\Delta A<0$ for it.
+    \item A physical interpretation to $\Delta A$.
+    \begin{itemize}
+        \item When a process is carried out along a reversible path,
+        \begin{align*}
+            \Delta A = \Delta U-q_\text{rev} = w_\text{rev}
+        \end{align*}
+        meaning that $\Delta A$ is either the maximum work that can be pulled out of the system or the minimum work required to drive the process (depending on its sign).
+    \end{itemize}
+    \item \textbf{Gibbs energy}: A state function describing the energy of a system at constant pressure and temperature. \emph{Denoted by} $\bm{A}$. \emph{Given by}
+    \begin{equation*}
+        A = H-TS
+    \end{equation*}
+    \begin{itemize}
+        \item Since $\dd{P}=\dd{T}=0$, we know that
+        \begin{align*}
+            \dd{U} &= \var{q}+\var{w}\\
+            &\leq T\dd{S}-P\dd{V}\\
+            \dd{U}+P\dd{V}+V\dd{P}-T\dd{S}-S\dd{T} &\leq 0\\
+            \dd{(U+PV-TS)} &\leq 0\\
+            \dd{(H-TS)} &\leq 0
+        \end{align*}
+        where equality holds for a reversible process and inequality holds for an irreversible process (by the properties of the Clausius inequality).
+        \item The Gibbs energy is analogous in almost every way to the Helmholtz energy.
+        \item We can also write $G=A+PV$ to relate $G,A$ in the same manner that $H,U$ are related, respectively.
+    \end{itemize}
+    \item \textbf{Molar Gibbs energy of vaporization}: The following quantity. \emph{Denoted by} $\bm{\Delta_\textbf{vap}\overline{G}}$. \emph{Given by}
+    \begin{equation*}
+        \Delta_\text{vap}\overline{G} = \Delta_\text{vap}\overline{H}-T\Delta_\text{vap}\overline{S}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that $\Delta_\text{vap}\overline{G}=0$ at \SI{1}{\atmosphere} and \SI{100}{\celsius}. This means that the phases are in equilibrium under these conditions.
+        \item A slight increase in temperature, however, makes $\Delta G<0$ (i.e., makes vaporization spontaneous), while a slight decrease in temperature makes $\Delta G>0$ (i.e., makes condensation spontaneous).
+        \item \textcite{bib:McQuarrieSimon} covers that in a reversible process, $\Delta G=w_\text{non PV}$, i.e., the maximum non-pressure/volume work available from a process or minimum non-pressure/volume work required to drive a process.
+        \begin{itemize}
+            \item $w_\text{non PV}$ can be electrical work, for example.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Maxwell relation}: An relation obtained by equating the second cross partial derivatives of a function.
+    \item \textbf{Thermodynamic equation of state}: An equation that relates a thermodynamic function to functions of $P$, $V$, and $T$.
+    \item \textcite{bib:McQuarrieSimon} notes that
+    \begin{equation*}
+        \left( \pdv{U}{V} \right)_T = -P+T\left( \pdv{P}{T} \right)_V
+    \end{equation*}
+    meaning that energy does depend on volume somewhat (it's not entirely a function of temperature).
+    \begin{itemize}
+        \item We can show that the above derivative reduces to zero for an ideal gas, however.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} plays around with partial derivatives for a while.
+    \begin{itemize}
+        \item Discusses the $\alpha,\kappa$ definition of $C_P-C_V$.
+    \end{itemize}
+    \item We can also use Maxwell relations and differentials to derive the following results.
+    \begin{align*}
+        \left( \pdv{G}{T} \right)_P &= -S&
+        \left( \pdv{G}{P} \right)_T &= V
+    \end{align*}
+    \begin{equation*}
+        -\left( \pdv{S}{P} \right)_T = \left( \pdv{V}{T} \right)_P
+    \end{equation*}
+    \begin{equation*}
+        \left( \pdv{H}{P} \right)_T = V-T\left( \pdv{V}{T} \right)_P
+    \end{equation*}
+    \item Covers natural variables.
+    \begin{table}[h!]
+        \centering
+        \renewcommand{\arraystretch}{1.4}
+        \small
+        \begin{tabular}{cll}
+            \toprule
+            \shortstack{Thermodynamic\\energy} & \multicolumn{1}{c}{\shortstack{Differential\\expression}} & \multicolumn{1}{c}{\shortstack{Corresponding\\Maxwell relations}}\\
+            \midrule
+            $U$ & $\dd{U}=T\dd{S}-P\dd{V}$ & $\displaystyle\left( \pdv{T}{V} \right)_S=-\left( \pdv{P}{S} \right)_V$\\[1em]
+            $H$ & $\dd{H}=T\dd{S}+V\dd{P}$ & $\displaystyle\left( \pdv{T}{P} \right)_S=\left( \pdv{V}{S} \right)_P$\\[1em]
+            $A$ & $\dd{A}=-S\dd{T}-P\dd{V}$ & $\displaystyle\left( \pdv{S}{V} \right)_T=\left( \pdv{P}{T} \right)_V$\\[1em]
+            $G$ & $\dd{G}=-S\dd{T}+V\dd{P}$ & $\displaystyle\left( \pdv{S}{P} \right)_T=-\left( \pdv{V}{T} \right)_P$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Thermodynamic energies, differentials, and Maxwell relations.}
+        \label{tab:importantDifferentials}
+    \end{table}
+    \item Calculating corrections to the standard molar entropy of a gas.
+    \begin{itemize}
+        \item Basically, we want to find $S^\circ(\SI{1}{\bar})-\overline{S}(\SI{1}{\bar})$. To do so, we consider
+        \begin{equation*}
+            S^\circ(\SI{1}{\bar})-\overline{S}(\SI{1}{\bar}) = [S^\circ(\SI{1}{\bar})-\overline{S}(P_\text{id})]+[\overline{S}(P_\text{id})-\overline{S}(\SI{1}{\bar})]
+        \end{equation*}
+        where $P_\text{id}$ is a pressure sufficiently low such that the gas in question behaves ideally.
+        \item We know from the definition of changes in entropy as an integral and Table \ref{tab:importantDifferentials} that
+        \begin{align*}
+            S^\circ(\SI{1}{\bar})-\overline{S}(P_\text{id}) &= \int_{P_\text{id}}^{\SI{1}{\bar}}\left( \pdv{S}{P} \right)_T\dd{P}&
+                \overline{S}(P_\text{id})-\overline{S}(\SI{1}{\bar}) &= \int_{\SI{1}{\bar}}^{P_\text{id}}\left( \pdv{S}{P} \right)_T\dd{P}\\
+            &= -\int_{P_\text{id}}^{\SI{1}{\bar}}\left( \pdv{V}{T} \right)_P\dd{P}&
+                &= -\int_{\SI{1}{\bar}}^{P_\text{id}}\left( \pdv{V}{T} \right)_P\dd{P}\\
+            &= -\int_{P_\text{id}}^{\SI{1}{\bar}}\frac{R}{P}\dd{P}&
+                &= \int_{P_\text{id}}^{\SI{1}{\bar}}\left( \pdv{V}{T} \right)_P\dd{P}
+        \end{align*}
+        \begin{itemize}
+            \item Note that we calculate the first change using the ideal gas law and the second change using the equation of state describing the real gas.
+        \end{itemize}
+        \item Adding the above two equations yields
+        \begin{equation*}
+            S^\circ(\SI{1}{\bar})-\overline{S}(\SI{1}{\bar}) = \int_{P_\text{id}}^{\SI{1}{\bar}}\left[ \left( \pdv{V}{T} \right)_P-\frac{R}{P} \right]\dd{P}
+        \end{equation*}
+        \item We can evaluate this equation using only the second virial coefficient (see Chapter 16).
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses $G=G^\circ+RT\ln Q$.
+    \item \textbf{Gibbs-Helmholtz equation}: An equation for the temperature dependence of $G$. \emph{Given by}
+    \begin{equation*}
+        \left( \pdv{G/T}{T} \right)_P = -\frac{H}{T^2}
+    \end{equation*}
+    \begin{itemize}
+        \item Derivation:
+        \begin{align*}
+            G &= H-TS\\
+            \frac{G}{T} &= \frac{H}{T}-S\\
+            \left( \pdv{G/T}{T} \right)_P &= \left[ \pdv{T}(\frac{1}{T}\cdot H) \right]_P-\left( \pdv{S}{T} \right)_P\\
+            &= \left[ \pdv{T}(\frac{1}{T})\cdot H \right]_P+\frac{1}{T}\left( \pdv{H}{T} \right)_P-\left( \pdv{S}{T} \right)_P\\
+            &= -\frac{H}{T^2}+\frac{C_P}{T}-\left( \pdv{S}{T} \right)_P\\
+            &= -\frac{H}{T^2}
+        \end{align*}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses the graph of $G(T)$.
+    \begin{itemize}
+        \item It offers an alternate explanation for continuity, namely that since $\Delta_\text{trs}S=\Delta_\text{trs}H/T_\text{trs}$, then
+        \begin{equation*}
+            0 = \Delta_\text{trs}H-T_\text{trs}\Delta_\text{trs}S = \Delta_\text{trs}G
+        \end{equation*}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses \textbf{fugacity}\footnote{Come back after reading Chapter 16.}.
+\end{itemize}
+
+
+
 
 \end{document}
