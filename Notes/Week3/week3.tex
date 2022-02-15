@@ -131,7 +131,7 @@
 
 \section{Enthalpy}
 \begin{itemize}
-    \item \marginnote{1/28:}Thermonamic derivation of the formula for $\prb{P}$ in terms of $Q$.
+    \item \marginnote{1/28:}Thermodynamic derivation of the formula for $\prb{P}$ in terms of $Q$.
     \begin{itemize}
         \item We have that
         \begin{align*}
@@ -208,7 +208,7 @@
     \end{itemize}
     \item In a reversible process, $\dd{U}=\var{q}_\text{rev}-P\dd{V}$. In this case
     \begin{equation*}
-        \var{q}_\text{rev} = \dd{U}+P\dd{V} = nC_V\dd{T}+P\dd{V} \neq \dd{nC_VT+PV}
+        \var{q}_\text{rev} = \dd{U}+P\dd{V} = nC_V\dd{T}+P\dd{V} \neq \dd{(nC_VT+PV)}
     \end{equation*}
     so $\var{q}_\text{rev}$ is not a state function.
     \begin{itemize}
@@ -345,7 +345,20 @@
     \begin{itemize}
         \item An important consequence is that the total kinetic energy is divided equally into the $x$-, $y$-, and $z$-components. This fact was also demonstrated in Week 1, Lecture 3.
     \end{itemize}
-    \item \textcite{bib:McQuarrieSimon} discusses how the Doppler effect applied to moving molecules emitting radiation makes spectral peaks wider than we'd normally predict in a phenomenon known as \textbf{Doppler broadening}.
+    \item \textbf{Doppler broadening}: The broadening of spectral lines due to the distribution of molecular velocities.
+    \begin{itemize}
+        \item Ideally, spectral lines will be very narrow.
+        \item However, due to the Doppler effect, if an atom or molecule emits radiation of frequency $\nu_0$ while moving away or toward the observer with speed $u_x$, then the observed frequency will be
+        \begin{equation*}
+            \nu \approx \nu_0\left( 1+\frac{u_x}{c} \right)
+        \end{equation*}
+        \item Indeed, "if one observes the radiation emitted from a gas at temperature $T$, then it is found that the spectral line at $\nu_0$ will be spread out by the Maxwell distribution of $u_x$ of the molecule emitting the radiation" \parencite[1021]{bib:McQuarrieSimon}.
+        \item It follows by the definition of $f(u_x)$ and the above that
+        \begin{equation*}
+            I(\nu) \propto \e[-mc^2(\nu-\nu_0)^2/2\nu_0^2k_BT]
+        \end{equation*}
+        i.e., that $I(\nu)$ is of the form of a Gaussian centered at $\nu_0$ with variance $\sigma^2=\nu_0^2k_BT/mc^2$.
+    \end{itemize}
     \item Deriving \textbf{Maxwell-Boltzmann distribution}.
     \begin{itemize}
         \item Let the probability that a molecule has speed between $u$ and $u+\dd{u}$ be defined by a continuous probability distribution $F(u)\dd{u}$. In particular, we have from the above isotropic condition that
@@ -656,12 +669,16 @@
         \item It follows that the difference between $C_P$ and $C_V$ is significant for gases, but not for solids and liquids.
         \item Note that we can also prove a general expression for $C_P-C_V$ (see Chapter 22).
     \end{itemize}
+    \item Note that
+    \begin{equation*}
+        R = \SI[per-mode=fraction]{0.08314}{\liter\bar\per\mole\per\kelvin}
+    \end{equation*}
     \item Relative enthalpies can be determined from heat capacity data and heats of transition.
     \begin{itemize}
         \item Integrate $C_P(T)$ from $T_1$ to $T_2$, adding in $\Delta_\text{fus}H$ and $\Delta_\text{vap}H$ as necessary.
     \end{itemize}
     \item \textbf{Thermochemistry}: The branch of thermodynamics which concerns the measurement of the evolution or absorption of energy as heat associated with chemical reactions.
-    \item \textcite{bib:McQuarrieSimon} reviews exothermic/endothermic reactions, and $\Delta H=H_\text{prod}-H_\text{react}$.
+    \item \textcite{bib:McQuarrieSimon} reviews exothermic/endothermic reactions, and $\Delta_rH=H_\text{prod}-H_\text{react}$.
     \item \textbf{Hess's Law}: The additivity property of $\Delta_rH$ values.
     \item \textbf{Standard reaction enthalpy}: The enthalpy change associated with one mole of a specified reagent when all reactants and products are in their standard states. \emph{Denoted by} $\bm{\Delta_rH^\circ}$.
     \begin{itemize}
@@ -671,6 +688,25 @@
     \begin{itemize}
         \item We can obtain such values even if a compound cannot be formed directly from its elements via several related reactions and Hess's Law.
     \end{itemize}
+    \item To calculate $\Delta_rH$ for the general chemistry equation
+    \begin{equation*}
+        \ce{$a$A + $b$B -> $y$Y + $z$Z}
+    \end{equation*}
+    using standard heats of formation, we decompose the reactants into their component elements in their normal states and then reassemble them into the products.
+    \begin{itemize}
+        \item Mathematically,
+        \begin{equation*}
+            \Delta_rH = y\Delta_fH^\circ[Y]+z\Delta_fH^\circ[Z]-a\Delta_fH^\circ[A]-b\Delta_fH^\circ[B]
+        \end{equation*}
+    \end{itemize}
+    \item The enthalpies of reaction at temperatures $T_1,T_2$ are related by
+    \begin{equation*}
+        \Delta_rH(T_2)-\Delta_rH(T_1) = \int_{T_1}^{T_2}\Delta C_P(T)\dd{T}
+    \end{equation*}
+    where
+    \begin{equation*}
+        \Delta C_P(T) = yC_{P,Y}(T)+zC_{P,Z}(T)-aC_{P,A}(T)-bC_{P,B}(T)
+    \end{equation*}
 \end{itemize}
 
 
