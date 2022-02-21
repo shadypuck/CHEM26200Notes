@@ -241,5 +241,130 @@
 
 
 
+\section{More van der Waals Phenomena}
+\begin{itemize}
+    \item \marginnote{2/18:}The cubic vdW equation of state predicts a critical point at $T_c$ at and above which only one $P$ for $(V,T)$ solution is possible.
+    \begin{itemize}
+        \item The behavior of isotherms around the critical temperature.
+        \begin{itemize}
+            \item For isotherms below the critical temperature, there will be a range of volumes where the gas and liquid phases are in equilibrium.
+            \item For isotherms above the critical temperature, we only have the gas phase, so there is no region of constant pressure as we compress the system.
+            \item This means that at the critical temperature $T=T_c$, there will only be a single volume $V_c$ and hence pressure $P_c$ at which the gas and liquid phases are in equilibrium. Mathematically, this means that each of the three roots of the cubic van der Waals equation exist at the same point $V_c$, i.e., that the equation is of the form $(V-\overline{V}_c)^3$.
+        \end{itemize}
+        \item Expanding, we have
+        \begin{align*}
+            0 &= \overline{V}^3-\left( b+\frac{RT}{P} \right)\overline{V}^2+\frac{a}{P}\overline{V}-\frac{ab}{P}\\
+            &= \overline{V}^3-3\overline{V}_c\overline{V}^2+3\overline{V}_c^2\overline{V}-\overline{V}_c^3
+        \end{align*}
+        \item Thus, at $T_c$,
+        \begin{align*}
+            b+\frac{RT_c}{P_c} &= 3\overline{V}_c&
+            \frac{a}{P_c} &= 3V_c^2&
+            \frac{ab}{P_c} &= \overline{V}_c^3
+        \end{align*}
+        \item One immediate consequence is that
+        \begin{align*}
+            \overline{V}_c^3 &= \frac{a}{P_c}\cdot b\\
+            \overline{V}_c^3 &= 3V_c^2b\\
+            \overline{V}_c &= 3b
+        \end{align*}
+        \begin{itemize}
+            \item Thus, the critical volume is on the order of magnitude of the molecular volume.
+            \item Note that we can't manipulate the first equation into a different relation between $\overline{V}_c$ and $b$ using the ideal gas law substitution because this is a van der Waals gas.
+        \end{itemize}
+        \item It follows that
+        \begin{align*}
+            3V_c^2 &= \frac{a}{P_c}&
+                b+\frac{RT_c}{P_c} &= 3\overline{V}_c\\
+            P_c &= \frac{a}{3(3b)^2}&
+                b+RT_c\cdot\frac{27b^2}{a} &= 3(3b)\\
+            P_c &= \frac{a}{27b^2}&
+                T_c &= \frac{8a}{27Rb}
+        \end{align*}
+        \item Thus,
+        \begin{equation*}
+            z_c = \frac{P_cV_c}{RT_c} = \frac{3}{8}
+        \end{equation*}
+        \begin{itemize}
+            \item Indeed, the vdW equation predicts the compressibility at the critical point to be $3/8$. The Redlich-Kwong predicts $1/3$. The Peng-Robinson predicts $0.307$. The experimental values are around $0.3$. Water and ammonia deviate significantly: $0.23$ and $0.24$, respectively, due to their strong dipole moments/hydrogen bonding. Table 16.5 gives a lot of related data.
+        \end{itemize}
+        \item Also, at $T_c,V_c$, we have that $(\pdv*{P}{V})_T=0$ and $\kappa\to\infty$ (recall that $\kappa$ is the isothermal compressibility).
+        \begin{itemize}
+            \item It follows from the vdW that $\kappa\propto(\overline{V}-\overline{V}_c)^{-1}$.
+            \item Experimental value: \emph{Every} gas satisfies $\kappa\propto(\overline{V}-\overline{V}_c)^{-1.24}$.
+            \item The mystery was solved theoretically in the 1970s with renormalization group theory.
+        \end{itemize}
+    \end{itemize}
+    \item Law of corresponding states.
+    \begin{itemize}
+        \item We define the relative pressure, volume, and temperature by
+        \begin{align*}
+            P_R &= \frac{P}{P_c}&
+            V_R &= \frac{V}{V_c}&
+            T_R &= \frac{T}{T_c}
+        \end{align*}
+        \item Note that
+        \begin{equation*}
+            \frac{RT}{P_cV_c} = \frac{RT_c}{P_cV_c}\frac{T}{T_c}
+            = \frac{1}{z_c}\frac{T}{T_c}
+            = \frac{8}{3}T_R
+        \end{equation*}
+        \item Thus,
+        \begin{align*}
+            RT &= \left( P+\frac{a}{\overline{V}^2} \right)(\overline{V}-b)\\
+            &= \left( P+\frac{3\overline{V}_c^2P_c}{\overline{V}_c^2} \right)\left( \overline{V}-\frac{\overline{V}_c}{3} \right)\\
+            \frac{RT}{P_cV_c} &= \left( \frac{P}{P_c}+\frac{3\overline{V}_c^2}{\overline{V}} \right)\left( \frac{\overline{V}}{\overline{V}_c}-\frac{1}{3} \right)\\
+            \frac{8}{3}T_R &= \left( P_R+\frac{3}{\overline{V}_R^2} \right)\left( \overline{V}_R-\frac{1}{3} \right)
+        \end{align*}
+    \end{itemize}
+    \item Virial expansion to experimentally determine the vdW coefficients $a,b$ from the compressibility near ideal conditions.
+    \begin{itemize}
+        \item We let
+        \begin{equation*}
+            z = 1+\frac{B_{2V}(T)}{\overline{V}}+\frac{B_{3V}(T)}{\overline{V}^2}+\cdots
+        \end{equation*}
+        where $B_{iV}(T)$ is the \textbf{$\bm{i^\textbf{th}}$ virial coefficient}.
+        \item It follows that
+        \begin{align*}
+            \frac{P\overline{V}}{RT} &= \frac{\overline{V}}{V-b}-\frac{a}{RT\overline{V}}\\
+            &= \frac{1}{1-b/\overline{V}}-\frac{a}{RT\overline{V}}\\
+            &= 1+\left( \frac{b}{\overline{V}}-\frac{a}{RT\overline{V}} \right)+\text{terms in }\tfrac{1}{\overline{V}^2}+\cdots
+        \end{align*}
+        where we get from the second to the third line using the expansion
+        \begin{equation*}
+            \frac{1}{1-x} = 1+x+x^2+\cdots
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            B_{2V}(T) = b-\frac{a}{RT}
+        \end{equation*}
+    \end{itemize}
+    \item Microscopic origin of the vdW coefficients from the interaction potential.
+    \begin{itemize}
+        \item Draws the interaction potential for a diatomic molecule.
+        \begin{itemize}
+            \item The repulsion comes from the Fermi exclusion principle.
+        \end{itemize}
+        \item Discusses dipole-induced dipole moments.
+        \begin{itemize}
+            \item $-1/2\propto E^2\propto 1/\pi^6$.
+        \end{itemize}
+        \item The origin of vdW (or London dispersion) interaction is quantum mechanical.
+        \begin{itemize}
+            \item We use perturbation theory to calculate the interaction between two neighboring quantum dipoles.
+            \begin{equation*}
+                \Delta E^{(1)} = \ev{H_{int}}{\psi_A^\circ\psi_B^\circ} = 0
+            \end{equation*}
+            \item Thus we need the second order correction:
+            \begin{equation*}
+                \Delta E^{(2)} = -\sum_{ij}\frac{|\ev{H_{int}}{\psi_A^\circ\psi_B^\circ}|}{E_a^A+E_j^B-(E_0^A+E_0^B)} \approx -\frac{c}{\pi^6}
+            \end{equation*}
+            where $c\geq 0$.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
