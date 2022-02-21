@@ -115,5 +115,131 @@
 
 
 
+\section{Van der Waals Phase Transitions}
+\begin{itemize}
+    \item \marginnote{2/16:}Wrapping up the rubber band analysis.
+    \item Note that we can approximate $\tanh x\approx x$ for small $x$. Thus,
+    \begin{equation*}
+        L = N\ell_0\cdot\frac{f\ell_0}{k_BT}
+    \end{equation*}
+    for small $f$.
+    \item Therefore, statistical mechanics predicts the rubber band "ideal" equation of state, $f=T\phi(L)$, where $f$ is the stretching force. Note that this is not at all like a mechanical spring constant; it is purely an entropy effect.
+    \begin{itemize}
+        \item $\dd{S}=\dd{S_\text{orientation}}+\dd{S_\text{thermal}}=\dd{S_\text{orientation}}+C/T\dd{T}$.
+        \item $\dd{U}=C\dd{T}+T\dd{S}=0$, implying that $\dd{T}=-T/C\dd{S}$.
+    \end{itemize}
+    \item Adiabatic stretching decreases orientation entropy and increases the temperature.
+    \item The same model predicts the Curie law of paramagnetism, $M=CB/T$.
+    \begin{itemize}
+        \item We have
+        \begin{align*}
+            M &= N\mu\tanh\frac{\mu B}{k_BT}\\
+            M &= \frac{N\mu^2}{k_B}\frac{B}{T}
+        \end{align*}
+        where the second equation only holds for small $B$.
+    \end{itemize}
+    \item Adiabatic demagnetization allows you to go from \SI{4}{\kelvin} to \SI{1}{\kelvin} using \ce{He4} to \ce{He3} liquefaction. Adiabatic demagnetization increases spin entropy and reduces the temperature.
+    \begin{itemize}
+        \item To achieve \SI{4}{\kelvin}, we let \ce{He4} adiabatically expand, which makes it very cold. However, at temperatures below \SI{4}{\kelvin}, \ce{He4} is a liquid and it can no longer adiabatically expand like a gas.
+        \item To achieve temperatures lower than \SI{4}{\kelvin}, you stick copper salt in a cryostat, subject it to a magnetic field, and cool it to \SI{4}{\kelvin} with the above method. The magnet aligns the spins. When you take the salt out of the magnetic field, the spins will randomize entropically, but this takes energy. You use the lattice energy to raise the spin energy.
+    \end{itemize}
+    \item The challenge of protein folding and structure determination.
+    \begin{itemize}
+        \item We have $\Delta G=\Delta(H-TS)$.
+        \item Protein folding necessitates $\Delta S<0$ (you are creating order). Thus, we must have $\Delta H<\Delta(TS)=T\Delta S$, i.e., the protein must adopt a very, very stable conformation.
+        \item Estimating $\Delta S$:
+        \begin{equation*}
+            \Delta S = k_B\ln W
+            = k_B\ln 3^{100}
+            = \SI{914}{\joule\per\kelvin\per\mole}
+        \end{equation*}
+        \begin{itemize}
+            \item Using \textbf{Levinthal's paradox}, we can estimate the number of possible configurations of a protein.
+            \item Each segment (essentially a \ce{C-C} bond) has about three dihedral angle possibilities for the segments at either end.
+            \item Thus, for a protein that is 100 segments long, $W\approx 3^{100}$.
+        \end{itemize}
+        \item At \SI{300}{\kelvin}, $T\Delta S=\SI[per-mode=symbol]{274}{\kilo\joule\per\mole}$.
+        \begin{itemize}
+            \item It doesn't take much of a temperature difference to alter or prevent protein folding.
+        \end{itemize}
+        \item About 15 hydrogen bonds or a single disulfide bond is about \SI[per-mode=symbol]{274}{\kilo\joule\per\mole} of energy, so we can find ways to stabilize proteins over the entropic barriers.
+        \item Just recently, a UChicago grad student (who had been working with a UChicago professor who's been studying the protein folding problem for a long time) headed a team at Google that has an AI that looks like it will be able to solve the protein folding problem.
+    \end{itemize}
+    \item \textbf{Levinthal's paradox}: The observation that finding the native folded state of a protein by a random search among all possible configurations can take an enormously long time. Yet proteins can fold in seconds or less.
+    \item Real gases deviate from ideality due to molecular interactions.
+    \item \textbf{Compressibility factor}: \emph{Denoted by} $\bm{z}$. \emph{Given by}
+    \begin{equation*}
+        z = \frac{P\overline{V}}{RT}
+    \end{equation*}
+    \item The van der Waals equation of state (where $\overline{V}$ is the molar volume):
+    \begin{equation*}
+        \left( P+\frac{a}{\overline{V}^2} \right)(\overline{V}-b) = RT
+    \end{equation*}
+    \begin{itemize}
+        \item We can also rewrite this as
+        \begin{equation*}
+            P = \frac{RT}{\overline{V}-b}-\frac{a}{\overline{V}^2}
+        \end{equation*}
+        \item Note that $a,b\geq 0$.
+        \item The compressibility is
+        \begin{equation*}
+            z = \frac{\overline{V}}{\overline{V}-b}-\frac{a}{RT\overline{V}}
+        \end{equation*}
+    \end{itemize}
+    \item The van der Waals equation of state is cubic in $\overline{V}$ and can predict two different molar volumes (gas and liquid) for one pressure.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            xscale=10,yscale=0.03,
+            every node/.style={black}
+        ]
+            \small
+            \draw [stealth-stealth] (0,120) -- node[left]{$P$} (0,0) -- node[below]{$\overline{V}$} (0.6,0);
+    
+            \draw [rex,thick] plot[domain=0.0672:0.6,smooth,samples=500,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{(-0.0821*273*\x*\x+3.59*\x-3.59*0.0427)/(0.0427*\x*\x-\x*\x*\x)});
+            \draw [rex,semithick] (0.0773,47.1) -- (0.3017,47.1);
+    
+            \footnotesize
+            \node [below left] at (0.0672,119.849) {L};
+            \node [below] at (0.092,30.481) {C};
+            \node [left] at (0.0773,47.1) {D};
+            \node [above] at (0.1959,52.755) {B};
+            \node [above right] at (0.3017,47.1) {A};
+            \node [below left] at (0.6,30.245) {G};
+        \end{tikzpicture}
+        \caption{The van der Waals isotherm of \ce{CO2} at \SI{0}{\celsius}.}
+        \label{fig:vanDerWaalsIsotherm}
+    \end{figure}
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            RT &= \left( P+\frac{a}{\overline{V}^2} \right)(\overline{V}-b)\\
+            &= P\overline{V}-bP+\frac{a}{\overline{V}}-\frac{ab}{\overline{V}^2}\\
+            \frac{RT\overline{V}^2}{P} &= \overline{V}^3-b\overline{V}^2+\frac{a}{P}\overline{V}-\frac{ab}{P}\\
+            0 &= \overline{V}^3-\left( b+\frac{RT}{P} \right)\overline{V}^2+\frac{a}{P}\overline{V}-\frac{ab}{P}
+        \end{align*}
+        \item Since it is cubic in $\overline{V}$, this means we can have up to three different molar volumes for one pressure.
+        \item This also reflects the fact that as we compress a gas, it behaves ideally for a while, and then pressure is constant as condensation takes hold, and then we must apply massive amounts of pressure to make the volume any smaller.
+        \item On $\overline{\text{AG}}$, the system is a gas. On $\overline{\text{LD}}$, it is a liquid. On $\overline{\text{AD}}$, pressure is constant as we compress more and more because condensation takes hold, so highly compressed gas molecules become liquid, reducing the pressure.
+        \item Drawing the line $\overline{\text{AD}}$: The points at which gas stops and liquid starts must be at the same pressure.
+        \item We must also have the area above and below the line equal (\textbf{Maxwell equal area contraction}).
+        \begin{itemize}
+            \item Phase equilibrium (like we have along $\overline{\text{AD}}$) means that free energy does not change. Mathematically, $\Delta G(\text{A})=\Delta G(\text{D})$.
+            \item If A and D represent gas and liquids at the same temperature, they are in equilibrium and they must have the same molar Gibbs free energy.
+            \item We have $\dd{G}=-S\dd{T}+V\dd{P}$.
+            \item Since $T$ is constant (this is an isotherm), $\dd{G}=V\dd{P}$.
+            \item Thus, we can integrate along the curve $\overline{\text{DA}}$ to find an appropriate $\overline{\text{DA}}$ such that the integral is zero.
+            \begin{align*}
+                0 &= \Delta G(\text{A})-\Delta G(\text{D})\\
+                &= \int_\text{D}^\text{A}\dd{G}\\
+                &= \int_\text{D}^\text{A}V\dd{P}
+            \end{align*}
+            \item See Problem 23-46 for the "Maxwell equal area construction rule."
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
