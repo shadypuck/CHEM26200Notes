@@ -159,13 +159,13 @@
         \end{equation*}
         \item We then define $\gamma$ to be the \textbf{fugacity coefficient} by $\gamma=f/P$. It follows that
         \begin{equation*}
-            \ln\gamma = \int_0^P\frac{z-1}{P'}\dd{P'}
+            \ln\gamma = \int_0^P\frac{Z-1}{P'}\dd{P'}
         \end{equation*}
     \end{itemize}
     \item Fugacity coefficient expressed in terms of the compressibility deviation from unity.
     \begin{itemize}
-        \item At low temperature, $z<1$, so $\gamma<1$ and hence $f<p$.
-        \item At high pressure, $z>1$ (excluded volume), so $\gamma>1$ and hence $f>P$.
+        \item At low temperature, $Z<1$, so $\gamma<1$ and hence $f<p$.
+        \item At high pressure, $Z>1$ (excluded volume), so $\gamma>1$ and hence $f>P$.
     \end{itemize}
     \item Introduces phase diagrams and their notable properties.
 \end{itemize}
@@ -266,6 +266,61 @@
         B_{2V}(T) &= B-\frac{A}{RT^{3/2}}&
         B_{2V}(T) &= \beta-\frac{\alpha}{RT}
     \end{align*}
+\end{itemize}
+
+
+
+\section{Chapter 22: Helmholtz and Gibbs Energies}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item Generalizing the equation $\overline{G}=G^\circ+RT\ln Q$ to the case of a real gas.
+    \begin{itemize}
+        \item We begin by substituting the virial expansion in terms of pressure into the equation $(\pdv*{\overline{G}}{P})_T=\overline{V}$.
+        \begin{align*}
+            \left( \pdv{\overline{G}}{P} \right)_T &= \overline{V}\\
+            &= \frac{RT}{P}\left[ 1+B_{2P}(T)P+B_{3P}(T)P^2+\cdots \right]\\
+            \int_{P^\text{id}}^P\dd{\overline{G}} &= RT\int_{P^\text{id}}^P\frac{\dd{P'}}{P'}+RTB_{2P}(T)\int_{P^\text{id}}^P\dd{P'}+RTB_{3P}(T)\int_{P^\text{id}}^PP'\dd{P'}\\
+            \overline{G}(T,P) &= \overline{G}(T,P^\text{id})+RT\ln\frac{P}{P^\text{id}}+RTB_{2P}(T)P+RTB_{3P}(T)\frac{P^2}{2}+\cdots
+        \end{align*}
+        \item Note that we neglect $P_\text{id}$ in every term except the first because it is so close to zero.
+        \item Substituting $\overline{G}(T,P^\text{id})=G^\circ(T)+RT\ln P^\text{id}/P^\circ$ and combining the first two terms yields
+        \begin{equation*}
+            \overline{G}(T,P) = G^\circ(T)+RT\ln\frac{P}{P^\circ}+RTB_{2P}(T)P+RTB_{3P}(T)\frac{P^2}{2}+\cdots
+        \end{equation*}
+    \end{itemize}
+    \item The above equation is exact, but complicated and different for each gas (depending on the virial coefficients).
+    \item It will be more convenient to, especially for calculations involving chemical equilibria, to define the \textbf{fugacity}.
+    \item \textbf{Fugacity}: A state function of $P$ and $T$ describing the nonideality of the energy of a system. \emph{Denoted by} $\bm{f}$. \emph{Given by}
+    \begin{equation*}
+        \overline{G}(T,P) = G^\circ(T)+RT\ln\frac{f(P,T)}{f^\circ}
+    \end{equation*}
+    \item Fugacity must have the property that $f(P,T)\to P$ as $P\to 0$, so that the above equation can reduce to $\overline{G}=G^\circ+RT\ln P/P^\circ$.
+    \item By setting the above equal to the virial expansion, we learn that
+    \begin{equation*}
+        \frac{f(P,T)}{f^\circ} = \frac{P}{P^\circ}\exp[B_{2P}(T)P+B_{3P}(T)P^2+\cdots]
+    \end{equation*}
+    \item "The standard state of the real gas\dots is taken to be the corresponding ideal gas at one bar" \parencite[906]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item Mathematically, $f^\circ=P^\circ$.
+        \item Note that we can also derive this from the virial expansion expression for $f(P,T)/f^\circ$ since all of the virial coefficients are equal to zero in the standard state.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} goes through the derivation of
+    \begin{equation*}
+        \ln\frac{f}{P} = \int_0^P\left( \frac{\overline{V}}{RT}-\frac{1}{P'} \right)\dd{P'}
+    \end{equation*}
+    exactly as in class.
+    \begin{itemize}
+        \item The above equation allows us to calculate the ratio of the fugacity to the pressure of a gas at any pressure and temperature, given either $P$-$V$-$T$ data or an equation of state.
+    \end{itemize}
+    \item \textbf{Fugacity coefficient}: The following ratio. \emph{Denoted by} $\bm{\gamma}$. \emph{Given by}
+    \begin{equation*}
+        \gamma = \frac{f}{P}
+    \end{equation*}
+    \item Also note the equation
+    \begin{equation*}
+        \ln\gamma = \int_0^P\frac{Z-1}{P'}\dd{P'}
+    \end{equation*}
+    and that we can use this equation with the reduced pressure.
 \end{itemize}
 
 
