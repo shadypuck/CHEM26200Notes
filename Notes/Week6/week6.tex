@@ -297,7 +297,7 @@
     \end{itemize}
     \item Law of corresponding states.
     \begin{itemize}
-        \item We define the relative pressure, volume, and temperature by
+        \item We define the reduced pressure, volume, and temperature by
         \begin{align*}
             P_R &= \frac{P}{P_c}&
             V_R &= \frac{V}{V_c}&
@@ -312,8 +312,8 @@
         \item Thus,
         \begin{align*}
             RT &= \left( P+\frac{a}{\overline{V}^2} \right)(\overline{V}-b)\\
-            &= \left( P+\frac{3\overline{V}_c^2P_c}{\overline{V}_c^2} \right)\left( \overline{V}-\frac{\overline{V}_c}{3} \right)\\
-            \frac{RT}{P_cV_c} &= \left( \frac{P}{P_c}+\frac{3\overline{V}_c^2}{\overline{V}} \right)\left( \frac{\overline{V}}{\overline{V}_c}-\frac{1}{3} \right)\\
+            &= \left( P+\frac{3\overline{V}_c^2P_c}{\overline{V}^2} \right)\left( \overline{V}-\frac{\overline{V}_c}{3} \right)\\
+            \frac{RT}{P_cV_c} &= \left( \frac{P}{P_c}+\frac{3\overline{V}_c^2}{\overline{V}^2} \right)\left( \frac{\overline{V}}{\overline{V}_c}-\frac{1}{3} \right)\\
             \frac{8}{3}T_R &= \left( P_R+\frac{3}{\overline{V}_R^2} \right)\left( \overline{V}_R-\frac{1}{3} \right)
         \end{align*}
     \end{itemize}
@@ -861,6 +861,202 @@
     \begin{itemize}
         \item Also note that there is some ambiguity in how we do so, since there are three pieces of data $(P_c,\overline{V}_c,T_c)$ describing a gas at the critical point but only two constants $a,b$ or $A,B$.
     \end{itemize}
+    \item \marginnote{2/25:}\textbf{Reduced quantity}: The quotient of a state variable of a gas and the value of that state variable for the gas at the critical point. \emph{Denoted by} $\bm{X_R}$ (if $X$ is a state variable).
+    \begin{itemize}
+        \item For example, the reduced pressure of a gas is $P_R=P/P_c$ where $P$ is its current pressure and $P_c$ is its critical pressure.
+    \end{itemize}
+    \item By recombining some of our previous equations, we can rewrite the van der Waals equation in the form
+    \begin{equation*}
+        \left( P_R+\frac{3}{\overline{V}_R^2} \right)\left( \overline{V}_R-\frac{1}{3} \right) = \frac{8}{3}T_R
+    \end{equation*}
+    \begin{itemize}
+        \item Since the above equation doesn't contain any gas characteristics (e.g., $a,b,A,B,\alpha,\beta$), it is a universal equation for all gases.
+        \item For example, it implies that any gas at the same reduced temperature and volume will have the same reduced pressure.
+        \item This prediction is borne out by experimental data and forms the foundation of the law of corresponding states.
+    \end{itemize}
+    \item \textbf{Corresponding states} (of gases $A$ and $B$): A state $(P_A,V_A,T_A)$ of gas $A$ and $(P_B,V_B,T_B)$ of gas $B$ such that
+    \begin{align*}
+        P_{R_A} = \frac{P_A}{P_{c_A}} &= \frac{P_B}{P_{c_B}} = P_{R_B}&
+        V_{R_A} = \frac{V_A}{V_{c_A}} &= \frac{V_B}{V_{c_B}} = V_{R_B}&
+        T_{R_A} = \frac{T_A}{T_{c_A}} &= \frac{T_B}{T_{c_B}} = T_{R_B}
+    \end{align*}
+    \item The compressibility factor also obeys the law of corresponding states.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{../ExtFiles/lawCorrespondingStates.png}
+        \caption{Experimental evidence for the law of corresponding states.}
+        \label{fig:lawCorrespondingStates}
+    \end{figure}
+    \begin{itemize}
+        \item For the van der Waals equation,
+        \begin{align*}
+            Z &= \frac{P\overline{V}}{RT}\\
+            &= \frac{\overline{V}}{\overline{V}-b}-\frac{a}{RT\overline{V}}\\
+            &= \frac{\overline{V}}{\overline{V}-\overline{V}_c/3}-\frac{3P_c\overline{V}_c^2}{RT\overline{V}}\\
+            &= \frac{\overline{V}/\overline{V}_c}{\overline{V}/\overline{V}_c-1/3}-\frac{3\cdot 3RT_c/8\cdot\overline{V}_c}{RT\overline{V}}\\
+            &= \frac{\overline{V}_R}{\overline{V}_R-1/3}-\frac{9}{8T_R\overline{V}_R}
+        \end{align*}
+        \item For the Redlich-Kwong equation,
+        \begin{equation*}
+            Z = \frac{\overline{V}_R}{\overline{V}_R-0.25992}-\frac{1.2824}{T_R^{3/2}(\overline{V}_R+0.25992)}
+        \end{equation*}
+    \end{itemize}
+    \item Physical interpretation of the law of corresponding states: All temperature, pressure, volume, etc. scales on gases are arbitrary, even kelvin. The only values that matter as far as a gas is concerned are its reduced quantities.
+    \item \textbf{Virial equation of state}: The most fundamental equation of state, i.e., the one with the most sound theoretical foundation. \emph{Given by}
+    \begin{equation*}
+        Z = \frac{P\overline{V}}{RT}
+        = 1+\frac{B_{2V}(T)}{\overline{V}}+\frac{B_{3V}(T)}{\overline{V}^2}+\cdots
+    \end{equation*}
+    \item \textbf{Virial coefficients}: The coefficients in the above polynomial in $\overline{V}$.
+    \item \textbf{$\bm{i^\textbf{th}}$ virial coefficient}: The virial coefficient $B_{iV}(T)$.
+    \item \textbf{Virial expansion}: The expression of another property, such as energy or entropy, as a polynomial in $1/\overline{V}$.
+    \item A useful virial expansion is the expression of $Z(P)$ given by
+    \begin{equation*}
+        Z = \frac{P\overline{V}}{RT}
+        = 1+B_{2P}(T)P+B_{3P}(T)P^2+\cdots
+    \end{equation*}
+    where
+    \begin{equation*}
+        B_{iV}(T) = RTB_{iP}(T)
+    \end{equation*}
+    \item Note that in the above virial expansions, $\overline{V}\to\infty$ and $P\to 0$ as $Z\to 1$, as we would expect.
+    \item The terms in the virial expansion converge rapidly.
+    \item "The second virial coefficient is the most important virial coefficient because it reflects the first deviation from ideality as the pressure of the gas is increased (or the volume is decreased)" \parencite[659]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item It can be measured from the slope of a plot of $Z$ vs. $P$ (at low pressures).
+        \item $B_{2V}(T)$ is negative at low temperatures and increases with temperature, going through a shallow positive maximum and then decreasing asymptotically toward zero.
+    \end{itemize}
+    \item \textbf{Boyle temperature}: The temperature at which $B_{2V}(T)=0$, i.e., at which the repulsive and attractive parts of the intermolecular attractions cancel each other and the gas appears to behave ideally.
+    \item The virial equation of state allows us to derive an exact relation between the virial coefficients and the intermolecular interactions.
+    \begin{itemize}
+        \item The interaction of two molecules depends on their distance apart and orientation in space. However, due to rapid molecular motion, we'll pretend that their orientation averages out (a good approximation for molecules of low polarity) and that only the intermolecular distance $r$ is important.
+        \item Let $u(r)$ denote the potential energy of two molecules separated by a distance $r$. Then we can show that
+        \begin{equation*}
+            B_{2V}(T) = -2\pi N_A\int_0^\infty[\e[-u(r)/k_BT]-1]r^2\dd{r}
+        \end{equation*}
+        \item Note that as we'd expect, $B_{2V}(T)=0$ if $u(r)=0$, i.e., there are no deviations from ideality if there are no intermolecular interactions.
+        \item In principle, $u(r)$ can be calculated from quantum mechanics, but this is complicated. Thus, we the approximation from perturbation theory that
+        \begin{equation*}
+            u(r) \to -\frac{c_6}{r^6}
+        \end{equation*}
+        for large values of $r$ where $c_6$ is a constant depending on the molecules in question.
+        \begin{itemize}
+            \item The negative sign represents attraction.
+            \item At low temperatures, it is this attraction that leads to condensation.
+        \end{itemize}
+        \item Although there is no known exact expression for $u(r)$ at small distances, it must reflect intermolecular repulsions, so we usually choose
+        \begin{equation*}
+            u(r) \to \frac{c_n}{r^n}
+        \end{equation*}
+        for small $r$ where $n\in\N$ (but $n$ is often taken to be 12) and $c_n$, again, depends on the molecules in question.
+        \item An intermolecular potential that accounts for both forces is the sum of the two, often written with the substitutions $c_{12}=4\varepsilon\sigma^{12}$ and $c_6=4\varepsilon\sigma^6$.
+        \begin{equation*}
+            u(r) = \frac{c_{12}}{r^{12}}-\frac{c_6}{r^6}
+            = 4\varepsilon\left[ \left( \frac{\sigma}{r} \right)^{12}-\left( \frac{\sigma}{r} \right)^6 \right]
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Lennard-Jones potential}: The above expression for $u(r)$ in terms of $\varepsilon$ and $\sigma$.
+    \item \textbf{Lennard-Jones parameters}: The values $\varepsilon$ and $\sigma$.
+    \begin{itemize}
+        \item Let's calculate the value at which the Lennard-Jones potential achieves its minimum.
+        \begin{align*}
+            0 &= \dv{u}{r}\\
+            &= 4\epsilon\left[ -\frac{12\sigma^{12}}{r^{13}}+\frac{6\sigma^6}{r^7} \right]\\
+            \frac{12\sigma^{12}}{r^{13}} &= \frac{6\sigma^6}{r^7}\\
+            2\sigma^6 &= r^6\\
+            r_\text{min} &= 2^{1/6}\sigma
+        \end{align*}
+        \item It follows that
+        \begin{equation*}
+            u(r_\text{min}) = 4\epsilon\left[ \left( \frac{\sigma}{2^{1/6}\sigma} \right)^{12}-\left( \frac{\sigma}{2^{1/6}\sigma} \right)^6 \right]
+            = 4\epsilon\left( \frac{1}{4}-\frac{1}{2} \right)
+            = -\epsilon
+        \end{equation*}
+        i.e., that $\epsilon$ is the depth of the potential well relative to infinite separation.
+        \begin{itemize}
+            \item Thus, $\epsilon$ is a measure of how strongly the molecules attract each other.
+        \end{itemize}
+        \item Additionally, we have that
+        \begin{equation*}
+            u(\sigma) = 4\varepsilon\left[ \left( \frac{\sigma}{\sigma} \right)^{12}-\left( \frac{\sigma}{\sigma} \right)^6 \right] = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Thus, when $r=\sigma$, the intermolecular attraction and repulsion cancel, i.e., the molecules are finally close enough that their repulsion is becoming significant (in layman's terms, they're touching).
+            \item This means that $\sigma$ is a measure of the size of the constituent molecules.
+        \end{itemize}
+    \end{itemize}
+    \item Substituting the Lennard-Jones potential into our expression for $B_{2V}(T)$ in terms of $u(r)$ yields
+    \begin{equation*}
+        B_{2V}(T) = -2\pi N_A\int_0^\infty\left[ \exp\left\{ -\frac{4\varepsilon}{k_BT}\left[ \left( \frac{\sigma}{r} \right)^{12}-\left( \frac{\sigma}{r} \right)^6 \right] \right\}-1 \right]r^2\dd{r}
+    \end{equation*}
+    \item Substituting a reduced temperature $T^*=k_BT/\varepsilon$, $x=r/\sigma$, and a reduced second virial coefficient $B_{2V}^*(T^*)=B_{2V}(T^*)/(2\pi\sigma^3N_A/3)$ yields
+    \begin{equation*}
+        B_{2V}^*(T^*) = -3\int_0^\infty\left[ \exp\left\{ -\frac{4}{T^*}(x^{-12}-x^{-6}) \right\}-1 \right]x^2\dd{x}
+    \end{equation*}
+    where the integral must be evaluated numerically for each $T^*$. Extensive tabulations of these values are available, though.
+    \begin{itemize}
+        \item Note that this equation is another example of the law of corresponding states. Plotting $B_{2V}^*(T^*)$ vs. $T^*$ for almost any gas will generate much the same curve.
+    \end{itemize}
+    \item Another interpretation of $B_{2V}(T)$.
+    \begin{itemize}
+        \item Consider the virial expansion in terms of pressure under conditions such that terms $P^2$ and higher are negligible. Then
+        \begin{align*}
+            \frac{P\overline{V}}{RT} &= 1+B_{2P}(T)P\\
+            &= 1+\frac{B_{2V(T)}}{RT}P\\
+            \overline{V} &= \frac{RT}{P}+B_{2V}(T)\\
+            B_{2V}(T) &= \overline{V}-\overline{V}_\text{ideal}
+        \end{align*}
+    \end{itemize}
+    \item Note that in much the same way we actually use critical point information to calculate van der Waals and Redlich-Kwong constants, we actually use $B_{2V}(T)$ data to calculate Lennard-Jones parameters.
+    \item "Because the second virial coefficient reflects the initial deviations from ideal behavior, which are caused by intermolecular interactions, experimental $P$-$V$-$T$ data turn out to be a rich source of information concerning intermolecular interactions" \parencite[665]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item Once the Lennard-Jones parameters of a substance are known, they can be used to calculate properties such as viscosity, thermal conductivity, heats of vaporization, and various crystal properties.
+    \end{itemize}
+    \item We now consider in more depth the form of the $r^{-6}$ attraction term.
+    \item Consider two molecules with dipoles $\mu_1,\mu_2$.
+    \begin{itemize}
+        \item If we assume that these molecules rotate randomly in the gas phase, their average dipole-dipole interactions would be zero.
+        \item However, because different conformations (e.g. head-to-head vs. head-to-tail) have different energies, the various states do not occur with equal probabilities. This gives us the following expression for the average interaction between two molecular dipoles.
+        \begin{equation*}
+            u_{d.d}(r) = -\frac{2\mu_1^2\mu_2^2}{(4\pi\varepsilon_0)^2(3k_BT)}\frac{1}{r^6}
+        \end{equation*}
+    \end{itemize}
+    \item Consider two molecules, one with a permanent dipole and the other without a permanent dipole.
+    \begin{itemize}
+        \item Dipole moments can be induced in molecules without a permanent one since all atoms and molecules are \textbf{polarizable}.
+        \item Thus,
+        \begin{equation*}
+            u_\text{induced}(r) = -\frac{\mu_1^2\alpha_2}{(4\pi\varepsilon_0)^2r^6}-\frac{\mu_2^2\alpha_1}{(4\pi\varepsilon_0)^2r^6}
+        \end{equation*}
+        \item The first term above represents a permanent dipole moment in molecule 1 and an induced dipole moment in molecule 2, and the second represents the opposite situation.
+    \end{itemize}
+    \item \textbf{Polarizability}: The proportionality constant between the induced dipole moment $\mu_\text{induced}$ and the external electric field strength $E$. \emph{Denoted by} $\bm{\alpha}$.
+    \begin{itemize}
+        \item "The easier it is for the electric field to deform the atomic or molecular charge distribution, the greater is the polarizability" \parencite[667-68]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Polarizability volume}: The quantity $\alpha/4\pi\varepsilon_0$, which has units of volume.
+    \begin{itemize}
+        \item The polarizability of an atom or molecule is proportional to its size, hence another reason for introducing the polarizability volume.
+    \end{itemize}
+    \item Consider two molecules, neither of which has a permanent dipole.
+    \begin{itemize}
+        \item Because of the \textbf{London dispersion attraction}, their energy of interaction is
+        \begin{equation*}
+            u_\text{disp}(r) = -\frac{3}{2}\left( \frac{I_1I_2}{I_1+I_2} \right)\frac{\alpha_1\alpha_2}{(4\pi\varepsilon_0)^2}\frac{1}{r^6}
+        \end{equation*}
+        where $I_j$ is the ionization energy of atom or molecule $j$.
+        \item Since $u_\text{disp}$ is proportional to the product of the polarizability volumes, the importance of $u_\text{disp}$ increases with the sizes of the atoms or molecules.
+    \end{itemize}
+    \item \textbf{London dispersion attraction}: A strictly quantum-mechanical effect that draws all molecules together, even nonpolar ones.
+    \begin{itemize}
+        \item Named for the German scientist Fritz London who first calculated it in 1930.
+        \item Note that the classical picture taught in intro chem of electrons and protons shifting isn't strictly accurate --- it's more about the distortion/perturbation of wave functions as particles draw near.
+    \end{itemize}
+    \item It follows that the total contribution to the $r^{-6}$ term of the Lennard-Jones potential is given by the sum of the previous three results, i.e.,
+    \begin{equation*}
+        c_6 = \frac{2\mu^4}{3(4\pi\varepsilon_0)^2k_BT}+\frac{2\alpha\mu^2}{(4\pi\varepsilon_0)^2}+\frac{3}{4}\frac{I\alpha^2}{(4\pi\varepsilon_0)^2}
+    \end{equation*}
+    for identical atoms and molecules.
 \end{itemize}
 
 
