@@ -172,10 +172,43 @@
 
 
 
+\section{Office Hours (PGS)}
+\begin{itemize}
+    \item \marginnote{2/25:}Plotting the coexistence curve and determining the Maxwell equal area contraction line mathematically.
+    \begin{itemize}
+        \item You can do these things with Mathematica and numerical approximations.
+        \item PGS does not know of an easy way to do this by hand. It looks like I would have to go all the way through the cubic formula and integrals.
+    \end{itemize}
+    \item I'm getting confused on treating the van der Waals equation as a cubic in $\overline{V}$, because it's graph doesn't ever cross the $x$-axis, and, in fact, the equation is asymptotic to both the $x$- and $y$-axes. So what are its roots, and exactly what properties of it as a cubic are preserved?
+    \begin{itemize}
+        \item It is cubic because it is cubic in $\overline{V}$ (and solving for $\overline{V}$ given $P,T$ requires solving a cubic), not because it looks like the plot of a cubic function.
+    \end{itemize}
+    \item Why do intermolecular interactions behave the same way as intramolecular bonding interactions? B/c we used the Lennard-Jones potential for bond distance initially, and now we've applied it to two molecules interacting through their polarity?
+    \begin{itemize}
+        \item The Lennard-Jones potential only applies to spherically symmetric distributions (e.g., not \ce{H2O} at short distances).
+        \item Not molecules of strong dipole or charge transfer either.
+        \item Thus perfect for \textbf{rare} (or inert) gases.
+        \item $r^{-6}$ works well for any solids that are not charged.
+    \end{itemize}
+    \item What is the $\sigma$ in the hard sphere potential? Isn't it the radius of the hard sphere? Because \textcite{bib:McQuarrieSimon} says it's the diameter multiple times.
+    \begin{itemize}
+        \item If the molecule centered at the origin is a hard sphere of radius $\sigma/2$ and the molecule approaching the hard sphere centered at the origin is also a hard sphere of radius $\sigma/2$, then they won't interact until their centers are a distance $\sigma$ apart.
+    \end{itemize}
+    \item Why can we use the ideal gas law to relate $B_{iV}$ and $B_{iP}$?
+    \item PSet 3, Question 2.
+    \begin{itemize}
+        \item Use the two state model from class. Use a partition function with two states for $N$ particles.
+        \item Curie's law probably isn't gonna be valid in this regime.
+        \item You need the heat capacity at 4 kelvin via the Debye model. You'll need the Debye temperature from the internet.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 16: The Properties of Gases}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
-    \item \marginnote{2/25:}Since the results of the Lennard-Jones potential can't be evaluated analytically, we often use other approximations that can be.
+    \item Since the results of the Lennard-Jones potential can't be evaluated analytically, we often use other approximations that can be.
     \item \textbf{Hard-sphere potential}: The potential of a hard sphere of radius $\sigma$. \emph{Given by}
     \begin{equation*}
         u(r) =
