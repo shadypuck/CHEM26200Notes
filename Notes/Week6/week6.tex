@@ -222,7 +222,7 @@
         \item This also reflects the fact that as we compress a gas, it behaves ideally for a while, and then pressure is constant as condensation takes hold, and then we must apply massive amounts of pressure to make the volume any smaller.
         \item On $\overline{\text{AG}}$, the system is a gas. On $\overline{\text{LD}}$, it is a liquid. On $\overline{\text{AD}}$, pressure is constant as we compress more and more because condensation takes hold, so highly compressed gas molecules become liquid, reducing the pressure.
         \item Drawing the line $\overline{\text{AD}}$: The points at which gas stops and liquid starts must be at the same pressure.
-        \item We must also have the area above and below the line equal (\textbf{Maxwell equal area contraction}).
+        \item We must also have the area above and below the line equal (\textbf{Maxwell equal area construction}).
         \begin{itemize}
             \item Phase equilibrium (like we have along $\overline{\text{AD}}$) means that free energy does not change. Mathematically, $\Delta G(\text{A})=\Delta G(\text{D})$.
             \item If A and D represent gas and liquids at the same temperature, they are in equilibrium and they must have the same molar Gibbs free energy.
@@ -782,6 +782,84 @@
         \end{equation*}
         i.e., that the above equation provides values $\overline{V}$ that make the Redlich-Kwong equation true for arbitrary $P$. In other words, the above equation equals $\overline{V}(P)$.
         \item It is a simple matter then to consider $Z(\overline{V}(P))$.
+    \end{itemize}
+    \item \marginnote{2/24:}Equations of state that can be written as cubic equations in $\overline{V}$ describe both the gaseous and the liquid regions of a substance.
+    \item $PV$-diagram terminology.
+    \emph{Figure 16.7.}
+    \item \textbf{Isotherm}: An experimentally determined plot of $P$ as a function of $\overline{V}$ at constant $T$.
+    \item \textbf{Coexistence curve}: The curve on a $PV$ diagram such that any point within the curve corresponds to liquid and gas coexisting in equilibrium with each other and any point on or outside the curve corresponds to only one phase.
+    \item \textbf{Critical temperature}: The temperature above which a gas cannot be liquefied, regardless of the pressure. \emph{Denoted by} $\bm{T_c}$.
+    \item \textbf{Critical point}: The point along the curve $P(\overline{V},T_c)$ at which $\pdv*{P}{\overline{V}}=0$.
+    \begin{itemize}
+        \item The global maximum of the coexistence curve.
+    \end{itemize}
+    \item \textbf{Critical pressure}: The pressure at the critical point. \emph{Denoted by} $\bm{P_c}$.
+    \item \textbf{Critical volume}: The volume at the critical point. \emph{Denoted by} $\bm{\overline{V}_c}$.
+    \item \textbf{Critical density}: The density of the system at the critical point.
+    \item \textcite{bib:McQuarrieSimon} describes how pressure remains constant during a phase transition at a subcritical temperature.
+    \item At the critical point, the meniscus between liquid and vapor disappears and both take on the same critical density.
+    \item The spurious loops obtained from the van der Waals and Redlich-Kwong equation for $T<T_c$ (see Figure \ref{fig:vanDerWaalsIsotherm}) result from the approximate nature of these equations of state.
+    \begin{itemize}
+        \item However, the segment AB is a metastable region corresponding to the superheated vapor, the segment CD corresponds to the supercooled liquid, and the segment BC signifies an unstable region not observed for equilibrium systems.
+    \end{itemize}
+    \item The \textbf{Maxwell equal-area construction} will be justified in Chapter 23.
+    \item The three roots of the equations of state along isotherms for $T<T_c$.
+    \begin{itemize}
+        \item $A$ is the molar volume of the vapor in equilibrium.
+        \item $D$ is the molar volume of the liquid in equilibrium.
+        \item The third root in the middle has no physical meaning.
+        \item We can thus use our cubic equations of state to calculate the molar volume of the liquid and gas phases of a given substance.
+        \begin{itemize}
+            \item Note that since it was designed to behave the best in the liquid region, the Peng-Robinson equation gives the best result here.
+        \end{itemize}
+    \end{itemize}
+    \item Since the critical point is an inflection point along the isotherm corresponding to the critical temperature, we have that
+    \begin{align*}
+        \left( \pdv{P}{\overline{V}} \right)_T &= 0&
+        \left( \pdv[2]{P}{\overline{V}} \right)_T &= 0
+    \end{align*}
+    at it.
+    \begin{itemize}
+        \item We can use these conditions to derive the critical constants in terms of $a$ and $b$.
+    \end{itemize}
+    \item An easier way to derive said expressions, though, is to note that the cubic van der Waals equation has three real roots for $T<T_c$ and one real root (plus two complex roots) for $T>T_c$, so at $T=T_c$, all three of its roots merge into one, i.e., the equation is of the form $(\overline{V}-\overline{V}_c)^3=0$.
+    \begin{itemize}
+        \item It follows by expanding the trinomial and comparing coefficients with the van der Waals equation written as a cubic that
+        \begin{align*}
+            3\overline{V}_c &= b+\frac{RT_c}{P_c}&
+            3V_c^2 &= \frac{a}{P_c}&
+            \overline{V}_c^3 &= \frac{ab}{P_c}
+        \end{align*}
+        \item It follows that
+        \begin{align*}
+            \overline{V}_c &= 3b&
+            P_c &= \frac{a}{27b^2}&
+            T_c &= \frac{8a}{27bR}
+        \end{align*}
+        \item For the Redlich-Kwong equation,
+        \begin{align*}
+            \overline{V}_c &= 3.8473B&
+            P_c &= 0.029894\frac{A^{2/3}R^{1/3}}{B^{5/3}}&
+            T_c &= 0.34504\left( \frac{A}{BR} \right)^{2/3}
+        \end{align*}
+    \end{itemize}
+    \item From the above equations, we can show that
+    \begin{align*}
+        \frac{P_c\overline{V}_c}{RT_c} &= 0.375&
+        \frac{P_c\overline{V}_c}{RT_c} &= 0.333
+    \end{align*}
+    where the left estimate is provided by the van der Waals equation and the right by the Redlich-Kwong equation.
+    \begin{itemize}
+        \item The significance is that both equations of state predict that the compressibility factor at the critical point is the same for all substances (there is no $a,b$ or $A,B$ dependence in the terms on the right of the equalities). However, there is a slight disparity in the predicted value of $Z$.
+        \item While neither prediction is particularly quantitative (that of the Peng-Robinson is a bit more so), all three equations of state predict a constant $Z$. This prediction is borne out reasonably well by experimental data.
+    \end{itemize}
+    \item \textbf{Law of corresponding states}: The properties of all gases are the same if we compare them under the same conditions relative to their critical point.
+    \begin{itemize}
+        \item In particular, this means that gas properties are identical when their \textbf{reduced quantities} are equal.
+    \end{itemize}
+    \item Note that in practice, the van der Waals and Redlich-Kwong constants are obtained from data at the critical point, not the other way around.
+    \begin{itemize}
+        \item Also note that there is some ambiguity in how we do so, since there are three pieces of data $(P_c,\overline{V}_c,T_c)$ describing a gas at the critical point but only two constants $a,b$ or $A,B$.
     \end{itemize}
 \end{itemize}
 
