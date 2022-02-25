@@ -172,5 +172,103 @@
 
 
 
+\section{Chapter 16: The Properties of Gases}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{2/25:}Since the results of the Lennard-Jones potential can't be evaluated analytically, we often use other approximations that can be.
+    \item \textbf{Hard-sphere potential}: The potential of a hard sphere of radius $\sigma$. \emph{Given by}
+    \begin{equation*}
+        u(r) =
+        \begin{cases}
+            \infty & r<\sigma\\
+            0 & r>\sigma
+        \end{cases}
+    \end{equation*}
+    \begin{itemize}
+        \item This is the simplest representative potential.
+        \item Despite its simplicity, it does account for the finite size of molecules, which turns out to be the dominant feature in determining the structure of liquids and solids.
+        \item It does not account for intermolecular attractions, but since such attractions lessen as temperature increases, it is a good model for that condition.
+    \end{itemize}
+    \item Under the hard-sphere potential,
+    \begin{align*}
+        B_{2V}(T) &= -2\pi N_A\int_0^\infty\left( \e[-u(r)/k_BT]-1 \right)r^2\dd{r}\\
+        &= -2\pi N_A\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^\infty(1-1)r^2\dd{r} \right]\\
+        &= \frac{2\pi\sigma^3N_A}{3}
+    \end{align*}
+    \begin{itemize}
+        \item Thus, $B_{2V}(T)$ is equal to $1/2$ the volume of $N_A$ hard spheres of radius $\sigma$.
+        \item Although this formula for the second virial coefficient is not temperature dependent, it is indeed a good approximation at high temperatures, just the same way the potential is.
+    \end{itemize}
+    \item \textbf{Square-well potential}: The potential of a hard-sphere of radius $\sigma$ that is attractive at a consistent level from its surface up until a finite distance away. \emph{Given by}
+    \begin{equation*}
+        u(r) =
+        \begin{cases}
+            \infty & r<\sigma\\
+            -\varepsilon & \sigma<r<\lambda\sigma\\
+            0 & r>\lambda\sigma
+        \end{cases}
+    \end{equation*}
+    \begin{itemize}
+        \item $\varepsilon$ is the depth of the well and $(\lambda-1)\sigma$ is its width.
+    \end{itemize}
+    \item Under the square-well potential,
+    \begin{align*}
+        B_{2V}(T) &= -2\pi N_A\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^{\lambda\sigma}(\e[\varepsilon/k_BT]-1)r^2\dd{r}+\int_{\lambda\sigma}^\infty(1-1)r^2\dd{r} \right]\\
+        &= -2\pi N_A\left[ -\frac{\sigma^3}{3}+\frac{\sigma^3}{3}(\lambda^3-1)(\e[\varepsilon/k_BT]-1)+0 \right]\\
+        &= \frac{2\pi\sigma^3N_A}{3}[1-(\lambda^3-1)(\e[\varepsilon/k_BT]-1)]
+    \end{align*}
+    \item The agreement of the square-well potential with experimental data is very good, but it does have 3 adjustable parameters.
+    \item Relating the second virial coefficient to the van der Waals constants.
+    \begin{itemize}
+        \item With the help of the expansion $1/(1-x)=1+x+x^2+\cdots$, we have that
+        \begin{align*}
+            P &= \frac{RT}{\overline{V}-b}-\frac{a}{\overline{V}^2}\\
+            &= \frac{RT}{\overline{V}}\frac{1}{1-b/\overline{V}}-\frac{a}{\overline{V}^2}\\
+            &= \frac{RT}{\overline{V}}\left[ 1+\frac{b}{\overline{V}}+\frac{b^2}{\overline{V}^2}+\cdots \right]-\frac{a}{\overline{V}^2}\\
+            &= \frac{RT}{\overline{V}}+(RTB-a)\frac{1}{\overline{V}^2}+\frac{RTb^2}{\overline{V}^3}+\cdots
+        \end{align*}
+        \item It follows that
+        \begin{equation*}
+            Z = \frac{P\overline{V}}{RT} = 1+\left( b-\frac{a}{RT} \right)\frac{1}{\overline{V}}+\frac{b^2}{\overline{V}^2}+\cdots
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            B_{2V}(T) = b-\frac{a}{RT}
+        \end{equation*}
+        for the van der Waals equation.
+    \end{itemize}
+    \item Relating the van der Waals constants to the Lennard-Jones parameters.
+    \begin{itemize}
+        \item Consider the following intermolecular potential, which is a hybrid of the hard-sphere and Lennard-Jones potentials.
+        \begin{equation*}
+            u(r) =
+            \begin{cases}
+                \infty & r<\sigma\\
+                -\frac{c_6}{r^6} & r>\sigma
+            \end{cases}
+        \end{equation*}
+        \item We can now calculate $B_{2v}(T)$ in terms of $u(r)$ with the help of the approximation $\e[x]=1+x$ (applicable since the argument of the exponent function will be very small).
+        \begin{align*}
+            B_{2V}(T) &= -2\pi N_A\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^\infty(\e[c_6/k_BTr^6]-1)r^2\dd{r} \right]\\
+            &= \frac{2\pi\sigma^3N_A}{3}-\frac{2\pi N_Ac_6}{k_BT}\int_\sigma^\infty\frac{1}{r^6}\cdot r^2\dd{r}\\
+            &= \frac{2\pi\sigma^3N_A}{3}-\frac{2\pi N_Ac_6}{k_BT}\left[ -\frac{1}{3r^3} \right]_\sigma^\infty\\
+            &= \frac{2\pi\sigma^3N_A}{3}-\frac{2\pi N_Ac_6}{3k_BT\sigma^3}
+        \end{align*}
+        \item It follows by comparison with the result from the previous section that
+        \begin{align*}
+            a &= \frac{2\pi N_A^2c_6}{3\sigma^3}&
+            b &= \frac{2\pi\sigma^3N_A}{3}
+        \end{align*}
+        \item Physical interpretations: $a\propto c_6$ and $b$ is one-half the volume of the molecules.
+    \end{itemize}
+    \item In a similar fashion, we can relate $B_{2V}(T)$ to the Redlich-Kwong constants and Peng-Robinson functions.
+    \begin{align*}
+        B_{2V}(T) &= B-\frac{A}{RT^{3/2}}&
+        B_{2V}(T) &= \beta-\frac{\alpha}{RT}
+    \end{align*}
+\end{itemize}
+
+
+
 
 \end{document}
