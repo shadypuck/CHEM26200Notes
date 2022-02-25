@@ -196,8 +196,8 @@
             \small
             \draw [stealth-stealth] (0,120) -- node[left]{$P$} (0,0) -- node[below]{$\overline{V}$} (0.6,0);
     
-            \draw [rex,thick] plot[domain=0.0672:0.6,smooth,samples=500,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{(-0.0821*273*\x*\x+3.59*\x-3.59*0.0427)/(0.0427*\x*\x-\x*\x*\x)});
-            \draw [rex,semithick] (0.0773,47.1) -- (0.3017,47.1);
+            \draw [blx,thick] plot[domain=0.0672:0.6,smooth,samples=500,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{(-0.0821*273*\x*\x+3.59*\x-3.59*0.0427)/(0.0427*\x*\x-\x*\x*\x)});
+            \draw [blx,semithick] (0.0773,47.1) -- (0.3017,47.1);
     
             \footnotesize
             \node [below left] at (0.0672,119.849) {L};
@@ -371,6 +371,417 @@
     \item Integrating along the curve in Figure \ref{fig:vanDerWaalsIsotherm}?
     \begin{itemize}
         \item Integrating along the curve with respect to $P$ means (geometrically) that we take the area "under" (to the left of) the curve from $A$ to $C$, then subtract the area under from $C$ to $B$, and then add the area under from $B$ to $A$. This calculation gets us overall the area of the bottom chunk as negative and the area of the top chunk as positive.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 16: The Properties of Gases}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{2/21:}Outline:
+    \begin{itemize}
+        \item Having studied ad nauseam the properties of individual atoms and molecules, we now turn our attention to systems consisting of large numbers of atoms and molecules.
+        \item The ideal gas equation is discussed, the van der Waals equation as the most famous extension of it, and then \textbf{virial expansions} as an even more systematic and accurate approach.
+        \item Relating virial coefficients to the intermolecular interaction energy reveals that deviations from ideal gas behavior provide great insight into molecular interactions.
+    \end{itemize}
+    \item \textbf{Virial expansion}: An expression for the pressure of a gas as a polynomial in the density.
+    \item \textbf{Ideal-gas equation of state}: An equation of state relating the pressure, volume, and temperature of a gas that is sufficiently dilute (i.e., with particles sufficiently far apart) for the intermolecular interactions to be negligible. \emph{Given by}
+    \begin{align*}
+        PV &= nRT&
+        P\overline{V} &= RT
+    \end{align*}
+    \item \textbf{Ideal gas}: A gas that obeys the ideal-gas equation of state.
+    \begin{itemize}
+        \item All gases, regardless of the shape or size of the molecules or how the molecules interact with each other, obey behave ideally if they are sufficiently dilute.
+        \item "Experimentally, most gases satisfy [the ideal-gas equation of state] to approximately $1\%$ at one atm and \SI{0}{\celsius}" \parencite[638]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Extensive quantity}: A quantity that is directly proportional to the size of the system in question. \emph{Also known as} \textbf{extensive variable}.
+    \item \textbf{Intensive quantity}: A quantity that does not depend on the size of the system in question. \emph{Also known as} \textbf{intensive variable}.
+    \item "If we divide an extensive quantity by the number of particles or the number of moles in a system, we obtain an intensive quantity" \parencite[638]{bib:McQuarrieSimon}.
+    \item \textbf{Liter}: A unit of volume. \emph{Denoted by} \textbf{L}. \emph{Given by}
+    \begin{equation*}
+        \SI{1}{\liter} = \SI{1}{\deci\meter\cubed}
+    \end{equation*}
+    \begin{itemize}
+        \item The SI unit of volume is \si{\cubic\meter}, but liters are an acceptable unit of volume in the IUPAC system.
+    \end{itemize}
+    \item \textbf{Pascal}: The SI unit of pressure. \emph{Denoted by} \textbf{Pa}. \emph{Given by}
+    \begin{equation*}
+        \SI{1}{\pascal} = \SI[per-mode=fraction,fraction-function=\tfrac]{1}{\newton\per\meter\squared}
+        = \SI[per-mode=fraction,fraction-function=\tfrac]{1}{\kilo\gram\per\meter\per\second\squared}
+    \end{equation*}
+    \item "Pressure can be measured experimentally by observing how high a column of liquid (usually mercury) is supported by the gas" \parencite[638]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item If $m$ is the mass of the liquid, $g$ is the \textbf{gravitational acceleration constant}, $A$ is the base area of the column, $\rho$ is the density of the liquid, and $h$ is the height of the column, then
+        \begin{equation*}
+            P = \frac{F}{A} = \frac{mg}{A} = \frac{\rho hAg}{A} = \rho hg
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Gravitational acceleration constant}: The acceleration of an object due to gravity at the surface of the Earth. \emph{Denoted by} $\bm{g}$. \emph{Given by}
+    \begin{equation*}
+        g = \SI[per-mode=fraction,fraction-function=\tfrac]{9.8067}{\meter\per\second\squared}
+    \end{equation*}
+    \item The pressure exerted by a \SI{76.000}{\centi\meter} column of mercury ($\rho(\ce{Hg})=\SI{13.596}{\gram\per\cubic\centi\meter}$) is
+    \begin{align*}
+        P &= \rho gh\\
+        &= \SI[per-mode=fraction,fraction-function=\tfrac]{1.0133e6}{\gram\per\centi\meter\per\square\second}\\
+        &= \SI[per-mode=fraction,fraction-function=\tfrac]{1.0133e5}{\kilo\gram\per\meter\per\square\second}\\
+        &= \SI{1.0133e5}{\pascal}\\
+        &= \SI{101.33}{\kilo\pascal}
+    \end{align*}
+    \item \textbf{Atmosphere}: The pressure that supports a \SI{76.0}{\centi\meter} column of mercury. \emph{Denoted by} \textbf{atm}. \emph{Given by}
+    \begin{equation*}
+        \SI{1}{\atmosphere} = \SI{101.325}{\kilo\pascal}
+    \end{equation*}
+    \item \textbf{Bar}: The SI standard of pressure. \emph{Denoted by} \textbf{bar}. \emph{Given by}
+    \begin{equation*}
+        \SI{1}{\bar} = \SI{e5}{\pascal}
+    \end{equation*}
+    \item \textbf{Torr}: The pressure that supports a \SI{1.00}{\milli\meter} column of mercury. \emph{Denoted by} \textbf{torr}. \emph{Given by}
+    \begin{equation*}
+        \SI{1}{\torr} = \frac{1}{760}\,\text{atm}
+    \end{equation*}
+    \item "Because we are experiencing a transition period between the widespread use of \si{\atmosphere} and \si{\torr} on the one hand and the future use of \si{\bar} and \si{\kilo\pascal} on the other hand, students of physical chemistry must be proficient in both sets of pressure units" \parencite[639]{bib:McQuarrieSimon}.
+    \item Temperatures as low as \SI{1e-7}{\kelvin} and as high as \SI{1e8}{\kelvin} have been achieved in the laboratory.
+    \item \textbf{Triple point}: The point $(P,V,T)$ at which all three of a given substance's phases are in equilibrium.
+    \item \textbf{Kelvin}: The SI unit of temperature, defined as $1/273.16$ of the temperature of the triple point of water. \emph{Denoted by} \textbf{K}.
+    \item "We will use the lower case $t$ for \si{\celsius} and the upper case $T$ for \si{\kelvin}" \parencite[640]{bib:McQuarrieSimon}.
+    \item \textbf{Room temperature}: The temperature $\SI{25}{\celsius}=\SI{298.15}{\kelvin}$.
+    \item If we plot $P\overline{V}$ vs. $P$ for several gases at $T=\SI{273.15}{\kelvin}$, all the data can be extrapolated to a common value of $P\overline{V}=\SI{22.414}{\liter\atmosphere}$ as $P\to 0$. Thus,
+    \begin{align*}
+        R = \frac{P\overline{V}}{T} = \frac{\SI{22.414}{\liter\atmosphere}}{\SI{273.15}{\kelvin}} &= \SI[per-mode=fraction,fraction-function=\tfrac]{0.082058}{\liter\atmosphere\per\mole\per\kelvin}\\
+        &= \SI[per-mode=fraction,fraction-function=\tfrac]{8.3145}{\joule\per\mole\per\kelvin}\\
+        &= \SI[per-mode=fraction,fraction-function=\tfrac]{0.083145}{\liter\bar\per\mole\per\kelvin}
+    \end{align*}
+    \item \textbf{Compressibility factor}: The following quantity. \emph{Denoted by} $\bm{Z}$. \emph{Given by}
+    \begin{equation*}
+        Z = \frac{P\overline{V}}{RT}
+    \end{equation*}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                xscale=0.3,yscale=1.5,
+                every node/.style=black
+            ]
+                \footnotesize
+                \draw [stealth-stealth] (0,2.75) -- node[left=7mm]{$Z$} (0,0) -- node[below=6mm]{$P$ (bar)} (21,0);
+                \foreach \x [evaluate=\x as \n using int(50*\x)] in {4,8,...,20} {
+                    \draw (\x,0.05) -- ++(0,-0.1) node[below]{$\n$};
+                }
+                \foreach \y in {0.5,1.0,1.5,2.0,2.5} {
+                    \draw (0.25,\y) -- ++(-0.5,0) node[left]{$\y$};
+                }
+                \node[below left=1mm]{0};
+        
+                \draw [thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (20,1.000)
+                } node[right]{Ideal gas};
+                \draw [blz,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (1 ,1.037)
+                    (2 ,1.083)
+                    (3 ,1.134)
+                    (4 ,1.184)
+                    (5 ,1.228)
+                    (6 ,1.267)
+                    (7 ,1.302)
+                    (8 ,1.332)
+                    (9 ,1.359)
+                    (10,1.384)
+                    (11,1.406)
+                    (12,1.427)
+                    (13,1.446)
+                    (14,1.467)
+                    (15,1.480)
+                    (16,1.496)
+                    (17,1.511)
+                    (18,1.525)
+                    (19,1.538)
+                    (20,1.551)
+                } node[right]{\ce{He}};
+                \draw [bly,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (1 ,0.917)
+                    (2 ,0.856)
+                    (3 ,0.832)
+                    (4 ,0.844)
+                    (5 ,0.881)
+                    (6 ,0.932)
+                    (7 ,0.991)
+                    (8 ,1.053)
+                    (9 ,1.118)
+                    (10,1.184)
+                    (11,1.250)
+                    (12,1.317)
+                    (13,1.384)
+                    (14,1.451)
+                    (15,1.518)
+                    (16,1.585)
+                    (17,1.652)
+                    (18,1.718)
+                    (19,1.784)
+                    (20,1.850)
+                } node[right,yshift=-1.3mm]{\ce{CH4}};
+                \draw [blx,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (1 ,0.988)
+                    (2 ,0.993)
+                    (3 ,1.022)
+                    (4 ,1.068)
+                    (5 ,1.123)
+                    (6 ,1.181)
+                    (7 ,1.240)
+                    (8 ,1.297)
+                    (9 ,1.353)
+                    (10,1.408)
+                    (11,1.461)
+                    (12,1.512)
+                    (13,1.563)
+                    (14,1.612)
+                    (15,1.660)
+                    (16,1.706)
+                    (17,1.752)
+                    (18,1.797)
+                    (19,1.840)
+                    (20,1.883)
+                } node[right,yshift=1.3mm]{\ce{N2}};
+            \end{tikzpicture}
+            \caption{Changing the gas type.}
+            \label{fig:ZvsPa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                xscale=0.3,yscale=1.5,
+                every node/.style=black
+            ]
+                \footnotesize
+                \draw [stealth-stealth] (0,2.75) -- node[left=7mm]{${\color{white}Z}$} (0,0) -- node[below=6mm]{$P$ (bar)} (21,0);
+                \foreach \x [evaluate=\x as \n using int(50*\x)] in {4,8,...,20} {
+                    \draw (\x,0.05) -- ++(0,-0.1) node[below]{$\n$};
+                }
+                \foreach \y in {0.5,1.0,1.5,2.0,2.5} {
+                    \draw (0.25,\y) -- ++(-0.5,0);
+                }
+                \node[below left=1mm]{0};
+        
+                \draw [blt,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (1 ,1.005)
+                    (2 ,1.014)
+                    (3 ,1.025)
+                    (4 ,1.039)
+                    (5 ,1.056)
+                    (6 ,1.074)
+                    (7 ,1.095)
+                    (8 ,1.117)
+                    (9 ,1.140)
+                    (10,1.165)
+                    (11,1.191)
+                    (12,1.217)
+                    (13,1.244)
+                    (14,1.272)
+                    (15,1.300)
+                    (16,1.329)
+                    (17,1.358)
+                    (18,1.387)
+                    (19,1.417)
+                    (20,1.447)
+                } node[right]{\SI{600}{\kelvin}};
+                \draw [blz,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (1 ,0.977)
+                    (2 ,0.965)
+                    (3 ,0.964)
+                    (4 ,0.974)
+                    (5 ,0.993)
+                    (6 ,1.020)
+                    (7 ,1.053)
+                    (8 ,1.089)
+                    (9 ,1.129)
+                    (10,1.172)
+                    (11,1.215)
+                    (12,1.260)
+                    (13,1.306)
+                    (14,1.353)
+                    (15,1.400)
+                    (16,1.447)
+                    (17,1.495)
+                    (18,1.542)
+                    (19,1.591)
+                    (20,1.638)
+                } node[right]{\SI{400}{\kelvin}};
+                \draw [bly,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (1 ,0.917)
+                    (2 ,0.856)
+                    (3 ,0.832)
+                    (4 ,0.844)
+                    (5 ,0.881)
+                    (6 ,0.932)
+                    (7 ,0.991)
+                    (8 ,1.053)
+                    (9 ,1.118)
+                    (10,1.184)
+                    (11,1.250)
+                    (12,1.317)
+                    (13,1.384)
+                    (14,1.451)
+                    (15,1.518)
+                    (16,1.585)
+                    (17,1.652)
+                    (18,1.718)
+                    (19,1.784)
+                    (20,1.850)
+                } node[right]{\SI{300}{\kelvin}};
+                \draw [blx,thick] plot[smooth] coordinates {
+                    (0 ,1.000)
+                    (0.25,0.915)
+                    (0.50,0.820)
+                    (0.75,0.706)
+                    (0.80,0.680)
+                    (0.85,0.652)
+                    (0.90,0.622)
+                    (0.95,0.589)
+                    (1 ,0.553)
+                    (1.05,0.513)
+                    (1.10,0.468)
+                    (1.15,0.423)
+                    (1.20,0.386)
+                    (1.25,0.365)
+                    (1.30,0.355)
+                    (1.35,0.350)
+                    (1.40,0.348)
+                    (1.45,0.349)
+                    (1.50,0.351)
+                    (1.55,0.353)
+                    (1.60,0.357)
+                    (1.65,0.361)
+                    (1.70,0.365)
+                    (1.75,0.370)
+                    (2 ,0.397)
+                    (3 ,0.517)
+                    (4 ,0.637)
+                    (5 ,0.755)
+                    (6 ,0.870)
+                    (7 ,0.983)
+                    (8 ,1.094)
+                    (9 ,1.203)
+                    (10,1.310)
+                    (11,1.416)
+                    (12,1.521)
+                    (13,1.626)
+                    (14,1.729)
+                    (15,1.831)
+                    (16,1.933)
+                    (17,2.034)
+                    (18,2.135)
+                    (19,2.235)
+                    (20,2.334)
+                } node[right]{\SI{200}{\kelvin}};
+            \end{tikzpicture}
+            \caption{Changing the gas temperature.}
+            \label{fig:ZvsPb}
+        \end{subfigure}
+        \caption{Plots of the compressibility factor vs. pressure.}
+        \label{fig:ZvsP}
+    \end{figure}
+    \begin{itemize}
+        \item We use the compressibility factor, which is constant at 1 for an ideal gas, to visualize deviations from ideality for different gases (Figure \ref{fig:ZvsPa}) at different temperatures (Figure \ref{fig:ZvsPb}).
+        \item At lower temperatures, intermolecular attraction takes hold, reducing the true volume and making $Z<1$.
+        \item At higher temperatures, molecules are moving fast enough to make negligible their attractions. Here, only repulsions due to their nonzero volume take hold at higher pressures.
+    \end{itemize}
+    \item "The closer the gas is to the point at which it begins to liquify, the larger the deviations from ideal behavior will be" \parencite[642]{bib:McQuarrieSimon}.
+    \item \textbf{Van der Waals equation}: The most well known of the gaseous equations of state which account for intermolecular interactions. \emph{Given by}
+    \begin{equation*}
+        \left( P+\frac{a}{\overline{V}^2} \right)(\overline{V}-b) = RT
+    \end{equation*}
+    \begin{itemize}
+        \item Note that as $\overline{V}\to\infty$, the van der Waals equation becomes the ideal-gas equation of state.
+        \item The van der Waals equation is also commonly written in the following form.
+        \begin{equation*}
+            P = \frac{RT}{\overline{V}-b}-\frac{a}{\overline{V}^2}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Van der Waals constants}: The constants $a,b$ in the van der Waals equation, whose value depend upon the particular gas.
+    \begin{itemize}
+        \item We will see later that "the value of $a$ reflects how strongly the molecules of a gas attract each other and the value of $b$ reflects the size of the molecules" \parencite[643]{bib:McQuarrieSimon}.
+        \item Table 16.3 lists van der Waals constants for various substances.
+    \end{itemize}
+    \item The van der Waals equation approximates the behavior depicted in Figure \ref{fig:ZvsP} since
+    \begin{equation*}
+        Z = \frac{P\overline{V}}{RT}
+        = \frac{\overline{V}}{\overline{V}-b}-\frac{a}{RT\overline{V}}
+    \end{equation*}
+    \begin{itemize}
+        \item At high pressures ($\overline{V}\to 0$), the first term above dominates because $\overline{V}-b$ gets really small.
+        \item At low pressures, the second term dominates.
+        \item Notice that this also relates to the previously mentioned roles of $a,b$ (e.g., at high pressures, the size of the molecules [and $b$] becomes significant).
+    \end{itemize}
+    \item To solve the van der Waals equation for a molar volume given the other state variables, we must find the roots of a cubic equation via Newtons' method.
+    \begin{equation*}
+        \overline{V}^3-\left( b+\frac{RT}{P} \right)\overline{V}^2+\frac{a}{P}\overline{V}-\frac{ab}{P} = 0
+    \end{equation*}
+    \item \textbf{Redlich-Kwong equation}: A relatively simple equation of state that is much more accurate than the van der Waals equation. \emph{Given by}
+    \begin{equation*}
+        P = \frac{RT}{\overline{V}-B}-\frac{A}{\overline{V}(\overline{V}+B)\sqrt{T}}
+    \end{equation*}
+    \begin{itemize}
+        \item Table 16.4 lists Redlich-Kwong parameters for various substances.
+        \item As a cubic equation (Problem 16-26):
+        \begin{equation*}
+            \overline{V}^3-\frac{RT}{P}\overline{V}^2-\left( B^2+\frac{BRT}{P}-\frac{A}{P\sqrt{T}} \right)\overline{V}-\frac{AB}{P\sqrt{T}} = 0
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Peng-Robinson equation}: Another relatively simple equation of state that is much more accurate than the van der Waals equation. \emph{Given by}
+    \begin{equation*}
+        P = \frac{RT}{\overline{V}-\beta}-\frac{\alpha}{\overline{V}(\overline{V}+\beta)+\beta(\overline{V}-\beta)}
+    \end{equation*}
+    \begin{itemize}
+        \item $\alpha$ is a somewhat complicated function of temperature, so $\alpha,\beta$ values are not listed.
+        \item Problem 16-28 gives the Peng-Robinson equation as a cubic.
+    \end{itemize}
+    \item As a general rule, the van der Waals equation fails beyond \SI{200}{\bar} while the Redlich-Kwong and Peng-Robinson equations remain nearly quantitative all the way into regions where the gas liquifies.
+    \begin{itemize}
+        \item Additionally, the Peng-Robinson equation is better in the liquid-vapor phase transition region, and the Redlich-Kwong equation is better at higher pressures (these equations were actually constructed for these purposes).
+    \end{itemize}
+    \item There exist many more sophisticated equations of state, some containing $10+$ parameters, that can quantitatively reproduce experimental data over a wide range of state variables.
+    \item A note on the drawing of Figure \ref{fig:ZvsP}.
+    \begin{itemize}
+        \item The curves in the figure were plotted with the Redlich-Kwong equation of state (since it is the one that most accurately depicts reality at high pressures).
+        \item To plot said curves, we need $Z(P)$. Much like with the van der Waals equation, we can write that
+        \begin{equation*}
+            Z = \frac{P\overline{V}}{RT}
+            = \frac{\overline{V}}{\overline{V}-B}-\frac{A\overline{V}}{RT\overline{V}(\overline{V}+B)\sqrt{T}}
+        \end{equation*}
+        \item However, the above equation expresses $Z$ as a function of $\overline{V}$, not $P$. Fortunately, we can solve the Redlich-Kwong equation for $P$ using Cardano's formula.
+        \item Comparing the cubic form of the Redlich-Kwong equation to the general cubic $ax^3+bx^2+cx+d=0$ yields
+        \begin{align*}
+            a &= 1&
+            b &= -\frac{RT}{P}&
+            c &= \frac{A}{P\sqrt{T}}-\frac{BRT}{P}-B^2&
+            d &= -\frac{AB}{P\sqrt{T}}
+        \end{align*}
+        \item We now depress $ax^3+bx^2+cx+d=0$ into $t^3+pt+q=0$ via the substitutions
+        \begin{align*}
+            t &= x+\frac{b}{3a}&
+            p &= \frac{3ac-b^2}{3a^2}&
+            q &= \frac{2b^3-9abc+27a^2d}{27a^3}
+        \end{align*}
+        \item Since $4p^3+27q^2>0$ for all $P\in(0,1000]$ (as we can verify graphically), the depressed cubic $t^3+pt+q=0$ has the real root
+        \begin{equation*}
+            t = \sqrt[3]{-\frac{q}{2}+\sqrt{\frac{q^2}{4}+\frac{p^3}{27}}}+\sqrt[3]{-\frac{q}{2}-\sqrt{\frac{q^2}{4}+\frac{p^3}{27}}}
+        \end{equation*}
+        \item It follows by returning the substitution for $x$ that the original cubic has the real root
+        \begin{equation*}
+            x = -\frac{b}{3a}+\sqrt[3]{-\frac{q}{2}+\sqrt{\frac{q^2}{4}+\frac{p^3}{27}}}+\sqrt[3]{-\frac{q}{2}-\sqrt{\frac{q^2}{4}+\frac{p^3}{27}}}
+        \end{equation*}
+        i.e., that the above equation provides values $\overline{V}$ that make the Redlich-Kwong equation true for arbitrary $P$. In other words, the above equation equals $\overline{V}(P)$.
+        \item It is a simple matter then to consider $Z(\overline{V}(P))$.
     \end{itemize}
 \end{itemize}
 
