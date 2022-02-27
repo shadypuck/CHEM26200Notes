@@ -172,6 +172,91 @@
 
 
 
+\section{Phase Equilibria}
+\begin{itemize}
+    \item \marginnote{2/23:}Goes over midterm answer key (and posted it to Canvas).
+    \begin{itemize}
+        \item 1d.
+        \begin{itemize}
+            \item We needed to say that $\max S=nk_B\ln 2$.
+            \item We also needed to indicate that the slope is vertical at 0 and 1.
+        \end{itemize}
+        \item Question 3.
+        \begin{itemize}
+            \item Often looking for a derivation from some fundamental law of thermodynamics.
+            \item For example, for 3a, since this is an isolated system, we know that $\dd{U}=0$. Moreover, since $\dd{U}=C_1\dd{T_1}+C_2\dd{T_2}$, we have that $C_1\dd{T_1}=-C_2\dd{T_2}$.
+        \end{itemize}
+        \item 3b.
+        \begin{itemize}
+            \item The appropriate derivation was
+            \begin{align*}
+                \dd{S} &= \dd{S_1}+\dd{S_2}\\
+                &= \frac{C_1\dd{T_1}}{T_1}+\frac{C_2\dd{T_2}}{T_2}\\
+                &= C_1\dd{T_1}\left( \frac{1}{T_1}-\frac{1}{T_2} \right)
+            \end{align*}
+            from which it follows since $T_2>T_1$ (and hence $1/T_1-1/T_2>0$), since $\dd{S}>0$, and since $C_1>0$ that $\dd{T_1}>0$.
+        \end{itemize}
+        \item I need a lot of help on Question 4.
+    \end{itemize}
+    \item In the video of a liquid becoming a supercritical fluid, the path along the phase diagram is along the liquid-gas coexistence curve to the critical point and beyond.
+    \item The heat of vaporization actually isn't constant; it varies with temperature.
+    \begin{itemize}
+        \item At the critical temperature, it becomes zero and the line has vertical slope.
+    \end{itemize}
+    \item The densities of gas and liquid also converge as $T\to T_c$.
+    \item The slope of coexistence curves on $PT$ phase diagrams.
+    \begin{itemize}
+        \item Since the molar free energies $\overline{G}_\alpha,\overline{G}_\beta$ of the two phases $\alpha,\beta$ are equal when said phases are in equilibrium,
+        \begin{align*}
+            \dd{\overline{G}_\alpha} &= \dd{\overline{G}_\beta}\\
+            \left( \pdv{\overline{G}_\alpha}{T} \right)_P\dd{T}+\left( \pdv{\overline{G}_\alpha}{P} \right)_T\dd{P} &= \left( \pdv{\overline{G}_\beta}{T} \right)_P\dd{T}+\left( \pdv{\overline{G}_\beta}{P} \right)_T\dd{P}\\
+            -\overline{S}_\alpha\dd{T}+\overline{V}_\alpha\dd{P} &= -\overline{S}_\beta\dd{T}+\overline{V}_\beta\dd{P}\\
+            (\overline{V}_\alpha-\overline{V}_\beta)\dd{P} &= (\overline{S}_\alpha-\overline{S}_\beta)\dd{T}\\
+            \dv{P}{T} &= \frac{\overline{S}_\alpha-\overline{S}_\beta}{\overline{V}_\alpha-\overline{V}_\beta} = \frac{\Delta\overline{S}_\text{trans}}{\Delta\overline{V}_\text{trans}}
+        \end{align*}
+        \item Clearly, the last line above gives the slope of the coexistence curves on a phase diagram.
+        \item Since $T\Delta\overline{S}_\text{trans}=\Delta\overline{H}_\text{trans}$ ($\Delta G=0$), we also have
+        \begin{equation*}
+            \dv{P}{T} = \frac{\Delta\overline{H}_\text{trans}}{T\Delta\overline{V}_\text{trans}}
+        \end{equation*}
+        \begin{itemize}
+            \item Since both $\Delta\overline{H}_\text{trans},\Delta\overline{V}_\text{trans}\to 0$ as $T\to T_c$, $\dv*{P}{T}$ depends on the rates at which the two quantities approach zero.
+        \end{itemize}
+    \end{itemize}
+    \item Deriving an expression for the vapor pressure (in equilibrium with liquid).
+    \begin{itemize}
+        \item We know that $\Delta\overline{V}_\text{vap}=\overline{V}_g-\overline{V}_l$ where $\overline{V}_g\gg\overline{V}_l$. Therefore, we may approximate $\Delta\overline{V}_\text{vap}\approx\overline{V}_g$.
+        \item Additionally, we have that $\overline{V}_g=RT/P$.
+        \item It follows that
+        \begin{align*}
+            \dv{P}{T} &= \frac{\Delta\overline{H}_\text{vap}}{T\overline{V}_g}\\
+            &= \frac{P\Delta\overline{H}_\text{vap}}{RT^2}\\
+            \frac{\dd{P}}{P} &= \frac{\Delta\overline{H}_\text{vap}}{R}\frac{\dd{T}}{T^2}\\
+            \ln\frac{P}{P_0} &= \frac{\Delta\overline{H}_\text{vap}}{R}\left( -\frac{1}{T}+\frac{1}{T_0} \right)
+        \end{align*}
+        \item It follows that if $P_0=\SI{1}{\atmosphere}$ and $T_0=T_b$ (the standard boiling temperature), then the vapor pressure $P$ at temperature $T$ is
+        \begin{equation*}
+            P = P_0\exp\left[ \frac{\Delta\overline{H}_\text{vap}}{R}\left( \frac{1}{T_b}-\frac{1}{T} \right) \right]
+        \end{equation*}
+        \begin{itemize}
+            \item Note that we take $\Delta\overline{H}_\text{vap}$ to be the molar heat of vaporization at temperature $T$, i.e., we assume it's constant from there up until $T_b$ which it technically isn't as we mentioned earlier.
+        \end{itemize}
+        \item Note that you can also use this equation and $(P,T)$ data to calculate $\Delta H_\text{vap}$.
+    \end{itemize}
+    \item Relative slopes of S-G and L-G coexistence lines at the triple point.
+    \begin{itemize}
+        \item When drawing a phase diagram, you should exaggerate the discontinuity in the slopes of the S-G and L-G coexistence curves at the triple point.
+        \item In particular, $\dv*{P_\text{SG}}{T}>\dv*{P_\text{LG}}{T}$ since $\Delta\overline{H}_\text{SG}=\Delta\overline{H}_\text{SL}+\Delta\overline{H}_\text{LG}>\Delta\overline{H}_\text{LG}$ and $\Delta\overline{V}_\text{SG}\approx\Delta\overline{V}_\text{LG}$.
+        \item Quantitatively, the ratio of the slopes is
+        \begin{equation*}
+            \frac{\dv*{P_\text{SG}}{T}}{\dv*{P_\text{LG}}{T}} = \frac{\Delta\overline{H}_\text{SG}}{\Delta\overline{H}_\text{LG}}
+            = 1+\frac{\Delta\overline{H}_\text{SL}}{\Delta\overline{H}_\text{LG}}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Office Hours (PGS)}
 \begin{itemize}
     \item \marginnote{2/25:}Plotting the coexistence curve and determining the Maxwell equal area contraction line mathematically.
