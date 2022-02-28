@@ -257,6 +257,136 @@
 
 
 
+\section{Chemical Potential and Raoult's Law}
+\begin{itemize}
+    \item \marginnote{2/25:}Today we begin the topic of solutions.
+    \begin{itemize}
+        \item We'll introduce ideal solutions and then discuss nonideal solutions.
+        \item Today: Ideal solutions, i.e., solutions in which we negate the interactions between the solutes. The statistical entropy gives rise to boiling point elevation, freezing point depression, Raoult's law, and osmotic pressure.
+    \end{itemize}
+    \item Chemical potential.
+    \begin{itemize}
+        \item To discuss equilibrium, we start by discussing the energy of a solution $G(T,P,n_1,n_2)$ where $n_1$ is the number of moles of solute and $n_2$ is the number of moles of solvent.
+        \item The total differential is
+        \begin{equation*}
+            \dd{G} = \left( \dv{G}{T} \right)_{P,n_1,n_2}\dd{T}+\left( \dv{G}{P} \right)_{T,n_1,n_2}\dd{P}+\left( \dv{G}{n_1} \right)_{T,P,n_2}\dd{n_1}+\left( \dv{G}{n_2} \right)_{T,P,n_1}\dd{n_2}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Chemical potential}: The following partial derivative. \emph{Denoted by} $\bm{\mu_1}$. \emph{Given by}
+    \begin{equation*}
+        \mu_i = \left( \dv{G}{n_i} \right)_{T,P,n_j}
+    \end{equation*}
+    for all $j\neq i$.
+    \begin{itemize}
+        \item For a pure substance, chemical potential is the molar free energy for a given ratio of concentration.
+        \item $\mu_i$ is a function of $T,P,n_j\neq n_i$.
+    \end{itemize}
+    \item Equilibrium in terms of relation between chemical potentials.
+    \begin{itemize}
+        \item Consider a system in equilibrium between the liquid and gas phases where both phases have two components $n_1^l,n_2^l$ and $n_1^g,n_2^g$.
+        \item We know that the free energy $G$ is the sum of the free energies of the two systems $G^l,G^g$.
+        \item Since we are in equilibrium, $\dd{G}=\dd{G^l}+\dd{G^g}=0$.
+        \item At constant $T,P$, it follows that
+        \begin{equation*}
+            \mu_1^l\dd{n_1^l}+\mu_2^l\dd{n_2^l}+\mu_1^g\dd{n_1^g}+\mu_2^g\dd{n_2^g} = 0
+        \end{equation*}
+        \item Furthermore, matter is conserved, i.e., $\dd{n_i^l}=-\dd{n_i^g}$.
+        \item Thus, we may write
+        \begin{equation*}
+            (\mu_1^l-\mu_1^g)\dd{n_1^l}+(\mu_2^l-\mu_2^g)\dd{n_2^l} = 0
+        \end{equation*}
+        \item It follows that $\mu_1^l-\mu_1^g=0$ and $\mu_2^l-\mu_2^g=0$, i.e., that the chemical potentials of species in each phase are equal at equilibrium.
+    \end{itemize}
+    \item \textbf{Raoult's law}: The partial pressure $P_i$ of each component in a solution is equal to its pure vapor pressure $P_i^*$ times its mole fraction $x_i$ in solution. \emph{Given by}
+    \begin{equation*}
+        P_i = x_iP_i^*
+    \end{equation*}
+    for all $i$.
+    \begin{itemize}
+        \item It's only the mole fraction of the solute that matters, not whether it's as big as a protein or as small as an ion.
+        \item This is only in \textbf{ideal solutions}, however.
+    \end{itemize}
+    \item \textbf{Ideal solution}: A solution that has a small amount of solutes.
+    \begin{itemize}
+        \item In the same way that any gas is ideal at low pressure, any solution is ideal with few enough solutes.
+    \end{itemize}
+    \item Example of vapor pressure in equilibrium with an ideal solution of benzene and toluene.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [stealth-stealth] (0,3) -- node[rotate=90,above=7mm]{$P$ (\si{\torr})} (0,0) -- node[below=5mm]{$x_{\ce{PhH}}$} (5.5,0);
+            \draw [loosely dashed,very thin] (0,2.5) -- (5,2.5) -- (5,0);
+    
+            \footnotesize
+            \node [below=1mm] {0};
+            \draw (5,0.1) -- ++(0,-0.2) node[below]{1};
+            \draw (0.1,1) -- ++(-0.2,0) node[left]{60};
+            \draw (0.1,2.5) -- ++(-0.2,0) node[left]{150};
+    
+            \draw [grx,thick]
+                (0,0) -- node[pos=0.6,below right]{$P_{\ce{PhH}}$} (5,2.5)
+                (0,1) -- node[pos=0.6,above right]{$P_{\ce{PhMe}}$} (5,0)
+                (0,1) -- node[pos=0.45,above,rotate=17]{$P_\text{tot}=P_{\ce{PhH}}+P_{\ce{PhMe}}$} (5,2.5)
+            ;
+        \end{tikzpicture}
+        \caption{Raoult's law example.}
+        \label{fig:RaoultsLaw}
+    \end{figure}
+    \item We'll see deviations from Figure \ref{fig:RaoultsLaw} later, such as Henry's law.
+    \item Chemical potential of a component in an ideal solution.
+    \begin{itemize}
+        \item If the vapor is ideal, then
+        \begin{equation*}
+            \overline{G}^g(T,P) = {\overline{G}^\circ}^g(T)+RT\ln\frac{P}{P_0}
+        \end{equation*}
+        \item For a pure substance, we have
+        \begin{align*}
+            {G^\circ}^g(T)+RT\ln\frac{P}{P_0} &= {G^\circ}^l(T)\\
+            P &= P_0\e[-\Delta G/RT]
+        \end{align*}
+        where $\Delta G={G^\circ}^g-{G^\circ}^l$.
+        \item When we have a solution,
+        \begin{align*}
+            \overline{G}^l(T,x_1) &= \overline{G}^g(T)+RT\ln\frac{x_1P_1^*}{P_0}\\
+            {\overline{G}^\circ}^l(T)+? &= \overline{G}^g(T)+RT\ln\frac{x_1P_1^*}{P_0}\\
+            ? &= RT\ln\frac{x_1P_1^*}{P_0}-RT\ln\frac{P_0}{P_1^*}\\
+            &= RT\ln x_1
+        \end{align*}
+        so
+        \begin{equation*}
+            {\overline{G}^\circ}^l(T,x_1) = {\overline{G}^\circ}^l(T)+RT\ln x_1
+        \end{equation*}
+        \item This result implies that the free energy of the pure substance with mole fraction $x_1$ in solution is equal to the free energy of the solution plus $RT\ln x_1$.
+    \end{itemize}
+    \item The chemical potential for an ideal solution is a pure entropy effect.
+    \begin{itemize}
+        \item For the mixing of two solutions, we have as with gases that
+        \begin{align*}
+            \Delta S &= k_B\ln W\\
+            &= k_B\ln\frac{(N_1+N_2)!}{N_1!N_2!}\\
+            &= k_B[(N_1+N_2)\ln(N_1+N_2)-(N_1+N_2)-(N_1\ln N_1-N_1)-(N_2\ln N_2-N_2)]\\
+            &= k_B\left( N_1\ln\frac{N_1+N_2}{N_1}+N_2\ln\frac{N_1+N_2}{N_2} \right)\\
+            &= -k_BN_A(n_1\ln x_1+n_x\ln x_2)\\
+            &= -R(n_1\ln x_1+n_x\ln x_2)
+        \end{align*}
+        \item It follows that without enthalpic mixing (i.e., with $\Delta H=0$), we have
+        \begin{align*}
+            \Delta G &= \Delta H-T\Delta S\\
+            &= RT(n_1\ln x_1+n_x\ln x_2)
+        \end{align*}
+        \item Thus, since $\Delta\overline{G}_1=RT\ln x_1$, $RT\ln x_1$ is purely from entropy!
+        \item Note that also as before, the slope of $\Delta S$ vs $x_1$ is infinite at 0 and 1.
+        \begin{itemize}
+            \item This reflects the fact that mixing is a more purely entropic effect in the limit of very little solute (i.e., in the limit of an ideal solution).
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Office Hours (PGS)}
 \begin{itemize}
     \item \marginnote{2/25:}Plotting the coexistence curve and determining the Maxwell equal area contraction line mathematically.
