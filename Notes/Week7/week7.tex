@@ -204,15 +204,15 @@
         \item At the critical temperature, it becomes zero and the line has vertical slope.
     \end{itemize}
     \item The densities of gas and liquid also converge as $T\to T_c$.
-    \item The slope of coexistence curves on $PT$ phase diagrams.
+    \item The slope of coexistence curves on $PT$ phase diagrams; the Clapeyron equation.
     \begin{itemize}
         \item Since the molar free energies $\overline{G}_\alpha,\overline{G}_\beta$ of the two phases $\alpha,\beta$ are equal when said phases are in equilibrium,
         \begin{align*}
             \dd{\overline{G}_\alpha} &= \dd{\overline{G}_\beta}\\
             \left( \pdv{\overline{G}_\alpha}{T} \right)_P\dd{T}+\left( \pdv{\overline{G}_\alpha}{P} \right)_T\dd{P} &= \left( \pdv{\overline{G}_\beta}{T} \right)_P\dd{T}+\left( \pdv{\overline{G}_\beta}{P} \right)_T\dd{P}\\
             -\overline{S}_\alpha\dd{T}+\overline{V}_\alpha\dd{P} &= -\overline{S}_\beta\dd{T}+\overline{V}_\beta\dd{P}\\
-            (\overline{V}_\alpha-\overline{V}_\beta)\dd{P} &= (\overline{S}_\alpha-\overline{S}_\beta)\dd{T}\\
-            \dv{P}{T} &= \frac{\overline{S}_\alpha-\overline{S}_\beta}{\overline{V}_\alpha-\overline{V}_\beta} = \frac{\Delta\overline{S}_\text{trans}}{\Delta\overline{V}_\text{trans}}
+            (\overline{S}_\beta-\overline{S}_\alpha)\dd{T} &= (\overline{V}_\beta-\overline{V}_\alpha)\dd{P}\\
+            \dv{P}{T} &= \frac{\overline{S}_\beta-\overline{S}_\alpha}{\overline{V}_\beta-\overline{V}_\alpha} = \frac{\Delta\overline{S}_\text{trans}}{\Delta\overline{V}_\text{trans}}
         \end{align*}
         \item Clearly, the last line above gives the slope of the coexistence curves on a phase diagram.
         \item Since $T\Delta\overline{S}_\text{trans}=\Delta\overline{H}_\text{trans}$ ($\Delta G=0$), we also have
@@ -439,6 +439,185 @@
         \ln\gamma = \int_0^P\frac{Z-1}{P'}\dd{P'}
     \end{equation*}
     and that we can use this equation with the reduced pressure.
+\end{itemize}
+
+
+
+\section{Chapter 23: Phase Equilibria}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{2/27:}\textbf{Gibbs phase rule}: The number of components $C$ and the number of phases $P$ in a system are related to the number of degrees of freedom $F$ by the equation
+    \begin{equation*}
+        F = C-2-P
+    \end{equation*}
+    \item Describes phase diagrams.
+    \item \textbf{Vapor pressure}: The pressure at which solid and gas or liquid and gas are in equilibrium.
+    \item \textbf{Solid-gas coexistence curve}: The curve separating the solid and gas regions of a phase diagram.
+    \begin{itemize}
+        \item At points along this curve, the system will be in equilibrium between solid and gas.
+        \item As such, this curve specifies the vapor pressure as a function of temperature.
+    \end{itemize}
+    \item \textbf{Triple point}: The point of intersection of the three lines in a phase diagram, at which the solid, liquid, and gaseous phases of the substance coexist at equilibrium.
+    \item "Within a single-phase region, both the pressure and the temperature must be specified, and we say that there are two degrees of freedom within a single-phase region of a pure substance" \parencite[927]{bib:McQuarrieSimon}.
+    \item "Along any of the coexistence curves, either the pressure or the temperature alone is sufficient to specify a point on the curve, so we say that there is one degree of freedom" \parencite[927]{bib:McQuarrieSimon}.
+    \item "The triple point is a fixed point, so there are no degrees of freedom there" \parencite[927]{bib:McQuarrieSimon}.
+    \item Thus, the number of degrees of freedom $f$ is related to the number of phases in equilibrium by the equation
+    \begin{equation*}
+        f = 3-p
+    \end{equation*}
+    \item \textbf{Normal melting point}: The temperature at which a substance melts under \SI{1}{\atmosphere} of pressure.
+    \item \textbf{Standard melting point}: The temperature at which a substance melts under \SI{1}{\bar} of pressure.
+    \item \textbf{Boiling point}: The temperature at which the vapor pressure equals the atmospheric pressure.
+    \item \textbf{Normal boiling point}: The boiling point at \SI{1}{\atmosphere}.
+    \item \textbf{Standard boiling point}: The boiling point at \SI{1}{\bar}.
+    \item \textbf{Sublime}: To pass directly from the solid to the gas phase.
+    \item \ce{H2O}, antimony, and bismuth all expand upon freezing.
+    \item \textbf{Orthobaric densities}: The densities of two phases that are in equilibrium with each other (i.e., of a substance along a coexistence curve).
+    \item The orthobaric densities of the liquid and gas phases approach each other as $T\to T_c$.
+    \item $\Delta\overline{H}_\text{vap}$ decreases as $T\to T_c$.
+    \begin{itemize}
+        \item This is because $\Delta\overline{S}_\text{vap}\to 0$ as $T\to T_c$ (the phases become less distinct), so naturally $\Delta\overline{H}_\text{vap}=T\Delta\overline{S}_\text{vap}\to 0$ as $T\to T_c$.
+    \end{itemize}
+    \item \textbf{Critical opalescence}: The fluctuations between the liquid and vapor state of a fluid very near its critical point which scatter light very strongly, causing the substance in question to appear milky.
+    \item Because of the critical point, it is possible to transform a gas into a liquid (or vice versa) without ever passing through a two-phase state. To do so, just follow a path out and around the critical point along the phase diagram.
+    \item The solid-liquid coexistence curve does not end as abruptly as the liquid-gas coexistence curve since the differences between solid and liquid are ones of intrinsically different structure as opposed to degree of motion. Thus, the solid-liquid coexistence curve of a substance either continues on indefinitely or dead ends into another solid state (some substances have multiple, such as water, which can be solid even above its normal boiling point at very high pressures).
+    \item Connecting the Gibbs energy of a substance to its phase diagram.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black,align=center}
+        ]
+            \small
+            \draw [stealth-stealth] (0,3) -- node[rotate=90,above]{$\overline{G}$ (\si[per-mode=symbol]{\kilo\joule\per\mole})} (0,0) -- node[below]{$T$ (\si{\kelvin})} (4,0);
+    
+            \footnotesize
+            \draw [rex,thick] (0,2.9) -- node[below=2mm]{Solid} (1.6,1.9) -- node[below=4mm]{Liquid} (3.9,0);
+            \draw [rex,semithick,dashed]
+                (1.6,1.9) -- node[above=-1mm,xshift=5mm]{Superheated\\solid} (3.2,0.9)
+                (1.6,1.9) -- node[above=-1mm,xshift=5mm]{Supercooled\\liquid} (0.3,2.97)
+            ;
+        \end{tikzpicture}
+        \caption{The energetic stabilization of phase transitions.}
+        \label{fig:gibbsExtrapolation}
+    \end{figure}
+    \begin{itemize}
+        \item Recall that the plot of $\overline{G}(T)$ for a substance is a continuous curve with two discontinuities in the slope (one for each phase transition).
+        \item Consider the point at one such discontinuity (say between the solid and liquid phases). If we were to extrapolate the liquid line to lower temperatures, we would be describing a \textbf{supercooled liquid} and vice versa with a \textbf{superheated solid}.
+        \item However, a substance does not ordinarily exist as a liquid below its melting point because its Gibbs energy is reduced by transitioning to a solid. Similarly, a substance does not ordinarily exist as a solid above its melting point because its Gibbs energy is reduced by transitioning to a liquid.
+        \item The influence of $G=H-TS$: At low temperatures, $TS$ is small, so we favor a small $H$ (and solids have the lowest enthalpy of the three phases). Likewise, at higher temperatures, a larger $H$ can be evened out by the large $TS$.
+        \item Note that we can do the same kind of analysis for $\overline{G}(P)$. However, in this case, we have the chance that with some substances (such as water), we will go from gas to solid to liquid as pressure increases.
+    \end{itemize}
+    \item \textbf{Supercooled liquid}: A liquid with temperature below its freezing point that is not nevertheless not a solid.
+    \item \textbf{Superheated solid}: A solid with temperature above its melting point.
+    \item \textbf{Metastable state}: A state of a substance that has greater molar Gibbs energy than the usual state encountered under some conditions.
+    \item Consider a system consisting of the gas and liquid phases of a pure substance in equilibrium with each other.
+    \begin{itemize}
+        \item If $G^l$ is the Gibbs energy of the liquid phase and $G^g$ is the Gibbs energy of the gaseous phase, then the total Gibbs energy $G$ of this system is $G=G^l+G^g$.
+        \item Now if $\dd{n}$ moles are transferred from the liquid phase to the vapor phase at constant $T,P$, the corresponding change in Gibbs energy is
+        \begin{equation*}
+            \dd{G} = \left( \pdv{G^g}{n^g} \right)_{P,T}\dd{n^g}+\left( \pdv{G^l}{n^l} \right)_{P,T}\dd{n^l}
+        \end{equation*}
+        \item Since $\dd{n^l}=-\dd{n^g}$, it follows that
+        \begin{equation*}
+            \dd{G} = \left[ \left( \pdv{G^g}{n^g} \right)_{P,T}-\left( \pdv{G^l}{n^l} \right)_{P,T} \right]\dd{n^g}
+        \end{equation*}
+        \item Rewriting in terms of \textbf{chemical potentials}, we have
+        \begin{equation*}
+            \dd{G} = (\mu^g-\mu^l)\dd{n^g}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Chemical potential}: The change in Gibbs energy of a substance in a phase $\alpha$ with respect to the change in the number of moles of the substance present. \emph{Denoted by} $\bm{\mu^\alpha}$. \emph{Given by}
+    \begin{equation*}
+        \mu^\alpha = \left( \pdv{G^\alpha}{n^\alpha} \right)_{P,T}
+    \end{equation*}
+    \begin{itemize}
+        \item "Just as electric current flows from a higher electric potential to a lower electric potential, matter 'flows' from a higher chemical potential to a lower chemical potential" \parencite[937]{bib:McQuarrieSimon}.
+        \item An equivalent definition is that since $G\propto n$ for any system, $\mu$ is the proportionality constant. Here's how we know the definitions are equivalent:
+        \begin{equation*}
+            \mu = \left( \pdv{G}{n} \right)_{P,T}
+            = \left( \pdv{n\mu(T,P)}{n} \right)_{P,T}
+            = \mu(T,P)
+        \end{equation*}
+        \begin{itemize}
+            \item In other words, $\mu$ is an intensive quantity representing the same thing as Gibbs energy.
+        \end{itemize}
+    \end{itemize}
+    \item If two phases are in equilibrium between liquid and gas, then since $\dd{G}=0$ and $\dd{n^g}\neq 0$, $\mu^g=\mu^l$.
+    \item "If the two phases are not in equilibrium with each other, a spontaneous transfer of matter from one phase to the other will occur in the direction such that $\dd{G}<0$" \parencite[937]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item For example, if $\mu^g>\mu^l$, we must have $\dd{n^g}<0$ for $\dd{G}$ to be negative, meaning that matter will transfer from the vapor phase to the liquid phase.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} derives the equation for $\dv*{P}{T}$ exactly as in class.
+    \item \textbf{Clapeyron equation}: The relation between the slope of the two-phase boundary line in a phase diagram and the values of $\Delta_\text{trs}\overline{H}$ and $\Delta_\text{trs}\overline{V}$ for a transition between those two phases. \emph{Given by}
+    \begin{equation*}
+        \dv{P}{T} = \frac{\Delta_\text{trs}\overline{H}}{T\Delta_\text{trs}\overline{V}}
+    \end{equation*}
+    \item Note that $\Delta_\text{fus}\overline{H}$ and $\Delta_\text{fus}\overline{V}$ do vary with pressure, but not always significantly.
+    \item \textbf{Clausius-Clapeyron equation}: The relation between the vapor pressure of a liquid and its temperature. \emph{Given by}
+    \begin{equation*}
+        \dv{\ln P}{T} = \frac{\Delta_\text{vap}\overline{H}}{RT^2}
+    \end{equation*}
+    \begin{itemize}
+        \item Two assumptions were made in the derivation of the Clausius-Clapeyron equation form the Clapeyron equation: $\overline{V}^g\gg\overline{V}^l$ and the vapor pressure is so low that the gas can be treated as ideal (so we can replace $\overline{V}^g$ with $RT/P$).
+        \item Thus, the Clausius-Clapeyron equation is easier to use, but the Clapeyron equation is more general.
+        \item Furthermore, if $\Delta_\text{vap}\overline{H}$ does not vary with temperature over the integration limits of $T$, then
+        \begin{equation*}
+            \ln\frac{P_2}{P_1} = -\frac{\Delta_\text{vap}\overline{H}}{R}\left( \frac{1}{T_2}-\frac{1}{T_1} \right)
+        \end{equation*}
+    \end{itemize}
+    \item Taking the indefinite integral of the Clausius-Clapeyron equation shows that $\ln P$ and $1/T$ have a linear relation with slope $-\Delta_\text{vap}\overline{H}/R$.
+    \begin{itemize}
+        \item This relation can be used to experimentally measure $\Delta_\text{vap}\overline{H}$.
+        \item By representing $\Delta_\text{vap}\overline{H}$ as a Taylor polynomial in $T$, we can also find more exact values for it based on $(P,T)$ data.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} shows that the slope of the solid-gas coexistence curve is greater than the slope of the liquid-gas coexistence curve the same way PGS did in class.
+    \item Deriving an expression for the chemical potential $\mu$ in terms of the partition function $Q$.
+    \begin{itemize}
+        \item We know that
+        \begin{align*}
+            U &= k_BT^2\left( \pdv{\ln Q}{T} \right)_{N,V}&
+            S &= k_BT\left( \pdv{\ln Q}{T} \right)_{N,V}+k_B\ln Q
+        \end{align*}
+        \item It follows that
+        \begin{align*}
+            A &= U-TS\\
+            &= -k_BT\ln Q
+        \end{align*}
+        \item Additionally, the total differential of $A(T,V,n)$ is
+        \begin{align*}
+            \dd{A} &= \left( \pdv{A}{T} \right)_{n,V}\dd{T}+\left( \pdv{A}{V} \right)_{n,T}\dd{V}+\left( \pdv{A}{n} \right)_{T,V}\dd{n}\\
+            &= -S\dd{T}-P\dd{V}+\left( \pdv{A}{n} \right)_{T,V}\dd{n}
+        \end{align*}
+        and the total differential of $G(T,P,n)$ is
+        \begin{align*}
+            \dd{G} &= \left( \pdv{G}{T} \right)_{P,n}\dd{T}+\left( \pdv{G}{P} \right)_{T,n}\dd{P}+\left( \pdv{G}{n} \right)_{T,P}\dd{n}\\
+            &= -S\dd{T}+V\dd{P}+\mu\dd{n}
+        \end{align*}
+        \item But since
+        \begin{equation*}
+            \dd{G} = \dd{A}+\dd{(PV)}
+            = -S\dd{T}+V\dd{P}+\left( \pdv{A}{n} \right)_{T,V}\dd{n}
+        \end{equation*}
+        we have by direct comparison that
+        \begin{equation*}
+            \mu = \left( \pdv{G}{n} \right)_{T,P}
+            = \left( \pdv{A}{n} \right)_{T,V}
+        \end{equation*}
+        \item It follows by substituting our previous expression for $A(Q)$ that
+        \begin{equation*}
+            \mu = -k_BT\left( \pdv{\ln Q}{n} \right)_{V,T}
+            = -RT\left( \pdv{\ln Q}{N} \right)_{V,T}
+        \end{equation*}
+    \end{itemize}
+    \item For an ideal gas where $Q=q^N/N!$, we have by Stirling's approximation that
+    \begin{align*}
+        \mu &= -RT\pdv{N}(\ln\frac{q^N}{N!})\\
+        &= -RT\pdv{N}(N\ln q-N\ln N+N)\\
+        &= -RT(\ln q-\ln N-1+1)\\
+        &= -RT\ln\frac{q(V,T)}{N}
+    \end{align*}
+    \item Note that this expression for $\mu$ in terms of the partition function easily yields one for $G$ in terms of the partition function via $G=n\mu$.
+    \item \textcite{bib:McQuarrieSimon} discusses alternate forms of $\mu$ and $\mu^\circ$.
 \end{itemize}
 
 
