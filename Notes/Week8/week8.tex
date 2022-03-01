@@ -1,0 +1,160 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{7}
+
+\begin{document}
+
+
+
+
+\chapter{Solutions}
+\section{Vapor Pressure Lowering and Consequences}
+\begin{itemize}
+    \item \marginnote{2/28:}Colligative properties.
+    \begin{itemize}
+        \item Vapor pressure lowering.
+        \item Boiling point elevation for non-volatile solutes.
+        \item Freezing point depression for solutes (excluding solids).
+        \item Osmotic pressure.
+    \end{itemize}
+    \item \textbf{Vapor pressure lowering}: The process of adding less volatile solutes to lower the overall vapor pressure via Raoult's law.
+    \item \textbf{Boiling point elevation}: The increase in the normal boiling point of a mixture due to vapor pressure lowering.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={text height=1.5ex,text depth=0.25ex}
+        ]
+            \small
+            \draw [stealth-stealth] (0,4) node[above]{$\ln P$} -- (0,0) -- (3,0) node[right]{$T$};
+    
+            \draw [blx,thick] (1.1,1.4) to[bend right=10] (2.3,3.7);
+            \draw [bly,thick] (1.6,1.4) to[bend right=10] (2.8,3.7);
+    
+            \node at (2.7,2) {G};
+            \node at (1.3,2.8) {L};
+    
+            \footnotesize
+            \draw [dashed]
+                (-0.1,2.5) node[left]{\SI{1}{\atmosphere}} -- ++(1.9,0) -- ++(0,-2.5) node[below]{$T_b$}
+                (1.8,2.5) -- ++(0.5,0) -- ++(0,-2.5) node[below]{$T_b'$}
+            ;
+        \end{tikzpicture}
+        \caption{Boiling point elevation.}
+        \label{fig:BPelevate}
+    \end{figure}
+    \begin{itemize}
+        \item In Figure \ref{fig:BPelevate}, the dark blue line is the original liquid-gas coexistence curve and the light blue line is the liquid-gas coexistence curve with vapor pressure lowering --- notice how at any given temperature, the corresponding pressure represented by the light blue line is lower than that given by the dark blue line.
+        \item However, we still need to achieve a vapor pressure of \SI{1}{\atmosphere} for the liquid to boil.
+        \item We can get to such a pressure with a higher temperature, i.e., by heating the liquid to $T_b'$ instead of just $T_b$.
+    \end{itemize}
+    \item Calculating the change in the boiling point $\Delta T_b$.
+    \begin{itemize}
+        \item We can calculate the boiling point elevation from the Clausius-Clapeyron equation.
+        \begin{align*}
+            \frac{\Delta P}{\Delta T_b} &= \frac{\Delta\overline{H}}{T_b\Delta\overline{V}}\\
+            \Delta T_b &= P^*(1-x)\frac{T_b\Delta\overline{V}}{\Delta\overline{H}}\\
+            &= P^*(1-x)\frac{T_b\overline{V}_g}{\Delta\overline{H}}\\
+            &= P^*(1-x)\frac{T_bRT_b}{P^*\Delta\overline{H}}\\
+            &= \frac{RT_b^2}{\Delta H}(1-x)
+        \end{align*}
+        where $x$ is the mole fraction of solutes.
+        \item We can also derive the above result from the chemical potential, where we get to the first to the second equation below because (standard) chemical potentials are equal at equilibrium.
+        \begin{align*}
+            \mu_l^\circ(T)+RT\ln x_1 &= \mu_g^\circ(T)+RT\ln\frac{P}{P_0}\\
+            RT\ln x_1 &= RT\ln\frac{P}{P_0}+[\mu_g^\circ(T)-\mu_l^\circ(T)]\\
+            &= RT\ln\frac{P}{P_0}+[\Delta\overline{H}_\text{vap}-T\Delta\overline{S}_\text{vap}]\\
+            &= RT\ln\frac{P}{P_0}+[\Delta\overline{H}_\text{vap}-T_b\Delta\overline{S}_\text{vap}+(T_b-T)\Delta\overline{S}_\text{vap}]\\
+            &= RT\ln\frac{P}{P_0}+\Delta T_b\cdot\frac{\Delta\overline{H}_\text{vap}}{T_b}\\
+            \Delta T_b &= -\frac{RT_b^2}{\Delta\overline{H}_\text{vap}}\ln x_1\\
+            &= -\frac{RT_b^2}{\Delta\overline{H}_\text{vap}}\ln(1-x_2)\\
+            &\approx \frac{RT_b^2}{\Delta\overline{H}_\text{vap}}x_2
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Freezing point depression}: The decrease in the normal melting point of a mixture due to vapor pressure lowering.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={text height=1.5ex,text depth=0.25ex}
+        ]
+            \small
+            \draw [stealth-stealth] (0,4) node[above]{$\ln P$} -- (0,0) -- (3,0) node[right]{$T$};
+    
+            \draw [blx,thick] (0.7,0.5) to[bend right=10] (1.4,2) to[bend right=10] (2.3,3.7);
+            \draw [bly,thick] (1.02,1) to[bend right=10] (2.8,3.7);
+    
+            \node at (2.7,2) {G};
+            \node at (1.6,3) {L};
+            \node at (0.7,1.3) {S};
+    
+            \footnotesize
+            \draw [dashed]
+                (1.4,2) -- ++(0,-2) node[below]{$T_f$}
+                (1.02,1) -- ++(0,-1) node[below]{$T_f'$}
+            ;
+        \end{tikzpicture}
+        \caption{Freezing point depression.}
+        \label{fig:FPdepress}
+    \end{figure}
+    \begin{itemize}
+        \item We know that $\mu_g^\circ(T_f)=\mu_l^\circ(T_f)$. Thus,
+        \begin{align*}
+            \mu_g^\circ(T) &= \mu_l^\circ(T)+RT\ln x_i\\
+            RT\ln x_i &= \mu_g^\circ(T)-\mu_l^\circ(T)\\
+            &= \Delta\overline{H}_\text{fus}(T)-T\Delta\overline{S}_\text{fus}\\
+            &= (T_f-T)\Delta\overline{S}_\text{fus}\\
+            &= (T_f-T)\frac{\Delta\overline{H}_\text{fus}}{T_f}\\
+            &= -\Delta T_f\cdot\frac{\Delta\overline{H}_\text{fus}}{T_f}\\
+            \Delta T_f &= -\frac{RT_f^2}{\Delta\overline{H}_\text{fus}}\ln x_1\\
+            &\approx \frac{RT_f^2}{\Delta\overline{H}_\text{fus}}x_2
+        \end{align*}
+        \item The final result should be
+        \begin{equation*}
+            \Delta T_f = -\frac{RT_f^2}{\Delta\overline{H}_\text{fus}}x_2
+        \end{equation*}
+    \end{itemize}
+    \item The freezing point of water as more and more salt is added.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [stealth-stealth] (0,3.5) node[above]{$T$} -- (0,0) -- (5.5,0) node[right]{$x_{\ce{NaCl}}$};
+            \footnotesize
+            \draw
+                (0.1,3) -- ++(-0.2,0) node[left]{\SI{0}{\celsius}}
+                (0.1,1) -- ++(-0.2,0) node[left]{\SI{-21}{\celsius}}
+                (1.165,0.1) -- ++(0,-0.2) node[below]{23.3\%}
+            ;
+            
+            \draw [blx,thick] (0,3) to[bend left=15] (1.165,1) to[bend right=5] (5,3.5);
+            \draw [bly,thick] (0,1) -- node[below]{\ce{NaCl + 2H2O} solid} ++(5,0);
+            \node [align=center] at (0.45,1.65) {Ice\\+\\brine};
+            \node [align=center] at (3.5,1.5) {Brine +\\\ce{NaCl(H2O)2}};
+            \node at (1.9,2.7) {Brine};
+            \draw [bly,dashed] (0,3) -- (1.2,1.85);
+            \node at (1.2,3.3) {Prediction} edge[out=-90,in=45,->] (1,2.1);
+        \end{tikzpicture}
+        \caption{Freezing point vs. solute concentration.}
+        \label{fig:H2OFP}
+    \end{figure}
+    \item Osmotic pressure.
+    \begin{itemize}
+        \item Imagine a U-tube with a filter at the bottom that is porous to the solvent but nonporous to the solute.
+        \item We know from Gen Chem that there will be excess pressure on the side with the impurities.
+        \item Let $\pi=\rho gh$ be the extra pressure where $h$ is the height difference between the two sides and $\rho$ is the density of the solvent.
+        \begin{align*}
+            \mu_l^\circ = \mu_l &= \mu_l^\circ+RT\ln x_1+\pi\overline{V}\\
+            0 &= RT\ln x_1+\pi\overline{V}\\
+            \pi &= \frac{RT}{\overline{V}}x_2
+        \end{align*}
+    \end{itemize}
+    \item Ocean salinity is about \SI{1}{\molar}, so $\pi=\SI{24}{\atmosphere}$. That means that in the tube, the right hand side will rise about as much as the Sears tower. Thus, the minimum amount of pressure/work you need is the height of the Sears tower minus \SI{24}{\atmosphere}. Still, this is far more efficient than distillation.
+\end{itemize}
+
+
+
+
+\end{document}
