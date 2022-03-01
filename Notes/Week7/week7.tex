@@ -770,6 +770,262 @@
     for all $i\neq j$.
     \item In general, extensive thermodynamic properties $Y$ have associated partial molar quantities $\overline{Y}_j$ defined analogously to the above.
     \item \textbf{Binary solution}: A solution composed of two different liquids.
+    \item \marginnote{3/1:}Deriving a formula for $G$ in terms of $n_1,n_2$ at constant $T,P$.
+    \begin{itemize}
+        \item At constant $T,P$, we have that
+        \begin{equation*}
+            \dd{G} = \mu_1\dd{n_1}+\mu_2\dd{n_2}
+        \end{equation*}
+        \item Now imagine that we increase the amount of each component linearly from 0 to $n_i$.
+        \item Then the amount of each component present at a given time can be represented as $n(\lambda)=n_i\lambda$ where $\lambda$ varies from 0 to 1.
+        \item It follows that $\dd{n_i}=n_i\dd{\lambda}$ and, since $G$ is extensive, $\dd{G}=G\dd{\lambda}$.
+        \item Therefore, it follows from the above equation that
+        \begin{align*}
+            \int_0^1G\dd{\lambda} &= \int_0^1n_1\mu_1\dd{\lambda}+\int_0^1n_2\mu_2\dd{\lambda}\\
+            G\int_0^1\dd{\lambda} &= n_1\mu_1\int_0^1\dd{\lambda}+n_2\mu_2\int_0^1\dd{\lambda}\\
+            G(T,P,n_1,n_2) &= \mu_1n_1+\mu_2n_2
+        \end{align*}
+    \end{itemize}
+    \item Similarly,
+    \begin{equation*}
+        Y = \sum_{i=1}^m\overline{Y}_in_i
+    \end{equation*}
+    for any quantity $Y$ (like entropy or volume) in an $m$-component system.
+    \item Note that this implies that the final volume of a solution is not necessarily a straight sum of the component volumes, but rather depends on the partial molar volumes.
+    \item Extending $\dd{G}=-S\dd{T}+V\dd{P}$ into multicomponent systems.
+    \begin{itemize}
+        \item If we consider the Gibbs energy as $G(T,P,n_1,\dots,n_m)$, then since $G=H-TS$, we have that
+        \begin{equation*}
+            \left( \pdv{G}{n_j} \right)_{T,P,n_i} = \left( \pdv{H}{n_j} \right)_{T,P,n_i}-T\left( \pdv{S}{n_j} \right)_{T,P,n_i}
+        \end{equation*}
+        \item It follows that
+        \begin{equation*}
+            \mu_j = \overline{G}_j = \overline{H}_j-T\overline{S}_j
+        \end{equation*}
+        \item Using the Maxwell relations
+        \begin{align*}
+            \overline{S}_j &= -\left( \pdv{\mu_j}{T} \right)_{P,n_i}&
+            \overline{V}_j &= \left( \pdv{\mu_j}{P} \right)_{T,n_i}
+        \end{align*}
+        and the total differential of $\mu_j$, we can determine that
+        \begin{equation*}
+            \dd{\mu_j} = -\overline{S}_j\dd{T}+\overline{V}_j\dd{P}
+        \end{equation*}
+    \end{itemize}
+    \item Similarly, the Gibbs-Helmholtz equation for multicomponent systems is
+    \begin{equation*}
+        \left( \pdv{\mu_j/T}{T} \right)_P = -\frac{\overline{H}_j}{T^2}
+    \end{equation*}
+    \item \textbf{Gibbs-Duhem equation}: The relation between the chemical potential of one component in a binary solution as a function of composition to the other. \emph{Given by}
+    \begin{equation*}
+        n_1\dd{\mu_1}+n_2\dd{\mu_2} = 0
+    \end{equation*}
+    \emph{or}
+    \begin{equation*}
+        x_1\dd{\mu_1}+x_2\dd{\mu_2} = 0
+    \end{equation*}
+    \begin{itemize}
+        \item Derivation: The total differential of $\dd{G}=n_1\mu_1+n_2\mu_2$ is
+        \begin{equation*}
+            \dd{G} = \mu_1\dd{n_1}+\mu_2\dd{n_2}+n_1\dd{\mu_1}+n_2\dd{\mu_2}
+        \end{equation*}
+        from which we can subtract $\dd{G}=\mu_1\dd{n_1}+\mu_2\dd{n_2}$ to get the former form and divide that by $n_1+n_2$ to get the latter form.
+    \end{itemize}
+    \item Note that we can also derive Gibbs-Duhem type equations for other intensive properties (such as the partial molar volume).
+    \item $\bm{Y^*}$: A property of a pure substance.
+    \begin{itemize}
+        \item For example, $\mu_1$ denotes the chemical potential of substance 1 (which may be affected by $n_2,\dots,n_m$) whereas $\mu_1^*$ denotes $\mu_1$ at $x_1=1$.
+    \end{itemize}
+    \item If one component of a binary solution obeys \textbf{Raoult's law} over the complete concentration range, the other component does, too.
+    \begin{itemize}
+        \item Suppose the chemical potential of one component in a binary solution is given by
+        \begin{equation*}
+            \mu_2 = \mu_2^*+RT\ln x_2
+        \end{equation*}
+        \item Then
+        \begin{align*}
+            \dd{\mu_1} &= -\frac{x_2}{x_1}\dd{\mu_2}\\
+            &= -\frac{x_2}{x_1}\cdot RT\frac{\dd{x_2}}{x_2}\\
+            &= -RT\frac{\dd{x_2}}{x_1}\\
+            &= RT\frac{\dd{x_1}}{x_1}\\
+            \int_1^{x_1}\dd{\mu_1} &= RT\int_1^{x_1}\frac{\dd{x_1'}}{x_1'}\\
+            \mu_1 &= \mu_1^*+RT\ln x_1
+        \end{align*}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} derives, exactly as in class, $\mu_j^\alpha=\mu_j^\beta$ for any component $j$ and two phases $\alpha,\beta$ in equilibrium.
+    \item An important consequence of this is that "the chemical potential of each component in liquid solution can be measured by the chemical potential of that component in the vapor phase" \parencite[970]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item If the pressure $P_j$ of the vapor phase is sufficiently low\footnote{Technically, we should use fugacities throughout, but vapor pressures under standard conditions typically are small enough so that the difference between the pressure and the fugacity is negligible.}, we may treat it as ideal and employ
+        \begin{equation*}
+            \mu_j^\text{sln} = \mu_j^\text{vap}
+            = \mu_j^\circ(T)+RT\ln P_j
+        \end{equation*}
+        \item It follows if $j$ is pure ($x_j=1$) that
+        \begin{equation*}
+            \mu_j^*(l) = \mu_j^\circ(T)+RT\ln P_j^*
+        \end{equation*}
+        \item By subtracting the above two equations, we can derive an expression for the the chemical potential of component $j$ in solution in terms of its chemical potential as a pure substance, its vapor pressure, and its vapor pressure as a pure substance.
+        \begin{equation*}
+            \mu_j^\text{sln} = \mu_j^*(l)+RT\ln\frac{P_j}{P_j^*}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Raoult's law}: The partial vapor pressure of each component of a solution is directly proportional to its mole fraction in solution. \emph{Given by}
+    \begin{equation*}
+        P_j = x_jP_j^*
+    \end{equation*}
+    \begin{itemize}
+        \item Note that $x_j$ reflects the fraction of the solution \emph{surface} that is occupied by molecules of type $j$ (since it is these molecules that can escape into the vapor phase).
+    \end{itemize}
+    \item \textbf{Ideal solution}: A solution that obeys Raoult's law over the entire composition range.
+    \item At a molecular level, ideal binary solutions look like two types of molecules distributed randomly throughout solution.
+    \begin{itemize}
+        \item This occurs when the molecules are of similar size and shape, and the intermolecular forces are all similar.
+    \end{itemize}
+    \item Between our expression for $\mu_j^\text{sln}$ in terms of the characteristics of the pure substance and Raoult's law, we have that
+    \begin{equation*}
+        \mu_j^\text{sln} = \mu_j^*(l)+RT\ln x_j
+    \end{equation*}
+    \item Deriving an expression for the total vapor pressure of an ideal binary solution.
+    \begin{align*}
+        P_\text{tot} &= P_1+P_2\\
+        &= x_1P_1^*+x_2P_2^*\\
+        &= (1-x_2)P_1^*+x_2P_2^*\\
+        &= P_1^*+x_2(P_2^*-P_1^*)
+    \end{align*}
+    \begin{itemize}
+        \item The above formula is a straight line that evaluates to $P_1^*$ at $x_2=0$ and $P_2^*$ at $x_2=1$, as we would expect (see Figure \ref{fig:RaoultsLaw}).
+    \end{itemize}
+    \item Deriving an expression for the total vapor pressure of a binary solution in terms of the mole fraction $y_2$ of component 2 in the vapor phase.
+    \begin{itemize}
+        \item By Dalton's law of partial pressures, which asserts that the partial pressure $P_2$ of the vapor of component 2 is equal to its mole fraction $y_2$ in the vapor phase, we have that
+        \begin{equation*}
+            y_2 = \frac{P_2}{P_\text{tot}}
+            = \frac{x_2P_2^*}{P_\text{tot}}
+            = \frac{x_2P_2^*}{P_1^*+x_2(P_2^*-P_1^*)}
+        \end{equation*}
+        \item Solving for $x_2$ yields
+        \begin{equation*}
+            x_2 = \frac{P_1^*y_2}{P_2^*-y_2(P_2^*-P_1^*)}
+        \end{equation*}
+        \item Therefore,
+        \begin{align*}
+            P_\text{tot} &= P_1^*+x_2(P_2^*-P_1^*)\\
+            &= P_1^*+\frac{P_1^*y_2}{P_2^*-y_2(P_2^*-P_1^*)}(P_2^*-P_1^*)
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Pressure-composition diagram}: A diagram that plots the total vapor pressure as a function of the composition of both the liquid phase and the vapor phase.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[xscale=5,yscale=0.1]
+            \small
+            \draw [stealth-stealth] (0,55) -- node[rotate=90,above=5mm]{$P_\text{tot}$ (\si{\torr})} (0,20) -- node[below=5mm]{${\color{orx}x_2}$ / ${\color{yex}y_2}$} (1.1,20);
+    
+            \footnotesize
+            \node at (0.25,42) {Liquid};
+            \node at (0.65,25) {Vapor};
+            \node [rotate=26] at (0.55,32) {Liquid and vapor};
+            \node [below right,yshift=-1mm] at (0,20) {0.0};
+            \node [above left,xshift=-1mm]  at (0,20) {20};
+            \foreach \x in {0.2,0.4,0.6,0.8,1.0} {
+                \draw (\x,21) -- ++(0,-2) node[below]{$\x$};
+            }
+            \foreach \y in {30,40,50} {
+                \draw (0.02,\y) -- ++(-0.04,0) node[left]{$\y$};
+            }
+    
+            \draw [orx,thick] plot[domain=0:1] (\x,{20.9+\x*(45.2-20.9)});
+            \draw [yex,thick] plot[domain=0:1] (\x,{20.9+(20.9*\x)/(45.2-\x*(45.2-20.9))*(45.2-20.9)});
+        \end{tikzpicture}
+        \caption{Pressure-composition diagram for a 1-propanol/2-propanol solution.}
+        \label{fig:PCdiagram}
+    \end{figure}
+    \begin{itemize}
+        \item In Figure \ref{fig:PCdiagram}, the brown line plots the total vapor pressure as a function of the composition of the liquid phase, and the yellow line plots the total vapor pressure as a function of the composition of the vapor phase (as per the equations derived above).
+        \item A vertical line in Figure \ref{fig:PCdiagram} corresponds to a single solution as pressure varies. If the vertical line is not at zero or 1, we see that high pressures yield exclusively the liquid phase, low pressures yield exclusively the vapor phase, and there is a region of pressures where both liquid and vapor coexist.
+    \end{itemize}
+    \item \textbf{Tie line}: A horizontal line in a pressure-composition diagram that, for a given pressure, connects the concentration that will give entirely liquid to the composition that will give entirely vapor.
+    \item Determining the relative amounts of liquid and vapor.
+    \begin{itemize}
+        \item The mole fractions of component 2 in the liquid and vapor phases are, respectively,
+        \begin{align*}
+            x_2 &= \frac{n_2^l}{n^l} = \frac{n_2^l}{n_1^l+n_2^l}&
+            y_2 &= \frac{n_2^g}{n^g} = \frac{n_2^g}{n_1^g+n_2^g}
+        \end{align*}
+        \item The overall mole fraction of component 2 is
+        \begin{equation*}
+            x_a = \frac{n_2^l+n_2^g}{n^l+n^g}
+        \end{equation*}
+        \item It follows that
+        \begin{equation*}
+            \frac{n^l}{n^g} = \frac{y_2-x_a}{x_a-x_2}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Lever rule}: The balance of the number of moles in each phase and the excess fractions of liquid and vapor. \emph{Given by} the above.
+    \begin{itemize}
+        \item "Note that $n^l=0$ when $x_a=y_2$ (vapor curve) and that [$n^g=0$] when $x_a=x_2$ (liquid curve)" \parencite[973]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Temperature-composition diagram}: A diagram that plots the composition of the solution and vapor phases at various temperatures.
+    \begin{itemize}
+        \item Pressure is held constant in such a diagram, so choose \SI{760}{\torr}.
+        \item It follows that the mole percent of component 1 at this pressure is
+        \begin{align*}
+            \SI{760}{\torr} &= P_2^*-x_1(P_2^*-P_1^*)\\
+            x_1 &= \frac{P_2^*-\SI{760}{\torr}}{P_2^*-P_1^*}
+        \end{align*}
+        \item We can then find $P_1^*,P_2^*$ at a given temperature either from a table the Clausius-Clapeyron equation (though the latter will be an approximation).
+        \item Lastly, we can find $y_1$ as before.
+    \end{itemize}
+    \item Fractional distillation in a temperature-composition diagram.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[xscale=5,yscale=0.1]
+            \small
+            \draw [stealth-stealth] (0,55) -- node[left]{$t$ (\si{\celsius})} (0,20) -- node[below]{${\color{orx}x_2}$ / ${\color{yex}y_2}$} (1.1,20);
+    
+            \footnotesize
+            \node at (0.25,42) {Vapor};
+            \node at (0.65,25) {Solution};
+    
+            \draw [orx,thick] plot[domain=0:1] (\x,{20.9+\x*(45.2-20.9)});
+            \draw [yex,thick] (0,20.9) to[bend left=1.5] (1,45.2);
+    
+            \draw [dashed] (0.5,33) -- ++(-0.185,0) -- ++(0,-4.4) -- ++(-0.155,0) -- ++(0,-3.8) -- ++(-0.093,0) -- ++(0,-2.2);
+        \end{tikzpicture}
+        \caption{Temperature-composition diagram for a 1-propanol/2-propanol solution.}
+        \label{fig:TCdiagram}
+    \end{figure}
+    \begin{itemize}
+        \item During fractional distillation, a substance is repeatedly heated up, some vapor removed, and then heated up higher as now possible.
+        \item In Figure \ref{fig:TCdiagram}, we can see how at any given ratio, we can only heat up the liquid so much before we begin vaporizing both liquids, but by removing some vapor (increasing the concentration of the less volatile substance), we can now heat it up more.
+        \item The diagram also provides a pictoral representation of the law of diminishing returns (as we can never get all the way over to the top-right corner).
+    \end{itemize}
+    \item Calculating the energy of mixing $\Delta_\text{mix}G^\text{id}$ of two ideal solutions of pure components.
+    \begin{align*}
+        \Delta_\text{mix}G^\text{id} &= G^\text{sln}(T,P,n_1,n_2)-G_1^*(T,P,n_1)-G_2^*(T,P,n_2)\\
+        &= n_1\mu_1^\text{sln}+n_2\mu_2^\text{sln}-n_1\mu_1^*-n_2\mu_2^*\\
+        &= n_1(\mu_1^*+RT\ln x_1)+n_2(\mu_2^*+RT\ln x_2)-n_1\mu_1^*-n_2\mu_2^*\\
+        &= RT(n_1\ln x_1+n_2\ln x_2)
+    \end{align*}
+    \begin{itemize}
+        \item Since $x_1,x_2<1$, we know $\Delta_\text{mix}G^\text{id}<1$, i.e., ideal solutions always form spontaneously from their separate components.
+    \end{itemize}
+    \item The entropy of mixing of two ideal solutions of pure components.
+    \begin{equation*}
+        \Delta_\text{mix}S^\text{id} = -\left( \pdv{\Delta_\text{mix}G^\text{id}}{T} \right)_{P,n_1,n_2}
+        = -R(n_1\ln x_1+n_2\ln x_2)
+    \end{equation*}
+    \begin{itemize}
+        \item This result is identical to that for the mixing of two ideal gases.
+        \item However, there are marked differences between solutions and gases, namely in the extent of intermolecular interactions. The similarity is accounted for by the fact that "in an ideal solution, the interactions in the mixture and those in the pure liquids are essentially identical" \parencite[977]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item We can also calculate that
+    \begin{align*}
+        \Delta_\text{mix}V^\text{id} &= \left( \pdv{\Delta_\text{mix}G^\text{id}} \right)_{T,n_1,n_2} = 0&
+        \Delta_\text{mix}H^\text{id} &= \Delta_\text{mix}G^\text{id}+T\Delta_\text{mix}S^\text{id} = 0
+    \end{align*}
+    \begin{itemize}
+        \item These results follow from the similarities in particles shape and size, and interaction energy, respectively, assumed for an ideal solution.
+    \end{itemize}
 \end{itemize}
 
 
