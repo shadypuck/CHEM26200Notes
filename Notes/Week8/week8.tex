@@ -156,5 +156,88 @@
 
 
 
+\section{Nonideal Solutions}
+\begin{itemize}
+    \item \marginnote{3/2:}When solutions are not ideal, we see deviations from Raoult's Law (Figure \ref{fig:RaoultsLaw}).
+    \emph{picture: Figure 24.7}
+    \begin{itemize}
+        \item However, all solutions follow Raoult's Law when they are nearly pure.
+        \item When the actual partial pressure is higher, that means the substance would rather be in the vapor phase. When the actual partial pressure is lower, that means there is a favorable interaction between particles (they'd rather be in the dissolved state).
+    \end{itemize}
+    \item \textbf{Henry's Law}: Gives the tangent to the vapor pressure vs. mole percent graph at $x_1=0$. \emph{Given by}
+    \begin{equation*}
+        P_1 = k_Hx_1
+    \end{equation*}
+    as $x_1\to 0$.
+    \item We know that $A(g)\to A(\text{solv})$.
+    \begin{itemize}
+        \item At equilibrium $\Delta\overline{G}=0=\Delta\overline{G}_\text{solv}+RT\ln x/P$.
+        \item Thus,
+        \begin{equation*}
+            P = x\e[\Delta\overline{G}_\text{solv}/RT]
+        \end{equation*}
+        \item $x$ is the mixing entropy, $P$ is the gas phase entropy.
+    \end{itemize}
+    \item Microscopic enthalpy and entropy of solvation contribute to Henry's law, in addition to mixing entropy.
+    \begin{itemize}
+        \item Larger $k_H$ means less soluble.
+    \end{itemize}
+    \item Temperature dependence.
+    \begin{equation*}
+        k_{H,cp} = k_{H,cp}^\Theta\exp\left[ -C\cdot\left( \frac{1}{T}-\frac{1}{T^\Theta} \right) \right]
+    \end{equation*}
+    \begin{itemize}
+        \item $\Theta$ indicates reference temperature.
+        \item It follows that as $T$ increases, $k_H$ increases.
+        \begin{itemize}
+            \item For example, \ce{O2} is less soluble in water at higher temperatures.
+            \item This is consistent with solvation being an exothermic process.
+        \end{itemize}
+    \end{itemize}
+    \item The activity and activity coefficient of a solute. Using Raoult's law as the reference for fully miscible substances.
+    \begin{itemize}
+        \item We have for an ideal solution that $\mu_i=\mu_i^*+RT\ln x_i$ and for an ideal gas that $\mu_i=\mu_i^*+RT\ln\frac{P_i}{P_i^*}$.
+        \item These two equations together imply Raoult's law.
+        \item Now we want to keep the nice form of the above equations even with nonideality, so we do something similar to defining fugacity by defining the \textbf{activity}.
+        \item $a_i\to x_i$ as $x_i\to 1$.
+        \item As $x_i\to 0$, we have that
+        \begin{align*}
+            \mu_i^*+RT\ln a_i &= \mu_i^*+RT\ln\frac{P_i}{P_i^*}\\
+            &= \mu_i^*+RT\ln\frac{k_H}{P_i^*}x_i
+        \end{align*}
+        i.e., $a_i\to k_Hx_i/P_i^*$.
+        \item As a substance becomes less active, it becomes more reactive.
+    \end{itemize}
+    \item \textbf{Activity}: A measure of the nonideality of solutions. \emph{Denoted by} $\bm{a_i}$. \emph{Given by}
+    \begin{equation*}
+        \mu_i = \mu_i^*+RT\ln a_i
+    \end{equation*}
+    \item \textbf{Activity coefficient}: The following ratio. \emph{Denoted by} $\bm{\gamma}$. \emph{Given by}
+    \begin{equation*}
+        \gamma = \frac{a_i}{x_i}
+    \end{equation*}
+    \item Example: Carbon disulfide/dimethoxymethane.
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{ccc}
+            $x_{\ce{CS2}}$ & $P_{\ce{CS2}}$ (\si{\torr}) & $P_{\ce{CH2(OMe)2}}$ (\si{\torr})\\
+            0 & 0 & 587\\
+            0.1 & 109 & 529\\
+            1 & 514 & 0\\
+        \end{tabular}
+        \caption{Pressure data for \ce{CS2} and \ce{CH2(OMe)2}.}
+        \label{fig:PCS2CH2OMe2}
+    \end{table}
+    \begin{itemize}
+        \item At $x_{\ce{CS2}}=0.1$, we have that $a_{\ce{CS2}}=109/514$.
+        \item As $x\to 0$, $k_{H,\ce{CS2}}=\SI{1130}{\torr}$ so $a_{\ce{CS2}}=\frac{1130}{514}x_{\ce{CS2}}$.
+        \item See \textcite{bib:McQuarrieSimon} for using Henry's law as the reference state.
+    \end{itemize}
+    \item Nonideality above the Raoult's law diagonal: More "active" than the ideal mixture.
+    \item Nonideality below the Raoult's law diagonal: Less active than at low concentration.
+\end{itemize}
+
+
+
 
 \end{document}
