@@ -12,26 +12,191 @@
 \section{Deviations from Ideality}
 \begin{enumerate}
     \item \marginnote{3/2:}An "ideal" rubber band is at \SI{300}{\kelvin} and a mass of \SI{200}{\gram} stretches its length by \SI{10}{\milli\meter}. Give the stretch length at \SI{330}{\kelvin}.
+    \begin{proof}[Answer]
+        We are given that $L_0=\SI{10}{\milli\meter}$, $T_0=\SI{300}{\kelvin}$, and $T_1=\SI{330}{\kelvin}$. It follows since $L=Nf\ell_0^2/k_BT$ that
+        \begin{equation*}
+            \frac{Nf\ell_0^2}{k_B} = L_0T_0
+        \end{equation*}
+        Thus,
+        \begin{align*}
+            L_1 &= \frac{Nf\ell_0^2}{k_BT_1}\\
+            &= \frac{L_0T_0}{T_1}\\
+            \Aboxed{L_1 &= \SI{9.09}{\milli\meter}}
+        \end{align*}
+    \end{proof}
     \item A pill of \SI{0.1}{\mole} of gadolinium (III) sulfate (\ce{Gd2(SO4)3}) is used for adiabatic demagnetization.
     \begin{enumerate}
         \item Give the molar mass.
+        \begin{proof}[Answer]
+            \begin{equation*}
+                \boxed{M = \SI[per-mode=symbol]{602.88}{\gram\per\mole}}
+            \end{equation*}
+        \end{proof}
         \item Assuming all electrons unpaired in the $f$ orbital, give the magnetic moment.
+        \begin{proof}[Answer]
+            \ce{Gd^3+} has the electron configuration $[\ce{Xe}]\,4f^7$ since all electrons in higher energy levels are ionized first. Thus, by the spin-only magnetic moment formula,
+            \begin{align*}
+                \mu &= \sqrt{7(7+2)}\\
+                \Aboxed{\mu &= \SI{7.94}{\bohrmagneton}}
+            \end{align*}
+        \end{proof}
         \item Calculate the heat transferred from the lattice to the spin degree of freedom as the field is varied from \SI{1}{\tesla} to \SI{0}{\tesla}.
+        \begin{proof}[Answer]
+            When an external magnetic field is applied to a magnetic dipole, such as \ce{Gd2(SO4)3}, each molecule can either orient itself parallel or anti to the magnetic field. In other words, a two-state system is created with energies
+            \begin{align*}
+                E_1 &= -\mu B&
+                E_2 &= \mu B
+            \end{align*}
+            where $\mu$ is the strength of the dipole and $B$ is the strength of the magnetic field. Thus, the molecular partition function for each particle is
+            \begin{equation*}
+                q = \e[-E_1/k_BT]+\e[-E_2/k_BT]
+            \end{equation*}
+            Additionally, since we are considering a solid lattice, each particle in the lattice is both independent (obviously) and distinguishable (by its position in the lattice). Thus,
+            \begin{equation*}
+                Q = q^N
+            \end{equation*}
+            where $N=0.1N_A$ is the number of \ce{Gd2(SO4)3} particles present. It follows that the magnetic energy of the system is given by
+            \begin{equation*}
+                \prb{E} = k_BT^2\pdv{\ln Q}{T}
+            \end{equation*}
+            We are now ready to plug in values. We have that $\mu=\SI{7.94}{\bohrmagneton}=\SI{6.36e-23}{\joule\per\tesla}$ and that $B=\SI{1}{\tesla}$. Thus,
+            \begin{equation*}
+                q = \e[\mu B/k_BT]+\e[-\mu B/k_BT]
+                \approx \e[5.33/T]+\e[-5.33/T]
+            \end{equation*}
+            Therefore, we have that
+            \begin{align*}
+                \prb{E} &= Nk_BT^2\pdv{\ln q}{T}\\
+                &= \frac{0.1N_Ak_BT^2}{q}\left[ \pdv{T}(\e[5.33/T])+\pdv{T}(\e[-5.33/T]) \right]\\
+                &= \frac{0.1RT^2}{q}\left[ \e[5.33/T]\cdot-\frac{5.33}{T^2}+\e[-5.33/T]\cdot\frac{5.33}{T^2} \right]\\
+                &= \frac{0.533R}{q}\left[ \e[-5.33/T]-\e[5.33/T] \right]\\
+                &= 4.43\cdot\frac{\e[-5.33/T]-\e[5.33/T]}{\e[-5.33/T]+\e[5.33/T]}\\
+                &= -4.43\tanh\left( \frac{5.33}{T} \right)
+            \end{align*}
+            Alternatively, if no external magnetic field is applied, there is only one energy state occupied by every particle with energy that we may take to be 0. It follows that $q=1$, $Q=q^N=1$, $\ln Q=0$, and hence the overall magnetic energy $\prb{E}=0$ (which makes intuitive sense as well).\par
+            Thus, assuming that all magnetic energy (i.e., "heat from the lattice") is transferred to the spin degree of freedom upon demagnetization,
+            \begin{align*}
+                \Delta E &= 0-\prb{E}\\
+                \Aboxed{\Delta E &= 4.43\cdot\tanh\left( \frac{5.33}{T} \right)}
+            \end{align*}
+        \end{proof}
         \item Estimate the heat capacity of the pill, and determine its lattice temperature if it starts at \SI{4}{\kelvin}.
+        \begin{proof}[Answer]
+            The internet\footnote{\url{https://www.knowledgedoor.com/2/elements_handbook/debye_temperature.html}} suggests that the Debye temperature $\Theta_D=\SI{182}{\kelvin}$. Thus, according to Debye theory, we have for $T=\SI{4}{\kelvin}$ that
+            \begin{align*}
+                \overline{C}_P(T) &= \frac{12\pi^4}{5}R\left( \frac{T}{\Theta_D} \right)^3\\
+                \Aboxed{\overline{C}_P(T)&= \SI[per-mode=fraction,fraction-function=\tfrac]{0.0206}{\joule\per\mole\per\kelvin}}
+            \end{align*}
+            Additionally, we can relate heat transfer, mass, heat capacity, and change in temperature by $q=mc\Delta T$ or, with the variables we've been using, $\Delta E=0.1M\overline{C}_P(T)\Delta T$. Plugging in $T=\SI{4}{\kelvin}$ and solving yields
+            \begin{align*}
+                \Delta T &= \frac{\Delta E}{0.1M\overline{C}_P(4)}\\
+                &= -\frac{44.3}{602.88\cdot 0.0206}\cdot\tanh\left( \frac{5.33}{T} \right)\\
+                &= \SI{-3.10}{\kelvin}
+            \end{align*}
+            yielding a final lattice temperature of $\boxed{\SI{0.90}{\kelvin}}$.
+        \end{proof}
     \end{enumerate}
     \item A Joule-Thomson expansion is an adiabatic and reversible expansion from a pressure $P_1$ to a pressure $P_2$, made closer to reversible by having a porous section that slows down the gas.
     \begin{enumerate}
         \item Show that the Joule-Thomson expansion conserves enthalpy.
+        \begin{proof}[Answer]
+            We have from the first law of thermodynamics that
+            \begin{align*}
+                \dd{U} &= \var{q}+\var{w}\\
+                &= \dd{w}\\
+                \int_1^2\dd{U} &= \int_1^2\dd{w}\\
+                U_2-U_1 &= P_1V_1-P_2V_2\\
+                U_2+P_2V_2 &= U_1+P_1V_1\\
+                H_1 &= H_2
+            \end{align*}
+            as desired.
+        \end{proof}
         \item Show that an ideal gas's temperature is unchanged during a Joule-Thomson expansion.
+        \begin{proof}[Answer]
+            We know that enthalpy is conserved. Thus,
+            \begin{align*}
+                H_1 &= H_2\\
+                U_1+P_1V_1 &= U_2+P_2V_2\\
+                U_1(T_1)+nRT_1 &= U_2(T_2)+nRT_2
+            \end{align*}
+            It follows since the above equation depends entirely on temperature that for equality to hold, $T_1=T_2$ necessarily.
+        \end{proof}
         \item Argue why a real gas can cool (or heat up) during a Joule-Thomson expansion.
+        \begin{proof}[Answer]
+            For a real gas, the internal energy is a function of both temperature and intermolecular forces, so some energy could be transferred from one "reservoir" to the other.
+        \end{proof}
         \item Show that the temperature change is given by $(\pdv*{T}{P})_H$.
+        \begin{proof}[Answer]
+            The total differential of $H(P,T)$ is
+            \begin{equation*}
+                \dd{H} = \left( \pdv{H}{P} \right)_T\dd{P}+\left( \pdv{H}{T} \right)_P\dd{T}
+            \end{equation*}
+            It follows by the definition of $C_P$ that
+            \begin{align*}
+                \dd{H} &= \left( \pdv{H}{P} \right)_T\dd{P}+C_P\dd{T}\\
+                \dd{H}-C_P\dd{T} &= \left( \pdv{H}{P} \right)_T\dd{P}\\
+                \left( \pdv{H}{P} \right)_H-C_P\left( \pdv{T}{P} \right)_H &= \left( \pdv{H}{P} \right)_T\\
+                0-C_P\left( \pdv{T}{P} \right)_H &= \left( \pdv{H}{P} \right)_T\\
+                \left( \pdv{T}{P} \right)_H &= -\frac{1}{C_P}\left( \pdv{H}{P} \right)_T
+            \end{align*}
+            Since $H$ is conserved and hence constant, the right side of the equation equals zero, and hence $T$ is unchanged even as pressure varies.
+        \end{proof}
         \item Problem 22-48: Show that
         \begin{equation*}
             \left( \pdv{T}{P} \right)_H = \frac{V}{C_P}(\alpha T-1)
         \end{equation*}
         where $\alpha$ is the coefficient of thermal expansion.
+        \begin{proof}[Answer]
+            At constant temperature, we have
+            \begin{align*}
+                \dd{G} &= \dd{(H-TS)}\\
+                \dd{G} &= \dd{H}-T\dd{S}-S\dd{T}\\
+                \dd{G} &= \dd{H}-T\dd{S}\\
+                \left( \pdv{G}{P} \right)_T &= \left( \pdv{H}{P} \right)_T-T\left( \pdv{S}{P} \right)_T
+            \end{align*}
+            It follows by the Maxwell relation
+            \begin{equation*}
+                \left( \pdv{S}{P} \right)_T = \pdv{P}\left( -\pdv{G}{T} \right)_P
+                = -\pdv{T}\left( \pdv{G}{P} \right)_T
+                = -\left( \pdv{V}{T} \right)_P
+            \end{equation*}
+            that
+            \begin{align*}
+                \left( \pdv{G}{P} \right)_T &= \left( \pdv{H}{P} \right)_T+T\left( \pdv{V}{T} \right)_P\\
+                V &= \left( \pdv{H}{P} \right)_T+T\left( \pdv{V}{T} \right)_P\\
+                \left( \pdv{H}{P} \right)_T &= V-T\left( \pdv{V}{T} \right)_P
+            \end{align*}
+            Therefore, from part (d),
+            \begin{align*}
+                \left( \pdv{T}{P} \right)_H &= -\frac{1}{C_P}\left( \pdv{H}{P} \right)_T\\
+                &= -\frac{1}{C_P}\left[ V-T\left( \pdv{V}{T} \right)_P \right]\\
+                &= \frac{1}{C_P}\left[ T\left( \pdv{V}{T} \right)_P-V \right]\\
+                &= \frac{V}{C_P}(\alpha T-1)
+            \end{align*}
+        \end{proof}
         \item Problem 22-49: Show that a gas with only excluded volume cools upon expansion.
+        \begin{proof}[Answer]
+            The equation of state for only excluded volume is $P(V-nb)=nRT$. Solving for $V$ yields $n(RT+bP)/P$. Thus,
+            \begin{equation*}
+                \left( \pdv{V}{T} \right)_P = \frac{nR}{P}
+            \end{equation*}
+            Consequently, since $1-nb/V=nRT/PV$, we have that
+            \begin{align*}
+                \left( \pdv{T}{P} \right)_H &= \frac{1}{C_P}\left[ T\left( \pdv{V}{T} \right)_P-V \right]\\
+                &= \frac{V}{C_P}\left[ \frac{nRT}{PV}-1 \right]\\
+                &= -\frac{V}{C_P}\frac{nb}{V}\\
+                \dd{T} &= -\frac{nb}{C_P}\dd{P}
+            \end{align*}
+            Since $n,b,C_P>0$ and $\dd{P}<0$, we have that $\dd{T}>0$, as desired.
+        \end{proof}
         \item Problem 22-51: Give the sign and estimate the magnitude of $(\pdv*{T}{P})_H$ for \ce{N2} gas around \SI{300}{\kelvin} from \SI{100}{\atmosphere} to \SI{1}{\atmosphere} based on van der Waals parameters.
+        \begin{proof}[Answer]
+            For \ce{N2}, we have that $b_0=\SI{45.29}{\centi\meter\cubed\per\mole}$, $\lambda=1.87$, $\varepsilon/k_B=53.7$, $C_P=7R/2$, and $T=\SI{300}{\kelvin}$. Therefore,
+            \begin{align*}
+                \left( \pdv{T}{P} \right)_H &= \frac{b_0}{C_P}\left[ (\lambda^3-1)\left( 1+\frac{\varepsilon}{k_BT} \right)\e[\varepsilon/k_BT]-\lambda^3 \right]\\
+                \Aboxed{\left( \pdv{T}{P} \right)_H &= +1.97}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
