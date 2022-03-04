@@ -159,7 +159,6 @@
 \section{Nonideal Solutions}
 \begin{itemize}
     \item \marginnote{3/2:}When solutions are not ideal, we see deviations from Raoult's Law (Figure \ref{fig:RaoultsLaw}).
-    \emph{picture: Figure 24.7}
     \begin{itemize}
         \item However, all solutions follow Raoult's Law when they are nearly pure.
         \item When the actual partial pressure is higher, that means the substance would rather be in the vapor phase. When the actual partial pressure is lower, that means there is a favorable interaction between particles (they'd rather be in the dissolved state).
@@ -235,6 +234,170 @@
     \end{itemize}
     \item Nonideality above the Raoult's law diagonal: More "active" than the ideal mixture.
     \item Nonideality below the Raoult's law diagonal: Less active than at low concentration.
+\end{itemize}
+
+
+
+\section{Quantifying Deviations from Raoult's Law}
+\begin{itemize}
+    \item \marginnote{3/4:}\textbf{Gibbs-Duhem relation}: A relation tying together the partial pressure of one substance to another, regardless of ideality/nonideality.
+    \begin{itemize}
+        \item We begin with
+        \begin{equation*}
+            \dd{G} = \sum\mu_i\dd{n_i}+\sum n_i\dd{\mu_i}
+        \end{equation*}
+        at constant temperature and pressure.
+        \item We also know from an earlier class that
+        \begin{equation*}
+            G = \sum\mu_in_i
+        \end{equation*}
+        \item Differentiating the above, we get
+        \begin{equation*}
+            \dd{G} = \sum\mu_i\dd{n_i}+\sum n_i\dd{\mu_i}
+        \end{equation*}
+        \item It follows by setting the above two equations equal to each other that
+        \begin{equation*}
+            \sum n_i\dd{\mu_i} = 0
+        \end{equation*}
+    \end{itemize}
+    \item We can apply the Gibbs-Duhem relation to our expression for the chemical potential in terms of the activity coefficient.
+    \begin{itemize}
+        \item From last time,
+        \begin{align*}
+            \mu_i &= \mu_i^*+RT\ln(\gamma_ix_i)\\
+            \dd{\mu_i} &= RT\dd{(\ln\gamma_i+\ln x_i)}
+        \end{align*}
+        \item It follows that
+        \begin{align*}
+            0 &= n_1\dd{\mu_1}+n_2\dd{\mu_2}\\
+            &= \frac{1}{n_1+n_2}(n_1\dd{\mu_1}+n_2\dd{\mu_2})\\
+            &= \frac{n_1}{n_1+n_2}RT\dd{(\ln\gamma_1+\ln x_1)}+\frac{n_2}{n_1+n_2}RT\dd{(\ln\gamma_2+\ln x_2)}\\
+            &= RT(x_1\dd{\ln x_1}+x_2\dd{\ln x_2}+x_1\dd{\ln\gamma_1}+x_2\dd{\ln\gamma_2})\\
+            &= \dd{x_1}+\dd{x_2}+x_1\dd{\ln\gamma_1}+x_2\dd{\ln\gamma_2}\\
+            &= \dd{x_1}-\dd{x_1}+x_1\dd{\ln\gamma_1}+x_2\dd{\ln\gamma_2}\\
+            &= x_1\dd{\ln\gamma_1}+x_2\dd{\ln\gamma_2}
+        \end{align*}
+        \item Takeaway: If we know the activity coefficient for one component across the whole range, we can find the activity coefficient for the other component.
+        \item In other words, knowing the chemical potential for one component gives us the chemical potential for the other.
+    \end{itemize}
+    \item Relating $P_1,P_2$ with the Gibbs-Duhem relation.
+    \begin{itemize}
+        \item We assume that we are in phase equilibrium. Thus, the chemical potential of the gas phase equals the chemical potential of the solution. In an equation,
+        \begin{equation*}
+            \mu_1^*+RT\ln\frac{P_1}{P_1^*} = \mu_1+RT\ln a_1
+        \end{equation*}
+        \item Thus, applying the Gibbs-Duhem relation,
+        \begin{align*}
+            0 &= x_1\dd{\ln P_1}+x_2\dd{\ln P_2}\\
+            &= x_1\left( \pdv{\ln P_1}{x_1} \right)_{T,P}\dd{x_1}+x_2\left( \pdv{\ln P_2}{x_2} \right)_{T,P}\dd{x_2}\\
+            &= x_1\left( \pdv{\ln P_1}{x_1} \right)_{T,P}-x_2\left( \pdv{\ln P_2}{x_2} \right)_{T,P}
+        \end{align*}
+        \item Takeaway: The slopes of the curves on a pressure-concentration diagram are related, regardless of ideality/nonideality.
+    \end{itemize}
+    \item \textbf{Margules equation}: An expansion to capture the experimental $P(x)$ deviation from Raoult's law.
+    \begin{equation*}
+        P_1 = x_1P_1^*\e[\alpha x_2^2+\beta x_2^3+\cdots]
+    \end{equation*}
+    \begin{itemize}
+        \item An analytical form that gives us a good representation of experimentally-measured vapor pressures.
+        \item Important features: Follows Henry's law at low concentrations of solute and Raoult's Law at high concentrations of solute.
+    \end{itemize}
+    \item Margules equation covers Raoult's law and Henry's law.
+    \begin{itemize}
+        \item We have by the product rule of derivatives that
+        \begin{equation*}
+            \dv{P_1}{x_1} = P_1^*\left[ \e[\alpha x_2^2+\beta x_2^3+\cdots]+x_1(-2\alpha x_2-3\beta x_2^2-\cdots)\e[\alpha x_2^2+\beta x_2^3+\cdots] \right]
+        \end{equation*}
+        \item As $x_1\to 1$, $\dv*{P_1}{x_1}\to P_1^*$. This can be seen because the above expression can be rewritten
+        \begin{equation*}
+            \dv{P_1}{x_1} = P_1^*\e[\alpha x_2^2+\beta x_2^3+\cdots]\left[ 1-2\alpha x_1x_2-3\beta x_1x_2^2-\cdots \right]
+        \end{equation*}
+        \begin{itemize}
+            \item Implication: We recover Raoult's law as $x_1\to 1$.
+            \item Additionally, this explains why there is no linear terms in the exponent: If there were, one of the terms in the sum on the right-hand side above wouldn't go to zero as $x_1\to 1$, meaning that $\dv*{P_1}{x_1}$ would not go to $P_1^*$.
+        \end{itemize}
+        \item Recovering Henry's law as $x_1\to 0$: As $x_1\to 0$, $P_1\to k_Hx_1=P_1^*\e[\alpha+\beta+\cdots]\cdot x_1$.
+    \end{itemize}
+    \item Margules equation parameters fitted for $P_1$ provide a related equation for $P_2$ based on Gibbs-Duhem (Problem 24-33).
+    \begin{itemize}
+        \item To two terms, the Margules equation tells us that
+        \begin{equation*}
+            P_1 = x_1P_1^*\e[\alpha x_2^2+\beta x_2^3]
+        \end{equation*}
+        \item As we showed earlier, the Gibbs-Duhem equation implies that
+        \begin{equation*}
+            x_1\pdv{\ln P_1}{x_1} = x_2\pdv{\ln P_2}{x_2}
+        \end{equation*}
+        \item Thus, since $x_2=1-x_1$,
+        \begin{align*}
+            x_1\pdv{\ln P_1}{x_1} &= x_1\pdv{x_1}(\ln x_1+\alpha x_2^2+\beta x_2^3+\text{terms not involving }x_1)\\
+            &= x_1\left[ \frac{1}{x_1}+(-2\alpha x_2)+(-3\beta x_2^2) \right]\\
+            &= 1+x_2(-2\alpha x_1-3\beta x_1x_2)\\
+            &= 1+x_2(-2\alpha x_1-3\beta x_1(1-x_1))\\
+            &= 1+x_2(-2\alpha x_1-3\beta(x_1-x_1^2))\\
+            &= 1+x_2[-(2\alpha+3\beta)x_1+3\beta x_1^2]
+        \end{align*}
+        \item Now let
+        \begin{equation*}
+            P_2 = x_2P_2^*\e[ax_1^2+bx_1^3]
+        \end{equation*}
+        \item It follows as before that
+        \begin{equation*}
+            x_2\pdv{\ln P_2}{x_2} = 1+x_2(-2ax_1-3bx_1^2)
+        \end{equation*}
+        \item Direct comparison reveals that
+        \begin{align*}
+            -2a &= -(2\alpha+3\beta)&
+                -3b &= 3\beta\\
+            a &= \alpha+\frac{3}{2}\beta&
+                b &= -\beta
+        \end{align*}
+        so
+        \begin{equation*}
+            P_2 = x_2P_2^*\e[(\alpha+\frac{3}{2}\beta)x_1^2-\beta x_1^3]
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Regular solution}: A solution for which only $\alpha\neq 0$ and every other Margules parameter is zero.
+    \begin{itemize}
+        \item In this case,
+        \begin{align*}
+            P_1 &= x_1P_1^*\e[\alpha x_2^2]&
+            P_2 &= x_2P_2^*\e[\alpha x_1^2]
+        \end{align*}
+        \item This means that the Raoult's activity of the two solutions is entirely symmetric over the range of compositions.
+        \item This does not necessarily imply that the vapor pressures vary in the same way.
+    \end{itemize}
+    \item Mixing Gibbs free energy for a regular solution (24-5).
+    \begin{itemize}
+        \item We have
+        \begin{align*}
+            \frac{\Delta G_\text{mix}}{RT} &= \underbrace{n_1\mu_1^\text{sol}+n_2\mu_2^\text{sol}}_\text{mixture}-(\underbrace{n_1\mu_1^*+n_2\mu_2^*}_\text{pure})\\
+            &= n_1\ln\frac{P_1}{P_1^*}+n_2\ln\frac{P_2}{P_2^*}\\
+            &= n_1\ln x_1+n_2\alpha x_2^2+n_2\ln x_2+n_2\alpha x_1^2\\
+            \frac{\Delta G_\text{mix}}{RT(n_1+n_2)} &= x_1\ln x_1+x_2\ln x_2+\alpha x_1x_2^2+\alpha x_2x_1^2\\
+            &= x_1\ln x_1+x_2\ln x_2+\alpha x_1x_2(x_1+x_2)\\
+            \frac{\Delta G_\text{mix}}{RT(n_1+n_2)} &= x_1\ln x_1+x_2\ln x_2+\alpha x_1x_2
+        \end{align*}
+        \item The left two terms above represent the entropy of mixing (which does not depend on interaction).
+        \item The right term above is the enthalpy/entropy of mixing which depends \emph{only} on interaction.
+        \item Thus, $\alpha$ is the microscopic entropy of mixing for a regular solution.
+    \end{itemize}
+    \item The upper critical solution temperature (UCST) (critical temperature above which the components of the mixture are miscible in all proportions).
+    \begin{itemize}
+        \item We have
+        \begin{equation*}
+            \Delta\overline{G} = RT(x_1\ln x_1+x_2\ln x_2)+\underbrace{RT\alpha}_\Omega x_1x_2
+        \end{equation*}
+        \item Graphing the above equation will help us determine what extent of mixing will be most energetically favorable.
+        \begin{itemize}
+            \item In particular, if we graph the left two terms, that tells us the entropy of mixing, which will be greatest at $x_1=x_2$.
+            \item Graphing the right term on the other hand yields a parabola.
+            \item As such, since $x_1\ln x_1+x_2\ln x_2$ has vertical slope at $x_1=0,1$ and the other term simply has some positive slope, entropy of mixing will always win at low concentrations of solutes, i.e., when you have a small enough concentration of solute in solvent, you will always observe mixing.
+            \item However, the overall graph may have minima on the two sides, indicating that forming a fully mixed solution is not energetically favorable, but it is most favorable to separate into substance 1 with a bit of substance 2 and vice versa (think oil and water).
+            \item At high temperatures, however, this effect goes away and mixing always becomes the most favorable state.
+        \end{itemize}
+        \item The temperature at which the overall graph only has one minimum for the first time is the UCST.
+    \end{itemize}
 \end{itemize}
 
 
