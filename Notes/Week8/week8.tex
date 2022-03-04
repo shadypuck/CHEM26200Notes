@@ -402,5 +402,151 @@
 
 
 
+\section{Chapter 24: Solutions I --- Liquid-Liquid Solutions}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item There exist positive and negative deviations from Raoult's Law (see Figure \ref{fig:postiveDeviationRaoult}).
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[xscale=5,yscale=0.5]
+            \small
+            \draw (0,6) -- node[rotate=90,above=7mm]{Vapor pressure (\si{\torr})} (0,0) -- node[below=5mm]{$x_1$} (1,0);
+            \footnotesize
+            \node [above left,xshift=-1mm,yshift=-1mm] {0};
+            \node [below right,xshift=-1mm,yshift=-1mm] {0.0};
+            \foreach \y [evaluate=\y as \n using int(\y*100)] in {2,4,6} {
+                \draw (0.02,\y) -- ++(-0.04,0) node[left]{$\n$};
+            }
+            \foreach \x in {0.2,0.4,0.6,0.8,1.0} {
+                \draw (\x,0.2) -- ++(0,-0.4) node[below]{$\x$};
+            }
+    
+            \draw [gry,thick] plot [domain=0:1,smooth] (\x,{5*\x});
+            \draw [gry,thick] plot [domain=0:1,smooth] (\x,{5.9-5.9*\x});
+            \draw [grx,thick] plot [domain=0:1,smooth] (\x,{5*\x*e^((1-\x)^2)});
+            \draw [grx,thick] plot [domain=0:1,smooth] (\x,{(5.9-5.9*\x)*e^(\x^2)});
+    
+            \node at (0.52,0.7) {Raoult's Law}
+                edge [->,out=0,in=-95,looseness=0.5] (0.8,1)
+                edge [->,out=180,in=-85,looseness=0.5] (0.23,1)
+            ;
+            \node at (0.17,2.5) {$P_1$};
+            \node at (0.85,2.5) {$P_2$};
+        \end{tikzpicture}
+        \caption{Positive deviations from Raoult's law (\ce{CS2}/\ce{CH2(OMe)2} at \SI{25}{\celsius}).}
+        \label{fig:postiveDeviationRaoult}
+    \end{figure}
+    \item If 1 and 2 denote two substances that are being mixed, positive deviations occur when 1-2 interactions are more repulsive than either 1-1 or 2-2 interactions, and vice versa for negative deviations.
+    \item If one component of a binary solution exhibits positive deviations from Raoult's law, so must the other component.
+    \begin{itemize}
+        \item Follows from "Relating $P_1,P_2$ with the Gibbs-Duhem relation" as in class.
+    \end{itemize}
+    \item Molecular structure predicts deviations from Raoult's law.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[xscale=5,yscale=0.5]
+            \small
+            \draw (0,6) -- node[rotate=90,above=2mm]{Vapor pressure} (0,0) -- node[below=5mm]{$x_\text{alcohol}$} (1,0);
+            \footnotesize
+            \node [below right,xshift=-1mm,yshift=-1mm] {0.0};
+            \foreach \y in {2,4,6} {
+                \draw (0.02,\y) -- ++(-0.04,0);
+            }
+            \foreach \x in {0.2,0.4,0.6,0.8,1.0} {
+                \draw (\x,0.2) -- ++(0,-0.4) node[below]{$\x$};
+            }
+    
+            \draw [grx,thick] plot [domain=0:1,smooth] (\x,{6*\x});
+            \draw [blx,thick] plot [domain=0:1,smooth] (\x,{6*\x*e^(0.8*(1-\x)^2)});
+            \draw [rex,thick] plot [domain=0:1,smooth] (\x,{6*\x*e^(1.4*(1-\x)^2)});
+            \draw [orx,thick] plot [domain=0:1,smooth] (\x,{6*\x*e^(1.8*(1-\x)^2)});
+    
+            \node at (0.55,1) {Raoult's Law}
+                edge [->,out=180,in=-85,looseness=0.5] (0.25,1.4)
+            ;
+        \end{tikzpicture}
+        \caption{Vapor pressure of alcohol/water solutions.}
+        \label{fig:VPalcoholWater}
+    \end{figure}
+    \begin{itemize}
+        \item The blue line represents \ce{MeOH}, the red line represents \ce{EtOH}, and the orange line represents \ce{PrOH}.
+        \item Notice how as molecular structure gets further from that of \ce{H2O} (the solvent), deviations become more exaggerated.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses the limiting behavior of $P_1$ in Figure \ref{fig:postiveDeviationRaoult}, noting the Raoult's law limit as $x_1\to 1$ and introducing \textbf{Henry's law}.
+    \item \textbf{Henry's law}: The partial pressure of a component in solution approaches the linear function $k_{H,i}x_i$ as $x_i\to 0$.
+    \item \textbf{Henry's law constant}: The constant $k_{H,i}$ in the above definition.
+    \item For an ideal solution, $k_{H,i}=P_i^*$, but this is not true in general (as illustrated by Figure \ref{fig:postiveDeviationRaoult}).
+    \item Example: Finding $P_1^*$ and $k_H$ from an equation for $P_1$.
+    \begin{itemize}
+        \item Let $P_1=180x_1\e[x_2^2+\frac{1}{2}x_2^3]$.
+        \item As $x_1\to 1$, $x_2\to 0$, so $P_1\to 180x_1$. Since this form should be the Raoult's law limit, we can read off $P_1^*=\SI{180}{\torr}$.
+        \item As $x_1\to 0$, $x_2\to 1$, so $P_1\to 180x_1\e[1+\frac{1}{2}]=180\e[3/2]x_1$. Since this form should be the Henry's law limit, we can read off $k_{H,1}=180\e[3/2]=\SI{807}{\torr}$.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} derives
+    \begin{equation*}
+        x_1\left( \pdv{\ln P_1}{x_1} \right)_{T,P} = x_2\left( \pdv{\ln P_2}{x_2} \right)_{T,P}
+    \end{equation*}
+    as in class.
+    \item In a binary solution, if component 1 obeys Raoult's law as $x_1\to 1$, then component 2 obeys Henry's law as $x_2\to 0$.
+    \begin{itemize}
+        \item Suppose component 1 satisfies $P_1\to x_1P_1^*$ as $x_1\to 1$. Then
+        \begin{align*}
+            x_2\left( \pdv{\ln P_2}{x_2} \right)_{T,P} &= x_1\left( \pdv{\ln P_1}{x_1} \right)_{T,P}\\
+            &= x_1\pdv{x_1}(\ln x_1+\ln P_1^*)\\
+            &= 1\\
+            \ln P_2 &= \int\frac{1}{x_2}\dd{x_2}\\
+            &= \ln x_2+C\\
+            P_2 &= k_Hx_2
+        \end{align*}
+        as desired.
+    \end{itemize}
+    \item The vapor pressure curve of WLOG component 1 of a binary solution can often be represented empirically by
+    \begin{equation*}
+        P_1 = x_1P_1^*\e[\alpha x_2^2+\beta x_2^3]
+    \end{equation*}
+    \begin{itemize}
+        \item $\alpha,\beta$ reflect the extent of the nonideality of the solution in some manner because $P_1=x_1P_1^*$ (ideal) for $\alpha=\beta=0$.
+        \item Furthermore, generalizing from the previous example, $k_{H,1}=P_1^*\e[\alpha+\beta]$ and $k_{H,2}=P_2^*\e[\alpha+\beta/2]$ (the latter equation will be derived presently).
+    \end{itemize}
+    \item Deriving $P_2=x_2P_2^*\e[(\alpha+3\beta/2)x_1^2-\beta x_1^3]$ from $P_1=x_1P_1^*\e[\alpha x_2^2+\beta x_2^3]$ in an alternate manner to what was presented in class.
+    \begin{itemize}
+        \item We are given that $P_1=x_1P_1^*\e[\alpha x_2^2+\beta x_2^3]$ and that $x_2=1-x_1$.
+        \item It follows that the chemical potential of component 1 is
+        \begin{align*}
+            \mu_1 &= \mu_1^\circ+RT\ln P_1\\
+            &= \mu_1^\circ+RT\left[ \ln P_1^*+\ln x_1+\alpha(1-x_1)^2+\beta(1-x_1)^3 \right]
+        \end{align*}
+        \item It follows that the total differential of $\mu_1(x_1)$ is
+        \begin{equation*}
+            \dd{\mu_1} = RT\left[ \frac{1}{x_1}-2\alpha(1-x_1)-3\beta(1-x_1)^2 \right]\dd{x_1}
+        \end{equation*}
+        \item Thus, by the Gibbs-Duhem equation,
+        \begin{align*}
+            x_1\dd{\mu_1}+x_2\dd{\mu_2} &= 0\\
+            \dd{\mu_2} &= -\frac{x_1}{x_2}\cdot RT\left[ \frac{1}{x_1}-2\alpha(1-x_1)-3\beta(1-x_1)^2 \right]\dd{x_1}\\
+            &= RT\left[ -\frac{1}{x_2}+2\alpha x_1+3\beta x_1(1-x_1) \right]\dd{x_1}
+        \end{align*}
+        \item Substitute $x_2=1-x_1$ and integrate.
+        \begin{align*}
+            \dd{\mu_2} &= RT\left[ \frac{1}{x_2}-2\alpha(1-x_2)-3\beta x_2(1-x_2) \right]\dd{x_2}\\
+            \int_1^{x_2}\dd{\mu_2} &= RT\int_1^{x_2}\left[ \frac{1}{x_2'}-2\alpha(1-x_2')-3\beta x_2'(1-x_2') \right]\dd{x_2'}\\
+            \mu_2(x_2)-\mu_2(1) &= RT\left[ \ln x_2+\alpha(1-x_2)^2-\frac{3\beta}{2}(x_2^2-1)+\beta(x_2^3-1) \right]\\
+            \mu_2-\mu_2^* &= RT\left[ \ln x_2+\alpha x_1^2+\frac{3\beta}{2}x_1^2-\beta x_1^3 \right]
+        \end{align*}
+        \item Therefore, since
+        \begin{align*}
+            \mu_2 &= \mu_2^\circ+RT\ln P_2&
+            \mu_2^* &= \mu_2^\circ+RT\ln P_2^*
+        \end{align*}
+        we have that
+        \begin{align*}
+            \ln P_2 &= \ln P_2^*+\ln x_2+\alpha x_1^2+\frac{3\beta}{2}x_1^2-\beta x_1^3\\
+            P_2 &= x_2P_2^*\e[(\alpha+3\beta/2)x_1^2-\beta x_1^3]
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
