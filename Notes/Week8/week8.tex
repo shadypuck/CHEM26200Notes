@@ -575,6 +575,197 @@
             P_2 &= x_2P_2^*\e[(\alpha+3\beta/2)x_1^2-\beta x_1^3]
         \end{align*}
     \end{itemize}
+    \item \marginnote{3/5:}\textbf{Azeotrope}: A mixture for which there is no change in composition upon boiling.
+    \item Vapor pressure behavior at various temperatures.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=4]
+            \small
+            \draw [stealth-stealth] (0,1.2) -- node[rotate=90,above=5mm]{$P_2/P_2^*$} (0,0) -- node[below=5mm]{$x_2$} (1.1,0);
+            \footnotesize
+            \draw (0.025,1) -- ++(-0.05,0) node[left]{$1.0$};
+            \draw (1,0.025) -- ++(0,-0.05) node[below]{$1.0$};
+            \draw [dashed] (0.252,0.913) -- (0.252,-0.025) node[below]{$x_2'$};
+            \draw [dashed] (0.748,0.913) -- (0.748,-0.025) node[below]{$x_2''$};
+    
+            \draw [semithick] plot[domain=0.034:0.966,smooth] (\x,{0.686*(\x*ln(\x)+(1-\x)*ln(1-\x))+1.3});
+            \node at (0.5,1.15) {Coexistence curve}
+                edge [out=180,in=60,->] (0.1,1.1)
+            ;
+            
+            \draw [grx,thick] (0,0) -- (1,1);
+            \draw [blx,thick] plot[domain=0:1,smooth] (\x,{\x*e^(1.4*(1-\x)^2)});
+            \draw [rex,thick] plot[domain=0:1,smooth] (\x,{\x*e^(2*(1-\x)^2)});
+            \draw [orx,thick] plot[domain=0:0.252,smooth] (\x,{\x*e^(2.3*(1-\x)^2)}) -- (0.748,0.913) to[out=0,in=-135,in looseness=0.7] (1,1);
+            \draw [yex,thick] plot[domain=0:0.184,smooth] (\x,{\x*e^(2.5*(1-\x)^2)}) -- (0.816,0.972) to[out=0,in=-135,in looseness=0.7] (1,1);
+    
+            \node [below,xshift=1mm] at (0.5,0.710) {$T_3$};
+            \node [below] at (0.4,0.822) {$T_c$};
+            \node [below=-1pt] at (0.5,0.913) {$T_2$};
+            \node [above] at (0.5,0.972) {$T_1$};
+        \end{tikzpicture}
+        \caption{The critical behavior of a binary solution.}
+        \label{fig:criticalBinarySoln}
+    \end{figure}
+    \begin{itemize}
+        \item In Figure \ref{fig:criticalBinarySoln}, $T_3>T_c>T_2>T_1$. Additionally, $P_2^*$ denotes the vapor pressure of the pure substance \emph{at each temperature}, and thus serves to "normalize" all of the curves.
+        \item At or above the \textbf{consulate temperature} $T_c$, component 1 and component 2 will mix to form a homogenous solution regardless of their relative concentrations.
+        \item On the other hand, consider the solution formed at $T_2<T_c$.
+        \begin{itemize}
+            \item If $x_2<x_2'$ or $x_2>x_2''$, a homogenous solution is formed.
+            \item However, if $x_2$ is within this range, the mixture separates into a solution with component 2 concentration $x_2'$ and a solution with component 2 concentration $x_2''$, with the relative proportions dictated by what will give the constant vapor pressure indicated by Figure \ref{fig:criticalBinarySoln}.
+        \end{itemize}
+        \item "Points inside the \textbf{coexistence curve} represent two solution phases, whereas points below the coexistence curve represent one solution phase" \parencite[985]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Consulate temperature}: The temperature below which two liquids are not miscible in all proportions. \emph{Also known as} \textbf{critical temperature}. \emph{Denoted by} $\bm{T_c}$.
+    \item A lever rule that gives the relative amounts of the two phases indicated by Figure \ref{fig:criticalBinarySoln}.
+    \begin{itemize}
+        \item Consider a solution of overall composition $x_2\in(x_2',x_2'')$. Let $n_1',n_2'$ and $n_1'',n_2''$ be the number of moles of the two components in the phases of composition $x_2'$ and $x_2''$, respectively.
+        \item By definition, we have the relations
+        \begin{align*}
+            x_2' &= \frac{n_2'}{n_1'+n_2'}&
+            x_2'' &= \frac{n_2''}{n_1''+n_2''}&
+            x_2 &= \frac{n_2'+n_2''}{n_1'+n_1''+n_2'+n_2''}
+        \end{align*}
+        \item It follows that
+        \begin{align*}
+            x_2(n_1'+n_1''+n_2'+n_2'') &= x_2'(n_1'+n_2')+x_2''(n_1''+n_2'')\\
+            \frac{n'}{n''} &= \frac{n_1'+n_2'}{n_1''+n_2''} = \frac{x_2''-x_2}{x_2-x_2'}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Activity} (of component $j$): A state function describing the nonideality of the chemical potential of component $j$ of a solution. \emph{Denoted by} $\bm{a_j}$. \emph{Given by}
+    \begin{equation*}
+        \mu_j^\text{sln} = \mu_j^*+RT\ln a_j
+    \end{equation*}
+    \begin{itemize}
+        \item It follows from Raoult's law that $a_j\to x_j$ as $x_j\to 1$.
+        \item We can also represent the activity of component 1 in a binary solution empirically by
+        \begin{equation*}
+            a_1 = x_1\e[\alpha x_2^2+\beta x_2^3+\cdots]
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Activity coefficient} (of component $j$): A measure of the deviation of a solution from ideality. \emph{Denoted by} $\bm{\gamma_j}$. \emph{Given by}
+    \begin{equation*}
+        \gamma_j = \frac{a_j}{x_j}
+    \end{equation*}
+    \begin{itemize}
+        \item It should make intuitive sense that $\gamma_j\to 1$ as $x_j\to 1$.
+    \end{itemize}
+    \item Since activity and chemical potential are directly related, activity is really just another way of expressing chemical potential.
+    \begin{itemize}
+        \item It follows that since the chemical potentials of the components of a binary solution are related by the Gibbs-Duhem equation, the activities of said components are related by
+        \begin{align*}
+            0 &= x_1\dd{(\mu_j^*+RT\ln a_1)}+x_2\dd{(\mu_j^*+RT\ln a_2)}\\
+            &= RTx_1\dd{\ln a_1}+RTx_2\dd{\ln a_2}\\
+            &= x_1\dd{\ln a_1}+x_2\dd{\ln a_2}
+        \end{align*}
+        \item Consequently, if $a_1=x_1$ over the entire composition range, we can use this relation to show that $a_2=x_2$.
+        \item Similarly, if $a_1=x_1\e[\alpha x_2^2]$ over the entire composition range, we can use this relation to show that $a_2=x_2\e[\alpha x_1^2]$.
+    \end{itemize}
+    \item An activity defined by $a_j=P_j/P_j^*$ is said to be based upon a solvent, or Raoult's law, standard state.
+    \begin{itemize}
+        \item This is most convenient for substances that are miscible in all proportions, i.e., when there is no clear "solute" and "solvent."
+    \end{itemize}
+    \item If one component is only sparingly soluble in the other, however, picking a standard state based on Henry's law is more convenient.
+    \begin{itemize}
+        \item In this case, $P_j\to x_jk_{H,j}$ as $x_j\to 0$ (we consider $x_j$ close to zero because component $j$ is sparingly soluble, so its concentration is naturally low).
+        \item We thus have that
+        \begin{equation*}
+            \mu_j^\text{sln} = \mu_j^*+RT\ln\frac{k_{H,j}}{P_j^*}+RT\ln x_j
+        \end{equation*}
+        and must define
+        \begin{equation*}
+            \mu_j^\text{sln} = \mu_j^*+RT\ln\frac{k_{H,j}}{P_j^*}+RT\ln a_j
+        \end{equation*}
+        \item It follows that for these two equations to be the same as $x_j\to 0$, we must take $a_j=P_j/k_{H,j}$.
+        \item Additionally, the standard state must be such that
+        \begin{equation*}
+            \mu_j = \mu_j^*+RT\ln\frac{k_{H,j}}{P_j^*}
+        \end{equation*}
+        or $P_j^*=k_{H,j}$.
+        \item If such a standard state is not achievable in practice, it is called a \textbf{hypothetical standard state}.
+    \end{itemize}
+    \item Deriving an expression for the Gibbs energy of mixing of binary solutions in terms of the activity coefficients.
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            \Delta_\text{mix}G = n_1\mu_1^\text{sln}+n_2\mu_2^\text{sln}-n_1\mu_1^*-n_2\mu_2^*
+        \end{equation*}
+        \item Since $\mu_j^\text{sln}=\mu_j^*+RT\ln a_j$ for any solution and $\gamma_j=a_j/x_j$, it follows that
+        \begin{align*}
+            \frac{\Delta_\text{mix}G}{RT} &= n_1\ln x_1+n_2\ln x_2+n_1\ln\gamma_1+n_2\ln\gamma_2\\
+            \frac{\Delta_\text{mix}\overline{G}}{RT} &= x_1\ln x_1+x_2\ln x_2+x_1\ln\gamma_1+x_2\ln\gamma_2
+        \end{align*}
+        \item Note that the left two terms above represent the Gibbs energy of mixing of an ideal solution.
+    \end{itemize}
+    \item We can use the above result to derive a formula for $\Delta_\text{mix}\overline{G}$ for a binary solution described by
+    \begin{align*}
+        P_1 &= x_1P_1^*\e[\alpha x_2^2]&
+        P_2 &= x_2P_2^*\e[\alpha x_1^2]
+    \end{align*}
+    as in class. The final result is
+    \begin{equation*}
+        \frac{\Delta_\text{mix}\overline{G}}{RT} = x_1\ln x_1+x_2\ln x_2+\alpha x_1x_2
+    \end{equation*}
+    \item Statistical mechanics suggests that $\alpha$ has the form $w/RT$, where $w$ is a constant. Thus, we can write the above equation as
+    \begin{equation*}
+        \frac{\Delta_\text{mix}\overline{G}}{w} = \frac{RT}{w}(x_1\ln x_1+x_2\ln x_2)+x_1x_2
+    \end{equation*}
+    \item Visualizing the Gibbs energy of mixing.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[xscale=4,yscale=16]
+            \small
+            \draw (0,0) -- node[rotate=90,above=11mm]{$\Delta_\text{mix}\overline{G}/w$} (0,-0.2) -- node[below=7mm]{$x_1$} (1,-0.2);
+            \footnotesize
+            \node [below right,xshift=-1mm,yshift=-1mm] at (0,-0.2) {$0.00$};
+            \node [above left,xshift=-1mm,yshift=-1mm] at (0,-0.2) {$-0.20$};
+            \foreach \x in {0.25,0.50,0.75,1.00} {
+                \draw (\x,-0.19375) -- ++(0,-0.0125) node[below]{$\x$};
+            }
+            \foreach \y in {0.00,-0.05,-0.10,-0.15} {
+                \draw (0.025,\y) -- ++(-0.05,0) node[left]{$\y$};
+            }
+    
+            \draw [rex,thick]
+                plot[domain=0.0001:1,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{0.4*(\x*ln(\x)+(1-\x)*ln(1-\x))+\x*(1-\x)})
+                plot[domain=0.001:1,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{0.5*(\x*ln(\x)+(1-\x)*ln(1-\x))+\x*(1-\x)})
+                plot[domain=0.001:1,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{0.6*(\x*ln(\x)+(1-\x)*ln(1-\x))+\x*(1-\x)})
+            ;
+        \end{tikzpicture}
+        \caption{$\Delta_\text{mix}\overline{G}$ at various temperatures.}
+        \label{fig:mixingTemperature}
+    \end{figure}
+    \begin{itemize}
+        \item The curves with a maximum at $x_1=0.5$ have an interesting relation to the extraneous curves in the cubic van der Waals and Redlich-Kwong equations for $T<T_c$. In particular, the region between their two minima corresponds to unmixing of the solutions and should be flatter, as per Figure \ref{fig:criticalBinarySoln}.
+        \item Note that the three curves plotted are for, from the top down, $RT/w=0.4$, $RT/w=0.5$, and $RT/w=0.6$.
+    \end{itemize}
+    \item By finding the points where $\pdv*{(\Delta_\text{mix}\overline{G}/w)}{x_1}=0$, we can plot the coexistence curve from Figure \ref{fig:criticalBinarySoln}.
+    \begin{itemize}
+        \item Note that for $RT/w\geq 0.5$, $\pdv*{(\Delta_\text{mix}\overline{G}/w)}{x_1}=0$ only has one solution ($x_1=0.5$), whereas for $RT/w<0.5$, $\pdv*{(\Delta_\text{mix}\overline{G}/w)}{x_1}=0$ has three solutions ($x_1=0.5$ and two others, corresponding to the other minima as in the plot of $RT/w=0.4$ in Figure \ref{fig:mixingTemperature}).
+    \end{itemize}
+    \item \textbf{Regular solution}: A solution that can be described by the equation $\Delta_\text{mix}\overline{G}/RT=x_1\ln x_1+x_2\ln x_2+\alpha x_1x_2$.
+    \item \textbf{Excess Gibbs energy of mixing}: The extra Gibbs energy of mixing present in a solution beyond what would be present in an ideal solution. \emph{Denoted by} $\bm{G^E}$. \emph{Given by}
+    \begin{equation*}
+        G^E = \Delta_\text{mix}G-\Delta_\text{mix}G^\text{id}
+    \end{equation*}
+    \item It follows from the above that
+    \begin{equation*}
+        \frac{G^E}{RT} = n_1\ln\gamma_1+n_2\ln\gamma_2
+    \end{equation*}
+    \item \textbf{Molar excess Gibbs energy of mixing}: The excess Gibbs energy of mixing for one mole of a solution. \emph{Denoted by} $\bm{\overline{G}^E}$. \emph{Given by}
+    \begin{equation*}
+        \frac{\overline{G}^E}{RT} = x_1\ln\gamma_1+x_2\ln\gamma_2
+    \end{equation*}
+    \item If the solution in question is described by
+    \begin{align*}
+        P_1 &= x_1P_1^*\e[\alpha x_2^2]&
+        P_2 &= x_2P_2^*\e[\alpha x_1^2]
+    \end{align*}
+    then we have that
+    \begin{equation*}
+        \frac{\overline{G}^E}{RT} = \alpha x_1x_2
+    \end{equation*}
 \end{itemize}
 
 
