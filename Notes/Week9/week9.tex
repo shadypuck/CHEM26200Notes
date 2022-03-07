@@ -1,0 +1,129 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{8}
+
+\begin{document}
+
+
+
+
+\chapter{Solid-Liquid Solutions and Electrochemistry}
+\section{Solute Activity}
+\begin{itemize}
+    \item \marginnote{3/7:}At low concentration, solute activity is unity, with the chosen measure of concentration.
+    \item Activity of ions in electrolytes initially decreases rapidly with concentration below \SI{1}{\molar}. The effect is much stronger than for neutral solutes.
+    \item The Debye-H\"{u}ckel model reasonably explains why ion activity drops so quickly.
+    \item Practical solution concentration measures are the \textbf{molarity} and \textbf{molality}, in addition to the mole fraction $x$.
+    \item \textbf{Molality}: The number of moles of solute per kilogram solvent. \emph{Denoted by} $\bm{m}$. \emph{Given by}
+    \begin{equation*}
+        m = \frac{n_2}{\SI{1}{\kilo\gram\ solvent}}
+    \end{equation*}
+    \item \textbf{Concentration}: The number of moles of solute per liter solution. \emph{Also known as} \textbf{molarity}. \emph{Denoted by} $\bm{c}$. \emph{Given by}
+    \begin{equation*}
+        c = \frac{n_2}{\SI{1}{\liter\ solution}}
+    \end{equation*}
+    \item As the solvent gets purer, its vapor pressure approaches the Raoult's law limit.
+    \begin{itemize}
+        \item $a_1=P_1/P_1^*\to x_1$ as $x_1\to 1$.
+    \end{itemize}
+    \item As the solute's concentration diminishes, the solute activity approaches the Henry's law limit.
+    \begin{itemize}
+        \item $a_2=P_2/k_H\to x_2$ as $x_2\to 0$.
+    \end{itemize}
+    \item Using the vapor pressure of the solvent to determine the activity of the non-volatile solute.
+    \begin{itemize}
+        \item Use the Gibbs-Duhem relation,
+        \begin{align*}
+            0 &= n_1\dd{\ln a_1}+n_2\dd{\ln a_2}\\
+            &= (\SI{55.506}{\mole\per\kilo\gram})\dd{\ln a_1}+m\dd{\ln a_2}\\
+            \ln a_2 &= \int_0^m-\frac{55.506}{m'}\dd{(\ln a_1)}\dd{m'}
+        \end{align*}
+        \item But $\dd{(\ln a_1)}$ may not be very precise; thus, we define the \textbf{osmotic coefficient}.
+        \item With this quantity, we have
+        \begin{equation*}
+            \dd{\ln a_1} = -\dd{(m\phi)}\cdot\frac{1}{55.506}
+        \end{equation*}
+        \item Thus, we have that
+        \begin{align*}
+            0 &= -\dd{(m\phi)}+m\dd{\ln a_2}\\
+            \phi\dd{m}+m\dd{\phi} &= m\dd{\ln\gamma_2}+\dd{m}\\
+            \frac{\dd{m}}{m}\phi+\dd{\phi} &= \dd{\ln\gamma_2}+\frac{\dd{m}}{m}\\
+            \dd{\ln\gamma_2} &= \dd{\phi}+\left( \frac{\phi-1}{m} \right)\dd{m}\\
+            \ln\gamma_2 &= (\phi-1)+\int_0^m\frac{\phi-1}{m'}\dd{m'}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Osmotic coefficient}: The following quantity. \emph{Denoted by} $\bm{\phi}$. \emph{Given by}
+    \begin{equation*}
+        \phi = -\frac{\ln a_1}{x_2}
+        = -\ln a_1\cdot\frac{\SI{55.506}{\mole\per\kilo\gram}}{m}
+    \end{equation*}
+    \begin{itemize}
+        \item It is called the osmotic coefficient since $\Pi\overline{V}=-RT\ln a_1$ implies that as $x_2\to 0$, $\ln a_1\to -x_2$, so $\phi\to 1$.
+        \item Even in the case of an ideal solution, $\phi\neq 1$ exactly, though, since we must mathematically \emph{approximate} $\ln a_1\approx -x_2$.
+    \end{itemize}
+    \item Ionic solutions deviate strongly from ideal solution, even at small molality.
+    \item Mean ionic activity, molality, and activity coefficient.
+    \begin{itemize}
+        \item The salt $\ce{C}_{\nu_+}\ce{A}_{\nu_-}$ dissociates into $\nu_+$ \ce{C^{$z_+$}} ions and $\nu_-$ \ce{A^{$z_-$}} ions where
+        \begin{equation*}
+            \nu_+z_++\nu_-z_- = 0
+        \end{equation*}
+        for charge neutrality.
+        \item Let $\nu=\nu_++\nu_-$.
+        \item The chemical potential of the salt is
+        \begin{align*}
+            \mu_\text{salt} &= \nu_+\mu_++\nu_-\mu_-\\
+            &= \nu_+\mu_+^\circ+\nu_-\mu_-^\circ+RT(\nu_+\ln a_++\nu_-\ln a_-)+RT\ln(\underbrace{a_+^{\nu_+}a_-^{\nu_-}}_{a_2})
+        \end{align*}
+        \item Hence,
+        \begin{align*}
+            a_2 &= a_+^{\nu_+}a_-^{\nu_-}\\
+            &= (\gamma_+^{\nu_+}\gamma_-^{\nu_-})(m_+^{\nu_+}m_-^{\nu_-})\\
+            &= a_\pm^\nu\\
+            &= \gamma_\pm^\nu m_\pm^\nu
+        \end{align*}
+        where $a_\pm$ is the \textbf{mean activity}, $\gamma_\pm$ is the \textbf{mean activity coefficient}, and $m_\pm$ is the \textbf{mean molality}.
+        \item It follows that
+        \begin{align*}
+            \mu_2 &= \mu_2^\circ+RT\ln a_\pm^\nu\\
+            &= \mu_2^\circ+\nu RT\ln a_\pm
+        \end{align*}
+    \end{itemize}
+    \item Consider a solution of \ce{CaCl2} with molality $m$.
+    \begin{itemize}
+        \item It has
+        \begin{align*}
+            m_+ &= m&
+            m_- &= 2m
+        \end{align*}
+        \item Thus,
+        \begin{align*}
+            m_\pm &= \sqrt{m_+^1m_-^2}\\
+            &= \sqrt{4m^3}\\
+            &= 4^{1/3}m
+        \end{align*}
+        \item We can do something similar for $\gamma_\pm$ and $a_\pm$.
+    \end{itemize}
+    \item Determining the activity of electrolytes.
+    \begin{itemize}
+        \item The derivation is pretty similar to before (for nonvolatile solvents), except that now $\ln a_1=-\nu m\phi/55.506$.
+        \item It follows that
+        \begin{align*}
+            0 &= n_1\dd{\ln a_1}+n_2\dd{\ln a_2}\\
+            &= -\nu\dd{(m\phi)}+m\nu\dd{\ln a_\pm}
+        \end{align*}
+        so $\nu$ cancels.
+        \item This yields the same overall equation as before:
+        \begin{equation*}
+            \ln\gamma_\pm = (\phi-1)+\int_0^m\frac{\phi-1}{m'}\dd{m'}
+        \end{equation*}
+    \end{itemize}
+    \item We can do the above, but ion activity can also be measured by electrochemistry.
+\end{itemize}
+
+
+
+
+\end{document}
