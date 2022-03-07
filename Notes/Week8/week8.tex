@@ -770,5 +770,199 @@
 
 
 
+\section{Chapter 25: Solutions II --- Solid-Liquid Solutions}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{3/6:}\textbf{Solute}: The sparingly soluble component in a binary solution.
+    \begin{itemize}
+        \item Related quantities are denoted by a subscript 2.
+    \end{itemize}
+    \item \textbf{Solvent}: The component in excess in a binary solution.
+    \begin{itemize}
+        \item Related quantities are denoted by a subscript 1.
+    \end{itemize}
+    \item $a_1$ (the activity of the solvent) is defined with respect to a Raoult's law standard state. $a_2$ (the activity of the solute) is defined with respect to a Henry's law standard state.
+    \begin{itemize}
+        \item Note that we still define $a_2$ with respect to its vapor pressure (even though that quantity may be exceedingly small) because it is still meaningful.
+    \end{itemize}
+    \item \textbf{Molality}: The number of moles of solute per \SI{1000}{\gram} of solvent. \emph{Denoted by} $\bm{m}$. \emph{Units} $\textbf{mol}\,\textbf{kg}^{\bm{-1}}$. \emph{Given by}
+    \begin{equation*}
+        m = \frac{n_2}{\SI{1000}{\gram\ solvent}}
+    \end{equation*}
+    \item Relating the mole fraction of solute $x_2$ and the molality $m$.
+    \begin{equation*}
+        x_2 = \frac{n_2}{n_1+n_2}
+        = \frac{m}{\frac{\SI{1000}{\gram\per\kilo\gram}}{M_1}+m}
+    \end{equation*}
+    \begin{itemize}
+        \item $M_1$ is the molar mass of the solvent.
+        \item $\SI{1000}{\gram\per\kilo\gram}/M_1$ is the number of moles of solvent $n_1$ in \SI{1000}{\gram} of solvent.
+        \item We convert from the middle equation to the right equation by dividing both the top and bottom of the fraction by \SI{1000}{\gram}.
+    \end{itemize}
+    \item For \ce{H2O},
+    \begin{equation*}
+        \frac{\SI{1000}{\gram\per\kilo\gram}}{M_1} = \SI[per-mode=symbol]{55.506}{\mole\per\kilo\gram}
+    \end{equation*}
+    \item We define solute activity in terms of molality by requiring that $a_2\to m$ as $m\to 0$.
+    \item Under this definition, we can reexpress Henry's law in terms of molality with a related set of Henry's law constants. These give us equations like $P_2=k_H,m$.
+    \item \textbf{Molarity}: The number of moles of solute per \SI{1000}{\milli\liter} of solution. \emph{Denoted by} $\bm{c}$. \emph{Units} $\textbf{mol}\,\textbf{L}^{\bm{-1}}$. \emph{Given by}
+    \begin{equation*}
+        c = \frac{n_2}{\SI{1000}{\milli\liter\ solution}}
+    \end{equation*}
+    \item We can also analogously define solute activity in terms of molarity, requiring $a_2\to c$ as $c\to 0$.
+    \item Relating the solute mole fraction and molarity via the density.
+    \begin{itemize}
+        \item Consider \SI{1}{\liter} of a solution.
+        \item We can find the mass of this quantity of solution via the density $\rho$. In particular,
+        \begin{equation*}
+            \text{mass of the solution per liter} = (\SI{1000}{\milli\liter\per\liter})\rho
+        \end{equation*}
+        \item We can extract from this, the molarity, and the molar mass of the solute $M_2$ the mass of solvent per liter.
+        \begin{align*}
+            \text{mass of the solvent per liter} &= \text{mass of the solution per liter}-\text{mass of the solute per liter}\\
+            &= (\SI{1000}{\milli\liter\per\liter})\rho-cM_2
+        \end{align*}
+        \item Therefore, the number of moles of solvent per liter of solution is
+        \begin{equation*}
+            \frac{n_1}{\SI{1}{\liter}} = \frac{(\SI{1000}{\milli\liter\per\liter})\rho-cM_2}{M_1}
+        \end{equation*}
+        so
+        \begin{align*}
+            x_2 &= \frac{n_2}{n_1+n_2}\\
+            &= \frac{n_2}{n_1+n_2}\cdot\frac{1/\SI{1}{\liter}}{1/\SI{1}{\liter}}\\
+            &= \frac{c}{\frac{(\SI{1000}{\milli\liter\per\liter})\rho-cM_2}{M_1}+c}\\
+            &= \frac{cM_1}{(\SI{1000}{\milli\liter\per\liter})\rho+c(M_1-M_2)}
+        \end{align*}
+    \end{itemize}
+    \item For a nonvolatile solute, an equation of the form $a_2=P_2/k_H$ is not practical to use since $P_2$ is so small. Thus, we invoke the Gibbs-Duhem equation.
+    \begin{itemize}
+        \item Consider a solution of water with a small amount of a nonvolatile solute.
+        \item Since $m\ll\SI{55.506}{\mole\per\kilo\gram}$, we have that
+        \begin{equation*}
+            x_2 \approx \frac{m}{\SI{55.506}{\mole\per\kilo\gram}}
+        \end{equation*}
+        \item Therefore, since $a_1\to x_1$ as $x_1\to 1$ (as we have at low concentrations), we have that
+        \begin{equation*}
+            \ln a_1 = \ln x_1
+            = \ln(1-x_2)
+            \approx -x_2
+            \approx -\frac{m}{\SI{55.506}{\mole\per\kilo\gram}}
+        \end{equation*}
+        \item We can now use the form of the Gibbs-Duhem equation relating activities to find $a_2$.
+        \item In particular, for \SI{1}{\kilo\gram} of solvent, $n_1=\SI{55.506}{\mole}$ and $n_2=m$, so we have
+        \begin{equation*}
+            (\SI{55.506}{\mole\per\kilo\gram})\dd{\ln a_1}+m\dd{\ln a_2} = 0
+        \end{equation*}
+        \item With the definition of the \textbf{osmotic coefficient}, we have that $(\SI{55.506}{\mole\per\kilo\gram})\dd{\ln a_1}=-\dd{(m\phi)}$. Thus,
+        \begin{equation*}
+            m\dd{\ln(\gamma_{2m}m)} = \dd{(m\phi)}
+        \end{equation*}
+        where $\gamma_{2m}$ is the molal activity coefficient.
+        \item Therefore,
+        \begin{align*}
+            m\dd{\phi}+\phi\dd{m} &= m(\dd{\ln\gamma_{2m}}+\dd{\ln m})\\
+            \dd{\ln\gamma_{2m}} &= \dd{\phi}+\frac{\phi-1}{m}\dd{m}\\
+            \int_0^m\dd{\ln\gamma_{2m}} &= \int_0^m\dd{\phi}+\int_0^m\frac{\phi-1}{m'}\dd{m'}\\
+            \ln\gamma_{2m}-\ln(1) &= \phi-1+\int_0^m\frac{\phi-1}{m'}\dd{m'}\\
+            \ln\gamma_{2m} &= \phi-1+\int_0^m\frac{\phi-1}{m'}\dd{m'}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Osmotic coefficient}: A quantity that accounts for the discrepancy between experimental solvent activities and ones predicted by the above equation. \emph{Denoted by} $\bm{\phi}$. \emph{Given by}
+    \begin{equation*}
+        \ln a_1 = -\frac{m\phi}{\SI{55.506}{\mole\per\kilo\gram}}
+    \end{equation*}
+    \begin{itemize}
+        \item Since $\phi=1$ for an ideal dilute solution, the deviation of $\phi$ from unity is yet another measure of the nonideality of a solution.
+        \item $\phi$ increases as $m$ increases (this should also make intuitive sense).
+    \end{itemize}
+    \item \textbf{Colligative property}: A property of a solution that depends (in dilute solutions) upon only the number, not the type, of solute particles.
+    \item Deriving an equation for the activity of the solvent in a solution at the freezing point.
+    \begin{itemize}
+        \item At the freezing point, $\mu_1^s=\mu_1^\text{sln}$. In particular,
+        \begin{align*}
+            \mu_1^s &= \mu_1^l+RT\ln a_1\\
+            \ln a_1 &= \frac{\mu_1^s-\mu_1^l}{RT}
+        \end{align*}
+        \item Differentiating the above with respect to $T$ at constant pressure and concentration, and substituting with the Gibbs-Helmholtz equation, give us
+        \begin{align*}
+            \left( \pdv{\ln a_1}{T} \right)_{P,x_1} &= \frac{1}{R}\left[ \pdv{T}(\frac{\mu_1^s}{T})-\pdv{T}(\frac{\mu_1^l}{T}) \right]_{P,x_1}\\
+            &= \frac{1}{R}\left[ -\frac{\overline{H}_1^s}{T^2}+\frac{\overline{H}_1^l}{T^2} \right]\\
+            &= \frac{\Delta_\text{fus}\overline{H}}{RT^2}
+        \end{align*}
+        \item Integrating the above from pure solvent $a_1=1$, $T=T_\text{fus}^*$ to a solution with arbitrary values of $a_1,T_\text{fus}$ allows us to calculate the activity $a_1$ of said solution.
+    \end{itemize}
+    \item \textbf{Freezing-point depression constant}: The proportionality constant between the change in freezing point $\Delta T_\text{fus}$ from the pure solvent to the given solution and the molality $m$ of the given solution. \emph{Denoted by} $\bm{K_f}$. \emph{Given by}
+    \begin{equation*}
+        \Delta T_\text{fus} = K_fm
+    \end{equation*}
+    \item Deriving $K_f$ from our freezing point activity equation.
+    \begin{itemize}
+        \item Consider a dilute solution. Assume $\Delta_\text{fus}\overline{H}$ is independent of temperature over the temperature range $(T_\text{fus},T_\text{fus}^*)$.
+        \item It follows that
+        \begin{align*}
+            \ln a_1 &= \int_{T_\text{fus}^*}^{T_\text{fus}}\frac{\Delta_\text{fus}\overline{H}}{RT^2}\dd{T}\\
+            \ln x_1 &\approx \frac{\Delta_\text{fus}\overline{H}}{R}\int_{T_\text{fus}^*}^{T_\text{fus}}\frac{\dd{T}}{T^2}\\
+            \ln(1-x_2) &\approx \frac{\Delta_\text{fus}\overline{H}}{R}\left( \frac{1}{T_\text{fus}^*}-\frac{1}{T_\text{fus}} \right)\\
+            -x_2 &\approx \frac{\Delta_\text{fus}\overline{H}}{R}\left( \frac{T_\text{fus}-T_\text{fus}^*}{T_\text{fus}T_\text{fus}^*} \right)
+        \end{align*}
+        \item Now for two more approximations. First, since $\Delta T_\text{fus}$ is small, we can set $T_\text{fus}\approx T_\text{fus}^*$ in the denominator of the above equation. Second, since $m$ is small, we may let
+        \begin{equation*}
+            x_2 = \frac{m}{\frac{\SI{1000}{\gram\per\kilo\gram}}{M_1}+m}
+            \approx \frac{M_1m}{\SI{1000}{\gram\per\kilo\gram}}
+        \end{equation*}
+        \item Therefore, making the substitutions and rearranging the above gives us
+        \begin{align*}
+            -\frac{M_1m}{\SI{1000}{\gram\per\kilo\gram}} &= \frac{\Delta_\text{fus}\overline{H}}{R}\left( \frac{-\Delta T_\text{fus}}{(T_\text{fus}^*)^2} \right)\\
+            \Delta T_\text{fus} = T_\text{fus}^*-T_\text{fus} &= \underbrace{\frac{M_1}{\SI{1000}{\gram\per\kilo\gram}}\frac{R(T_\text{fus}^*)^2}{\Delta_\text{fus}\overline{H}}}_{K_f}\cdot m
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Boiling-point elevation constant}: The proportionality constant between the change in boiling point $\Delta T_\text{vap}$ from the pure solvent to the given solution and the molality $m$ of the given solution. \emph{Denoted by} $\bm{K_b}$. \emph{Given by}
+    \begin{equation*}
+        \Delta T_\text{vap} = K_bm
+    \end{equation*}
+    \item We can derive an analogous equation to the freezing-point depression result in an analogous way, yielding
+    \begin{equation*}
+        \Delta T_\text{vap} = T_\text{vap}-T_\text{vap}^* = \underbrace{\frac{M_1}{\SI{1000}{\gram\per\kilo\gram}}\frac{R(T_\text{vap}^*)^2}{\Delta_\text{vap}\overline{H}}}_{K_b}\cdot m
+    \end{equation*}
+    \item \textbf{Semipermeable membrane}: A membrane containing pores that allow one substance to pass through but not another.
+    \item \textbf{Osmotic pressure}: The hydrostatic pressure head that is built up as solvent molecules pass through a semipermeable membrane from pure solvent to solute-containing solution.
+    \begin{itemize}
+        \item Such a process happens to equalize the chemical potentials on the two sides of the semipermeable membrane.
+    \end{itemize}
+    \item Deriving an expression for the osmotic pressure.
+    \begin{itemize}
+        \item If $P$ is the pressure exerted on the system and $\Pi$ is the excess hydrostatic pressure on the solute-containing side, the system seeks $\Pi$ such that
+        \begin{equation*}
+            \mu_1^*(T,P) = \mu_1^\text{sln}(T,P+\Pi,a_1)
+            = \mu_1^*(T,P+\Pi)+RT\ln a_1
+        \end{equation*}
+        \item It follows by the Maxwell relation for chemical potential that
+        \begin{align*}
+            0 &= \mu_1^*(T,P+\Pi)-\mu_1^*(T,P)+RT\ln a_1\\
+            &= \int_P^{P+\Pi}\left( \pdv{\mu_1^*}{P'} \right)_T\dd{P'}+RT\ln a_1\\
+            &= \int_P^{P+\Pi}\overline{V}^*\dd{P'}+RT\ln a_1
+        \end{align*}
+        \item Assuming that $\overline{V}_1^*$ is invariant under changing pressure, the above equation implies that
+        \begin{align*}
+            0 &= \Pi\overline{V}_1^*+RT\ln a_1\\
+            \Pi\overline{V}_1^* &= RTx_2
+        \end{align*}
+        \item Since $n_2\ll n_1$, we may approximate $x_2=n_2/(n_1+n_2)\approx n_2/n_1$ to get
+        \begin{align*}
+            \Pi &= \frac{n_2RT}{n_1\overline{V}_1^*}\\
+            &= \frac{n_2RT}{V}\\
+            \Pi &= cRT
+        \end{align*}
+        where $V$ is the total volume of solvent.
+    \end{itemize}
+    \item \textbf{Van't Hoff equation} (for osmotic pressure): The above equation.
+    \item \textbf{Reverse osmosis}: The process of applying pressure to seawater in excess of the osmotic pressure to force it through a rigid semipermeable membrane, resulting in fresh water.
+    \begin{itemize}
+        \item The most common such membrane is cellulose acetate.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
