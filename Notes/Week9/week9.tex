@@ -125,6 +125,138 @@
 
 
 
+\section{Debye-H\"{u}ckel Model}
+\begin{itemize}
+    \item \marginnote{3/9:}For ionic solutions, $\phi$ is fitted to a function of the form $\phi=\sum a_im^{i/2}$.
+    \item For neutral solutes, $\phi$ is fitted to a function of the form $\phi=\sum a_im^i$.
+    \item Debye-H\"{u}ckel model for small concentrations: $\ln\gamma_\pm\propto m^{1/2}$.
+    \item We define $\pH=-\log a_1$, not $\pH=-\log[\ce{H3O+}]$.
+    \begin{itemize}
+        \item Thus, $\pH=-\log\gamma_\pm-\log[\ce{H3O+}]$.
+        \item This also gives a method of determining $\gamma_\pm$.
+    \end{itemize}
+    \item Activity coefficients and interaction between solutes.
+    \begin{itemize}
+        \item If there are \emph{unfavorable} interactions between solutes (as in sucrose), $\gamma>1$.
+        \item If there are \emph{favorable} interactions between solutes (as in \ce{NaCl}), $\gamma<1$.
+        \item In terms of energy:
+        \begin{align*}
+            \mu &= \overline{\mu}+P\overline{V}-T\overline{S}\\
+            &= \mu^*(x)+RT\ln x\\
+            &= \mu^*_\text{ideal}+(\mu^*(x)-\mu_\text{ideal})+RT\ln x\\
+            &= \mu^*_\text{ideal}+RT\ln a\\
+            &= \mu^*_\text{ideal}+RT\ln\gamma+RT\ln x
+        \end{align*}
+        \item It follows that
+        \begin{align*}
+            RT\ln\gamma &= \mu^*(x)-\mu_\text{ideal}\\
+            \gamma &= \exp\left( \frac{\mu^*(x)-\mu_\text{ideal}}{RT} \right)
+        \end{align*}
+        using only $\overline{\mu}\to\gamma=\exp\big( \frac{\mu^*(x)-\mu_\text{ideal}}{RT} \big)$.
+        \begin{itemize}
+            \item This mathematically shows that if we stabilize the ion energetically, then $\gamma<1$.
+        \end{itemize}
+    \end{itemize}
+    \item Interactions between ions. The Debye length arises due to the screening of the charges. Calculated from the Boltzmann factor.
+    \begin{itemize}
+        \item Imagine a charge of magnitude $q$ at the center of our coordinate system.
+        \item We have a charge density $\rho(\pi)$ at a distance $r$ from the nucleus.
+        \item We have
+        \begin{equation*}
+            \rho(r) = \sum_iq_i\left( \frac{N_i}{V} \right)\cdot\e[-q_i\phi(r)/k_BT]
+        \end{equation*}
+        where the latter term is the Boltzmann factor and $\phi(r)$ is the electrostatic potential.
+        \item We also have the Poisson equation,
+        \begin{equation*}
+            \nabla\phi(r) = -\frac{\rho(r)}{\varepsilon\varepsilon_0}
+        \end{equation*}
+        \item Since everything is depending on each other, it seems we are in a pickle.
+        \item But if
+        \begin{equation*}
+            \frac{q_i\phi(r)}{k_BT} < 1
+        \end{equation*}
+        then
+        \begin{equation*}
+            \e[q_i\phi(r)/k_BT] = 1-\frac{q_i\phi(r)}{k_BT}
+        \end{equation*}
+        \item Therefore,
+        \begin{equation*}
+            \rho(r) = \sum_iq_i\left( \frac{N_i}{V} \right)\cdot\left( 1-\frac{q_i\phi(r)}{k_BT} \right)
+            = \sum q_i\left( \frac{N_i}{V} \right)-\phi(r)\sum\frac{q_i^2\left( \frac{N_i}{V} \right)}{k_BT}
+        \end{equation*}
+        where the left term in the right expression above evaluates to zero.
+        \item We can only have an excess of 1000 ions of one type of charge per liter of solution.
+        \item It follows that
+        \begin{align*}
+            \nabla\phi(r) &= \left( \frac{\sum q_i^2\left( \frac{N_i}{V} \right)}{\varepsilon\varepsilon_0k_BT} \right)\cdot\phi(r)\\
+            \pdv[2]{\phi}{r}+\cdots &= \kappa^2\cdot\phi
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Debye length}: $\kappa^{-1}$.
+    \item In the one-dimensional case,
+    \begin{align*}
+        \pdv[2]{\phi}{x} &= \kappa^2\phi\\
+        \phi(x) &= A\e[\kappa x]+B\e[-\kappa x]
+    \end{align*}
+    \begin{itemize}
+        \item In other words, all interactions take place within the Debye length.
+        \item The distance over which ion concentration differs from perfectly mixed ion potential around a charge.
+        \item In electrochemistry, this is where everything happens.
+    \end{itemize}
+    \item Ions \textbf{screen} other ions.
+    \item We have
+    \begin{equation*}
+        \kappa^2 = \frac{\sum q_i^2\left( \frac{N_i}{V} \right)}{\varepsilon\varepsilon_0k_BT}
+    \end{equation*}
+    \item \textbf{Ionic strength}: The following quantity. \emph{Denoted by} $\bm{I_c}$. \emph{Given by}
+    \begin{equation*}
+        I_c = \frac{1}{2}\sum z_i^2c_i
+    \end{equation*}
+    \item Thus, we have
+    \begin{equation*}
+        \kappa^{-1} = \frac{1}{\sqrt{I_c}}\cdot\sqrt{\frac{10^{-3}}{\e[2]N_A}\cdot\frac{\varepsilon\varepsilon_0k_BT}{2}}
+    \end{equation*}
+    \item Calculating the Debye length of \ce{NaCl}.
+    \begin{itemize}
+        \item For water, $\varepsilon\approx 80$.
+        \item For \SI{1}{\molar} \ce{NaCl},
+        \begin{equation*}
+            I_c = \frac{1}{2}(1\cdot 1+1\cdot 1) = \SI{1}{\molar}
+        \end{equation*}
+        \item Thus, $\kappa^{-1}=\SI{3}{\angstrom}$.
+    \end{itemize}
+    \item Calculating the Debye length of \ce{CaCl2}.
+    \begin{itemize}
+        \item $I_c=\SI{3}{\molar}$.
+    \end{itemize}
+    \item Interactions lead to the Debye-H\"{u}ckel model for the mean ionic activity.
+    \begin{itemize}
+        \item We have
+        \begin{equation*}
+            \mu = -\frac{\kappa q^2}{8\pi\varepsilon\varepsilon_0}
+        \end{equation*}
+        which implies that
+        \begin{equation*}
+            \ln\gamma = -\frac{\kappa q^2}{8\pi\varepsilon\varepsilon_0k_BT}
+        \end{equation*}
+        \item Hence, by Problem 25.58,
+        \begin{equation*}
+            \ln\gamma_\pm = \frac{|z_+z_-|e^2\kappa}{8\pi\varepsilon\varepsilon_0k_BT}
+        \end{equation*}
+        where $e^2\kappa/8\pi\varepsilon\varepsilon_0$ comes from the Coulombic attraction.
+        \item Thus, by the Debye-H\"{u}ckel model,
+        \begin{equation*}
+            \ln\gamma_\pm = -1.333|z_+z_-|\sqrt{I_c}
+        \end{equation*}
+    \end{itemize}
+    \item One empirical extension of the Debye-H\"{u}ckel model is
+    \begin{equation*}
+        \ln\gamma_\pm = \frac{-1.173|z_+z_-|\sqrt{I_c}}{1+\sqrt{I_c}}+c_m
+    \end{equation*}
+\end{itemize}
+
+
+
 \section{Chapter 25: Solutions II --- Solid-Liquid Solutions}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
