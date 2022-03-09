@@ -75,7 +75,7 @@
         \item The chemical potential of the salt is
         \begin{align*}
             \mu_\text{salt} &= \nu_+\mu_++\nu_-\mu_-\\
-            &= \nu_+\mu_+^\circ+\nu_-\mu_-^\circ+RT(\nu_+\ln a_++\nu_-\ln a_-)+RT\ln(\underbrace{a_+^{\nu_+}a_-^{\nu_-}}_{a_2})
+            &= \nu_+\mu_+^\circ+\nu_-\mu_-^\circ+RT(\nu_+\ln a_++\nu_-\ln a_-)+RT\ln\big( \underbrace{a_+^{\nu_+}a_-^{\nu_-}}_{a_2} \big)
         \end{align*}
         \item Hence,
         \begin{align*}
@@ -121,6 +121,156 @@
         \end{equation*}
     \end{itemize}
     \item We can do the above, but ion activity can also be measured by electrochemistry.
+\end{itemize}
+
+
+
+\section{Chapter 25: Solutions II --- Solid-Liquid Solutions}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{3/8:}Oppositely charged ions in solution interact with each other via a Coulombic potential, which varies proportionally to $1/r$.
+    \begin{itemize}
+        \item Note the difference between the strength of this potential and the LDF potential of $1/r^6$ attracting ordinary neutral molecules.
+        \item It follows that solutions of electrolytes deviate from ideality much more quickly (i.e., at much lower concentrations).
+    \end{itemize}
+    \item When ions with higher charges (e.g., \ce{CaCl2} vs. \ce{NaCl}) are produced, the deviation from ideality is exacerbated.
+    \item \textbf{$\bm{a}$-$\bm{b}$ electrolyte}: An electrolyte for which $\nu_+=a$ and $\nu_-=b$.
+    \begin{itemize}
+        \item For example, \ce{CaCl2} is a 1-2 electrolyte and \ce{Gd2(SO4)3} is a 2-3 electrolyte.
+    \end{itemize}
+    \item The chemical potential of a salt depends on the potentials of its constituent ions as per
+    \begin{equation*}
+        \mu_2 = \nu_+\mu_++\nu_-\mu_-
+    \end{equation*}
+    where $\mu_j=\mu_j^\circ+RT\ln a_j$ for $j=2,+,-$.
+    \item It follows from the above and the fact that $\mu_2^\circ=\nu_+\mu_+^\circ+\nu_-\mu_-^\circ$, too, that
+    \begin{align*}
+        \mu_2^\circ+RT\ln a_2 &= \nu_+(\mu_+^\circ+RT\ln a_+)+\nu_-(\mu_-^\circ+RT\ln a_-)\\
+        RT\ln a_2 &= \nu_+RT\ln a_++\nu_-RT\ln a_-\\
+        \ln a_2 &= \nu_+\ln a_++\nu_-\ln a_-\\
+        a_2 &= a_+^{\nu_+}a_-^{\nu_-}
+    \end{align*}
+    \item We define $\nu=\nu_++\nu_-$.
+    \item \textbf{Mean ionic activity}: The following quantity. \emph{Denoted by} $a_\pm$. \emph{Given by}
+    \begin{equation*}
+        a_\pm^\nu = a_+^{\nu_+}a_-^{\nu_-}
+    \end{equation*}
+    \item We take the activity $a_2$ of an electrolyte to be its mean ionic activity to the $\nu^\text{th}$ power, i.e., $a_2=a_\pm^\nu$.
+    \item We cannot determine the activities of single ions.
+    \item We define the molalities of individual ions by
+    \begin{align*}
+        m_+ &= \nu_+m&
+        m_- &= \nu_-m
+    \end{align*}
+    \item We define single-ion activity coefficients by
+    \begin{align*}
+        \gamma_+ &= \frac{a_+}{m_+}&
+        \gamma_- &= \frac{a_-}{m_-}
+    \end{align*}
+    \item \textbf{Mean ionic molarity}: The following quantity. \emph{Denoted by} $m_\pm$. \emph{Given by}
+    \begin{equation*}
+        m_\pm^\nu = m_+^{\nu_+}m_-^{\nu_-}
+    \end{equation*}
+    \item \textbf{Mean ionic activity coefficient}: The following quantity. \emph{Denoted by} $\gamma_\pm$. \emph{Given by}
+    \begin{equation*}
+        \gamma_\pm^\nu = \gamma_+^{\nu_+}\gamma_-^{\nu_-}
+    \end{equation*}
+    \item It follows that
+    \begin{equation*}
+        a_2 = a_\pm^\nu
+        = (m_+^{\nu_+}m_-^{\nu_-})(\gamma_+^{\nu_+}\gamma_-^{\nu_-})
+        = m_\pm^\nu\gamma_\pm^\nu
+    \end{equation*}
+    \item \textcite{bib:McQuarrieSimon} derives
+    \begin{equation*}
+        \ln\gamma_\pm = (\phi-1)+\int_0^m\frac{\phi-1}{m'}\dd{m'}
+    \end{equation*}
+    \item For colligative properties, since $x_2$ is scaled up by a factor of $\nu$, we get
+    \begin{align*}
+        \Delta T_\text{fus} &= \nu K_fm&
+        \Delta T_\text{vap} &= \nu K_bm&
+        \Pi &= \nu cRT
+    \end{align*}
+    for solutions of electrolytes.
+    \item Debye and H\"{u}ckel showed theoretically in 1925 that at low concentrations, the natural logarithms of the $j^\text{th}$ ion's activity coefficient and the mean ionic activity coefficient are given by
+    \begin{align*}
+        \ln\gamma_j &= -\frac{\kappa q_j^2}{8\pi\varepsilon_0\varepsilon_rk_BT}&
+        \ln\gamma_\pm &= -|q_+q_-|\frac{\kappa}{8\pi\varepsilon_0\varepsilon_rk_BT}
+    \end{align*}
+    where $q_+=z_+e$ and $q_-=z_-e$, $\varepsilon_r$ is the (unitless) relative permittivity of the solvent, and $\kappa$ is given by
+    \begin{equation*}
+        \kappa^2 = \sum_{j=1}^s\frac{q_j^2}{\varepsilon_0\varepsilon_rk_BT}\left( \frac{N_j}{V} \right)
+    \end{equation*}
+    $s$ being the number of ionic species and $N_j/V$ being the number density of species $j$.
+    \begin{itemize}
+        \item Converting $N_j/V$ to molarity allows us to rewrite the above as
+        \begin{equation*}
+            \kappa^2 = N_A(\SI{1000}{\liter\per\cubic\meter})\sum_{j=1}^s\frac{q_j^2c_j}{\varepsilon_0\varepsilon_rk_BT}
+        \end{equation*}
+        \item This result is derived in Problems 25-50 through 25-58.
+    \end{itemize}
+    \item \textbf{Debye-H\"{u}ckel limiting law}: The above expression for $\ln\gamma_\pm$.
+    \item \textbf{Ionic strength}: The following quantity. \emph{Denoted by} $\bm{I_c}$. \emph{Given by}
+    \begin{equation*}
+        I_c = \frac{1}{2}\sum_{j=1}^sz_j^2c_j
+    \end{equation*}
+    \begin{itemize}
+        \item $c_j$ is the molarity of the $j^\text{th}$ ionic species.
+    \end{itemize}
+    \item Having defined the ionic strength, we can write express $\kappa$ in a third form as
+    \begin{equation*}
+        \kappa^2 = \frac{2e^2N_A(\SI{1000}{\liter\per\cubic\meter})}{\varepsilon_0\varepsilon_rk_BT}(I_c/\si{\mole\per\liter})
+    \end{equation*}
+    \item In the Debye-H\"{u}ckel limiting law, $\ln\gamma_\pm\propto\kappa\propto\sqrt{I_c}\propto\sqrt{c}$.
+    \begin{itemize}
+        \item This is why we curve fit $\phi$ vs. $m$ data to a polynomial in $m^{1/2}$.
+    \end{itemize}
+    \item As $m\to 0$, all curves $\ln\gamma_\pm$ vs. $m$ converge to the same straight line (hence this being a \emph{limiting} law).
+    \item Physically interpreting $\kappa$.
+    \begin{itemize}
+        \item The net charge in a spherical shell of radius $r$ and thickness $\dd{r}$ surrounding an ion of charge $q_i$ is given by
+        \begin{equation*}
+            p_i(r)\dd{r} = -q_i\kappa^2r\e[-\kappa r]\dd{r}
+        \end{equation*}
+        \item Integrating this equation over all space yields $-q_i$.
+        \item Thus, "the total charge surrounding an ion of charge $q_i$ is equal and of the opposite sign to $q_i$. In other words, it expresses the electroneutrality of the solution" \parencite[1033-34]{bib:McQuarrieSimon}.
+        \item The above equation describes the \textbf{ionic atmosphere} about the central ion.
+        \item Additionally, its maximum occurs at $\kappa^{-1}$, so we say that $\kappa$ is a measure of the thickness of the ionic atmosphere.
+    \end{itemize}
+    \item For a 1-1 electrolyte in aqueous solution at \SI{25}{\celsius},
+    \begin{equation*}
+        \kappa = \frac{\SI{304}{\pico\meter}}{\sqrt{c/\si{\mole\per\liter}}}
+    \end{equation*}
+    \item Assumptions of the Debye-H\"{u}ckel theory:
+    \begin{itemize}
+        \item Ions are point particles.
+        \item They interact with a purely Coulombic potential.
+        \item The solvent is a continuous medium with a uniform relative permittivity $\varepsilon_r$.
+    \end{itemize}
+    \item Clearly, these will start to break down as their concentration increases.
+    \item The Debye-H\"{u}ckel model has been of important utility mainly in that all models that attempt to treat higher concentrations must reduce to it at lower temperatures.
+    \item Real progress toward a more general theory wasn't made until the 1970s, though.
+    \item \textbf{Primitive model}: Ions are considered hard spheres with charges at their centers and the solvent is considered a continuous medium with a uniform relative permittivity.
+    \begin{itemize}
+        \item Although, well, primitive, long-range Coulombic interactions and short-range repulsions, which this model encapsulates well, turn out to be major considerations, so the model is pretty good.
+    \end{itemize}
+    \item The mean spherical approximation (MSA) provides analytical solutions.
+    \begin{itemize}
+        \item A central result is that
+        \begin{equation*}
+            \ln\gamma_\pm = \ln\gamma_\pm^\text{el}+\ln\gamma^\text{HS}
+        \end{equation*}
+        where $\ln\gamma_\pm^\text{el}$ is an electrostatic (Coulombic) contribution to $\ln\gamma_\pm$ and $\ln\gamma^\text{HS}$ is a hard-sphere contribution.
+        \item For a 1-1 electrolyte,
+        \begin{equation*}
+            \ln\gamma_\pm^\text{el} = \frac{x\sqrt{1+2x}-x-x^2}{4\pi\rho d^3}
+        \end{equation*}
+        where $\rho$ is the number density of charged particles, $d$ is the sum of the radius of a cation and anion, and $x=\kappa d$. Also,
+        \begin{equation*}
+            \ln\gamma^\text{HS} = \frac{4y-\frac{9}{4}y^2+\frac{3}{8}y^3}{\left( 1-\frac{y}{2} \right)^3}
+        \end{equation*}
+        where $y=\pi\rho d^3/6$.
+    \end{itemize}
 \end{itemize}
 
 
