@@ -257,6 +257,120 @@
 
 
 
+\section{Electrochemistry}
+\begin{itemize}
+    \item \marginnote{3/11:}Example from last time: Calculate the mean ionic activity of \ce{ZnCl2} at $0.02$ molal.
+    \begin{itemize}
+        \item The mean molality is $m_\pm=\sqrt{(0.02)^1(0.04)^2}=\num{3.17e-2}$.
+        \item The ionic strength is
+        \begin{align*}
+            I &= \frac{1}{2}[(0.02)(+2)^2+(0.04)(-1)^2]\\
+            &= 0.06
+        \end{align*}
+        \item Calculate the Debye-H\"{u}ckel mean ionic activity coefficient:
+        \begin{align*}
+            \ln\gamma_\pm &= -1.173|z_+z_-|\sqrt{I_c}\\
+            &= -1.173(2\cdot 1)\sqrt{0.06}\\
+            &= -0.574
+        \end{align*}
+        \item Thus, by plotting $\ln\gamma_\pm$ vs. $c$ for small concentrations, we can find that $\sqrt{c}\approx 0.14$.
+    \end{itemize}
+    \item Electrochemistry: Exchanging chemical free energy with electrical energy.
+    \begin{itemize}
+        \item Zinc and copper electrodes in a solution of \ce{CuSO4}.
+        \begin{itemize}
+            \item The zinc silvery metal turns red (it's getting coated in copper) and the copper electrode doesn't change.
+        \end{itemize}
+        \item Now picture zinc in a solution of \ce{ZnSO4} and copper in a solution of \ce{CuSO4}, the two containers being connected by a salt bridge and an ammeter.
+        \begin{itemize}
+            \item The zinc electrode corrodes (gets smaller and smaller).
+            \item The copper electrode grows (copper gets deposited).
+            \item What we have is \ce{Zn -> Zn^2+ + 2e^-} and \ce{Cu^2+ + 2e^- -> Cu}, so electrons flow through the wire from the zinc anode to the copper cathode.
+            \item The overall redox reaction is
+            \begin{equation*}
+                \ce{Zn_{(s)} + Cu^2+ -> Zn^2+ + Cu_{(s)}}
+            \end{equation*}
+            \item The relevant molar Gibbs energies of formation ($\Delta\overline{G}_f^\circ$) are zero for the metals, \SI{-147}{\kilo\joule\per\mole} for \ce{Zn^2+_{(aq)}}, and \SI{65}{\kilo\joule\per\mole} for \ce{Cu^2+_{(aq)}}.
+            \item Thus, this reaction is spontaneous with $\Delta\overline{G}^\circ=-147-65=\SI{-212}{\kilo\joule\per\mole}$.
+        \end{itemize}
+        \item We know that $\Delta\overline{G}^\circ=w_{\text{non }PV}=\Delta\overline{Q}\cdot E$ at constant $T,P$, where $E$ is the electrochemical potential.
+        \item We also know that $\Delta\overline{Q}=-2eN_A=-2F$ (negative since we're losing electrons) where
+        \begin{equation*}
+            F = \SI{96485}{\coulomb}
+        \end{equation*}
+        is the \textbf{Faraday constant}.
+        \item Thus,
+        \begin{equation*}
+            E = \frac{\Delta\overline{G}^\circ}{2F}
+            = \frac{-212}{-2F}
+            = \frac{-212000}{-2\cdot 96485}
+            = \SI{1.1}{\volt}
+        \end{equation*}
+    \end{itemize}
+    \item Using the Gibbs free energy with the electrostatic potential energy.
+    \begin{itemize}
+        \item Hydrogen electrode: You have a reference, and then you bubble \ce{H2} through the solution with $P_{\ce{H2}}=\SI{1}{\atmosphere}$, using a solution of $\pH=1$.
+        \begin{itemize}
+            \item Recall that this does not imply that $[\ce{H3O+}]=\SI{1}{\molar}$; it means that $\log a_{\ce{H3O+}}=1$.
+            \item Know that \ce{2H+ + 2e^- -> H2}.
+        \end{itemize}
+    \end{itemize}
+    \item Nernst equation.
+    \begin{equation*}
+        E = E_0-\frac{RT}{nF}\ln\frac{a_\text{reductant}}{a_\text{oxidant}}
+    \end{equation*}
+    \item In the case of the standard hydrogen electrode,
+    \begin{align*}
+        E_{\ce{H2}} &= E_0-\frac{RT}{2F}\ln\frac{P_{\ce{H2}}}{a_{\ce{H}}^2}\\
+        &= E_0-\frac{0.0592}{2}\log\frac{P_{\ce{H2}}}{a_{\ce{H}}^2}\\
+        &= E_0-\frac{0.0592}{2}\log P_{\ce{H2}}+0.0592\pH
+    \end{align*}
+    \item Membrane potential.
+    \begin{itemize}
+        \item In a cell, ion pumps establish an electric potential across a membrane of up to 20 times.
+        \item Assuming that the chemical potentials inside and outside the membrane are equal, we have
+        \begin{align*}
+            \mu_\text{in} &= \mu_+^*+RT\ln c_\text{in}+q\phi&
+            \mu_\text{out} &= \mu_+^*+RT\ln c_\text{out}+q\cdot 0
+        \end{align*}
+        where $\phi$ is the electrical potential difference between the inside and outside of the cell.
+        \item Setting the two equations equal to each other and noting that $q=eN_A=F$ yields
+        \begin{align*}
+            RT\ln c_\text{in}+R\phi &= RT\ln c_\text{out}\\
+            \phi &= \frac{RT}{F}\ln\frac{c_\text{out}}{c_\text{in}}\\
+            &= -\SI{75}{\milli\volt}
+        \end{align*}
+        for $T=\SI{300}{\kelvin}$ and the concentration on the inside being 20 times that on the outside.
+    \end{itemize}
+    \item Corrosion and concentration gradients.
+    \begin{itemize}
+        \item Metal corrosion occurs when $[\ce{M+}]$ is smallest. Here, \ce{M+ + e^- -> M}.
+        \begin{itemize}
+            \item Electrons flow from negative to positive.
+        \end{itemize}
+        \item Corrosion occurs where \ce{O2} concentration is the lowest.
+        \begin{itemize}
+            \item \ce{O2 + 4e^- + 4H^+ -> 2H2O}.
+            \item Low $[\ce{O2}]$ implies that
+            \begin{equation*}
+                E = E_0-\frac{RT}{4F}-\ln\frac{1}{[\ce{H+}]^4P_{\ce{O2}}}
+            \end{equation*}
+            so $E$ becomes more negative.
+            \item It is the low potential at places that lack oxygen that causes corrosion.
+        \end{itemize}
+    \end{itemize}
+    \item Few lines summary of CHEM 26200.
+    \begin{enumerate}
+        \item We first thought of $\prb{E}=\sum p_iE_i$, i.e., the energy as dependent on the states of a system.
+        \item We then defined the entropy $S=-k_B\sum p_i\ln p_i$ that maximizes when everything is most equally distributed. Tells us where nature goes, i.e., toward the most probable outcome.
+        \item We can combine energy with the tendency of nature to go to the highest entropy to define the \textbf{Lagrange multipliers} $F=U-TS$ and $G=H-TS$; minima of $F,G$ are where the system goes spontaneously.
+        \item The partition function $q=\sum\e[-E_i/k_BT]$ allows us to calculate every property of the system it describes. We can also extend this from molecules to systems of distinguishable and indistinguishable particles.
+        \item The probabilities of each state depend on their energy via $p_i=\e[E_i/k_BT]/q$.
+    \end{enumerate}
+\end{itemize}
+
+
+
 \section{Chapter 25: Solutions II --- Solid-Liquid Solutions}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}

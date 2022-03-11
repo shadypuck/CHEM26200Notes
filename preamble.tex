@@ -39,6 +39,16 @@
 \deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
 \deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
+\sisetup{range-phrase=-,range-units=single,table-alignment-mode=format,table-number-alignment=center}
+\DeclareSIUnit{\angstrom}{\textup{\AA}}
+\DeclareSIUnit{\atomicmassunit}{amu}
+\DeclareSIUnit{\hartree}{\emph{E}_h}
+\DeclareSIUnit{\atmosphere}{atm}
+\DeclareSIUnit{\torr}{torr}
+\DeclareSIUnit{\bar}{bar}
+\DeclareSIUnit{\molar}{M}
+\DeclareSIUnit{\bohrmagneton}{\mu_B}
+
 \usetikzlibrary{decorations.pathmorphing,fpu}
 \colorlet{grx}{green!50!black!90!yellow!80}
 \colorlet{gry}{green!50!black!90!yellow!40}
@@ -51,17 +61,7 @@
 \colorlet{rex}{red!80!black!90!orange!80}
 \colorlet{orx}{orange!80!black!90!yellow!80}
 
-\sisetup{range-phrase=-,range-units=single,table-alignment-mode=format,table-number-alignment=center}
-\DeclareSIUnit{\angstrom}{\textup{\AA}}
-\DeclareSIUnit{\atomicmassunit}{amu}
-\DeclareSIUnit{\hartree}{\emph{E}_h}
-\DeclareSIUnit{\atmosphere}{atm}
-\DeclareSIUnit{\torr}{torr}
-\DeclareSIUnit{\bar}{bar}
-\DeclareSIUnit{\molar}{M}
-\DeclareSIUnit{\bohrmagneton}{\mu_B}
-
-\newcommand{\pH}{\text{pH}}
+\DeclareMathOperator{\pH}{pH}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
