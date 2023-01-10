@@ -15,6 +15,7 @@
 \usepackage{bm,physics,mathtools}
 \usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{subfiles}
 
 \MakeOuterQuote{"}
 
@@ -33,7 +34,7 @@
 
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
 
-\addbibresource{../main.bib}
+\addbibresource{\subfix{../main.bib}}
 \DefineBibliographyStrings{english}{bibliography={References}}
 
 \deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
@@ -67,5 +68,3 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\prb}[1]{\left\langle{#1}\right\rangle}
 \newcommand{\e}[1][]{\text{e}^{#1}}
-
-\usepackage{subfiles}
