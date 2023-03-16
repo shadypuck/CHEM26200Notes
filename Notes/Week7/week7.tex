@@ -16,7 +16,7 @@
     \begin{itemize}
         \item Statistical mechanics is important because it gives us the relation
         \begin{equation*}
-            B_{2V}(T) = -2\pi N_A\int_0^\infty\left( \e[-u(r)/k_BT]-1 \right)r^2\dd{r}
+            B_{2V}(T) = -2\pi\NA\int_0^\infty\left( \e[-u(r)/\kB T]-1 \right)r^2\dd{r}
         \end{equation*}
         \begin{itemize}
             \item We can derive this with our knowledge of statistical mechanics, but PGS will not go through this.
@@ -29,22 +29,22 @@
             \item Note that the minimum is at $(2^{1/6}\sigma,-\epsilon)$.
             \item The limiting case of the Lennard-Jones potential is hard sphere repulsion (the repulsion as you approach a hard sphere, which is zero up until you're at the surface and then infinite repulsion). Thus, with no intermolecular attraction, $a=0$, so in this case,
             \begin{align*}
-                B_{2V}(T) &= -2\pi N_A\int_0^\sigma(-1)r^2\dd{r}\\
-                &= \frac{2\pi N_A\sigma^3}{3}\\
+                B_{2V}(T) &= -2\pi\NA\int_0^\sigma(-1)r^2\dd{r}\\
+                &= \frac{2\pi\NA\sigma^3}{3}\\
                 &= b-\frac{0}{RT}
             \end{align*}
         \end{itemize}
         \item Now consider a potential that is van der Waals ($c/r^6$) up until a point and then hard sphere. In this case,
         \begin{align*}
-            B_{2V}(T) &= \frac{2\pi N_A\sigma^3}{3}-2\pi N_A\int_\sigma^\infty\left( \e[-c/r^6k_BT]-1 \right)r^2\dd{r}\\
-            &= \frac{2\pi N_A\sigma^3}{3}-2\pi N_A\int_\sigma^\infty\left( -\frac{c}{r^6k_BT} \right)r^2\dd{r}\\
-            &= b+\frac{2\pi N_Ac}{k_BT}\cdot-\frac{1}{3\sigma^3}
+            B_{2V}(T) &= \frac{2\pi\NA\sigma^3}{3}-2\pi\NA\int_\sigma^\infty\left( \e[-c/r^6\kB T]-1 \right)r^2\dd{r}\\
+            &= \frac{2\pi\NA\sigma^3}{3}-2\pi\NA\int_\sigma^\infty\left( -\frac{c}{r^6\kB T} \right)r^2\dd{r}\\
+            &= b+\frac{2\pi\NA c}{\kB T}\cdot-\frac{1}{3\sigma^3}
         \end{align*}
         where we have used $\e[x]=1+x+\cdots$ to get from the first line to the second.
         \begin{itemize}
             \item Therefore,
             \begin{equation*}
-                a = \frac{2\pi N_A^2}{3}\frac{c}{\sigma^2}
+                a = \frac{2\pi\NA^2}{3}\frac{c}{\sigma^2}
             \end{equation*}
         \end{itemize}
     \end{itemize}
@@ -64,7 +64,7 @@
         \end{align*}
         \item Define
         \begin{equation*}
-            f_{ij} = \e[-u(r_i,r_j)/k_BT]-1
+            f_{ij} = \e[-u(r_i,r_j)/\kB T]-1
         \end{equation*}
         \item Now note that the interaction between molecules is pretty small, and in fact $f_{ij}\to 0$ as $|r_i-r_j|\to\infty$.
         \item Thus,
@@ -89,10 +89,10 @@
         \end{equation*}
         \item But now we need to extract an equation of state from the partition function. To do so, we use
         \begin{align*}
-            P &= k_BT\left( \pdv{\ln Q}{V} \right)_{N,T}\\
-            &= k_BT\left( \pdv{\ln Q_\text{id}}{V} \right)_{N,T}+k_BT\left( \pdv{\ln Q_u}{V} \right)_{N,T}
+            P &= \kB T\left( \pdv{\ln Q}{V} \right)_{N,T}\\
+            &= \kB T\left( \pdv{\ln Q_\text{id}}{V} \right)_{N,T}+\kB T\left( \pdv{\ln Q_u}{V} \right)_{N,T}
         \end{align*}
-        \item We know that the first term above is equal to $Nk_BT/V$, but it takes a bit more work for the second one.
+        \item We know that the first term above is equal to $N\kB T/V$, but it takes a bit more work for the second one.
         \item We have that
         \begin{align*}
             \ln Q_u &= \ln\Bigg( 1+\underbrace{\frac{N(N-1)}{2V}}_{\substack{\text{Approximately}\\\text{the intermolecular}\\\text{distance }1/\rho^3}}\underbrace{\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}}_{\substack{\text{Approximately}\\\text{the molecular}\\\text{volume }a^3}} \Bigg)\\
@@ -105,18 +105,18 @@
         \end{equation*}
         so
         \begin{align*}
-            P &= \frac{Nk_BT}{V}-\frac{Nk_BT}{V}\frac{N-1}{2V}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}\\
+            P &= \frac{N\kB T}{V}-\frac{N\kB T}{V}\frac{N-1}{2V}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}\\
             &= \frac{RT}{\overline{V}}-\frac{RT}{\overline{V}}\frac{N-1}{2V}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}
         \end{align*}
         \item Consequently,
         \begin{equation*}
-            Z = \frac{P\overline{V}}{RT} = 1-\frac{N_A}{\overline{V}}\cdot\frac{1}{2}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}
+            Z = \frac{P\overline{V}}{RT} = 1-\frac{\NA}{\overline{V}}\cdot\frac{1}{2}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}
         \end{equation*}
         \item Therefore, by comparison with the virial expansion,
         \begin{align*}
-            B_{2V}(T) &= -\frac{N_A}{2}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}\\
-            &= -\frac{N_A}{2}\int_0^\infty\left( \e[-\beta u(r)]-1 \right)4\pi r^2\dd{r}\\
-            &= -2\pi N_A\int_0^\infty\left( \e[-u(r)/k_BT]-1 \right)r^2\dd{r}
+            B_{2V}(T) &= -\frac{\NA}{2}\int\left( \e[-\beta u(r)]-1 \right)\dd[3]{r}\\
+            &= -\frac{\NA}{2}\int_0^\infty\left( \e[-\beta u(r)]-1 \right)4\pi r^2\dd{r}\\
+            &= -2\pi\NA\int_0^\infty\left( \e[-u(r)/\kB T]-1 \right)r^2\dd{r}
         \end{align*}
     \end{itemize}
     \item Free energy as a function of $(T,P)$ for a real gas. Definition of fugacity and fugacity coefficients.
@@ -178,7 +178,7 @@
     \begin{itemize}
         \item 1d.
         \begin{itemize}
-            \item We needed to say that $\max S=nk_B\ln 2$.
+            \item We needed to say that $\max S=n\kB\ln 2$.
             \item We also needed to indicate that the slope is vertical at 0 and 1.
         \end{itemize}
         \item Question 3.
@@ -365,11 +365,11 @@
     \begin{itemize}
         \item For the mixing of two solutions, we have as with gases that
         \begin{align*}
-            \Delta S &= k_B\ln W\\
-            &= k_B\ln\frac{(N_1+N_2)!}{N_1!N_2!}\\
-            &= k_B[(N_1+N_2)\ln(N_1+N_2)-(N_1+N_2)-(N_1\ln N_1-N_1)-(N_2\ln N_2-N_2)]\\
-            &= k_B\left( N_1\ln\frac{N_1+N_2}{N_1}+N_2\ln\frac{N_1+N_2}{N_2} \right)\\
-            &= -k_BN_A(n_1\ln x_1+n_x\ln x_2)\\
+            \Delta S &= \kB\ln W\\
+            &= \kB\ln\frac{(N_1+N_2)!}{N_1!N_2!}\\
+            &= \kB[(N_1+N_2)\ln(N_1+N_2)-(N_1+N_2)-(N_1\ln N_1-N_1)-(N_2\ln N_2-N_2)]\\
+            &= \kB\left( N_1\ln\frac{N_1+N_2}{N_1}+N_2\ln\frac{N_1+N_2}{N_2} \right)\\
+            &= -\kB\NA(n_1\ln x_1+n_x\ln x_2)\\
             &= -R(n_1\ln x_1+n_x\ln x_2)
         \end{align*}
         \item It follows that without enthalpic mixing (i.e., with $\Delta H=0$), we have
@@ -439,12 +439,12 @@
     \end{itemize}
     \item Under the hard-sphere potential,
     \begin{align*}
-        B_{2V}(T) &= -2\pi N_A\int_0^\infty\left( \e[-u(r)/k_BT]-1 \right)r^2\dd{r}\\
-        &= -2\pi N_A\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^\infty(1-1)r^2\dd{r} \right]\\
-        &= \frac{2\pi\sigma^3N_A}{3}
+        B_{2V}(T) &= -2\pi\NA\int_0^\infty\left( \e[-u(r)/\kB T]-1 \right)r^2\dd{r}\\
+        &= -2\pi\NA\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^\infty(1-1)r^2\dd{r} \right]\\
+        &= \frac{2\pi\sigma^3\NA}{3}
     \end{align*}
     \begin{itemize}
-        \item Thus, $B_{2V}(T)$ is equal to $1/2$ the volume of $N_A$ hard spheres of radius $\sigma$.
+        \item Thus, $B_{2V}(T)$ is equal to $1/2$ the volume of $\NA$ hard spheres of radius $\sigma$.
         \item Although this formula for the second virial coefficient is not temperature dependent, it is indeed a good approximation at high temperatures, just the same way the potential is.
     \end{itemize}
     \item \textbf{Square-well potential}: The potential of a hard-sphere of radius $\sigma$ that is attractive at a consistent level from its surface up until a finite distance away. \emph{Given by}
@@ -461,9 +461,9 @@
     \end{itemize}
     \item Under the square-well potential,
     \begin{align*}
-        B_{2V}(T) &= -2\pi N_A\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^{\lambda\sigma}(\e[\varepsilon/k_BT]-1)r^2\dd{r}+\int_{\lambda\sigma}^\infty(1-1)r^2\dd{r} \right]\\
-        &= -2\pi N_A\left[ -\frac{\sigma^3}{3}+\frac{\sigma^3}{3}(\lambda^3-1)(\e[\varepsilon/k_BT]-1)+0 \right]\\
-        &= \frac{2\pi\sigma^3N_A}{3}[1-(\lambda^3-1)(\e[\varepsilon/k_BT]-1)]
+        B_{2V}(T) &= -2\pi\NA\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^{\lambda\sigma}(\e[\varepsilon/\kB T]-1)r^2\dd{r}+\int_{\lambda\sigma}^\infty(1-1)r^2\dd{r} \right]\\
+        &= -2\pi\NA\left[ -\frac{\sigma^3}{3}+\frac{\sigma^3}{3}(\lambda^3-1)(\e[\varepsilon/\kB T]-1)+0 \right]\\
+        &= \frac{2\pi\sigma^3\NA}{3}[1-(\lambda^3-1)(\e[\varepsilon/\kB T]-1)]
     \end{align*}
     \item The agreement of the square-well potential with experimental data is very good, but it does have 3 adjustable parameters.
     \item Relating the second virial coefficient to the van der Waals constants.
@@ -497,15 +497,15 @@
         \end{equation*}
         \item We can now calculate $B_{2v}(T)$ in terms of $u(r)$ with the help of the approximation $\e[x]=1+x$ (applicable since the argument of the exponent function will be very small).
         \begin{align*}
-            B_{2V}(T) &= -2\pi N_A\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^\infty(\e[c_6/k_BTr^6]-1)r^2\dd{r} \right]\\
-            &= \frac{2\pi\sigma^3N_A}{3}-\frac{2\pi N_Ac_6}{k_BT}\int_\sigma^\infty\frac{1}{r^6}\cdot r^2\dd{r}\\
-            &= \frac{2\pi\sigma^3N_A}{3}-\frac{2\pi N_Ac_6}{k_BT}\left[ -\frac{1}{3r^3} \right]_\sigma^\infty\\
-            &= \frac{2\pi\sigma^3N_A}{3}-\frac{2\pi N_Ac_6}{3k_BT\sigma^3}
+            B_{2V}(T) &= -2\pi\NA\left[ \int_0^\sigma(0-1)r^2\dd{r}+\int_\sigma^\infty(\e[c_6/\kB Tr^6]-1)r^2\dd{r} \right]\\
+            &= \frac{2\pi\sigma^3\NA}{3}-\frac{2\pi\NA c_6}{\kB T}\int_\sigma^\infty\frac{1}{r^6}\cdot r^2\dd{r}\\
+            &= \frac{2\pi\sigma^3\NA}{3}-\frac{2\pi\NA c_6}{\kB T}\left[ -\frac{1}{3r^3} \right]_\sigma^\infty\\
+            &= \frac{2\pi\sigma^3\NA}{3}-\frac{2\pi\NA c_6}{3\kB T\sigma^3}
         \end{align*}
         \item It follows by comparison with the result from the previous section that
         \begin{align*}
-            a &= \frac{2\pi N_A^2c_6}{3\sigma^3}&
-            b &= \frac{2\pi\sigma^3N_A}{3}
+            a &= \frac{2\pi\NA^2c_6}{3\sigma^3}&
+            b &= \frac{2\pi\sigma^3\NA}{3}
         \end{align*}
         \item Physical interpretations: $a\propto c_6$ and $b$ is one-half the volume of the molecules.
     \end{itemize}
@@ -705,13 +705,13 @@
     \begin{itemize}
         \item We know that
         \begin{align*}
-            U &= k_BT^2\left( \pdv{\ln Q}{T} \right)_{N,V}&
-            S &= k_BT\left( \pdv{\ln Q}{T} \right)_{N,V}+k_B\ln Q
+            U &= \kB T^2\left( \pdv{\ln Q}{T} \right)_{N,V}&
+            S &= \kB T\left( \pdv{\ln Q}{T} \right)_{N,V}+\kB\ln Q
         \end{align*}
         \item It follows that
         \begin{align*}
             A &= U-TS\\
-            &= -k_BT\ln Q
+            &= -\kB T\ln Q
         \end{align*}
         \item Additionally, the total differential of $A(T,V,n)$ is
         \begin{align*}
@@ -735,7 +735,7 @@
         \end{equation*}
         \item It follows by substituting our previous expression for $A(Q)$ that
         \begin{equation*}
-            \mu = -k_BT\left( \pdv{\ln Q}{n} \right)_{V,T}
+            \mu = -\kB T\left( \pdv{\ln Q}{n} \right)_{V,T}
             = -RT\left( \pdv{\ln Q}{N} \right)_{V,T}
         \end{equation*}
     \end{itemize}
@@ -957,7 +957,7 @@
         \end{equation*}
         \item It follows that
         \begin{align*}
-            x_a(n^l+n^g) &= x_2n^l+y_2n^g
+            x_a(n^l+n^g) &= x_2n^l+y_2n^g\\
             \frac{n^l}{n^g} &= \frac{y_2-x_a}{x_a-x_2}
         \end{align*}
     \end{itemize}
@@ -1021,7 +1021,7 @@
     \end{itemize}
     \item We can also calculate that
     \begin{align*}
-        \Delta_\text{mix}V^\text{id} &= \left( \pdv{\Delta_\text{mix}G^\text{id}} \right)_{T,n_1,n_2} = 0&
+        \Delta_\text{mix}V^\text{id} &= \left( \pdv{\Delta_\text{mix}G^\text{id}}{P} \right)_{T,n_1,n_2} = 0&
         \Delta_\text{mix}H^\text{id} &= \Delta_\text{mix}G^\text{id}+T\Delta_\text{mix}S^\text{id} = 0
     \end{align*}
     \begin{itemize}

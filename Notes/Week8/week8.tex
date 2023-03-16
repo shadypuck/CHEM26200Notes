@@ -165,7 +165,7 @@
     \end{itemize}
     \item \textbf{Henry's Law}: Gives the tangent to the vapor pressure vs. mole percent graph at $x_1=0$. \emph{Given by}
     \begin{equation*}
-        P_1 = k_Hx_1
+        P_1 = \kH x_1
     \end{equation*}
     as $x_1\to 0$.
     \item We know that $A(g)\to A(\text{solv})$.
@@ -179,7 +179,7 @@
     \end{itemize}
     \item Microscopic enthalpy and entropy of solvation contribute to Henry's law, in addition to mixing entropy.
     \begin{itemize}
-        \item Larger $k_H$ means less soluble.
+        \item Larger $\kH$ means less soluble.
     \end{itemize}
     \item Temperature dependence.
     \begin{equation*}
@@ -187,7 +187,7 @@
     \end{equation*}
     \begin{itemize}
         \item $\Theta$ indicates reference temperature.
-        \item It follows that as $T$ increases, $k_H$ increases.
+        \item It follows that as $T$ increases, $\kH$ increases.
         \begin{itemize}
             \item For example, \ce{O2} is less soluble in water at higher temperatures.
             \item This is consistent with solvation being an exothermic process.
@@ -202,9 +202,9 @@
         \item As $x_i\to 0$, we have that
         \begin{align*}
             \mu_i^*+RT\ln a_i &= \mu_i^*+RT\ln\frac{P_i}{P_i^*}\\
-            &= \mu_i^*+RT\ln\frac{k_H}{P_i^*}x_i
+            &= \mu_i^*+RT\ln\frac{\kH}{P_i^*}x_i
         \end{align*}
-        i.e., $a_i\to k_Hx_i/P_i^*$.
+        i.e., $a_i\to \kH x_i/P_i^*$.
         \item As a substance becomes less active, it becomes more reactive.
     \end{itemize}
     \item \textbf{Activity}: A measure of the nonideality of solutions. \emph{Denoted by} $\bm{a_i}$. \emph{Given by}
@@ -316,7 +316,7 @@
             \item Implication: We recover Raoult's law as $x_1\to 1$.
             \item Additionally, this explains why there is no linear terms in the exponent: If there were, one of the terms in the sum on the right-hand side above wouldn't go to zero as $x_1\to 1$, meaning that $\dv*{P_1}{x_1}$ would not go to $P_1^*$.
         \end{itemize}
-        \item Recovering Henry's law as $x_1\to 0$: As $x_1\to 0$, $P_1\to k_Hx_1=P_1^*\e[\alpha+\beta+\cdots]\cdot x_1$.
+        \item Recovering Henry's law as $x_1\to 0$: As $x_1\to 0$, $P_1\to \kH x_1=P_1^*\e[\alpha+\beta+\cdots]\cdot x_1$.
     \end{itemize}
     \item Margules equation parameters fitted for $P_1$ provide a related equation for $P_2$ based on Gibbs-Duhem (Problem 24-33).
     \begin{itemize}
@@ -507,7 +507,7 @@
     \item \textbf{Henry's law}: The partial pressure of a component in solution approaches the linear function $k_{H,i}x_i$ as $x_i\to 0$.
     \item \textbf{Henry's law constant}: The constant $k_{H,i}$ in the above definition.
     \item For an ideal solution, $k_{H,i}=P_i^*$, but this is not true in general (as illustrated by Figure \ref{fig:postiveDeviationRaoult}).
-    \item Example: Finding $P_1^*$ and $k_H$ from an equation for $P_1$.
+    \item Example: Finding $P_1^*$ and $\kH$ from an equation for $P_1$.
     \begin{itemize}
         \item Let $P_1=180x_1\e[x_2^2+\frac{1}{2}x_2^3]$.
         \item As $x_1\to 1$, $x_2\to 0$, so $P_1\to 180x_1$. Since this form should be the Raoult's law limit, we can read off $P_1^*=\SI{180}{\torr}$.
@@ -527,7 +527,7 @@
             &= 1\\
             \ln P_2 &= \int\frac{1}{x_2}\dd{x_2}\\
             &= \ln x_2+C\\
-            P_2 &= k_Hx_2
+            P_2 &= \kH x_2
         \end{align*}
         as desired.
     \end{itemize}
@@ -804,7 +804,7 @@
         \frac{\SI{1000}{\gram\per\kilo\gram}}{M_1} = \SI[per-mode=symbol]{55.506}{\mole\per\kilo\gram}
     \end{equation*}
     \item We define solute activity in terms of molality by requiring that $a_2\to m$ as $m\to 0$.
-    \item Under this definition, we can reexpress Henry's law in terms of molality with a related set of Henry's law constants. These give us equations like $P_2=k_H,m$.
+    \item Under this definition, we can reexpress Henry's law in terms of molality with a related set of Henry's law constants. These give us equations like $P_2=\kH,m$.
     \item \textbf{Molarity}: The number of moles of solute per \SI{1000}{\milli\liter} of solution. \emph{Denoted by} $\bm{c}$. \emph{Units} $\textbf{mol}\,\textbf{L}^{\bm{-1}}$. \emph{Given by}
     \begin{equation*}
         c = \frac{n_2}{\SI{1000}{\milli\liter\ solution}}
@@ -834,7 +834,7 @@
             &= \frac{cM_1}{(\SI{1000}{\milli\liter\per\liter})\rho+c(M_1-M_2)}
         \end{align*}
     \end{itemize}
-    \item For a nonvolatile solute, an equation of the form $a_2=P_2/k_H$ is not practical to use since $P_2$ is so small. Thus, we invoke the Gibbs-Duhem equation.
+    \item For a nonvolatile solute, an equation of the form $a_2=P_2/\kH$ is not practical to use since $P_2$ is so small. Thus, we invoke the Gibbs-Duhem equation.
     \begin{itemize}
         \item Consider a solution of water with a small amount of a nonvolatile solute.
         \item Since $m\ll\SI{55.506}{\mole\per\kilo\gram}$, we have that

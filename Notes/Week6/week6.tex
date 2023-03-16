@@ -95,7 +95,7 @@
         \item The difference in energy $\Delta E$ between a segment (of length $\ell_0$) pointing up or down is $2f$.
         \item Thus, the partition function for each segment is
         \begin{equation*}
-            q = \e[-f\ell_0/k_BT]+\e[f\ell_0/k_BT]
+            q = \e[-f\ell_0/\kB T]+\e[f\ell_0/\kB T]
         \end{equation*}
         \begin{itemize}
             \item Note that this is the same as the partition function for a paramagnet (which can also either be up or down) except that $f\ell_0$ becomes $\mu_BB_z$.
@@ -108,7 +108,7 @@
         \begin{equation*}
             L = N(p+p_0+p-(-p_0))
             = Np_0(p+(-p))
-            = N\ell_0\tanh\left( \frac{f\ell_0}{k_BT} \right)
+            = N\ell_0\tanh\left( \frac{f\ell_0}{\kB T} \right)
         \end{equation*}
     \end{itemize}
 \end{itemize}
@@ -120,7 +120,7 @@
     \item \marginnote{2/16:}Wrapping up the rubber band analysis.
     \item Note that we can approximate $\tanh x\approx x$ for small $x$. Thus,
     \begin{equation*}
-        L = N\ell_0\cdot\frac{f\ell_0}{k_BT}
+        L = N\ell_0\cdot\frac{f\ell_0}{\kB T}
     \end{equation*}
     for small $f$.
     \item Therefore, statistical mechanics predicts the rubber band "ideal" equation of state, $f=T\phi(L)$, where $f$ is the stretching force. Note that this is not at all like a mechanical spring constant; it is purely an entropy effect.
@@ -133,8 +133,8 @@
     \begin{itemize}
         \item We have
         \begin{align*}
-            M &= N\mu\tanh\frac{\mu B}{k_BT}\\
-            M &= \frac{N\mu^2}{k_B}\frac{B}{T}
+            M &= N\mu\tanh\frac{\mu B}{\kB T}\\
+            M &= \frac{N\mu^2}{\kB}\frac{B}{T}
         \end{align*}
         where the second equation only holds for small $B$.
     \end{itemize}
@@ -149,8 +149,8 @@
         \item Protein folding necessitates $\Delta S<0$ (you are creating order). Thus, we must have $\Delta H<\Delta(TS)=T\Delta S$, i.e., the protein must adopt a very, very stable conformation.
         \item Estimating $\Delta S$:
         \begin{equation*}
-            \Delta S = k_B\ln W
-            = k_B\ln 3^{100}
+            \Delta S = \kB\ln W
+            = \kB\ln 3^{100}
             = \SI{914}{\joule\per\kelvin\per\mole}
         \end{equation*}
         \begin{itemize}
@@ -326,7 +326,7 @@
         where $B_{iV}(T)$ is the \textbf{$\bm{i^\textbf{th}}$ virial coefficient}.
         \item It follows that
         \begin{align*}
-            \frac{P\overline{V}}{RT} &= \frac{\overline{V}}{V-b}-\frac{a}{RT\overline{V}}\\
+            \frac{P\overline{V}}{RT} &= \frac{\overline{V}}{\overline{V}-b}-\frac{a}{RT\overline{V}}\\
             &= \frac{1}{1-b/\overline{V}}-\frac{a}{RT\overline{V}}\\
             &= 1+\left( \frac{b}{\overline{V}}-\frac{a}{RT\overline{V}} \right)+\text{terms in }\tfrac{1}{\overline{V}^2}+\cdots
         \end{align*}
@@ -393,7 +393,7 @@
     \end{align*}
     \item \textbf{Ideal gas}: A gas that obeys the ideal-gas equation of state.
     \begin{itemize}
-        \item All gases, regardless of the shape or size of the molecules or how the molecules interact with each other, obey behave ideally if they are sufficiently dilute.
+        \item All gases, regardless of the shape or size of the molecules or how the molecules interact with each other, behave ideally if they are sufficiently dilute.
         \item "Experimentally, most gases satisfy [the ideal-gas equation of state] to approximately $1\%$ at one atm and \SI{0}{\celsius}" \parencite[638]{bib:McQuarrieSimon}.
     \end{itemize}
     \item \textbf{Extensive quantity}: A quantity that is directly proportional to the size of the system in question. \emph{Also known as} \textbf{extensive variable}.
@@ -707,7 +707,7 @@
             P = \frac{RT}{\overline{V}-b}-\frac{a}{\overline{V}^2}
         \end{equation*}
     \end{itemize}
-    \item \textbf{Van der Waals constants}: The constants $a,b$ in the van der Waals equation, whose value depend upon the particular gas.
+    \item \textbf{Van der Waals constants}: The constants $a,b$ in the van der Waals equation, the values of which depend upon the particular gas.
     \begin{itemize}
         \item We will see later that "the value of $a$ reflects how strongly the molecules of a gas attract each other and the value of $b$ reflects the size of the molecules" \parencite[643]{bib:McQuarrieSimon}.
         \item Table 16.3 lists van der Waals constants for various substances.
@@ -785,7 +785,12 @@
     \end{itemize}
     \item \marginnote{2/24:}Equations of state that can be written as cubic equations in $\overline{V}$ describe both the gaseous and the liquid regions of a substance.
     \item $PV$-diagram terminology.
-    \emph{Figure 16.7.}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.28\linewidth]{../ExtFiles/PVterms.png}
+        \caption{$PV$-diagram terminology.}
+        \label{fig:PVterms}
+    \end{figure}
     \item \textbf{Isotherm}: An experimentally determined plot of $P$ as a function of $\overline{V}$ at constant $T$.
     \item \textbf{Coexistence curve}: The curve on a $PV$ diagram such that any point within the curve corresponds to liquid and gas coexisting in equilibrium with each other and any point on or outside the curve corresponds to only one phase.
     \item \textbf{Critical temperature}: The temperature above which a gas cannot be liquefied, regardless of the pressure. \emph{Denoted by} $\bm{T_c}$.
@@ -932,7 +937,7 @@
         \item The interaction of two molecules depends on their distance apart and orientation in space. However, due to rapid molecular motion, we'll pretend that their orientation averages out (a good approximation for molecules of low polarity) and that only the intermolecular distance $r$ is important.
         \item Let $u(r)$ denote the potential energy of two molecules separated by a distance $r$. Then we can show that
         \begin{equation*}
-            B_{2V}(T) = -2\pi N_A\int_0^\infty[\e[-u(r)/k_BT]-1]r^2\dd{r}
+            B_{2V}(T) = -2\pi\NA\int_0^\infty[\e[-u(r)/\kB T]-1]r^2\dd{r}
         \end{equation*}
         \item Note that as we'd expect, $B_{2V}(T)=0$ if $u(r)=0$, i.e., there are no deviations from ideality if there are no intermolecular interactions.
         \item In principle, $u(r)$ can be calculated from quantum mechanics, but this is complicated. Thus, we the approximation from perturbation theory that
@@ -987,9 +992,9 @@
     \end{itemize}
     \item Substituting the Lennard-Jones potential into our expression for $B_{2V}(T)$ in terms of $u(r)$ yields
     \begin{equation*}
-        B_{2V}(T) = -2\pi N_A\int_0^\infty\left[ \exp\left\{ -\frac{4\varepsilon}{k_BT}\left[ \left( \frac{\sigma}{r} \right)^{12}-\left( \frac{\sigma}{r} \right)^6 \right] \right\}-1 \right]r^2\dd{r}
+        B_{2V}(T) = -2\pi\NA\int_0^\infty\left[ \exp\left\{ -\frac{4\varepsilon}{\kB T}\left[ \left( \frac{\sigma}{r} \right)^{12}-\left( \frac{\sigma}{r} \right)^6 \right] \right\}-1 \right]r^2\dd{r}
     \end{equation*}
-    \item Substituting a reduced temperature $T^*=k_BT/\varepsilon$, $x=r/\sigma$, and a reduced second virial coefficient $B_{2V}^*(T^*)=B_{2V}(T^*)/(2\pi\sigma^3N_A/3)$ yields
+    \item Substituting a reduced temperature $T^*=\kB T/\varepsilon$, $x=r/\sigma$, and a reduced second virial coefficient $B_{2V}^*(T^*)=B_{2V}(T^*)/(2\pi\sigma^3\NA/3)$ yields
     \begin{equation*}
         B_{2V}^*(T^*) = -3\int_0^\infty\left[ \exp\left\{ -\frac{4}{T^*}(x^{-12}-x^{-6}) \right\}-1 \right]x^2\dd{x}
     \end{equation*}
@@ -1002,7 +1007,7 @@
         \item Consider the virial expansion in terms of pressure under conditions such that terms $P^2$ and higher are negligible. Then
         \begin{align*}
             \frac{P\overline{V}}{RT} &= 1+B_{2P}(T)P\\
-            &= 1+\frac{B_{2V(T)}}{RT}P\\
+            &= 1+\frac{B_{2V}(T)}{RT}P\\
             \overline{V} &= \frac{RT}{P}+B_{2V}(T)\\
             B_{2V}(T) &= \overline{V}-\overline{V}_\text{ideal}
         \end{align*}
@@ -1018,7 +1023,7 @@
         \item If we assume that these molecules rotate randomly in the gas phase, their average dipole-dipole interactions would be zero.
         \item However, because different conformations (e.g. head-to-head vs. head-to-tail) have different energies, the various states do not occur with equal probabilities. This gives us the following expression for the average interaction between two molecular dipoles.
         \begin{equation*}
-            u_{d.d}(r) = -\frac{2\mu_1^2\mu_2^2}{(4\pi\varepsilon_0)^2(3k_BT)}\frac{1}{r^6}
+            u_{d.d}(r) = -\frac{2\mu_1^2\mu_2^2}{(4\pi\varepsilon_0)^2(3\kB T)}\frac{1}{r^6}
         \end{equation*}
     \end{itemize}
     \item Consider two molecules, one with a permanent dipole and the other without a permanent dipole.
@@ -1054,7 +1059,7 @@
     \end{itemize}
     \item It follows that the total contribution to the $r^{-6}$ term of the Lennard-Jones potential is given by the sum of the previous three results, i.e.,
     \begin{equation*}
-        c_6 = \frac{2\mu^4}{3(4\pi\varepsilon_0)^2k_BT}+\frac{2\alpha\mu^2}{(4\pi\varepsilon_0)^2}+\frac{3}{4}\frac{I\alpha^2}{(4\pi\varepsilon_0)^2}
+        c_6 = \frac{2\mu^4}{3(4\pi\varepsilon_0)^2\kB T}+\frac{2\alpha\mu^2}{(4\pi\varepsilon_0)^2}+\frac{3}{4}\frac{I\alpha^2}{(4\pi\varepsilon_0)^2}
     \end{equation*}
     for identical atoms and molecules.
 \end{itemize}

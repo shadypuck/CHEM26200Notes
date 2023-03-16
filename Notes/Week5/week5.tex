@@ -44,7 +44,7 @@
     \item \textbf{Third Law}: The entropy of pure ordered crystals is zero at \SI{0}{\kelvin}.
     \begin{itemize}
         \item Solid \ce{CO} is \emph{not} ordered, as discussed in \textcite{bib:McQuarrieSimon}.
-        \item Derive with $S=k_B\ln W$.
+        \item Derive with $S=\kB\ln W$.
     \end{itemize}
     \item Since we can't actually achieve \SI{0}{\kelvin} and measure properties such as entropy there, we appeal to the Debye model to determine entropy there and in the viscinity.
     \item \textbf{Debye model}: The statement that $C_P(T)\propto T^3=AT^3$ for insulating crystals.
@@ -57,8 +57,8 @@
         \end{equation*}
         \item Justifying the Debye model.
         \begin{itemize}
-            \item According to the Einstein model, each atom is a harmonic oscillator of frequency $h\nu$. This implies, however, that $C_P(T)\approx 1/(\e[h\nu/k_BT]-1)$ drops too fast at low $T$.
-            \item Debye says that sound waves are harmonic oscillators with very low frequencies. If you take $h\nu\ll k_BT$, or $hc/\lambda\ll k_BT$, you are concerned with all $\lambda$ sufficiently large (or wavevectors $k=2\pi/\lambda$ sufficiently small). The wavevectors are within a sphere in a wavevector space with basis $k_x,k_y,k_z$. The radius of this sphere is proportional to $T$. Thus, it's volume, which contains what we're interested in, is $4/3\pi r^3$ and thus the sum of all the wavevectors is proportional to $T^3$. Thus, the number of states of energy less than $k_BT$ is proportional to $T^3$ and each has $k_BT$ of energy (thus, if you were trying to find a scaling for the energy, it would be $U(T)\approx T^4$). Note also $h\nu=hc/\lambda=2\pi\hbar c/\lambda=c\hbar k$.
+            \item According to the Einstein model, each atom is a harmonic oscillator of frequency $h\nu$. This implies, however, that $C_P(T)\approx 1/(\e[h\nu/\kB T]-1)$ drops too fast at low $T$.
+            \item Debye says that sound waves are harmonic oscillators with very low frequencies. If you take $h\nu\ll \kB T$, or $hc/\lambda\ll \kB T$, you are concerned with all $\lambda$ sufficiently large (or wavevectors $k=2\pi/\lambda$ sufficiently small). The wavevectors are within a sphere in a wavevector space with basis $k_x,k_y,k_z$. The radius of this sphere is proportional to $T$. Thus, it's volume, which contains what we're interested in, is $4/3\pi r^3$ and thus the sum of all the wavevectors is proportional to $T^3$. Thus, the number of states of energy less than $\kB T$ is proportional to $T^3$ and each has $\kB T$ of energy (thus, if you were trying to find a scaling for the energy, it would be $U(T)\approx T^4$). Note also $h\nu=hc/\lambda=2\pi\hbar c/\lambda=c\hbar k$.
         \end{itemize}
     \end{itemize}
     \item Comparing experimental and theoretical values of entropy of gases to the theory value from the partition function.
@@ -331,15 +331,15 @@
     \begin{itemize}
         \item While the first and second laws provide state functions (internal energy and entropy, respectively), the third law provides a numerical scale for entropy.
     \end{itemize}
-    \item The third law, although formulated before quantum mechanics, follows nicely from it: At absolute zero, every system in an ensemble will be in the same energy state, so $W=1$; it follows that $S=k_B\ln 1=0$.
+    \item The third law, although formulated before quantum mechanics, follows nicely from it: At absolute zero, every system in an ensemble will be in the same energy state, so $W=1$; it follows that $S=\kB\ln 1=0$.
     \begin{itemize}
         \item If, however, the ground state has a degeneracy of $n$, then
         \begin{align*}
-            S(\SI{0}{\kelvin}) &= -k_B\sum_jp_j\ln p_j\\
-            &= -k_B\sum_{j=1}^n\frac{1}{n}\ln\frac{1}{n}\\
-            &= k_B\ln n
+            S(\SI{0}{\kelvin}) &= -\kB\sum_jp_j\ln p_j\\
+            &= -\kB\sum_{j=1}^n\frac{1}{n}\ln\frac{1}{n}\\
+            &= \kB\ln n
         \end{align*}
-        \item Nevertheless, even for a degeneracy of $N_A$, we will only have $S(\SI{0}{\kelvin})\approx\SI{7.56e-22}{\joule\per\mole\per\kelvin}$, which is far less than any measurable value.
+        \item Nevertheless, even for a degeneracy of $\NA$, we will only have $S(\SI{0}{\kelvin})\approx\SI{7.56e-22}{\joule\per\mole\per\kelvin}$, which is far less than any measurable value.
     \end{itemize}
     \item Because of the third law, we can define entropy absolutely (assuming no phase change between 0 and $T$).
     \begin{align*}
@@ -377,7 +377,7 @@
     \begin{itemize}
         \item Standard entropies are, by convention, corrected for the nonideality of the gas at one bar (for how to calculate this correction, see Chapter 22).
     \end{itemize}
-    \item \textcite{bib:McQuarrieSimon} rederives $S(\SI{0}{\kelvin})=k_B\ln n$ from a partition function approach, and then gives a specific example for \ce{N2}, noting how well this value correlates with the one from the previous example.
+    \item \textcite{bib:McQuarrieSimon} rederives $S(\SI{0}{\kelvin})=\kB\ln n$ from a partition function approach, and then gives a specific example for \ce{N2}, noting how well this value correlates with the one from the previous example.
     \begin{itemize}
         \item "This type of agreement is quite common, and in many cases the statistical thermodynamic value is more accurate than the calorimetric value\dots The accepted literature values are often a combination of statistical thermodynamic and calorimetric values" \parencite[863]{bib:McQuarrieSimon}.
         \item Also gives a linear symmetric example (\ce{CO2}).

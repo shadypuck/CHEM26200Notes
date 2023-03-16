@@ -165,10 +165,10 @@
     \begin{itemize}
         \item Considers the isolated system to justify.
     \end{itemize}
-    \item Statistical entropy: $S=k_B\ln W$ where $W$ is the number of microstates of the system (i.e., the number of possible ways the system can be arranged).
+    \item Statistical entropy: $S=\kB\ln W$ where $W$ is the number of microstates of the system (i.e., the number of possible ways the system can be arranged).
     \begin{itemize}
         \item Shows additivity of the log.
-        \item When doubling the volume available to a gas, $\Delta S = Nk_B\ln 2$. $W_\text{after}=2^NW_\text{before}$.
+        \item When doubling the volume available to a gas, $\Delta S = N\kB\ln 2$. $W_\text{after}=2^NW_\text{before}$.
         \item The statistical definition of entropy avoids the Gibbs paradox since at a molecular level, we can differentiate between particles.
     \end{itemize}
     \item Goes over calculating $W(n_1,n_2)$.
@@ -187,7 +187,7 @@
         \end{align*}
         \item Therefore,
         \begin{equation*}
-            S = Nk_B(-p_1\ln p_1-p_2\ln p_2)
+            S = N\kB(-p_1\ln p_1-p_2\ln p_2)
         \end{equation*}
     \end{itemize}
     \item Entropy for a set of systems expressed in terms of the probability for these systems to be in a certain state.
@@ -205,7 +205,7 @@
         \end{align*}
         \item Therefore,
         \begin{equation*}
-            S = Ak_B\sum_i(-p_i\ln p_i)
+            S = A\kB\sum_i(-p_i\ln p_i)
         \end{equation*}
         \item We will use this result to derive the Boltzmann Factor.
     \end{itemize}
@@ -219,10 +219,10 @@
     \begin{itemize}
         \item In the case of just two states,
         \begin{align*}
-            S &= Nk_B(-p_1\ln p_1-p_2\ln p_2)\\
-            \dd{S} &= Nk_B[-\dd{(p_1\ln p_1)}-\dd{(p_2\ln p_2)}]\\
-            &= Nk_B[-\dd{p_1}\cdot\ln p_1-p_1\cdot\frac{\dd{p_1}}{p_1}-\dd{p_2}\cdot\ln p_2-p_2\cdot\frac{\dd{p_2}}{p_2}]\\
-            &= Nk_B(-\dd{p_1})(\ln p_1-\ln p_2)\\
+            S &= N\kB(-p_1\ln p_1-p_2\ln p_2)\\
+            \dd{S} &= N\kB[-\dd{(p_1\ln p_1)}-\dd{(p_2\ln p_2)}]\\
+            &= N\kB[-\dd{p_1}\cdot\ln p_1-p_1\cdot\frac{\dd{p_1}}{p_1}-\dd{p_2}\cdot\ln p_2-p_2\cdot\frac{\dd{p_2}}{p_2}]\\
+            &= N\kB(-\dd{p_1})(\ln p_1-\ln p_2)\\
             &= 0
         \end{align*}
         if $p_1=p_2$.
@@ -231,7 +231,7 @@
         \end{itemize}
         \item In the case of many buckets,
         \begin{equation*}
-            \dd{S} = -Nk_B\sum_i\ln p_i\dd{p_i} = 0
+            \dd{S} = -N\kB\sum_i\ln p_i\dd{p_i} = 0
         \end{equation*}
         iff all $p_i$ are the same, because then we could pull out the $\ln p_i$ and take $\sum\dd{p_i}=0$.
     \end{itemize}
@@ -240,10 +240,10 @@
         \item At equilibrium, we have a number of configurations $W_\text{eq}$. Outside of equilibrium, we have a number of configurations $W$.
         \item Thus,
         \begin{align*}
-            \Delta S &= S-S_\text{eq} = k_B\ln\frac{W}{W_\text{eq}}\\
-            \frac{W}{W_\text{eq}} &= \e[\Delta S/k_B]
+            \Delta S &= S-S_\text{eq} = \kB\ln\frac{W}{W_\text{eq}}\\
+            \frac{W}{W_\text{eq}} &= \e[\Delta S/\kB]
         \end{align*}
-        \item For $\Delta S=R=\SI{8.31}{\joule\per\mole\per\kelvin}$, we have that $W=W_\text{eq}\e[N_A]$, which will never happen?
+        \item For $\Delta S=R=\SI{8.31}{\joule\per\mole\per\kelvin}$, we have that $W=W_\text{eq}\e[\NA]$, which will never happen?
     \end{itemize}
     \item Deriving the Boltzmann factor by identifying the thermodynamic and statistical entropies.
     \begin{itemize}
@@ -251,15 +251,15 @@
         \item We have
         \begin{align*}
             \dd{S} &= \frac{\var{q_\text{rev}}}{T}&
-                \dd{S} &= -k_BN\dd{(p_1\ln p_1+p_2\ln p_2)}\\
+                \dd{S} &= -\kB N\dd{(p_1\ln p_1+p_2\ln p_2)}\\
             &&
-                &= -k_BN(\ln p_1-\ln p_2)\dd{p_1}
+                &= -\kB N(\ln p_1-\ln p_2)\dd{p_1}
         \end{align*}
         \item Setting them equal to each other, we get
         \begin{align*}
-            \frac{\dd{p_1}(E_1-E_2)}{T} &= -k_B\ln\frac{p_1}{p_2}\dd{p_1}\\
-            \frac{E_1-E_2}{k_BT} &= -\ln\frac{p_1}{p_2}\\
-            \frac{p_1}{p_2} &= \e[-(E_1-E_2)/k_BT]
+            \frac{\dd{p_1}(E_1-E_2)}{T} &= -\kB\ln\frac{p_1}{p_2}\dd{p_1}\\
+            \frac{E_1-E_2}{\kB T} &= -\ln\frac{p_1}{p_2}\\
+            \frac{p_1}{p_2} &= \e[-(E_1-E_2)/\kB T]
         \end{align*}
         which is the Boltzmann factor, as desired.
     \end{itemize}
@@ -267,20 +267,20 @@
     \begin{itemize}
         \item Derives
         \begin{equation*}
-            S = k_BT\pdv{\ln Q}{T}+k_B\ln Q
+            S = \kB T\pdv{\ln Q}{T}+\kB\ln Q
         \end{equation*}
-        from $S=-Nk_B\sum_ip_i\ln p_i$ as in \textcite{bib:McQuarrieSimon}.
+        from $S=-N\kB\sum_ip_i\ln p_i$ as in \textcite{bib:McQuarrieSimon}.
     \end{itemize}
     \item Entropy of an ideal monatomic gas.
     \begin{itemize}
         \item Derives
         \begin{equation*}
-            S = \frac{5}{2}Nk_B+Nk_B\ln\left[ \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}\frac{V}{N}g_{e1} \right]
+            S = \frac{5}{2}N\kB+N\kB\ln\left[ \left( \frac{2\pi m\kB T}{h^2} \right)^{3/2}\frac{V}{N}g_{e1} \right]
         \end{equation*}
         as in \textcite{bib:McQuarrieSimon}.
         \item Note that
         \begin{equation*}
-            \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2} \approx \left( \frac{1}{\lambda_{dB}} \right)^3
+            \left( \frac{2\pi m\kB T}{h^2} \right)^{3/2} \approx \left( \frac{1}{\lambda_{dB}} \right)^3
         \end{equation*}
         where $\lambda_{dB}$ is the de Broglie wavelength.
     \end{itemize}
@@ -297,25 +297,25 @@
 
 \section{Office Hours (PGS)}
 \begin{itemize}
-    \item Week 1, Lecture 3: When we calculate the average kinetic energy to be $3k_BT/2$, what constraints do we have on the system. Is it truly any system that can be described by a partition function? And if so, why does this result differ from the one presented in \textcite{bib:McQuarrieSimon} for a diatomic ideal gas?
+    \item Week 1, Lecture 3: When we calculate the average kinetic energy to be $3\kB T/2$, what constraints do we have on the system. Is it truly any system that can be described by a partition function? And if so, why does this result differ from the one presented in \textcite{bib:McQuarrieSimon} for a diatomic ideal gas?
     \begin{itemize}
         \item There aren't constraints on the system under study.
         \item $PV=\frac{2}{3}\prb{KE}$ is true without ideality.
-        \item $\prb{E}=3k_BT/2$ is only true with a monatomic ideal gas.
+        \item $\prb{E}=3\kB T/2$ is only true with a monatomic ideal gas.
         \item DOFs contribute to $\prb{E}$ (at very high temperatures).
         \begin{itemize}
             \item But in the equation from Chapter 17 for a diatomic, some terms disappear as $T\to\infty$.
         \end{itemize}
     \end{itemize}
     \item Week 1, Lecture 3: What does calculating the expected energy of a harmonic oscillator have to do with anything? Are you just doing it to show that we can for the quantized system? Also, are we integrating because this is a "continuous" partition function, and if it is a continuous partition function, is it so because the harmonic oscillator can, in theory, assume any bond distance even though its \emph{energies} are quantized?
-    \item Week 1, Lecture 3: How is $k_BT$ the average energy of a classical harmonic oscillator? Is it the sum of the kinetic energy and potential energy, both equal to $k_BT/2$? Is this the virial theorem again?
+    \item Week 1, Lecture 3: How is $\kB T$ the average energy of a classical harmonic oscillator? Is it the sum of the kinetic energy and potential energy, both equal to $\kB T/2$? Is this the virial theorem again?
     \begin{itemize}
         \item Also a high-temperature limit thing.
     \end{itemize}
     \item What was Week 1 about? It mostly seemed like a lot of examples to sort of motivate the course.
     \begin{itemize}
         \item Yes, this was basically just to motivate the course.
-        \item Take away: $k_BT$ determines the range of energies you'll be in for everything.
+        \item Take away: $\kB T$ determines the range of energies you'll be in for everything.
         \begin{itemize}
             \item Things much higher in energy won't be \textbf{thermally populated}.
             \item Things much lower are equally populated.
@@ -325,12 +325,12 @@
     \begin{itemize}
         \item Surface tension is the same thing as pressure in two dimensions.
         \item We can do $\gamma A=nRT$.
-        \item $A\gamma$ becomes $2$ of the kinetic energy $1/2k_BT$.
+        \item $A\gamma$ becomes $2$ of the kinetic energy $1/2\kB T$.
         \begin{itemize}
             \item Work this out for myself!
         \end{itemize}
     \end{itemize}
-    \item Week 2, Lecture 2: The vibrational partition function at $T=h\nu/k_B$ equals zero. What is the significance of this? Is it just that, that the average vibrational energy is equal to zero here?
+    \item Week 2, Lecture 2: The vibrational partition function at $T=h\nu/\kB$ equals zero. What is the significance of this? Is it just that, that the average vibrational energy is equal to zero here?
     \item Do the rotational and vibrational temperatures have a nice physical interpretation?
     \begin{itemize}
         \item They are the energies of vibrations/rotations on a scale of temperature instead of energy (the two are directly proportional).
@@ -560,15 +560,15 @@
         \item If every system is in one totally ordered state (i.e., $a_j=\mathcal{A}$ for some $j$), $W=1$. On the other end of the spectrum, $W$ can be massive for disorder.
         \item As $W$ is a measure of entropy, we are now free to relate $S$ and $W$, in particular via
         \begin{equation*}
-            S = k_B\ln W
+            S = \kB\ln W
         \end{equation*}
         \begin{itemize}
             \item We choose a log because we want to be able to split $S$ into $S_A+S_B$ and have the math reflect that. In particular, for two systems $A,B$, $W_{AB}=W_AW_B$, which nicely works out such that
             \begin{equation*}
-                S_{AB} = k_B\ln W_{AB} = k_B\ln W_A+k_B\ln W_B = S_A+S_B
+                S_{AB} = \kB\ln W_{AB} = \kB\ln W_A+\kB\ln W_B = S_A+S_B
             \end{equation*}
         \end{itemize}
-        \item \textcite{bib:McQuarrieSimon} goes over an alternate "derivation" of the above in terms of the degeneracy to get $S=k_B\ln\Omega$.
+        \item \textcite{bib:McQuarrieSimon} goes over an alternate "derivation" of the above in terms of the degeneracy to get $S=\kB\ln\Omega$.
     \end{itemize}
     \item \marginnote{2/3:}Since entropy is a state function, we calculate entropy changes via a reversible process.
     \begin{itemize}
@@ -679,30 +679,30 @@
     \begingroup
     \allowdisplaybreaks
     \begin{align*}
-        S_\text{ensemble} &= k_B\ln W\\
-        &= k_B\ln\frac{\mathcal{A}!}{\prod_ja_j!}\\
-        &= k_B\ln\mathcal{A}!-k_B\sum_j\ln a_j!\\
-        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\mathcal{A}-k_B\sum_ja_j\ln a_j+k_B\sum_ja_j\tag{Stirling's approximation}\\
-        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\sum_ja_j\ln a_j\tag{$\sum_ja_j=\mathcal{A}$}\\
-        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\sum_jp_j\mathcal{A}\ln p_j\mathcal{A}\tag{$p_j=a_j/\mathcal{A}$}\\
-        &= k_B\mathcal{A}\ln\mathcal{A}-k_B\mathcal{A}\sum_jp_j\ln p_j-k_B\mathcal{A}\ln\mathcal{A}\sum_jp_j\\
-        \frac{S_\text{ensemble}}{\mathcal{A}} &= -k_B\sum_jp_j\ln p_j\tag{$\sum_jp_j=1$}\\
-        S_\text{system} &= -k_B\sum_jp_j\ln p_j\\
-        &= -k_B\sum_j\frac{\e[-\beta E_j]}{Q}(-\beta E_j-\ln Q)\\
-        &= \beta k_B\sum_j\frac{E_j\e[-\beta E_j]}{Q}+k_B\ln Q\sum_j\frac{\e[-\beta E_j]}{Q}\\
-        &= \frac{1}{T}\cdot\prb{E}+k_B\ln Q\\
-        S_\text{system} &= k_BT\pdv{\ln Q}{T}+k_B\ln Q
+        S_\text{ensemble} &= \kB\ln W\\
+        &= \kB\ln\frac{\mathcal{A}!}{\prod_ja_j!}\\
+        &= \kB\ln\mathcal{A}!-\kB\sum_j\ln a_j!\\
+        &= \kB\mathcal{A}\ln\mathcal{A}-\kB\mathcal{A}-\kB\sum_ja_j\ln a_j+\kB\sum_ja_j\tag{Stirling's approximation}\\
+        &= \kB\mathcal{A}\ln\mathcal{A}-\kB\sum_ja_j\ln a_j\tag{$\sum_ja_j=\mathcal{A}$}\\
+        &= \kB\mathcal{A}\ln\mathcal{A}-\kB\sum_jp_j\mathcal{A}\ln p_j\mathcal{A}\tag{$p_j=a_j/\mathcal{A}$}\\
+        &= \kB\mathcal{A}\ln\mathcal{A}-\kB\mathcal{A}\sum_jp_j\ln p_j-\kB\mathcal{A}\ln\mathcal{A}\sum_jp_j\\
+        \frac{S_\text{ensemble}}{\mathcal{A}} &= -\kB\sum_jp_j\ln p_j\tag{$\sum_jp_j=1$}\\
+        S_\text{system} &= -\kB\sum_jp_j\ln p_j\\
+        &= -\kB\sum_j\frac{\e[-\beta E_j]}{Q}(-\beta E_j-\ln Q)\\
+        &= \beta\kB\sum_j\frac{E_j\e[-\beta E_j]}{Q}+\kB\ln Q\sum_j\frac{\e[-\beta E_j]}{Q}\\
+        &= \frac{1}{T}\cdot\prb{E}+\kB\ln Q\\
+        S_\text{system} &= \kB T\pdv{\ln Q}{T}+\kB\ln Q
     \end{align*}
     \endgroup
     \item For a monatomic ideal gas where all atoms are in their ground electronic state, we have
     \begin{equation*}
-        \overline{S} = \frac{5}{2}R+R\ln\left[ \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}\frac{\overline{V}g_{e1}}{N_A} \right]
+        \overline{S} = \frac{5}{2}R+R\ln\left[ \left( \frac{2\pi m\kB T}{h^2} \right)^{3/2}\frac{\overline{V}g_{e1}}{\NA} \right]
     \end{equation*}
     \item The mixing of two ideal gases (say \ce{N2} and \ce{Br2}) from a molecular perspective.
     \begin{itemize}
         \item Since the natural log in $\overline{S}$ for a monatomic ideal gas contains the same number of terms involving $V$ as for a diatomic ideal gas, we have that
         \begin{align*}
-            S &= Nk_B\ln V+\text{terms not involving }V\\
+            S &= N\kB\ln V+\text{terms not involving }V\\
             &= nR\ln V+\text{terms not involving }V
         \end{align*}
         for both \ce{N2} and \ce{Br2}.
@@ -724,25 +724,25 @@
         \end{align*}
         as expected.
     \end{itemize}
-    \item Relating $S=k_B\ln W$ to $\dd{S}=\var{q_\text{rev}}/T$ (and proving that $\beta=1/k_BT$!).
+    \item Relating $S=\kB\ln W$ to $\dd{S}=\var{q_\text{rev}}/T$ (and proving that $\beta=1/\kB T$!).
     \begin{itemize}
         \item We have that
         \begingroup
         \allowdisplaybreaks
         \begin{align*}
-            S &= -k_B\sum_jp_j\ln p_j\\
-            \dv{S}{p_j} &= -k_B\sum_j\left( p_j\cdot\frac{1}{p_j}+1\cdot\ln p_j \right)\\
-            \dd{S} &= -k_B\sum_j(\dd{p_j}+\ln p_j\dd{p_j})\\
-            &= -k_B\sum_j\left( -\beta E_j-\ln Q \right)\dd{p_j}\\
-            &= \beta k_B\sum_jE_j\dd{p_j}+\ln Q\sum_j\dd{p_j}\\
-            &= \beta k_B\var{q_\text{rev}}\tag{$\sum_jp_j=1\Rightarrow\sum\dd{p_j}=0$}
+            S &= -\kB\sum_jp_j\ln p_j\\
+            \dv{S}{p_j} &= -\kB\sum_j\left( p_j\cdot\frac{1}{p_j}+1\cdot\ln p_j \right)\\
+            \dd{S} &= -\kB\sum_j(\dd{p_j}+\ln p_j\dd{p_j})\\
+            &= -\kB\sum_j\left( -\beta E_j-\ln Q \right)\dd{p_j}\\
+            &= \beta\kB\sum_jE_j\dd{p_j}+\ln Q\sum_j\dd{p_j}\\
+            &= \beta\kB\var{q_\text{rev}}\tag{$\sum_jp_j=1\Rightarrow\sum\dd{p_j}=0$}
         \end{align*}
         \endgroup
         as desired.
-        \item Additionally, the above result implies that $\beta k_B$ is an integrating factor of $\var{q_\text{rev}}$, i.e.,
+        \item Additionally, the above result implies that $\beta\kB$ is an integrating factor of $\var{q_\text{rev}}$, i.e.,
         \begin{align*}
-            \beta k_B &= \frac{1}{T}\\
-            \beta &= \frac{1}{k_BT}
+            \beta\kB &= \frac{1}{T}\\
+            \beta &= \frac{1}{\kB T}
         \end{align*}
     \end{itemize}
 \end{itemize}

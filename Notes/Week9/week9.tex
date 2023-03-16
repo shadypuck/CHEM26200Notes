@@ -30,7 +30,7 @@
     \end{itemize}
     \item As the solute's concentration diminishes, the solute activity approaches the Henry's law limit.
     \begin{itemize}
-        \item $a_2=P_2/k_H\to x_2$ as $x_2\to 0$.
+        \item $a_2=P_2/\kH\to x_2$ as $x_2\to 0$.
     \end{itemize}
     \item Using the vapor pressure of the solvent to determine the activity of the non-volatile solute.
     \begin{itemize}
@@ -100,9 +100,9 @@
         \end{align*}
         \item Thus,
         \begin{align*}
-            m_\pm &= \sqrt{m_+^1m_-^2}\\
-            &= \sqrt{4m^3}\\
-            &= 4^{1/3}m
+            m_\pm^3 &= m_+^1m_-^2\\
+            &= 4m^3\\
+            m_\pm &= 4^{1/3}m
         \end{align*}
         \item We can do something similar for $\gamma_\pm$ and $a_\pm$.
     \end{itemize}
@@ -163,7 +163,7 @@
         \item We have a charge density $\rho(\pi)$ at a distance $r$ from the nucleus.
         \item We have
         \begin{equation*}
-            \rho(r) = \sum_iq_i\left( \frac{N_i}{V} \right)\cdot\e[-q_i\phi(r)/k_BT]
+            \rho(r) = \sum_iq_i\left( \frac{N_i}{V} \right)\cdot\e[-q_i\phi(r)/\kB T]
         \end{equation*}
         where the latter term is the Boltzmann factor and $\phi(r)$ is the electrostatic potential.
         \item We also have the Poisson equation,
@@ -173,22 +173,22 @@
         \item Since everything is depending on each other, it seems we are in a pickle.
         \item But if
         \begin{equation*}
-            \frac{q_i\phi(r)}{k_BT} < 1
+            \frac{q_i\phi(r)}{\kB T} < 1
         \end{equation*}
         then
         \begin{equation*}
-            \e[q_i\phi(r)/k_BT] = 1-\frac{q_i\phi(r)}{k_BT}
+            \e[q_i\phi(r)/\kB T] = 1-\frac{q_i\phi(r)}{\kB T}
         \end{equation*}
         \item Therefore,
         \begin{equation*}
-            \rho(r) = \sum_iq_i\left( \frac{N_i}{V} \right)\cdot\left( 1-\frac{q_i\phi(r)}{k_BT} \right)
-            = \sum q_i\left( \frac{N_i}{V} \right)-\phi(r)\sum\frac{q_i^2\left( \frac{N_i}{V} \right)}{k_BT}
+            \rho(r) = \sum_iq_i\left( \frac{N_i}{V} \right)\cdot\left( 1-\frac{q_i\phi(r)}{\kB T} \right)
+            = \sum q_i\left( \frac{N_i}{V} \right)-\phi(r)\sum\frac{q_i^2\left( \frac{N_i}{V} \right)}{\kB T}
         \end{equation*}
         where the left term in the right expression above evaluates to zero.
         \item We can only have an excess of 1000 ions of one type of charge per liter of solution.
         \item It follows that
         \begin{align*}
-            \nabla\phi(r) &= \left( \frac{\sum q_i^2\left( \frac{N_i}{V} \right)}{\varepsilon\varepsilon_0k_BT} \right)\cdot\phi(r)\\
+            \nabla\phi(r) &= \left( \frac{\sum q_i^2\left( \frac{N_i}{V} \right)}{\varepsilon\varepsilon_0\kB T} \right)\cdot\phi(r)\\
             \pdv[2]{\phi}{r}+\cdots &= \kappa^2\cdot\phi
         \end{align*}
     \end{itemize}
@@ -206,7 +206,7 @@
     \item Ions \textbf{screen} other ions.
     \item We have
     \begin{equation*}
-        \kappa^2 = \frac{\sum q_i^2\left( \frac{N_i}{V} \right)}{\varepsilon\varepsilon_0k_BT}
+        \kappa^2 = \frac{\sum q_i^2\left( \frac{N_i}{V} \right)}{\varepsilon\varepsilon_0\kB T}
     \end{equation*}
     \item \textbf{Ionic strength}: The following quantity. \emph{Denoted by} $\bm{I_c}$. \emph{Given by}
     \begin{equation*}
@@ -214,7 +214,7 @@
     \end{equation*}
     \item Thus, we have
     \begin{equation*}
-        \kappa^{-1} = \frac{1}{\sqrt{I_c}}\cdot\sqrt{\frac{10^{-3}}{\e[2]N_A}\cdot\frac{\varepsilon\varepsilon_0k_BT}{2}}
+        \kappa^{-1} = \frac{1}{\sqrt{I_c}}\cdot\sqrt{\frac{10^{-3}}{\e[2]\NA}\cdot\frac{\varepsilon\varepsilon_0\kB T}{2}}
     \end{equation*}
     \item Calculating the Debye length of \ce{NaCl}.
     \begin{itemize}
@@ -237,11 +237,11 @@
         \end{equation*}
         which implies that
         \begin{equation*}
-            \ln\gamma = -\frac{\kappa q^2}{8\pi\varepsilon\varepsilon_0k_BT}
+            \ln\gamma = -\frac{\kappa q^2}{8\pi\varepsilon\varepsilon_0\kB T}
         \end{equation*}
         \item Hence, by Problem 25.58,
         \begin{equation*}
-            \ln\gamma_\pm = \frac{|z_+z_-|e^2\kappa}{8\pi\varepsilon\varepsilon_0k_BT}
+            \ln\gamma_\pm = \frac{|z_+z_-|e^2\kappa}{8\pi\varepsilon\varepsilon_0\kB T}
         \end{equation*}
         where $e^2\kappa/8\pi\varepsilon\varepsilon_0$ comes from the Coulombic attraction.
         \item Thus, by the Debye-H\"{u}ckel model,
@@ -294,7 +294,7 @@
             \item Thus, this reaction is spontaneous with $\Delta\overline{G}^\circ=-147-65=\SI{-212}{\kilo\joule\per\mole}$.
         \end{itemize}
         \item We know that $\Delta\overline{G}^\circ=w_{\text{non }PV}=\Delta\overline{Q}\cdot E$ at constant $T,P$, where $E$ is the electrochemical potential.
-        \item We also know that $\Delta\overline{Q}=-2eN_A=-2F$ (negative since we're losing electrons) where
+        \item We also know that $\Delta\overline{Q}=-2e\NA=-2F$ (negative since we're losing electrons) where
         \begin{equation*}
             F = \SI{96485}{\coulomb}
         \end{equation*}
@@ -334,7 +334,7 @@
             \mu_\text{out} &= \mu_+^*+RT\ln c_\text{out}+q\cdot 0
         \end{align*}
         where $\phi$ is the electrical potential difference between the inside and outside of the cell.
-        \item Setting the two equations equal to each other and noting that $q=eN_A=F$ yields
+        \item Setting the two equations equal to each other and noting that $q=e\NA=F$ yields
         \begin{align*}
             RT\ln c_\text{in}+R\phi &= RT\ln c_\text{out}\\
             \phi &= \frac{RT}{F}\ln\frac{c_\text{out}}{c_\text{in}}\\
@@ -362,10 +362,10 @@
     \item Few lines summary of CHEM 26200.
     \begin{enumerate}
         \item We first thought of $\prb{E}=\sum p_iE_i$, i.e., the energy as dependent on the states of a system.
-        \item We then defined the entropy $S=-k_B\sum p_i\ln p_i$ that maximizes when everything is most equally distributed. Tells us where nature goes, i.e., toward the most probable outcome.
-        \item We can combine energy with the tendency of nature to go to the highest entropy to define the \textbf{Lagrange multipliers} $F=U-TS$ and $G=H-TS$; minima of $F,G$ are where the system goes spontaneously.
-        \item The partition function $q=\sum\e[-E_i/k_BT]$ allows us to calculate every property of the system it describes. We can also extend this from molecules to systems of distinguishable and indistinguishable particles.
-        \item The probabilities of each state depend on their energy via $p_i=\e[E_i/k_BT]/q$.
+        \item We then defined the entropy $S=-\kB\sum p_i\ln p_i$ that maximizes when everything is most equally distributed. Tells us where nature goes, i.e., toward the most probable outcome.
+        \item We can combine energy with the tendency of nature to go to the highest entropy to define the \textbf{Lagrange multipliers} $A=U-TS$ and $G=H-TS$; minima of $A,G$ are where the system goes spontaneously.
+        \item The partition function $q=\sum\e[-E_i/\kB T]$ allows us to calculate every property of the system it describes. We can also extend this from molecules to systems of distinguishable and indistinguishable particles.
+        \item The probabilities of each state depend on their energy via $p_i=\e[E_i/\kB T]/q$.
     \end{enumerate}
 \end{itemize}
 
@@ -453,18 +453,18 @@
     for solutions of electrolytes.
     \item Debye and H\"{u}ckel showed theoretically in 1925 that at low concentrations, the natural logarithms of the $j^\text{th}$ ion's activity coefficient and the mean ionic activity coefficient are given by
     \begin{align*}
-        \ln\gamma_j &= -\frac{\kappa q_j^2}{8\pi\varepsilon_0\varepsilon_rk_BT}&
-        \ln\gamma_\pm &= -|q_+q_-|\frac{\kappa}{8\pi\varepsilon_0\varepsilon_rk_BT}
+        \ln\gamma_j &= -\frac{\kappa q_j^2}{8\pi\varepsilon_0\varepsilon_r\kB T}&
+        \ln\gamma_\pm &= -|q_+q_-|\frac{\kappa}{8\pi\varepsilon_0\varepsilon_r\kB T}
     \end{align*}
     where $q_+=z_+e$ and $q_-=z_-e$, $\varepsilon_r$ is the (unitless) relative permittivity of the solvent, and $\kappa$ is given by
     \begin{equation*}
-        \kappa^2 = \sum_{j=1}^s\frac{q_j^2}{\varepsilon_0\varepsilon_rk_BT}\left( \frac{N_j}{V} \right)
+        \kappa^2 = \sum_{j=1}^s\frac{q_j^2}{\varepsilon_0\varepsilon_r\kB T}\left( \frac{N_j}{V} \right)
     \end{equation*}
     $s$ being the number of ionic species and $N_j/V$ being the number density of species $j$.
     \begin{itemize}
         \item Converting $N_j/V$ to molarity allows us to rewrite the above as
         \begin{equation*}
-            \kappa^2 = N_A(\SI{1000}{\liter\per\cubic\meter})\sum_{j=1}^s\frac{q_j^2c_j}{\varepsilon_0\varepsilon_rk_BT}
+            \kappa^2 = \NA(\SI{1000}{\liter\per\cubic\meter})\sum_{j=1}^s\frac{q_j^2c_j}{\varepsilon_0\varepsilon_r\kB T}
         \end{equation*}
         \item This result is derived in Problems 25-50 through 25-58.
     \end{itemize}
@@ -478,7 +478,7 @@
     \end{itemize}
     \item Having defined the ionic strength, we can write express $\kappa$ in a third form as
     \begin{equation*}
-        \kappa^2 = \frac{2e^2N_A(\SI{1000}{\liter\per\cubic\meter})}{\varepsilon_0\varepsilon_rk_BT}(I_c/\si{\mole\per\liter})
+        \kappa^2 = \frac{2e^2\NA(\SI{1000}{\liter\per\cubic\meter})}{\varepsilon_0\varepsilon_r\kB T}(I_c/\si{\mole\per\liter})
     \end{equation*}
     \item In the Debye-H\"{u}ckel limiting law, $\ln\gamma_\pm\propto\kappa\propto\sqrt{I_c}\propto\sqrt{c}$.
     \begin{itemize}

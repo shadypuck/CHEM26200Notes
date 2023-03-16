@@ -17,9 +17,9 @@
         \item Did his undergrad at Oxford.
         \item Has already taught this class in the PME.
     \end{itemize}
-    \item \textbf{Boltzmann constant}: The following constant. \emph{Denoted by} $\bm{k_B}$. \emph{Given by}
+    \item \textbf{Boltzmann constant}: The following constant. \emph{Denoted by} $\bm{k_\textbf{B}^{}}$. \emph{Given by}
     \begin{equation*}
-        k_B = \SI[per-mode=symbol]{1.381e-23}{\joule\per\kelvin}
+        \kB = \SI[per-mode=symbol]{1.381e-23}{\joule\per\kelvin}
     \end{equation*}
     \begin{itemize}
         \item Equal to the quotient of the ideal gas constant and Avogadro's constant.
@@ -31,8 +31,8 @@
     \begin{itemize}
         \item Multiplying by the quotient of Avogadro's constant with itself yields
         \begin{align*}
-            PV &= nN_A\frac{R}{N_A}T\\
-            PV &= Nk_BT
+            PV &= n\NA\frac{R}{\NA}T\\
+            PV &= N\kB T
         \end{align*}
         where $N$ is the number of molecules in the system.
         \item The unit for $PV$ is Joules.
@@ -45,37 +45,93 @@
         \begin{itemize}
             \item Consider the number $N(v_x)$ particles with speed $v_x$ in the $x$-direction.
             \item The quotient $N(v_x)/V$ is the density in the container of particles with speed $v_x$.
-            \item Thus, the flux "through"/to/at the wall is this density, times the area of the wall, times the $x$-velocity of the particles.
+            \item Thus, the flux of particles with velocity $v_x$ "through"/to/at the wall is this density, times the area of the wall, times the $x$-velocity of the particles.
+            \item Keep in mind that the units of flux are particles (colliding with the wall with velocity $v_x$) per second.
         \end{itemize}
         \item Assume an elastic collision of each particle with the wall. Thus, when each particle of mass $m$ collides with the wall, it transfers $2mv_x$ of momentum.
-        \item Therefore, since $F=\dv*{p}{t}$, the overall force exerted on the wall by the gas particles moving with speed $v_x$ is $2mv_x$, $N(v_x)/V\cdot v_x\cdot\text{Area}$ times per second.
-        \item But, of course, we must sum over all possible $v_x$, so the total force
+        \item Another mathematical expression to use: Recall from physics that $F=\dv*{p}{t}$.
+        \begin{itemize}
+            \item We do not at present have an expression for the change in momentum at the wall per second. However, we do have an expression for the change in momentum at the wall per particle ($2mv_x$) and an expression for the number of particles colliding with the wall per second. Naturally the product of these two expressions is $\dv*{p}{t}$. Mathematically,
+            \begin{equation*}
+                F = \dv{p}{t}
+                = \frac{\Delta p}{\text{particle}}\cdot\frac{\text{flux particles}}{\text{second}}
+                = (2mv_x)\cdot\left( \frac{N(v_x)}{V}\cdot v_x\cdot\text{Area} \right)
+            \end{equation*}
+            \item Dividing both sides by area yields an expression for pressure since $P=F/\text{Area}$. In particular, $P$ denotes the pressure exerted on the wall by all particles moving with velocity $v_x$.
+            \begin{equation*}
+                P = \frac{2m}{V}\cdot v_x^2N(v_x)
+            \end{equation*}
+        \end{itemize}
+        \item But, of course, we must sum over all possible $v_x$, so the total force exerted on the wall by the particles in the box is
         \begin{equation*}
-            F = \int_{v_x>0} 2mv_x\cdot\frac{N(v_x)}{V}\cdot v_x\cdot\text{Area}\dd{v_x}
+            P = \int_{v_x>0}\frac{2m}{V}\cdot v_x^2N(v_x)\dd{v_x}
         \end{equation*}
+        \begin{itemize}
+            \item Note that we sum over only the positive values of $v_x$ because all particles moving away from the wall or not moving relative to it naturally will not collide with it.
+        \end{itemize}
+        \item Factor out constants and multiply by $1=N/N$.
+        \begin{equation*}
+            P = \frac{2mN}{V}\int_{v_x>0}v_x^2\frac{N(v_x)}{N}\dd{v_x}
+        \end{equation*}
+        \item Note that $N(v_x)/N=p(v_x)$, that is, the number of particles with velocity $v_x$ divided by the total number of particles equals the probability that a given particle has velocity $v_x$.
+        \begin{equation*}
+            P = \frac{2mN}{V}\int_{v_x>0}v_x^2p(v_x)\dd{v_x}
+        \end{equation*}
+        \item We know from MathChapter B in \textcite{bib:McQuarrieSimon} that
+        \begin{equation*}
+            \prb{v_x^2} = \int_{-\infty}^\infty v_x^2p(v_x)\dd{v_x}
+            = 2\int_0^\infty v_x^2p(v_x)\dd{v_x}
+        \end{equation*}
+        for a symmetric probability distribution $p$ (note that the assumed \textbf{isotropy} of the gas in the box guarantees this symmetry).
+        \begin{itemize}
+            \item Thus,
+            \begin{equation*}
+                \int_{v_x>0}v_x^2p(v_x)\dd{v_x} = \frac{1}{2}\prb{v_x^2}
+            \end{equation*}
+        \end{itemize}
         \item It follows that
         \begin{align*}
-            P &= \frac{F}{\text{Area}}\\
-            &= \int_{v_x>0} 2mv_x^2\cdot\frac{N(v_x)}{V}\dd{v_x}
-            \intertext{The factor of $1/2$ in the following line comes from the fact that we are only integrating over half of the possible $v_x^2$s (i.e., the positive ones).}
-            &= 2m\cdot\frac{N}{V}\cdot\frac{1}{2}\prb{v_x^2}\\
-            &= \frac{N}{V}m\prb{v_x^2}\\
-            PV &= Nm\cdot\prb{v_x^2}
-            \intertext{Assuming that the gas is not moving in any one direction means that $\prb{v_x^2}=\prb{v_y^2}=\prb{v_z^2}=\frac{1}{3}\prb{v^2}$. Therefore,}
-            &= Nm\cdot\frac{1}{3}\prb{v^2}\\
+            P &= \frac{2mN}{V}\cdot\frac{1}{2}\prb{v_x^2}\\
+            &= \frac{mN}{V}\prb{v_x^2}\\
+            PV &= Nm\prb{v_x^2}
+        \end{align*}
+        \item Another additional result: Since $v_x^2=v_y^2=v_z^2$ by the isotropy of the gas, we have that
+        \begin{equation*}
+            \prb{v_x^2} = \prb{v_y^2} = \prb{v_z^2}
+        \end{equation*}
+        \begin{itemize}
+            \item Furthermore, since $v^2=v_x^2+v_y^2+v_z^2$ by the generalized Pythagorean theorem, this and the above result imply that
+            \begin{align*}
+                v^2 &= v_x^2+v_y^2+v_z^2\\
+                &= v_x^2+v_x^2+v_x^2\\
+                &= 3v_x^2\\
+                \frac{1}{3}v^2 &= v_x^2
+            \end{align*}
+            \item Thus,
+            \begin{equation*}
+                \prb{v_x^2} = \prb{v_y^2} = \prb{v_z^2} = \frac{1}{3}\prb{v^2}
+            \end{equation*}
+        \end{itemize}
+        \item It follows that
+        \begin{equation*}
+            PV = Nm\cdot\frac{1}{3}\prb{v^2}
+        \end{equation*}
+        \item Thus,
+        \begin{align*}
+            PV &= Nm\cdot\frac{1}{3}\prb{v^2}\\
             &= \frac{2}{3}N\cdot\frac{1}{2}m\prb{v^2}\\
             &= \frac{2}{3}N\cdot\prb{E_{KE}}\\
             \prb{E_{KE}} &= \frac{3}{2}\frac{PV}{N}\\
-            \prb{E_{KE}} &= \frac{3}{2}k_BT
+            \prb{E_{KE}} &= \frac{3}{2}\kB T
         \end{align*}
-        \item Note that this applies to all sorts of regimes --- we used no properties of the particles (e.g., atom vs. molecule) to derive this relationship.
+        \item Note that this applies to all sorts of regimes --- we used no properties of the particles (e.g., atom vs. molecule) to derive this relationship. This generalizability is why we chose a flux perspective here.
     \end{itemize}
     \item Getting the distribution of the gas energies or speed is the next logical step.
-    \item First, though, we consider alternate occurrences of $k_BT$.
+    \item First, though, we consider alternate occurrences of $\kB T$.
     \begin{itemize}
         \item The activation energy of \textcite{bib:ArrheniusEqn}: "To collide is to react" is inaccurate; it must collide with sufficient energy. The molecule must be "activated."
         \begin{equation*}
-            k = A\e[-E_a/RT] = A\e[-E_a/k_BT]
+            k = A\e[-E_a/RT] = A\e[-E_a/\kB T]
         \end{equation*}
         \begin{itemize}
             \item The first $E_a$ is the molar energy of activation; the second is the molecular energy of activation.
@@ -87,30 +143,30 @@
         \end{equation*}
         \begin{itemize}
             \item $\ln Q$ is the ratio inside vs. outside the membrane.
-            \item $F=N_Ae$ where $e$ is the charge of an electron.
+            \item $F=\NA e$ where $e$ is the charge of an electron.
             \item Thus,
             \begin{equation*}
-                \Delta E = \frac{RT}{nF} = \frac{k_BT}{ne}
+                \Delta E = \frac{RT}{nF} = \frac{\kB T}{ne}
             \end{equation*}
-            \item If the potential across the membrane is approximately $k_BT$, then $\ln Q\approx 1$, so $Q\approx\e$.
-            \item Thus, at body temperature ($T=\SI{310}{\kelvin}$), $k_BT/\e=\SI{26}{\milli\volt}$.
+            \item If the potential across the membrane is approximately $\kB T$, then $\ln Q\approx 1$, so $Q\approx\e$.
+            \item Thus, at body temperature ($T=\SI{310}{\kelvin}$), $\kB T/\e=\SI{26}{\milli\volt}$.
         \end{itemize}
         \item The speed of sound: Certainly sound cannot travel faster than the molecules. Therefore, we can derive the following approximation for the speed of sound.
         \begin{align*}
-            \frac{1}{2}m\prb{v^2} &= \frac{3}{2}k_BT\\
-            \sqrt{\prb{v^2}} &= \sqrt{\frac{3k_BT}{m}}\\
-            v_\text{rms} &= \sqrt{\frac{3k_BT}{m}}
+            \frac{1}{2}m\prb{v^2} &= \frac{3}{2}\kB T\\
+            \sqrt{\prb{v^2}} &= \sqrt{\frac{3\kB T}{m}}\\
+            v_\text{rms} &= \sqrt{\frac{3\kB T}{m}}
         \end{align*}
         \begin{itemize}
             \item This estimate is within $\SIrange{20}{30}{\percent}$ --- take $m$ to be the average mass of air.
         \end{itemize}
-        \item de Broglie wavelength: A molecule has a kinetic energy approximately equal to $k_BT$. Additionally, the quantum mechanical kinetic energy of a molecule aligns with this, as $\hbar^2k^2/2m\approx k_BT$. Furthermore, the particle-wave duality relates the momentum to wavelength by $p=\hbar k=h/\lambda$. Therefore,
+        \item de Broglie wavelength: A molecule has a kinetic energy approximately equal to $\kB T$. Additionally, the quantum mechanical kinetic energy of a molecule (see derivation directly below) aligns with this, as $\hbar^2k^2/2m\approx \kB T$. Furthermore, the particle-wave duality relates the momentum to wavelength by $p=\hbar k=h/\lambda$. Therefore,
         \begin{equation*}
-            \lambda \approx \sqrt{\frac{h^2}{2mk_BT}}
+            \lambda \approx \sqrt{\frac{h^2}{2m\kB T}}
         \end{equation*}
         \begin{itemize}
             \item Thus, a gas at STP has a very small de Broglie wavelength and behaves classically.
-            \item Only at very low temperatures with very light gasses do quantum considerations come into play.
+            \item Only at very low temperatures with very light gases do quantum considerations come into play.
             \item A \ce{H2} molecule at $\SI{300}{\kelvin}$ has de Broglie wavelength $\lambda=\SI{1.78}{\angstrom}$.
             \item Note that the quantum mechanical kinetic energy of a free particle is derived as follows.
             \begin{align*}
@@ -123,20 +179,20 @@
     \end{itemize}
     \item \textbf{Boltzmann factor}: Gives the relative probability $p_2/p_1$ of two states $E_1,E_2$, provided their respective energies $E_1,E_2$. \emph{Given by}
     \begin{equation*}
-        \frac{p_2}{p_1} = \e[-(E_2-E_1)/k_BT]
+        \frac{p_2}{p_1} = \e[-(E_2-E_1)/\kB T]
     \end{equation*}
     \begin{itemize}
         \item Consider states $E_1,E_2,E_3,\dots$, denoted by their energies.
         \item Consistency check: Given
         \begin{align*}
-            \frac{p_2}{p_1} &= \e[\frac{-(E_2-E_1)}{k_BT}]&
-            \frac{p_3}{p_2} &= \e[\frac{-(E_3-E_2)}{k_BT}]
+            \frac{p_2}{p_1} &= \e[\frac{-(E_2-E_1)}{\kB T}]&
+            \frac{p_3}{p_2} &= \e[\frac{-(E_3-E_2)}{\kB T}]
         \end{align*}
         we do indeed have
         \begin{equation*}
             \frac{p_3}{p_1} = \frac{p_3}{p_2}\cdot\frac{p_2}{p_1}
-            = \e[\frac{-(E_3-E_2)}{k_BT}+\frac{-(E_2-E_1)}{k_BT}]
-            = \e[\frac{-(E_3-E_1)}{k_BT}]
+            = \e[\frac{-(E_3-E_2)}{\kB T}+\frac{-(E_2-E_1)}{\kB T}]
+            = \e[\frac{-(E_3-E_1)}{\kB T}]
         \end{equation*}
         \item We'll take this as God-given for now. Boltzmann derived it with a very good knowledge of the thermodynamics of freshman chemistry.
     \end{itemize}
@@ -144,16 +200,16 @@
     \item We write the Boltzmann factor for degenerate states as follows.
     \begin{itemize}
         \item Consider four states at $E_2$ and one state at $E_1$.
-        \item The Boltzmann factor still tells us that $p_2/p_1=\e[-(E_2-E_1)/k_BT]$, but we have to make the following adjustment. Indeed, the total probability of being in one of the four states at energy $E_2$ is $p(E_2)=4p_2$, while the total probability of being in the one state at energy $E_1$ is still just $p(E_1)=1p_1$.
+        \item The Boltzmann factor still tells us that $p_2/p_1=\e[-(E_2-E_1)/\kB T]$, but we have to make the following adjustment. Indeed, the total probability of being in one of the four states at energy $E_2$ is $p(E_2)=4p_2$, while the total probability of being in the one state at energy $E_1$ is still just $p(E_1)=1p_1$.
         \item In each state $E_2$,
         \begin{equation*}
-            \frac{p(E_2)}{p(E_1)} = \frac{N_2}{N_1}\e[-(E_2-E_1)/k_BT]
+            \frac{p(E_2)}{p(E_1)} = \frac{N_2}{N_1}\e[-(E_2-E_1)/\kB T]
         \end{equation*}
     \end{itemize}
     \item The weekly quiz.
     \begin{itemize}
         \item The first quiz will be next week.
-        \item A Canvas quiz -- we'll have 24 hours to take it, but only 1 hour to take it.
+        \item A Canvas quiz -- we'll have 24 hours to start, but only 1 hour to take it.
     \end{itemize}
 \end{itemize}
 
@@ -212,11 +268,11 @@
         \end{itemize}
         \item Let $\Delta E$ be the difference in energy between the $p_{3/2}$ and $p_{1/2}$. Then
         \begin{equation*}
-            \frac{\Delta E}{k_B} = \frac{1}{k_B}\left( \frac{hc}{\lambda_1}-\frac{hc}{\lambda_2} \right)
+            \frac{\Delta E}{\kB} = \frac{1}{\kB}\left( \frac{hc}{\lambda_1}-\frac{hc}{\lambda_2} \right)
             = \SI{25}{\kelvin}
         \end{equation*}
         where $\lambda_1=\SI{589.6}{\nano\meter}$ and $\lambda_2=\SI{589.0}{\nano\meter}$.
-        \item Thus, $\e[-\Delta E/k_BT]\approx 1$ for $T=\SI{300}{\kelvin}$ (the temperature in the sodium vapor lamp).
+        \item Thus, $\e[-\Delta E/\kB T]\approx 1$ for $T=\SI{300}{\kelvin}$ (the temperature in the sodium vapor lamp).
         \item Therefore,
         \begin{align*}
             \frac{p(E_2)}{p(E_1)} &= \frac{4}{2}\cdot 1\\
@@ -228,7 +284,7 @@
         \item The magnetic field polarizes the spins of the hydrogen protons in our body with $\Delta E=\mu_BB$.
         \item If we also take $B=\SI{6}{\tesla}$ and $T=\SI{310}{\kelvin}$ (body temperature), then
         \begin{equation*}
-            \frac{\mu_BB}{k_BT} = \num{2e-5}
+            \frac{\mu_BB}{\kB T} = \num{2e-5}
         \end{equation*}
         \item Thus, very few protons actually flip, but with modern technology we can still measure this.
     \end{itemize}
@@ -245,7 +301,7 @@
         \item Microwave spectroscopy can be used to find molecules out in the universe.
         \item At $\SI{300}{\kelvin}$,
         \begin{equation*}
-            \frac{p(J=1)}{p(J=0)} = \frac{3}{1}\e[\frac{-(E_1-E_0)}{k_BT}] = 2.95
+            \frac{p(J=1)}{p(J=0)} = \frac{3}{1}\e[\frac{-(E_1-E_0)}{\kB T}] = 2.95
         \end{equation*}
         \begin{itemize}
             \item As before $J=1$ corresponds to states $j=-1,0,1$.
@@ -258,13 +314,13 @@
         \item Here, $\Delta E=E_n-E_{n-1}=h\nu$ for every energy level since $E_n=h\nu(n+1/2)$.
         \item It follows that
         \begin{equation*}
-            \frac{h\nu}{k_B} = \SI{2800}{\kelvin}
+            \frac{h\nu}{\kB} = \SI{2800}{\kelvin}
         \end{equation*}
         for \ce{CO}, meaning that at $\SI{300}{\kelvin}$, \ce{CO} will be largely in its ground state.
     \end{itemize}
     \item The partition function tells us everything we would want to know about a system.
     \begin{equation*}
-        Q = \sum_i\e[-E_i/k_BT]
+        Q = \sum_i\e[-E_i/\kB T]
     \end{equation*}
     \begin{itemize}
         \item All we need to know is the energy of every state in the system.
@@ -275,9 +331,9 @@
         \item Take the energy $E_1$ of the ground state to be our zero of energy.
         \item Under this assumption, we may rewrite the partition function as follows.
         \begin{equation*}
-            Q = \sum_i\e[-(E_i-E_1)/k_BT]
+            Q = \sum_i\e[-(E_i-E_1)/\kB T]
             = \frac{p_1}{p_1}+\frac{p_2}{p_1}+\frac{p_3}{p_1}+\cdots
-            = 1+\e[\frac{-(E_2-E_1)}{k_BT}]+\e[\frac{-(E_3-E_1)}{k_BT}]+\cdots
+            = 1+\e[\frac{-(E_2-E_1)}{\kB T}]+\e[\frac{-(E_3-E_1)}{\kB T}]+\cdots
         \end{equation*}
         \item From MathChapter B, the expected energy is equal to
         \begin{equation*}
@@ -289,8 +345,8 @@
         \end{equation*}
         \item With this result established, we now take a moment to note that
         \begin{equation*}
-            \pdv{T}(\e[-E_i/k_BT]) = \frac{E_i}{k_BT^2}\e[-E_i/k_BT]
-            = \frac{1}{k_BT^2}\left( E_i\frac{p_i}{p_1} \right)
+            \pdv{T}(\e[-E_i/\kB T]) = \frac{E_i}{\kB T^2}\e[-E_i/\kB T]
+            = \frac{1}{\kB T^2}\left( E_i\frac{p_i}{p_1} \right)
         \end{equation*}
         and
         \begin{align*}
@@ -301,9 +357,9 @@
         \end{align*}
         \item Therefore,
         \begin{align*}
-            \prb{E} &= p_1k_BT^2\pdv{T}(\frac{p_1}{p_1}+\frac{p_2}{p_1}+\cdots)\\
-            &= \frac{1}{Q}k_BT^2\pdv{Q}{T}\\
-            \prb{E} &= k_BT^2\pdv{\ln Q}{T}
+            \prb{E} &= p_1\kB T^2\pdv{T}(\frac{p_1}{p_1}+\frac{p_2}{p_1}+\cdots)\\
+            &= \frac{1}{Q}\kB T^2\pdv{Q}{T}\\
+            \prb{E} &= \kB T^2\pdv{\ln Q}{T}
         \end{align*}
         \item The above is an important result.
     \end{itemize}
@@ -311,13 +367,13 @@
     \begin{itemize}
         \item We know that
         \begin{align*}
-            Q(E_0) &= Q(E_0')\e[-(E_0'-E_0)/k_BT]\\
-            \ln Q(E_0) &= \ln Q(E_0')-\frac{E_0'-E_0}{k_BT}
+            Q(E_0) &= Q(E_0')\e[-(E_0'-E_0)/\kB T]\\
+            \ln Q(E_0) &= \ln Q(E_0')-\frac{E_0'-E_0}{\kB T}
         \end{align*}
         \item Thus,
         \begin{align*}
-            \prb{E}_{E_0} &= k_BT^2\pdv{T}(\ln Q(E_0))\\
-            &= k_BT^2\left( \pdv{T}(\ln Q(E_0'))-\pdv{T}(\frac{E_0'-E_0}{k_BT}) \right)\\
+            \prb{E}_{E_0} &= \kB T^2\pdv{T}(\ln Q(E_0))\\
+            &= \kB T^2\left( \pdv{T}(\ln Q(E_0'))-\pdv{T}(\frac{E_0'-E_0}{\kB T}) \right)\\
             &= \prb{E}_{E_0'}+(E_0'-E_0)\\
             \prb{E}_{E_0}+E_0 &= \prb{E}_{E_0'}+E_0'
         \end{align*}
@@ -329,15 +385,15 @@
 
 \section{Calculating Average Energies}
 \begin{itemize}
-    \item \marginnote{1/14:}We derived that for an ideal gas, $\prb{E}=3k_BT/2$. But this may change at higher pressures.
+    \item \marginnote{1/14:}We derived that for an ideal gas, $\prb{E}=3\kB T/2$. But this may change at higher pressures.
     \item Calculating the average kinetic energy at higher temperatures.
     \begin{itemize}
         \item Use the main result from last time, which gives us the energy in terms of the partition function.
         \item We have different degrees of freedom since KE and PE are on different coordinates (KE is on speed and PE is on position).
         \item When we write the Boltzmann factor, we'll have an exponential with the sum of the kinetic and potential energy.
         \begin{equation*}
-            Q = \sum_{ij}\e[-(E_{KE_i}-E_{PE_j})/k_BT]
-            = \sum_{ij}\e[-E_{KE_i}/k_BT]\e[-E_{PE_j}/k_BT]
+            Q = \sum_{ij}\e[-(E_{KE_i}+E_{PE_j})/\kB T]
+            = \sum_{ij}\e[-E_{KE_i}/\kB T]\e[-E_{PE_j}/\kB T]
             = Q_{KE}Q_{PE}
         \end{equation*}
         \begin{itemize}
@@ -350,20 +406,20 @@
         \begin{itemize}
             \item Thus,
             \begin{equation*}
-                Q_{KE_{v_x}} = \int_{-\infty}^\infty\e[-\frac{1}{2}mv_x^2/k_BT]\dd{v_x} = \sqrt{\frac{2\pi k_BT}{m}}
+                Q_{KE_{v_x}} = \int_{-\infty}^\infty\e[-\frac{1}{2}mv_x^2/\kB T]\dd{v_x} = \sqrt{\frac{2\pi \kB T}{m}}
             \end{equation*}
             \item This function doesn't depend on anything of significant import.
         \end{itemize}
         \item It follows that
         \begin{equation*}
-            \prb{KE_x} = k_BT^2\pdv{T}(\ln Q_{KE_{v_x}})
-            = k_BT^2\pdv{T}(\ln\sqrt{\frac{2\pi k_B}{m}}+\frac{1}{2}\ln T)
-            = \frac{k_BT}{2}
+            \prb{KE_x} = \kB T^2\pdv{T}(\ln Q_{KE_{v_x}})
+            = \kB T^2\pdv{T}(\ln\sqrt{\frac{2\pi\kB}{m}}+\frac{1}{2}\ln T)
+            = \frac{\kB T}{2}
         \end{equation*}
         and
         \begin{equation*}
             \prb{KE} = \prb{KE_x}+\prb{KE_y}+\prb{KE_z}
-            = \frac{3}{2}k_BT
+            = \frac{3}{2}\kB T
         \end{equation*}
         \item Therefore, this result holds beyond the specific case of an ideal gas!\footnote{This is why this derivation is preferable over the one presented in the book. Note that the "gas" here is assumed to be made of hard spheres.}
     \end{itemize}
@@ -371,22 +427,22 @@
     \begin{itemize}
         \item $PE=\frac{1}{2}kx^2$; calculate the partition function for the coordinate $x$.
         \begin{equation*}
-            Q_x = \int_{-\infty}^\infty\e[-\frac{1}{2}kx^2/k_BT]\dd{x}
-            = \sqrt{\frac{2\pi k_BT}{k}}
+            Q_x = \int_{-\infty}^\infty\e[-\frac{1}{2}kx^2/\kB T]\dd{x}
+            = \sqrt{\frac{2\pi \kB T}{k}}
         \end{equation*}
         \item Thus,
         \begin{equation*}
-            \prb{PE_x} = \frac{k_BT}{2}
+            \prb{PE_x} = \frac{\kB T}{2}
         \end{equation*}
         \item For a 3D harmonic oscillator,
         \begin{equation*}
-            \prb{PE} = \frac{3}{2}k_BT
+            \prb{PE} = \frac{3}{2}\kB T
         \end{equation*}
     \end{itemize}
     \item Average potential energy of a gravitational potential.
     \begin{itemize}
         \item Apply the virial theorem (relates the average kinetic energy of a system in a conservative potential to the potential energy).
-        \item Since we've shown that for any system, the average kinetic energy in one dimension is $k_BT/2$, the potential in any system will be related (i.e., have a factor of $k_BT$).
+        \item Since we've shown that for any system, the average kinetic energy in one dimension is $\kB T/2$, the potential in any system will be related (i.e., have a factor of $\kB T$).
     \end{itemize}
     \item What it means to cool something down, if KE always follows the same formula.
     \begin{itemize}
@@ -402,12 +458,12 @@
         \end{equation*}
         \item Thus, once again,
         \begin{equation*}
-            Q_\omega = \int_{-\infty}^\infty\e[-\frac{1}{2}I\omega^2/k_BT]\dd{\omega}
-            = \sqrt{\frac{2\pi k_BT}{I}}
+            Q_\omega = \int_{-\infty}^\infty\e[-\frac{1}{2}I\omega^2/\kB T]\dd{\omega}
+            = \sqrt{\frac{2\pi \kB T}{I}}
         \end{equation*}
         making
         \begin{equation*}
-            \prb{E_\text{rot}} = \frac{k_BT}{2}
+            \prb{E_\text{rot}} = \frac{\kB T}{2}
         \end{equation*}
         for one degree of freedom.
     \end{itemize}
@@ -421,8 +477,8 @@
         \end{equation*}
         \item Thus,
         \begin{align*}
-            \prb{E_\text{atom}} &= \frac{3}{2}k_BT+\frac{3}{2}k_BT = 3k_BT\\
-            \prb{E_\text{solid}} &= 3Nk_BT = 3nN_Ak_BT = 3nRT
+            \prb{E_\text{atom}} &= \frac{3}{2}\kB T+\frac{3}{2}\kB T = 3\kB T\\
+            \prb{E_\text{solid}} &= 3N\kB T = 3n\NA\kB T = 3nRT
         \end{align*}
         \item Some heat capacities are lower than $3nR$ (solids of rare gases that are heavier and need more heat to behave ideally), and some are higher (the potential is not a harmonic potential).
     \end{itemize}
@@ -440,20 +496,20 @@
         \item Recall that the energies are given by $(n+1/2)h\nu$.
         \item Taking our zero of energy to be $\SI{0.5}{\hartree}$, the partition function of the vibration of the quantum harmonic oscillator is
         \begin{align*}
-            Q &= 1+\e[-h\nu/k_BT]+\e[-2h\nu/k_BT]+\cdots\\
-            Q &= (\e[-h\nu/k_BT])^0+(\e[-h\nu/k_BT])^1+(\e[-h\nu/k_BT])^2+\cdots\\
-            Q-Q\e[-h\nu/k_BT] &= 1\\
-            Q &= \frac{1}{1-\e[-h\nu/k_BT]}
+            Q &= 1+\e[-h\nu/\kB T]+\e[-2h\nu/\kB T]+\cdots\\
+            Q &= (\e[-h\nu/\kB T])^0+(\e[-h\nu/\kB T])^1+(\e[-h\nu/\kB T])^2+\cdots\\
+            Q-Q\e[-h\nu/\kB T] &= 1\\
+            Q &= \frac{1}{1-\e[-h\nu/\kB T]}
         \end{align*}
         when we take the zero point energy as our zero of energy.
         \item It follows that
         \begin{align*}
-            \prb{E} &= k_BT^2\pdv{T}\left[ \ln\left( \frac{1}{1-\e[-h\nu/k_BT]} \right) \right]\\
-            &= \frac{h\nu}{\e[h\nu/k_BT]-1}
+            \prb{E} &= \kB T^2\pdv{T}\left[ \ln\left( \frac{1}{1-\e[-h\nu/\kB T]} \right) \right]\\
+            &= \frac{h\nu}{\e[h\nu/\kB T]-1}
         \end{align*}
-        \item As $T\to\infty$, $h\nu/k_BT$ gets very small. But since $\e[x]\approx 1+x$ at small $x$, as $T\to\infty$, we have that
+        \item As $T\to\infty$, $h\nu/\kB T$ gets very small. But since $\e[x]\approx 1+x$ at small $x$, as $T\to\infty$, we have that
         \begin{equation*}
-            \prb{E} \approx \frac{h\nu}{(1+h\nu/k_BT)-1} = k_BT
+            \prb{E} \approx \frac{h\nu}{(1+h\nu/\kB T)-1} = \kB T
         \end{equation*}
         \item Therefore, as $T\to\infty$, we recover the energy of a classical harmonic oscillator.
         \item On the other hand, as $T\to 0$, $E\to 0$.
@@ -473,11 +529,11 @@
     \end{itemize}
     \item \textbf{Boltzmann factor}: The relation between the probability that a system will be in a given state to the energy of that state. \emph{Given by}
     \begin{equation*}
-        p_j \propto \e[-E_j/k_BT]
+        p_j \propto \e[-E_j/\kB T]
     \end{equation*}
     \item \textbf{Partition function}: A function in terms of which we can express all of the macroscopic properties of a given system, such as energy, heat capacity, and pressure. \emph{Denoted by} $\bm{Q}$, $\bm{Q(N,V,\beta)}$, $\bm{Q(N,V,T)}$. \emph{Given by}
     \begin{equation*}
-        Q = \sum_j\e[-E_j/k_BT]
+        Q = \sum_j\e[-E_j/\kB T]
     \end{equation*}
     \item Determining on what quantities the energies of a macroscopic system (such as some volume of fluid, gas, or solid) depend.
     \begin{itemize}
@@ -555,7 +611,7 @@
             p_j(N,V,\beta) = \frac{1}{Q(N,V,\beta)}\e[\beta E_j(N,V)]
         \end{equation*}
     \end{itemize}
-    \item We will later show that $\beta=1/k_BT$.
+    \item We will later show that $\beta=1/\kB T$.
     \begin{itemize}
         \item Note, however, that from a theoretical point of view, $\beta$ can be just as useful as $T$.
     \end{itemize}
@@ -570,16 +626,16 @@
             \pdv{\ln Q}{\beta} &= -\sum_j\frac{E_j\e[-\beta E_j]}{Q} = -\prb{E}\\
             \prb{E} &= -\pdv{\ln Q}{\beta}
         \end{align*}
-        \item Substituting $\beta=1/k_BT$ and applying the chain rule to $\pdv*{\ln Q}{T}$ yields
+        \item Substituting $\beta=1/\kB T$ and applying the chain rule to $\pdv*{\ln Q}{T}$ yields
         \begin{align*}
             \pdv{f}{T} &= \pdv{f}{\beta}\cdot\pdv{\beta}{T}
-            = \pdv{f}{\beta}\cdot\frac{1}{k_B}\pdv{T}(\frac{1}{T})
-            = \pdv{f}{\beta}\cdot-\frac{1}{k_BT^2}\\
-            \pdv{f}{\beta} &= -k_BT^2\pdv{f}{T}
+            = \pdv{f}{\beta}\cdot\frac{1}{\kB}\pdv{T}(\frac{1}{T})
+            = \pdv{f}{\beta}\cdot-\frac{1}{\kB T^2}\\
+            \pdv{f}{\beta} &= -\kB T^2\pdv{f}{T}
         \end{align*}
         so
         \begin{equation*}
-            \prb{E} = k_BT^2\pdv{\ln Q}{T}
+            \prb{E} = \kB T^2\pdv{\ln Q}{T}
         \end{equation*}
     \end{itemize}
     \item Using results from Chapter 14, \textcite{bib:McQuarrieSimon} calculates the average energy of a bare proton in a magnetic field, concluding that at $T=0$ (i.e., zero thermal energy), the proton orients itself in the direction of the magnetic field with certainty while as $T\to\infty$, the thermal energy is such that the proton becomes equally likely to be in either state.
@@ -598,7 +654,7 @@
         \end{align*}
         \item Therefore,
         \begin{equation*}
-            \prb{E} = -\pdv{\ln Q}{\beta} = \frac{3N}{2}\dv{\ln\beta}{\beta} = \frac{3N}{2\beta} = \frac{3}{2}Nk_BT = \frac{3}{2}nRT
+            \prb{E} = -\pdv{\ln Q}{\beta} = \frac{3N}{2}\dv{\ln\beta}{\beta} = \frac{3N}{2\beta} = \frac{3}{2}N\kB T = \frac{3}{2}nRT
         \end{equation*}
     \end{itemize}
     \item The above result leads us to a fundamental postulate of physical chemistry: "The ensemble average of any quantity, as calculated using the probability distribution [$p_j=\frac{1}{Q}\e[-\beta E_j]$], is the same as the experimentally observed value of that quantity" \parencite[700]{bib:McQuarrieSimon}.
@@ -617,7 +673,7 @@
         \end{itemize}
         \item Using the same procedure as before, we can calculate that for one mole of a diatomic ideal gas,
         \begin{equation*}
-            \overline{U} = \frac{3}{2}RT+RT+\frac{N_Ah\nu}{2}+\frac{N_Ah\nu\e[-\beta h\nu]}{1-\e[-\beta h\nu]}
+            \overline{U} = \frac{3}{2}RT+RT+\frac{\NA h\nu}{2}+\frac{\NA h\nu\e[-\beta h\nu]}{1-\e[-\beta h\nu]}
         \end{equation*}
         \begin{itemize}
             \item "The first term represents the average translational energy, the second term represents the average rotational energy, the third term represents the zero-point vibrational energy, and the fourth term represents the average vibrational energy" \parencite[701]{bib:McQuarrieSimon}.
@@ -637,7 +693,7 @@
     \end{equation*}
     \item For an ideal diatomic gas,
     \begin{equation*}
-        \overline{C}_V = \frac{5}{2}R+R\left( \frac{h\nu}{k_BT} \right)^2\frac{\e[-h\nu/k_BT]}{(1-\e[-h\nu/k_BT])^2}
+        \overline{C}_V = \frac{5}{2}R+R\left( \frac{h\nu}{\kB T} \right)^2\frac{\e[-h\nu/\kB T]}{(1-\e[-h\nu/\kB T])^2}
     \end{equation*}
     \item Molar heat capacity of a crystal, as per the \textbf{Einstein model of atomic crystals}.
     \begin{itemize}
@@ -649,7 +705,7 @@
         where $\nu$ is characteristic of the particular crystal and $U_0$ is the \textbf{sublimation energy} (at $\SI{0}{\kelvin}$).
         \item It follows as before that
         \begin{equation*}
-            \overline{C}_V = 3R\left( \frac{h\nu}{k_BT} \right)^2\frac{\e[-h\nu/k_BT]}{(1-\e[-h\nu/k_BT])^2}
+            \overline{C}_V = 3R\left( \frac{h\nu}{\kB T} \right)^2\frac{\e[-h\nu/\kB T]}{(1-\e[-h\nu/\kB T])^2}
         \end{equation*}
     \end{itemize}
     \item \textbf{Einstein model of atomic crystals}: A model of a crystal as $N$ atoms situated at lattice sites, with each atom vibrating as a three-dimensional harmonic oscillator.
@@ -674,7 +730,7 @@
         so
         \begin{align*}
             \prb{P} &= \frac{1}{\beta}\pdv{\ln Q}{V}&
-            \prb{P} &= k_BT\pdv{\ln Q}{V}
+            \prb{P} &= \kB T\pdv{\ln Q}{V}
         \end{align*}
     \end{itemize}
     \item Just like we did with energy, we equate the ensemble average pressure with the observed pressure via $P=\prb{P}$.
@@ -688,8 +744,8 @@
         \end{align*}
         \item Therefore,
         \begin{align*}
-            \prb{P} &= k_BT\pdv{\ln Q}{V} = \frac{Nk_BT}{V}\\
-            PV &= Nk_BT
+            \prb{P} &= \kB T\pdv{\ln Q}{V} = \frac{N\kB T}{V}\\
+            PV &= N\kB T
         \end{align*}
         \item Since only the terms not involving $V$ change for diatomic and polyatomic gases, the above equation of state holds for all ideal gases.
     \end{itemize}
@@ -700,7 +756,7 @@
     \begin{itemize}
         \item Indeed, going through the same process as above with this equation yields
         \begin{equation*}
-            \left( P+\frac{aN^2}{V^2} \right)(V-Nb) = Nk_BT
+            \left( P+\frac{aN^2}{V^2} \right)(V-Nb) = N\kB T
         \end{equation*}
     \end{itemize}
     \item Since we lack the computational power to calculate the set $\{E_j\}$ of eigenvalues of the $N$-body Schr\"{o}dinger equation, we often approximate each $E_j$ as the sum of the energies of the constituent particles of a system.
@@ -725,7 +781,7 @@
     \end{itemize}
     \item \textbf{Molecular partition function}: A partition function pertaining to a particular molecule within a system. \emph{Denoted by} $q(V,T)$. \emph{Given by}
     \begin{equation*}
-        q(V,T) = \sum_j\e[-\varepsilon_j/k_BT]
+        q(V,T) = \sum_j\e[-\varepsilon_j/\kB T]
     \end{equation*}
     \begin{itemize}
         \item Often able to be evaluated since they only depend on the allowed energies of individual atoms or molecules.
@@ -738,7 +794,7 @@
     \item \textbf{Fermions}: A particle whose wave function must be antisymmetric under the interchange of two identical particles.
     \begin{itemize}
         \item Particles of half-integer spin (such as electrons, protons, and neutrons [all with spin $1/2$]) are fermions.
-        \item Two identical fermions \emph{cannot} the same single-particle energy state.
+        \item Two identical fermions \emph{cannot} occupy the same single-particle energy state.
     \end{itemize}
     \item Consider a system of independent, \emph{indistinguishable} particles.
     \begin{itemize}
@@ -763,11 +819,11 @@
         \begin{itemize}
             \item If, for example, the number of quantum states available to any particle is significantly greater than the number of particles, it is very unlikely that two particles will ever be in the same state.
             \item Indeed, most quantum-mechanical systems have an infinite number of energy states. However, at any given temperature, many of these states will be energetically inaccessible.
-            \item Thus, we can only invoke the $[q(V,T)]^N/N!$ approximation if the number of quantum states with energies less than $k_BT$ (which is roughly the average energy of a molecule) is much larger than the number of particles.
+            \item Thus, we can only invoke the $[q(V,T)]^N/N!$ approximation if the number of quantum states with energies less than $\kB T$ (which is roughly the average energy of a molecule) is much larger than the number of particles.
         \end{itemize}
         \item In particular, if
         \begin{equation*}
-            \frac{N}{V}\left( \frac{h^2}{8mk_BT} \right)^{3/2} \ll  1
+            \frac{N}{V}\left( \frac{h^2}{8m\kB T} \right)^{3/2} \ll  1
         \end{equation*}
         then we may approximate
         \begin{equation*}
@@ -785,28 +841,28 @@
     \end{itemize}
     \item Relating the average energy $\prb{E}$ of a system to the average energy $\prb{\varepsilon}$ of a constituent molecule.
     \begin{align*}
-        \prb{E} &= k_BT^2\pdv{\ln Q}{T}\\
-        &= k_BT^2\pdv{T}(\ln\left( \frac{q^N}{N!} \right))\\
-        &= Nk_BT^2\pdv{\ln q}{T}\\
+        \prb{E} &= \kB T^2\pdv{\ln Q}{T}\\
+        &= \kB T^2\pdv{T}(\ln\left( \frac{q^N}{N!} \right))\\
+        &= N\kB T^2\pdv{\ln q}{T}\\
         \prb{E} &= N\prb{\varepsilon}
     \end{align*}
     \item The probability that a molecule is in its $j^\text{th}$ molecular energy state is denoted by $\pi_j$.
     \item Assuming $\varepsilon=\varepsilon_i^\text{trans}+\varepsilon_i^\text{rot}+\varepsilon_i^\text{vib}+\varepsilon_i^\text{elec}$ allows us to write $q=q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}$ since the various energy terms are distinguishable here (hence we can sum over the indices separately).
     \item The probability that a molecule is in its $i^\text{th}$ translational, $j^\text{th}$ rotational, $k^\text{th}$ vibrational, and $l^\text{th}$ electronic state is given by
     \begin{equation*}
-        \pi_{ijkl} = \frac{\e[-\varepsilon_i^\text{trans}/k_BT]\e[-\varepsilon_j^\text{rot}/k_BT]\e[-\varepsilon_k^\text{vib}/k_BT]\e[-\varepsilon_l^\text{elec}/k_BT]}{q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}}
+        \pi_{ijkl} = \frac{\e[-\varepsilon_i^\text{trans}/\kB T]\e[-\varepsilon_j^\text{rot}/\kB T]\e[-\varepsilon_k^\text{vib}/\kB T]\e[-\varepsilon_l^\text{elec}/\kB T]}{q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}}
     \end{equation*}
     \item Since the total probability $\pi_k^\text{vib}$ that a molecule is in its $k^\text{th}$ vibrational state (for example) encompasses all probabilities of it being in any translational, rotational, or vibrational state, we have by summation that
     \begin{equation*}
         \pi_k^\text{vib} = \sum_{i,j,l}\pi_{ijkl}
-        = \frac{\sum_i\left( \e[-\varepsilon_i^\text{trans}/k_BT] \right)\sum_j\left( \e[-\varepsilon_j^\text{rot}/k_BT] \right)\sum_l\left( \e[-\varepsilon_l^\text{elec}/k_BT] \right)\e[-\varepsilon_k^\text{vib}/k_BT]}{q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}}
-        = \frac{\e[-\varepsilon_k^\text{vib}/k_BT]}{q_\text{vib}}
+        = \frac{\sum_i\left( \e[-\varepsilon_i^\text{trans}/\kB T] \right)\sum_j\left( \e[-\varepsilon_j^\text{rot}/\kB T] \right)\sum_l\left( \e[-\varepsilon_l^\text{elec}/\kB T] \right)\e[-\varepsilon_k^\text{vib}/\kB T]}{q_\text{trans}q_\text{rot}q_\text{vib}q_\text{elec}}
+        = \frac{\e[-\varepsilon_k^\text{vib}/\kB T]}{q_\text{vib}}
     \end{equation*}
     \item It follows that
     \begin{equation*}
-        \prb{\varepsilon^\text{vib}} = \sum_k\varepsilon_k^\text{vib}\frac{\e[-\varepsilon_k^\text{vib}/k_BT]}{q_\text{vib}}
+        \prb{\varepsilon^\text{vib}} = \sum_k\varepsilon_k^\text{vib}\frac{\e[-\varepsilon_k^\text{vib}/\kB T]}{q_\text{vib}}
         = -\pdv{\ln q_\text{vib}}{\beta}
-        = k_BT^2\pdv{\ln q_\text{vib}}{T}
+        = \kB T^2\pdv{\ln q_\text{vib}}{T}
     \end{equation*}
     \begin{itemize}
         \item Analogous results hold for $\prb{\varepsilon^\text{trans}}$, $\prb{\varepsilon^\text{rot}}$, and $\prb{\varepsilon^\text{elec}}$.
@@ -820,7 +876,7 @@
         \end{align*}
         we can write
         \begin{equation*}
-            q_\text{rot}(T) = \sum_{J=0}^\infty(2J+1)\e[-\hbar^2J(J+1)/2Ik_BT]
+            q_\text{rot}(T) = \sum_{J=0}^\infty(2J+1)\e[-\hbar^2J(J+1)/2I\kB T]
         \end{equation*}
     \end{itemize}
 \end{itemize}

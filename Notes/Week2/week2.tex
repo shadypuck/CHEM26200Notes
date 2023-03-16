@@ -30,13 +30,13 @@
     \end{itemize}
     \item Does the 3D particle in a box derivation for the translation molecular partition function.
     \begin{itemize}
-        \item Note that since the de Broglie wavelength $\lambda_\text{DB}=\sqrt{h^2/2mk_BT}$, we may write
+        \item Note that since the de Broglie wavelength $\lambda_\text{DB}=\sqrt{h^2/2m\kB T}$, we may write
         \begin{equation*}
-            q_x = \sum_{n_x}\e[-h^2/8mk_BTL_x^2]
+            q_x = \sum_{n_x}\e[-h^2/8m\kB TL_x^2]
             = \sum_{n_x}\e[-\lambda_\text{DB}^2n_x^2/4L_x^2]
         \end{equation*}
     \end{itemize}
-    \item The number of states are occupied/have energy within $k_BT$ of the ground state.
+    \item The number of states are occupied/have energy within $\kB T$ of the ground state.
     \begin{itemize}
         \item $-\lambda_\text{DB}^2n_x^2/4L_x^2$ is on the order of 1, implying that $n_x$ is on the order of $2L/\lambda_\text{DB}$.
         \item It follows if $L$ is on a macroscopic scale (e.g., $L\approx\SI{1}{\meter}$) and $\lambda_\text{DB}$ is on a sub-angstrom scale that $n_x$ is on the order of $10^{10}$. When $n_x$ is at such a scale, $\e[-\lambda_\text{DB}^2n_x^2/4L_x^2]\approx 1/\e$.
@@ -44,11 +44,11 @@
     \end{itemize}
     \item More precisely, we want
     \begin{equation*}
-        N \ll n_xn_yn_z = \left( \frac{8mk_BT}{h^2} \right)^{3/2}L_xL_yL_z
+        N \ll n_xn_yn_z = \left( \frac{8m\kB T}{h^2} \right)^{3/2}L_xL_yL_z
     \end{equation*}
     where the middle term approximates the number of states so that
     \begin{equation*}
-        \frac{N}{V} \ll \left( \frac{8mk_BT}{h^2} \right)^{3/2}
+        \frac{N}{V} \ll \left( \frac{8m\kB T}{h^2} \right)^{3/2}
     \end{equation*}
     \item Approximating the translational energy with an integral.
     \begin{itemize}
@@ -67,17 +67,17 @@
     \end{equation*}
     \item The heat capacity in the very high temperature limit where translations, rotations, and vibrations are classical.
     \begin{itemize}
-        \item Translational: $\frac{3}{2}k_B$.
-        \item Vibrational: Each degree of freedom ($3N-5$ for a linear molecule and $3N-6$ for a nonlinear molecule) contributes $k_B$.
-        \item Rotational: Each degree of freedom ($2$ for a linear molecule and $3$ for a nonlinear molecule) contributes $\frac{1}{2}k_B$.
+        \item Translational: $\frac{3}{2}\kB$.
+        \item Vibrational: Each degree of freedom ($3N-5$ for a linear molecule and $3N-6$ for a nonlinear molecule) contributes $\kB$.
+        \item Rotational: Each degree of freedom ($2$ for a linear molecule and $3$ for a nonlinear molecule) contributes $\frac{1}{2}\kB$.
     \end{itemize}
     \item We can use the above to calculate the heat capacity of various molecules at very high temperatures (note, however, that at such temperatures, molecules would likely dissociate; we're simply theoretically considering the classical limit here).
     \begin{itemize}
-        \item \ce{Ne}: $\frac{3}{2}k_B$.
-        \item \ce{H2O}: $\frac{3}{2}k_B+3\cdot k_B+3\cdot\frac{1}{2}k_B=6k_B$.
-        \item \ce{O2}: $\frac{3}{2}+1\cdot k_B+2\cdot\frac{1}{2}k_B=\frac{7}{2}k_B$.
-        \item \ce{CO2}: $\frac{3}{2}k_B+4\cdot k_B+2\cdot\frac{1}{2}k_B=\frac{13}{2}k_B$.
-        \item \ce{CHCl3}: $\frac{3}{2}k_B+9\cdot k_B+3\cdot\frac{1}{2}k_B=12 k_B$.
+        \item \ce{Ne}: $\frac{3}{2}\kB$.
+        \item \ce{H2O}: $\frac{3}{2}\kB+3\cdot\kB+3\cdot\frac{1}{2}\kB=6\kB$.
+        \item \ce{O2}: $\frac{3}{2}+1\cdot\kB+2\cdot\frac{1}{2}\kB=\frac{7}{2}\kB$.
+        \item \ce{CO2}: $\frac{3}{2}\kB+4\cdot\kB+2\cdot\frac{1}{2}\kB=\frac{13}{2}\kB$.
+        \item \ce{CHCl3}: $\frac{3}{2}\kB+9\cdot\kB+3\cdot\frac{1}{2}\kB=12\kB$.
     \end{itemize}
     \item Electronic partition function.
     \begin{itemize}
@@ -85,22 +85,22 @@
         \item $D_0$ is the ionization energy from the bottom state ($D_e\neq D_0$, but relations can be obtained via spectroscopy).
         \item It follows that
         \begin{equation*}
-            q_\text{elec} = g_1\e[-(-D_e/k_BT)]+g_2\e[-E_2/k_BT]
+            q_\text{elec} = g_1\e[-(-D_e/\kB T)]+g_2\e[-E_2/\kB T]
         \end{equation*}
-        \item If $\dd{T}\ll(E_2+D_e)$, then $q_\text{elec}=g_1\e[D_e/k_BT]$.
+        \item If $\dd{T}\ll(E_2+D_e)$, then $q_\text{elec}=g_1\e[D_e/\kB T]$.
     \end{itemize}
     \item Vibrational partition function.
     \begin{itemize}
         \item As before with the law of Dulong and Petit.
-        \item It's a special point where $T=h\nu/k_B$.
+        \item It's a special point where $T=h\nu/\kB$.
     \end{itemize}
     \item Rotational partition function.
     \begin{itemize}
         \item Almost always classical.
-        \item The rotational energy of a polyatomic molecule will almost always be $\frac{3}{2}k_B$.
+        \item The rotational energy of a polyatomic molecule will almost always be $\frac{3}{2}\kB$.
         \item Let's look at a heteronuclear diatomic, such as \ce{CO}. Derives
         \begin{equation*}
-            q_\text{rot} = \sum_{J=0}^\infty(2J+1)\e[-\hbar^2J(J+1)/2Ik_BT]
+            q_\text{rot} = \sum_{J=0}^\infty(2J+1)\e[-\hbar^2J(J+1)/2I\kB T]
         \end{equation*}
         \item The \textbf{rotational temperature} leads to
         \begin{equation*}
@@ -110,7 +110,7 @@
     \end{itemize}
     \item \textbf{Rotational temperature}: The following quantity. \emph{Denoted by} $\bm{\Theta_\textbf{rot}}$. \emph{Given by}
     \begin{equation*}
-        \Theta_\text{rot} = \hbar^2/2Ik_B
+        \Theta_\text{rot} = \hbar^2/2I\kB
     \end{equation*}
     \item PGS will not specify whether we need a quantum vs. classical model.
     \item Homonuclear diatomic (e.g., \ce{H2}).
@@ -142,17 +142,17 @@
     \begin{itemize}
         \item We have that
         \begin{equation*}
-            q = \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}\cdot V\cdot\sqrt{\frac{T^2}{\sigma\Theta_{\text{rot},a}\Theta_{\text{rot},b}\Theta_{\text{rot},c}}}\cdot\sum_1^{3N-6}\frac{\e[-\Theta_\text{vib}/2T]}{1-\e[\Theta_\text{vib}/T]}\cdot g_1\e[D_e/k_BT]
+            q = \left( \frac{2\pi m\kB T}{h^2} \right)^{3/2}\cdot V\cdot\sqrt{\frac{T^2}{\sigma\Theta_{\text{rot},a}\Theta_{\text{rot},b}\Theta_{\text{rot},c}}}\cdot\sum_1^{3N-6}\frac{\e[-\Theta_\text{vib}/2T]}{1-\e[\Theta_\text{vib}/T]}\cdot g_1\e[D_e/\kB T]
         \end{equation*}
         \item Thus,
         \begin{equation*}
-            \prb{E} = k_BT^2\pdv{\ln q}{T}
-            = k_BT^2\pdv{T}(\frac{3}{2}\ln T+\text{constant}+\frac{3}{2}\ln T+\text{vibration}-D_e)
+            \prb{E} = \kB T^2\pdv{\ln q}{T}
+            = \kB T^2\pdv{T}(\frac{3}{2}\ln T+\text{constant}+\frac{3}{2}\ln T+\text{vibration}-D_e)
         \end{equation*}
-        \item The energy of the vibration is $E=k_B\Theta_\text{vib}/(\e[\Theta_\text{vib}/k_BT]-1)+k_B\Theta_\text{vib}/2$. It follows that
+        \item The energy of the vibration is $E=\kB\Theta_\text{vib}/(\e[\Theta_\text{vib}/\kB T]-1)+\kB\Theta_\text{vib}/2$. It follows that
         \begin{equation*}
             C = \pdv{E}{T}
-            = k_B\frac{\Theta_\text{vib}^2}{T^2}\frac{\e[-\Theta_\text{vib}/T]}{(1-\e[-\Theta_\text{vib}/T])}
+            = \kB\frac{\Theta_\text{vib}^2}{T^2}\frac{\e[-\Theta_\text{vib}/T]}{(1-\e[-\Theta_\text{vib}/T])}
         \end{equation*}
     \end{itemize}
 \end{itemize}
@@ -183,7 +183,7 @@
             q_\text{trans} &= \left( \int_0^\infty\e[-\beta h^2n^2/8ma^2]\dd{n} \right)^3\\
             &= \left( \sqrt{\frac{\pi}{4\beta h^2/8ma^2}} \right)^3\\
             &= \left( \sqrt{\frac{2\pi m}{\beta h^2}} \right)^3a^3\\
-            &= \left( \frac{2\pi mk_BT}{h^2} \right)^{3/2}V
+            &= \left( \frac{2\pi m\kB T}{h^2} \right)^{3/2}V
         \end{align*}
     \end{itemize}
     \item \marginnote{1/24:}Deriving the electronic molecular partition function of an atom in a monatomic ideal gas.
@@ -212,7 +212,7 @@
     \begin{itemize}
         \item The translational partition function is
         \begin{equation*}
-            q_\text{trans}(V,T) = \left[ \frac{2\pi(m_1+m_2)k_BT}{h^2} \right]^{3/2}V
+            q_\text{trans}(V,T) = \left[ \frac{2\pi(m_1+m_2)\kB T}{h^2} \right]^{3/2}V
         \end{equation*}
         \item We take the zero of rotational energy to be the $J=0$ state.
         \item We take the zero of vibrational energy to be the bottom of the internuclear potential well of the lowest electronic state (so that the energy of the ground vibrational state is $h\nu/2$).
@@ -220,7 +220,7 @@
     \end{itemize}
     \item \textbf{Vibrational temperature}: The following quantity. \emph{Denoted by} $\bm{\Theta_\text{vib}}$. \emph{Given by}
     \begin{equation*}
-        \Theta_\text{vib} = \frac{h\nu}{k_B}
+        \Theta_\text{vib} = \frac{h\nu}{\kB}
     \end{equation*}
     \item Deriving the vibrational molecular partition function of a molecule in a diatomic ideal gas.
     \begin{align*}
@@ -232,7 +232,7 @@
     \item In terms of $\Theta_\text{vib}$,
     \begin{gather*}
         q_\text{vib}(T) = \frac{\e[-\Theta_\text{vib}/2T]}{1-\e[-\Theta_\text{vib}/T]}\\
-        \prb{E_\text{vib}} = Nk_B\left( \frac{\Theta_\text{vib}}{2}+\frac{\Theta_\text{vib}}{\e[\Theta_\text{vib}/T]-1} \right)\\
+        \prb{E_\text{vib}} = N\kB\left( \frac{\Theta_\text{vib}}{2}+\frac{\Theta_\text{vib}}{\e[\Theta_\text{vib}/T]-1} \right)\\
         \overline{C}_\text{V,\text{vib}} = R\left( \frac{\Theta_\text{vib}}{T} \right)^2\frac{\e[-\Theta_\text{vib}/T]}{(1-\e[-\Theta_\text{vib}/T])^2}
     \end{gather*}
     \item Note that the high temperature limit of $\overline{C}_\text{V,\text{vib}}$ is $R$, and $\overline{C}_\text{V,\text{vib}}$ attains $R/2$ at $T=0.34\,\Theta_\text{vib}$.
@@ -242,7 +242,7 @@
     \end{itemize}
     \item \textbf{Rotational temperature}: The following quantity. \emph{Denoted by} $\bm{\Theta_\text{rot}}$. \emph{Given by}
     \begin{equation*}
-        \Theta_\text{rot} = \frac{\hbar^2}{2Ik_B} = \frac{hB}{k_B}
+        \Theta_\text{rot} = \frac{\hbar^2}{2I\kB} = \frac{hB}{\kB}
     \end{equation*}
     \begin{itemize}
         \item $B$ is the rotational constant (see Chapter 5) in the above equation.
@@ -257,13 +257,13 @@
         \begin{align*}
             q_\text{rot}(T) &= \int_0^\infty(2J+1)\e[-\Theta_\text{rot}J(J+1)/T]\dd{J}\\
             &= \int_0^\infty\e[-\Theta_\text{rot}x/T]\dd{x}\\
-            &= \frac{T}{\Theta_\text{rot}} = \frac{8\pi^2Ik_BT}{h^2}
+            &= \frac{T}{\Theta_\text{rot}} = \frac{8\pi^2I\kB T}{h^2}
         \end{align*}
         \item For low temperatures or molecules with large values of $\Theta_\text{rot}$ we evaluate some number of terms of the sum directly, but we will not consider these cases further.
     \end{itemize}
     \item It follows from the above that
     \begin{align*}
-        \prb{E_\text{rot}} &= Nk_BT&
+        \prb{E_\text{rot}} &= N\kB T&
         \overline{C}_{V,\text{rot}} &= R
     \end{align*}
     \begin{itemize}
@@ -318,12 +318,12 @@
     \end{equation*}
     \item Taking the energy of an ideal diatomic gas molecule to be a simple sum of its translational, rotational, vibrational, and electronic energies yields the molecular partition function
     \begin{equation*}
-        q(V,T) = \left( \frac{2\pi Mk_BT}{h^2} \right)^{3/2}V\cdot\frac{T}{\sigma\Theta_\text{rot}}\cdot\frac{\e[-\Theta_\text{vib}/2T]}{1-\e[-\Theta_\text{vib}/T]}\cdot g_{e1}\e[D_e/k_BT]
+        q(V,T) = \left( \frac{2\pi M\kB T}{h^2} \right)^{3/2}V\cdot\frac{T}{\sigma\Theta_\text{rot}}\cdot\frac{\e[-\Theta_\text{vib}/2T]}{1-\e[-\Theta_\text{vib}/T]}\cdot g_{e1}\e[D_e/\kB T]
     \end{equation*}
     where we require $\Theta_\text{rot}\ll T$, that the only populated electronic state is the ground state, that the zero of electronic energy is the separated atoms at rest in their ground electronic states, and that the zero of vibrational energy is the bottom of the internuclear potential well of the lowest electronic state.
     \item \textcite{bib:McQuarrieSimon} derives the molar energy and heat capacity of a diatomic ideal gas one more time using the above equation.
     \begin{itemize}
-        \item The only difference is that the newly added electronic factor in the partition function adds a term of $-N_AD_e$ to the Chapter 17 formula for $\overline{U}$.
+        \item The only difference is that the newly added electronic factor in the partition function adds a term of $-\NA D_e$ to the Chapter 17 formula for $\overline{U}$.
         \item Also note that we can greatly improve the agreement of the harmonic oscillator-rigid rotator model with even small first-order corrections, such as including centrifugal distortion and anharmonicity.
     \end{itemize}
     \item The translational and electronic molecular partition functions of an ideal polyatomic molecule are the same as those of an ideal monatomic or diatomic molecule.
@@ -338,8 +338,8 @@
         \item It follows that for a polyatomic molecule,
         \begin{gather*}
             q_\text{vib} = \prod_{j=1}^{N_\text{vib}}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\\
-            E_\text{vib} = Nk_B\sum_{j=1}^{N_\text{vib}}\left( \frac{\Theta_{\text{vib},j}}{2}+\frac{\Theta_{\text{vib},j}\e[-\Theta_{\text{vib},j}/T]}{1-\e[-\Theta_{\text{vib},j}/T]} \right)\\
-            C_{V,\text{vib}} = Nk_B\sum_{j=1}^{N_\text{vib}}\left[ \left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2} \right]
+            E_\text{vib} = N\kB\sum_{j=1}^{N_\text{vib}}\left( \frac{\Theta_{\text{vib},j}}{2}+\frac{\Theta_{\text{vib},j}\e[-\Theta_{\text{vib},j}/T]}{1-\e[-\Theta_{\text{vib},j}/T]} \right)\\
+            C_{V,\text{vib}} = N\kB\sum_{j=1}^{N_\text{vib}}\left[ \left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2} \right]
         \end{gather*}
     \end{itemize}
     \item Rotational molecular partition functions for linear molecules.
@@ -359,7 +359,7 @@
     \item Rotational molecular partition functions for nonlinear molecules.
     \begin{itemize}
         \item Recall the discussion surrounding the principal moments of inertia in Chapter 13.
-        \item We define three characteristic rotational temperatures, namely $\Theta_{\text{rot},j}=\hbar^2/2I_jk_B$ for $j=A,B,C$.
+        \item We define three characteristic rotational temperatures, namely $\Theta_{\text{rot},j}=\hbar^2/2I_j\kB$ for $j=A,B,C$.
         \item Spherical top.
         \begin{itemize}
             \item In this case, $\Theta_{\text{rot},A}=\Theta_{\text{rot},B}=\Theta_{\text{rot},C}=\Theta_\text{rot}$.
@@ -372,7 +372,7 @@
             \begingroup
             \allowdisplaybreaks
             \begin{align*}
-                q_\text{rot}(T) &= \frac{1}{\sigma}\sum_{J=0}^\infty(2J+1)^2\e[-\hbar^2J(J+1)/2Ik_BT]\\
+                q_\text{rot}(T) &= \frac{1}{\sigma}\sum_{J=0}^\infty(2J+1)^2\e[-\hbar^2J(J+1)/2I\kB T]\\
                 &= \frac{1}{\sigma}\int_0^\infty(2J+1)^2\e[-\Theta_\text{rot}J(J+1)/T]\dd{J}\\
                 &= \frac{1}{\sigma}\int_0^\infty 4J^2\e[-\Theta_\text{rot}J^2/T]\dd{J}\\
                 &= \frac{4}{\sigma}\int_0^\infty J^2\e[-aJ^2]\dd{J}\\
@@ -394,15 +394,15 @@
     \end{align*}
     \item Linear molecule equations.
     \begin{gather*}
-        q(V,T) = \left( \frac{2\pi Mk_BT}{h^2} \right)^{3/2}V\cdot\frac{T}{\sigma\Theta_\text{rot}}\cdot\prod_{j=1}^{3n-5}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\cdot g_{e1}\e[D_e/k_BT]\\
-        \frac{U}{Nk_BT} = \frac{3}{2}+\frac{2}{2}+\sum_{j=1}^{3n-5}\left( \frac{\Theta_{\text{vib},j}}{2T}+\frac{\Theta_{\text{vib},j}/T}{\e[\Theta_{\text{vib},j}/T]-1} \right)-\frac{D_e}{k_BT}\\
-        \frac{C_V}{Nk_B} = \frac{3}{2}+\frac{2}{2}+\sum_{j=1}^{3n-5}\left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2}
+        q(V,T) = \left( \frac{2\pi M\kB T}{h^2} \right)^{3/2}V\cdot\frac{T}{\sigma\Theta_\text{rot}}\cdot\prod_{j=1}^{3n-5}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\cdot g_{e1}\e[D_e/\kB T]\\
+        \frac{U}{N\kB T} = \frac{3}{2}+\frac{2}{2}+\sum_{j=1}^{3n-5}\left( \frac{\Theta_{\text{vib},j}}{2T}+\frac{\Theta_{\text{vib},j}/T}{\e[\Theta_{\text{vib},j}/T]-1} \right)-\frac{D_e}{\kB T}\\
+        \frac{C_V}{N\kB} = \frac{3}{2}+\frac{2}{2}+\sum_{j=1}^{3n-5}\left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2}
     \end{gather*}
     \item Nonlinear molecule equations.
     \begin{gather*}
-        q(V,T) = \left( \frac{2\pi Mk_BT}{h^2} \right)^{3/2}V\cdot\frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{T^3}{\Theta_{\text{rot},A}\Theta_{\text{rot},B}\Theta_{\text{rot},C}}}\cdot\prod_{j=1}^{3n-6}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\cdot g_{e1}\e[D_e/k_BT]\\
-        \frac{U}{Nk_BT} = \frac{3}{2}+\frac{3}{2}+\sum_{j=1}^{3n-6}\left( \frac{\Theta_{\text{vib},j}}{2T}+\frac{\Theta_{\text{vib},j}/T}{\e[\Theta_{\text{vib},j}/T]-1} \right)-\frac{D_e}{k_BT}\\
-        \frac{C_V}{Nk_B} = \frac{3}{2}+\frac{3}{2}+\sum_{j=1}^{3n-6}\left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2}
+        q(V,T) = \left( \frac{2\pi M\kB T}{h^2} \right)^{3/2}V\cdot\frac{\sqrt{\pi}}{\sigma}\sqrt{\frac{T^3}{\Theta_{\text{rot},A}\Theta_{\text{rot},B}\Theta_{\text{rot},C}}}\cdot\prod_{j=1}^{3n-6}\frac{\e[-\Theta_{\text{vib},j}/2T]}{1-\e[-\Theta_{\text{vib},j}/T]}\cdot g_{e1}\e[D_e/\kB T]\\
+        \frac{U}{N\kB T} = \frac{3}{2}+\frac{3}{2}+\sum_{j=1}^{3n-6}\left( \frac{\Theta_{\text{vib},j}}{2T}+\frac{\Theta_{\text{vib},j}/T}{\e[\Theta_{\text{vib},j}/T]-1} \right)-\frac{D_e}{\kB T}\\
+        \frac{C_V}{N\kB} = \frac{3}{2}+\frac{3}{2}+\sum_{j=1}^{3n-6}\left( \frac{\Theta_{\text{vib},j}}{T} \right)^2\frac{\e[-\Theta_{\text{vib},j}/T]}{(1-\e[-\Theta_{\text{vib},j}/T])^2}
     \end{gather*}
 \end{itemize}
 
